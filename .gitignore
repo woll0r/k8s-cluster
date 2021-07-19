@@ -1,0 +1,6 @@
+# VS Code stuff
+.vscode/
+# Sops decrypted leftovers
+.decrypted~*
+# Kubernetes
+kubeconfig
