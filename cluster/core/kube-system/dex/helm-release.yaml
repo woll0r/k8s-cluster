@@ -35,7 +35,7 @@ spec:
               pathType: Prefix
       tls:
         - hosts:
-            - dex.${SECRET_DOMAIN}
+            - "dex.${SECRET_DOMAIN}"
     config:
       issuer: "https://dex.${SECRET_DOMAIN}"
 

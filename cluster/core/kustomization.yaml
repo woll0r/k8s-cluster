@@ -4,4 +4,5 @@ resources:
 - namespaces
 - cert-manager
 - kube-system
+- longhorn-system
 - system-upgrade
