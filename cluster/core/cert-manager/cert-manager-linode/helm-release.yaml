@@ -20,4 +20,4 @@ spec:
       repository: slicen/cert-manager-webhook-linode
       tag: v0.1.0
     api:
-      groupName: "acme.${SECRETS_DOMAIN}"
+      groupName: "acme.${SECRET_DOMAIN}"
