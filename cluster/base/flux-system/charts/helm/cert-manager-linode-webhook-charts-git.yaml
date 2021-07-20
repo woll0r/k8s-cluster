@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cert-manager-webhook-linode-charts
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  ref:
+    branch: patch-1
+  url: https://github.com/stephenc/cert-manager-webhook-linode
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/deploy/
