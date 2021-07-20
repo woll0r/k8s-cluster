@@ -44,6 +44,3 @@ spec:
       email-domain: "*"
       cookie-domain: ".${SECRET_DOMAIN}"
       whitelist-domain: ".${SECRET_DOMAIN}"
-  valuesFrom:
-  - kind: Secret
-    name: "oauth2-proxy-helm-values"
