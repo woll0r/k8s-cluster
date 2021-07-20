@@ -99,7 +99,3 @@ spec:
         cpu: 25m
       limits:
         memory: 250Mi
-  valuesFrom:
-    - kind: Secret
-      name: "dex-helm-values"
-      optional: false
