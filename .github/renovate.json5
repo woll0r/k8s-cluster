@@ -16,7 +16,7 @@
     ],
     "ignorePaths": [
       "cluster/base/"
-    ],
+    ]
   },
   "regexManagers": [
     // regexManager to read and process HelmReleases and CRDs
@@ -28,7 +28,9 @@
         // helm releases
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
         // cert-manager crd
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/",
+        // kube-prometheus crd
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "helm"
     },
