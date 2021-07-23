@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/k8s-at-home/radarr
       tag: v3.2.2.5080
     env:
-      TZ: "America/New_York"
+      TZ: "Europe/Brussels"
     ingress:
       main:
         enabled: true
