@@ -57,14 +57,14 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config-v1
+        existingClaim: sonarr-config
       media:
         enabled: true
         type: custom
         volumeSpec:
           nfs:
-            server: 192.168.42.50
-            path: /media
+            server: 172.16.1.6
+            path: /volume1/Media
         mountPath: /media
     resources:
       requests:
