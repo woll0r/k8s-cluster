@@ -34,11 +34,6 @@ spec:
                 values: [""]
     worker:
       config: |-
-        core:
-          sources:
-            - custom
-            - pci
-            - usb
         sources:
           custom:
             - name: "intel-gpu"

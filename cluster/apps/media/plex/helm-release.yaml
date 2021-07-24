@@ -65,20 +65,20 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-    # affinity:
-    #   nodeAffinity:
-    #     requiredDuringSchedulingIgnoredDuringExecution:
-    #       nodeSelectorTerms:
-    #       - matchExpressions:
-    #         - key: feature.node.kubernetes.io/custom-intel-gpu
-    #           operator: In
-    #           values:
-    #           - "true"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: feature.node.kubernetes.io/custom-intel-gpu
+              operator: In
+              values:
+              - "true"
     resources:
       requests:
-        # gpu.intel.com/i915: 1
+        gpu.intel.com/i915: 1
         cpu: 1000m
         memory: 1000Mi
       limits:
-        # gpu.intel.com/i915: 1
+        gpu.intel.com/i915: 1
         memory: 16000Mi
