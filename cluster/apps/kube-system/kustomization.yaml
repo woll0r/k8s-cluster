@@ -7,6 +7,7 @@ resources:
 - etcd
 - external-dns
 - intel-gpu-plugin
+- kured
 - metrics-server
 - node-feature-discovery
 - oauth2-proxy
