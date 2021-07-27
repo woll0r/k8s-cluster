@@ -55,7 +55,7 @@ spec:
           routes:
             - receiver: "null"
               match:
-                alertname: Watchdog
+                alertname: "Watchdog|KubeAPIErrorBudgetBurn"
             - receiver: "discord"
               match_re:
                 severity: critical
