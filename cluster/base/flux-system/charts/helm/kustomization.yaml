@@ -15,3 +15,4 @@ resources:
 - metallb-charts.yaml
 - node-feature-discovery-charts.yaml
 - prometheus-community-charts.yaml
+- weaveworks-kured-charts.yaml
