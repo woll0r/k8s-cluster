@@ -96,18 +96,36 @@ spec:
             targetLabel: kubernetes_node
     grafana:
       enabled: false
-    kubeEtcd:
-      enabled: false
+    kubeApiServer:
+      enabled: true
     kubeControllerManager:
-      enabled: false
+      enabled: true
       endpoints:
-        - 192.168.69.100
+        - 172.16.2.1
+        - 172.16.2.2
+        - 172.16.2.3
     kubeScheduler:
-      enabled: false
+      enabled: true
       endpoints:
-        - 192.168.69.100
+        - 172.16.2.1
+        - 172.16.2.2
+        - 172.16.2.3
     kubeProxy:
-      enabled: false
+      enabled: true
+      endpoints:
+        - 172.16.2.1
+        - 172.16.2.2
+        - 172.16.2.3
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 172.16.2.1
+        - 172.16.2.2
+        - 172.16.2.3
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
     kubelet:
       serviceMonitor:
         metricRelabelings:
