@@ -55,7 +55,7 @@ spec:
           routes:
             - receiver: "null"
               match_re:
-                alertname: "Watchdog|KubeAPIErrorBudgetBurn"
+                alertname: "Watchdog|KubeAPIErrorBudgetBurn|etcdMemberCommunicationSlow|etcdHighCommitDurations|etcdHighFsyncDurations"
             - receiver: "discord"
               match_re:
                 severity: critical
