@@ -25,12 +25,12 @@ spec:
       defaultDataLocality: best-effort
       defaultDataPath: /mnt/longhorn/
       createDefaultDiskLabeledNodes: true
-      backupTarget: "${SECRET_LONGHORN_BACKUPTARGET}"
-      storageMinimalAvailablePercentage: "10"
+      backupTarget: ${SECRET_LONGHORN_BACKUPTARGET}
+      storageMinimalAvailablePercentage: '10'
     ingress:
       enabled: true
-      host: "longhorn.${SECRET_DOMAIN}"
+      host: longhorn.${SECRET_DOMAIN}
       tls: true
       annotations:
-        nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/oauth2/auth"
-        nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}/oauth2/start"
+        nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start

@@ -10,9 +10,9 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: GitRepository
-      name: "*"
+      name: '*'
     - kind: HelmRelease
-      name: "*"
+      name: '*'
   suspend: false
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
@@ -26,9 +26,9 @@ spec:
   eventSeverity: error
   eventSources:
     - kind: GitRepository
-      name: "*"
+      name: '*'
     - kind: Kustomization
-      name: "*"
+      name: '*'
     - kind: HelmRelease
-      name: "*"
+      name: '*'
   suspend: false

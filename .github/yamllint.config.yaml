@@ -1,10 +1,11 @@
+---
 ignore: |
   .github/
-  crds.yaml
+  .pre-commit-config.yaml
 extends: default
 rules:
   truthy:
-    allowed-values: ['true', 'false', 'on', 'yes']
+    allowed-values: ['true', 'false', 'yes', 'no']
   comments:
     min-spaces-from-content: 1
   line-length: disable
@@ -16,4 +17,6 @@ rules:
     max-spaces-inside: 0
   indentation:
     spaces: 2
-    indent-sequences: consistent
+    indent-sequences: true
+  document-start:
+    present: true

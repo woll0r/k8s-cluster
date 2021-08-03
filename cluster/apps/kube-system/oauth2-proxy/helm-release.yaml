@@ -17,8 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   dependsOn:
-  - name: dex
-    namespace: kube-system
+    - name: dex
+      namespace: kube-system
   values:
     image:
       repository: quay.io/oauth2-proxy/oauth2-proxy
@@ -28,19 +28,19 @@ spec:
       enabled: true
       path: /oauth2
       hosts:
-      - "auth.${SECRET_DOMAIN}"
+        - auth.${SECRET_DOMAIN}
       tls:
-      - hosts:
-        - "auth.${SECRET_DOMAIN}"
+        - hosts:
+            - auth.${SECRET_DOMAIN}
     config:
-      clientID: "oauth2-proxy"
-      clientSecret: "${OAUTH2_PROXY_CLIENT_SECRET}"
-      cookieSecret: "${OAUTH2_PROXY_COOKIE_SECRET}"
+      clientID: oauth2-proxy
+      clientSecret: ${OAUTH2_PROXY_CLIENT_SECRET}
+      cookieSecret: ${OAUTH2_PROXY_COOKIE_SECRET}
     extraArgs:
       provider: oidc
-      oidc-issuer-url: "https://dex.${SECRET_DOMAIN}"
+      oidc-issuer-url: https://dex.${SECRET_DOMAIN}
       skip-provider-button:
       pass-authorization-header:
-      email-domain: "*"
-      cookie-domain: ".${SECRET_DOMAIN}"
-      whitelist-domain: ".${SECRET_DOMAIN}"
+      email-domain: '*'
+      cookie-domain: .${SECRET_DOMAIN}
+      whitelist-domain: .${SECRET_DOMAIN}

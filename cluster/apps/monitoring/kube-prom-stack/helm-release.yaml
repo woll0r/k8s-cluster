@@ -27,14 +27,14 @@ spec:
       config:
         global:
           resolve_timeout: 5m
-          slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
+          slack_api_url: ${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}
         receivers:
-          - name: "null"
-          - name: "discord"
+          - name: 'null'
+          - name: discord
             slack_configs:
-              - channel: "#prometheus"
+              - channel: '#prometheus'
                 icon_url: https://avatars3.githubusercontent.com/u/3380462
-                username: "Prometheus"
+                username: Prometheus
                 send_resolved: true
                 title: |-
                   [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ if ne .CommonAnnotations.summary ""}}{{ .CommonAnnotations.summary }}{{ else }}{{ .CommonLabels.alertname }}{{ end }}
@@ -47,41 +47,41 @@ spec:
                     {{ end }}
                   {{ end }}
         route:
-          group_by: ["alertname", "job"]
+          group_by: [alertname, job]
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 6h
-          receiver: "discord"
+          receiver: discord
           routes:
-            - receiver: "null"
+            - receiver: 'null'
               match_re:
-                alertname: "Watchdog|KubeAPIErrorBudgetBurn|etcdMemberCommunicationSlow|etcdHighCommitDurations|etcdHighFsyncDurations"
-            - receiver: "discord"
+                alertname: Watchdog|KubeAPIErrorBudgetBurn|etcdMemberCommunicationSlow|etcdHighCommitDurations|etcdHighFsyncDurations
+            - receiver: discord
               match_re:
                 severity: critical
               continue: true
         inhibit_rules:
           - source_match:
-              severity: "critical"
+              severity: critical
             target_match:
-              severity: "warning"
-            equal: ["alertname", "namespace"]
+              severity: warning
+            equal: [alertname, namespace]
       ingress:
         enabled: true
         pathType: Prefix
         annotations:
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}/oauth2/start"
+          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
-          - "alert-manager.${SECRET_DOMAIN}"
+          - alert-manager.${SECRET_DOMAIN}
         tls:
           - hosts:
-              - "alert-manager.${SECRET_DOMAIN}"
+              - alert-manager.${SECRET_DOMAIN}
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: "longhorn"
+              storageClassName: longhorn
               resources:
                 requests:
                   storage: 1Gi
@@ -138,13 +138,13 @@ spec:
         enabled: true
         pathType: Prefix
         annotations:
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}/oauth2/start"
+          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - prometheus.${SECRET_DOMAIN}
         tls:
           - hosts:
-              - "prometheus.${SECRET_DOMAIN}"
+              - prometheus.${SECRET_DOMAIN}
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}
@@ -161,7 +161,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: "longhorn"
+              storageClassName: longhorn
               resources:
                 requests:
                   storage: 15Gi

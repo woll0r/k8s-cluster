@@ -24,42 +24,42 @@ spec:
     serviceType: LoadBalancer
     service:
       externalIPs:
-      - "${COREDNS_LB}"
+        - ${COREDNS_LB}
       externalTrafficPolicy: Local
     servers:
-    - zones:
-      - zone: "${SECRET_DOMAIN}."
-        scheme: dns://
-        # use_tcp: true
-      port: 53
-      plugins:
-      - name: log
-      - name: errors
-      - name: health
-        configBlock: |-
-          lameduck 5s
-      - name: ready
-      - name: kubernetes
-        parameters: cluster.local in-addr.arpa ip6.arpa
-        configBlock: |-
-          pods insecure
-          fallthrough in-addr.arpa ip6.arpa
-          ttl 30
-      - name: prometheus
-        parameters: 0.0.0.0:9153
-      - name: forward
-        parameters: . /etc/resolv.conf
-      - name: cache
-        parameters: 30
-      - name: loop
-      - name: reload
-      - name: loadbalance
-      - name: etcd
-        parameters: "${SECRET_DOMAIN}"
-        configBlock: |-
-          stubzones
-          path /skydns
-          endpoint http://etcd:2379
+      - zones:
+          - zone: ${SECRET_DOMAIN}.
+            scheme: dns://
+            # use_tcp: true
+        port: 53
+        plugins:
+          - name: log
+          - name: errors
+          - name: health
+            configBlock: |-
+              lameduck 5s
+          - name: ready
+          - name: kubernetes
+            parameters: cluster.local in-addr.arpa ip6.arpa
+            configBlock: |-
+              pods insecure
+              fallthrough in-addr.arpa ip6.arpa
+              ttl 30
+          - name: prometheus
+            parameters: 0.0.0.0:9153
+          - name: forward
+            parameters: . /etc/resolv.conf
+          - name: cache
+            parameters: 30
+          - name: loop
+          - name: reload
+          - name: loadbalance
+          - name: etcd
+            parameters: ${SECRET_DOMAIN}
+            configBlock: |-
+              stubzones
+              path /skydns
+              endpoint http://etcd:2379
     prometheus:
       service:
         enabled: true

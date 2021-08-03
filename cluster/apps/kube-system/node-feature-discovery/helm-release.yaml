@@ -19,19 +19,19 @@ spec:
   values:
     master:
       tolerations:
-      - key: "node-role.kubernetes.io/master"
-        operator: "Equal"
-        value: ""
-        effect: "NoSchedule"
+        - key: node-role.kubernetes.io/master
+          operator: Equal
+          value: ''
+          effect: NoSchedule
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: "node-role.kubernetes.io/master"
-                operator: In
-                values: [""]
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: node-role.kubernetes.io/master
+                    operator: In
+                    values: ['']
     worker:
       config: |-
         sources:
@@ -42,7 +42,7 @@ spec:
                   class: ["0300"]
                   vendor: ["8086"]
       tolerations:
-      - effect: "NoExecute"
-        operator: "Exists"
-      - effect: "NoSchedule"
-        operator: "Exists"
+        - effect: NoExecute
+          operator: Exists
+        - effect: NoSchedule
+          operator: Exists

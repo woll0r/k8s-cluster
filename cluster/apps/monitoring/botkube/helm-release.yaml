@@ -20,9 +20,9 @@ spec:
     communications:
       discord:
         enabled: true
-        token: "${SECRET_BOTKUBE_DISCORD_TOKEN}"
-        botid: "${SECRET_BOTKUBE_DISCORD_BOT_ID}"
-        channel: "${SECRET_BOTKUBE_DISCORD_CHANNEL_ID}"
+        token: ${SECRET_BOTKUBE_DISCORD_TOKEN}
+        botid: ${SECRET_BOTKUBE_DISCORD_BOT_ID}
+        channel: ${SECRET_BOTKUBE_DISCORD_CHANNEL_ID}
     serviceMonitor:
       enabled: true
     config:
@@ -33,29 +33,8 @@ spec:
           enabled: true
           restrictAccess: true
           commands:
-            verbs:
-              [
-                "api-resources",
-                "api-versions",
-                "cluster-info",
-                "describe",
-                "diff",
-                "explain",
-                "get",
-                "logs",
-                "top",
-                "auth",
-              ]
-            resources:
-              [
-                "deployments",
-                "pods",
-                "namespaces",
-                "daemonsets",
-                "statefulsets",
-                "storageclasses",
-                "nodes",
-              ]
+            verbs: [api-resources, api-versions, cluster-info, describe, diff, explain, get, logs, top, auth]
+            resources: [deployments, pods, namespaces, daemonsets, statefulsets, storageclasses, nodes]
       resources:
         - name: v1/pods
           namespaces:

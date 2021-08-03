@@ -22,7 +22,7 @@ spec:
     coredns:
       etcdEndpoints: http://etcd:2379
     domainFilters:
-    - "${SECRET_DOMAIN}"
+      - ${SECRET_DOMAIN}
     createSecret: true
     crd:
       create: true

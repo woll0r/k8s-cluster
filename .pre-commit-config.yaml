@@ -1,3 +1,4 @@
+---
 fail_fast: false
 repos:
 - repo: https://github.com/adrienverge/yamllint
@@ -7,6 +8,12 @@ repos:
     - -c
     - .github/yamllint.config.yaml
     id: yamllint
+- repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+  rev: 0.1.0
+  hooks:
+  - id: yamlfmt
+    args: [--mapping, '2', --sequence, '4', --offset, '2']
+    exclude: ^.github/yamllint.config.yaml|.pre-commit-config.yaml$
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.0.1
   hooks:

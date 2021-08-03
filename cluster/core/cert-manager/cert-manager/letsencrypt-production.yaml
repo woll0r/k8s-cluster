@@ -6,11 +6,11 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: "${SECRET_CERTMANAGER_EMAIL}"
+    email: ${SECRET_CERTMANAGER_EMAIL}
     privateKeySecretRef:
       name: letsencrypt-production
     solvers:
-    - dns01:
+      - dns01:
         webhook:
           solverName: linode
-          groupName: "acme.${SECRET_DOMAIN}"
+          groupName: acme.${SECRET_DOMAIN}

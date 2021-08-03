@@ -21,20 +21,20 @@ spec:
       replicaCount: 1
       service:
         type: LoadBalancer
-        loadBalancerIP: "${INGRESS_NGINX_LB}"
+        loadBalancerIP: ${INGRESS_NGINX_LB}
         externalIPs:
-        - "${INGRESS_NGINX_LB}"
+          - ${INGRESS_NGINX_LB}
         externalTrafficPolicy: Local
       config:
-        ssl-protocols: "TLSv1.3 TLSv1.2"
-        proxy-body-size: "100m"
-        use-forwarded-headers: "true"
+        ssl-protocols: TLSv1.3 TLSv1.2
+        proxy-body-size: 100m
+        use-forwarded-headers: 'true'
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
       extraArgs:
-        default-ssl-certificate: "networking/${SECRET_DOMAIN//./-}-tls"
+        default-ssl-certificate: networking/${SECRET_DOMAIN//./-}-tls
       resources:
         requests:
           memory: 100Mi

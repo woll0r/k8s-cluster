@@ -21,22 +21,22 @@ spec:
       repository: ghcr.io/k8s-at-home/prowlarr
       tag: v0.1.0.749
     env:
-      TZ: "Europe/Brussels"
+      TZ: Europe/Brussels
     ingress:
       main:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}/oauth2/start"
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
-          - host: "prowlarr.${SECRET_DOMAIN}"
+          - host: prowlarr.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "prowlarr.${SECRET_DOMAIN}"
+              - prowlarr.${SECRET_DOMAIN}
     persistence:
       config:
         enabled: true

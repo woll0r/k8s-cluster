@@ -21,29 +21,29 @@ spec:
       repository: ghcr.io/k8s-at-home/plex
       tag: v1.23.6.4881-e2e58f321
     env:
-      TZ: "Europe/Brussels"
+      TZ: Europe/Brussels
     podSecurityContext:
       supplementalGroups:
-      - 44
-      - 109
-      - 100
+        - 44
+        - 109
+        - 100
     service:
       main:
         type: LoadBalancer
         externalIPs:
-        - "${PLEX_LB}"
+          - ${PLEX_LB}
         externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
         hosts:
-        - host: "plex.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: plex.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - hosts:
-          - "plex.${SECRET_DOMAIN}"
+          - hosts:
+              - plex.${SECRET_DOMAIN}
     persistence:
       config:
         enabled: true
@@ -65,11 +65,11 @@ spec:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-          - matchExpressions:
-            - key: feature.node.kubernetes.io/custom-intel-gpu
+            - matchExpressions:
+                - key: feature.node.kubernetes.io/custom-intel-gpu
               operator: In
               values:
-              - "true"
+                - 'true'
     resources:
       requests:
         gpu.intel.com/i915: 1

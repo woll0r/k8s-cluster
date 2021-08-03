@@ -23,10 +23,10 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
-    adminPassword: "$GRAFANA_PASSWORD"
+    adminPassword: $GRAFANA_PASSWORD
     grafana.ini:
       server:
-        root_url: "https://grafana.${SECRET_DOMAIN}"
+        root_url: https://grafana.${SECRET_DOMAIN}
       auth.basic:
         disable_login_form: true
       auth.generic_oauth:
@@ -34,13 +34,13 @@ spec:
         allow_sign_up: true
         name: Dex
         client_id: grafana
-        client_secret: "${GRAFANA_CLIENT_SECRET}"
+        client_secret: ${GRAFANA_CLIENT_SECRET}
         scopes: openid profile email groups
-        auth_url: "https://dex.${SECRET_DOMAIN}/auth"
-        token_url: "https://dex.${SECRET_DOMAIN}/token"
-        api_url: "https://dex.${SECRET_DOMAIN}/userinfo"
+        auth_url: https://dex.${SECRET_DOMAIN}/auth
+        token_url: https://dex.${SECRET_DOMAIN}/token
+        api_url: https://dex.${SECRET_DOMAIN}/userinfo
       auth.generic_oauth.group_mapping:
-        role_attribute_path: "contains(groups[*], 'cardboardboxhome:k8s-admins') && 'Admin' || 'Viewer'"
+        role_attribute_path: contains(groups[*], 'cardboardboxhome:k8s-admins') && 'Admin' || 'Viewer'
         org_id: 1
       paths:
         data: /var/lib/grafana/data
@@ -57,23 +57,23 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
+          - name: default
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
     datasources:
       datasources.yaml:
         apiVersion: 1
         datasources:
-        - name: Prometheus
-          type: prometheus
-          url: http://prometheus-operated:9090
-          access: proxy
-          isDefault: true
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-operated:9090
+            access: proxy
+            isDefault: true
     dashboards:
       default:
         nginx-dashboard:
@@ -94,24 +94,24 @@ spec:
         enabled: true
         searchNamespace: ALL
     plugins:
-    - natel-discrete-panel
-    - pr0ps-trackmap-panel
-    - grafana-piechart-panel
-    - vonage-status-panel
-    - grafana-worldmap-panel
-    - grafana-clock-panel
+      - natel-discrete-panel
+      - pr0ps-trackmap-panel
+      - grafana-piechart-panel
+      - vonage-status-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
     serviceMonitor:
       enabled: true
     ingress:
       enabled: true
       hosts:
-      - "grafana.${SECRET_DOMAIN}"
+        - grafana.${SECRET_DOMAIN}
       tls:
-      - hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - hosts:
+            - grafana.${SECRET_DOMAIN}
     persistence:
       enabled: true
-      storageClassName: "longhorn"
+      storageClassName: longhorn
       size: 1Gi
       accessModes:
-      - ReadWriteOnce
+        - ReadWriteOnce

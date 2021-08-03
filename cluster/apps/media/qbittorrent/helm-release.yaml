@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/k8s-at-home/qbittorrent
       tag: v4.3.5
     env:
-      TZ: "Europe/Brussels"
+      TZ: Europe/Brussels
     service:
       main:
         ports:
@@ -31,7 +31,7 @@ spec:
         enabled: true
         type: LoadBalancer
         externalIPs:
-          - "${QBITTORRENT_LB}"
+          - ${QBITTORRENT_LB}
         ports:
           bittorrent:
             enabled: true
@@ -43,17 +43,17 @@ spec:
       main:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}/oauth2/start"
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
-          - host: "qb.${SECRET_DOMAIN}"
+          - host: qb.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "qb.${SECRET_DOMAIN}"
+              - qb.${SECRET_DOMAIN}
     podSecurityContext:
       supplementalGroups:
         - 100

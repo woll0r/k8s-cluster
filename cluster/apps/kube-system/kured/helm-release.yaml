@@ -19,12 +19,12 @@ spec:
   values:
     updateStrategy: RollingUpdate
     configuration:
-      startTime: "4:00"
-      endTime: "7:00"
-      timeZone: "Europe/Brussels"
-      notifyUrl: "${SECRET_KURED_DISCORD_WEBHOOK}"
+      startTime: 4:00
+      endTime: 7:00
+      timeZone: Europe/Brussels
+      notifyUrl: ${SECRET_KURED_DISCORD_WEBHOOK}
     tolerations:
-      - key: "node-role.kubernetes.io/master"
-        operator: "Exists"
+      - key: node-role.kubernetes.io/master
+        operator: Exists
     metrics:
       create: true
