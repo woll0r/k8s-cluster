@@ -17,5 +17,6 @@ resources:
   - lwolf-charts.yaml
   - metallb-charts.yaml
   - node-feature-discovery-charts.yaml
+  - oauth2-proxy-charts.yaml
   - prometheus-community-charts.yaml
   - weaveworks-kured-charts.yaml
