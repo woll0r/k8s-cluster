@@ -5,7 +5,7 @@ metadata:
   name: cert-manager-webhook-linode-charts
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 1h
   ref:
     branch: patch-1
   url: https://github.com/stephenc/cert-manager-webhook-linode
