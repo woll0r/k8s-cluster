@@ -26,15 +26,6 @@ spec:
       - ${SECRET_DOMAIN}
     serviceMonitor:
       enabled: true
-    # coredns:
-    #   etcdEndpoints: http://etcd:2379
-    # createSecret: true
-    # crd:
-    #   create: true
-    # metrics:
-    #   enabled: true
-    #   serviceMonitor:
-    #     enabled: true
     resources:
       requests:
         memory: 250Mi
