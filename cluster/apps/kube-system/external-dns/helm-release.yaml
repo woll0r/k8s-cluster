@@ -8,28 +8,33 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/external-dns
       chart: external-dns
-      version: 5.4.4
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: external-dns-charts
         namespace: flux-system
       interval: 5m
   values:
     logLevel: debug
     provider: coredns
-    coredns:
-      etcdEndpoints: http://etcd:2379
+    env:
+      - name: ETCD_URLS
+        value: http://etcd:2379
     domainFilters:
       - ${SECRET_DOMAIN}
-    createSecret: true
-    crd:
-      create: true
-    metrics:
+    serviceMonitor:
       enabled: true
-      serviceMonitor:
-        enabled: true
+    # coredns:
+    #   etcdEndpoints: http://etcd:2379
+    # createSecret: true
+    # crd:
+    #   create: true
+    # metrics:
+    #   enabled: true
+    #   serviceMonitor:
+    #     enabled: true
     resources:
       requests:
         memory: 250Mi
