@@ -28,7 +28,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: 'true'
-          hajimari.io/icon: keychain
+          hajimari.io/icon: key-chain-variant
           hajimari.io/appName: Vaultwarden
         hosts:
           - host: vaultwarden.${SECRET_DOMAIN}
