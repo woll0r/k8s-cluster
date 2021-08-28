@@ -28,7 +28,7 @@ spec:
       KUBERNETES_POD_NAMESPACE: kube-system
     ingress:
       enabled: true
-      ingressClassName: nginx
+      className: nginx
       hosts:
         - host: dex.${SECRET_DOMAIN}
           paths:
