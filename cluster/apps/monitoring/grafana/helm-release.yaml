@@ -106,7 +106,7 @@ spec:
       enabled: true
       ingressClassName: nginx
       annotations:
-        hajimari.io/enable: true
+        hajimari.io/enable: 'true'
         hajimari.io/icon: chart-bar
         hajimari.io/appName: Grafana
       hosts:
