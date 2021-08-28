@@ -33,5 +33,8 @@ spec:
       tls: true
       ingressClassName: nginx
       annotations:
+        hajimari.io/enable: true
+        hajimari.io/icon: database
+        hajimari.io/appName: Longhorn
         nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
         nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
