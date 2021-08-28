@@ -42,6 +42,7 @@ spec:
               - lidarr.${SECRET_DOMAIN}
       api:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - host: lidarr.${SECRET_DOMAIN}
             paths:

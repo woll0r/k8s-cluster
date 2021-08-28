@@ -42,6 +42,7 @@ spec:
               - radarr.${SECRET_DOMAIN}
       api:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - host: radarr.${SECRET_DOMAIN}
             paths:
