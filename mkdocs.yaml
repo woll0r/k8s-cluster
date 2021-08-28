@@ -1,0 +1,92 @@
+---
+site_name: Home Cluster
+site_description: Home Kubernetes (k3s) cluster managed by Flux2
+site_author: Wolfgang Vandevenne
+site_url: https://woll0r.github.io/k8s-cluster
+copyright: Copyright &copy; 2021 Wolfgang Vandevenne
+dev_addr: 0.0.0.0:8000
+
+# Repository
+repo_name: Woll0r/k8s-cluster
+repo_url: https://github.com/Woll0r/k8s-cluster
+edit_uri: ''
+
+# Page tree
+nav:
+  - Home: index.md
+  - Flux: flux.md
+  - Repo structure: repostructure.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Woll0r
+
+theme:
+  name: material
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !%21python/name:materialx.emoji.twemoji
+      emoji_generator: !%21python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: Woll0r
+      repo: kube-gitops
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-experimental
+          format: !%21python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
