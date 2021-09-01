@@ -31,7 +31,6 @@ spec:
       enabled: true
       host: longhorn.${SECRET_DOMAIN}
       tls: true
-      tlsSecret: networking/${SECRET_DOMAIN//./-}-tls
       ingressClassName: nginx
       annotations:
         hajimari.io/enable: 'true'
