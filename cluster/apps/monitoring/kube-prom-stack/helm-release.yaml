@@ -21,6 +21,10 @@ spec:
       namespace: longhorn-system
   timeout: 20m
   values:
+    defaultRules:
+      create: true
+      rules:
+        kubeApiserver: false
     prometheusOperator:
       createCustomResource: false
     alertmanager:
