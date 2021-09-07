@@ -78,8 +78,8 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: alert-circle
           hajimari.io/appName: Alert-manager
-          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
+          # nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          # nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
           - alert-manager.${SECRET_DOMAIN}
         tls:
@@ -150,8 +150,8 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: torch
           hajimari.io/appName: Prometheus
-          nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
+          # nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
+          # nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
           - prometheus.${SECRET_DOMAIN}
         tls:

@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - coredns
   - descheduler
-  - dex
   - etcd
   - external-dns
   - intel-gpu-plugin
@@ -13,4 +12,3 @@ resources:
   - metrics-server
   - node-feature-discovery
   - node-problem-detector
-  - oauth2-proxy
