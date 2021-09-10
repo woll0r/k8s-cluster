@@ -116,7 +116,7 @@ spec:
             - grafana.${SECRET_DOMAIN}
     persistence:
       enabled: true
-      storageClassName: longhorn
+      storageClassName: rook-ceph-block
       size: 1Gi
       accessModes:
         - ReadWriteOnce
