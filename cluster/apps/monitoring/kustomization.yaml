@@ -5,4 +5,3 @@ resources:
   - botkube
   - grafana
   - kube-prom-stack
-  - longhorn
