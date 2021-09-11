@@ -26,9 +26,9 @@ spec:
             - manager
           env:
             - name: vip_arp
-              value: 'false'
+              value: 'true'
             - name: vip_interface
-              value: lo
+              value: eno1
             - name: port
               value: '6443'
             - name: vip_cidr
@@ -41,18 +41,10 @@ spec:
               value: 'false'
             - name: vip_loglevel
               value: '5'
-            - name: bgp_enable
-              value: 'true'
-            - name: bgp_routerinterface
-              value: eno1
-            - name: bgp_as
-              value: '64512'
-            - name: bgp_peeraddress
-              value: 172.17.1.1
-            - name: bgp_peeras
-              value: '64512'
+            - name: svc_enable
+              value: 'false'
             - name: vip_address
-              value: 192.168.69.100
+              value: 172.17.2.0
           securityContext:
             capabilities:
               add:
