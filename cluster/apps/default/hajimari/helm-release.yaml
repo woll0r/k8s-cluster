@@ -27,7 +27,7 @@ spec:
       namespaceSelector:
         matchNames:
           - default
-          - longhorn
+          - rook-ceph
           - media
           - monitoring
           - networking
