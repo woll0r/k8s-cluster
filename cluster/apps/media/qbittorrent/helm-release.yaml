@@ -47,8 +47,6 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: cloud-download
           hajimari.io/appName: QBittorrent
-          # nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
-          # nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
           - host: qb.${SECRET_DOMAIN}
             paths:
