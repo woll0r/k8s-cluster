@@ -20,7 +20,7 @@ spec:
     updateStrategy: RollingUpdate
     configuration:
       startTime: 4:00
-      endTime: 7:00
+      endTime: 9:00
       timeZone: Europe/Brussels
       notifyUrl: ${SECRET_KURED_DISCORD_WEBHOOK}
     tolerations:
