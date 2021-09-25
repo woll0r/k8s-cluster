@@ -16,6 +16,7 @@ nav:
   - Home: index.md
   - Detailed overview: overview.md
   - Bootstrap: bootstrap.md
+  - Rook: rook.md
 
 extra:
   social:
