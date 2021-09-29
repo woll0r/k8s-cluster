@@ -45,7 +45,9 @@ spec:
                 text: >-
                   {{ range .Alerts -}}
                     **Alert:** {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+
                   **Description:** {{ if ne .Annotations.description ""}}{{ .Annotations.description }}{{else}}N/A{{ end }}
+
                   **Details:**
                     {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
                     {{ end }}
@@ -150,8 +152,6 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: torch
           hajimari.io/appName: Prometheus
-          # nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
-          # nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
           - prometheus.${SECRET_DOMAIN}
         tls:
