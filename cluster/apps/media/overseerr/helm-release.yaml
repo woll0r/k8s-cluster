@@ -29,7 +29,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: 'true'
-          hajimari.io/icon: binoculars
+          hajimari.io/icon: eye
           hajimari.io/appName: Overseerr
         hosts:
           - host: overseerr.${SECRET_DOMAIN}

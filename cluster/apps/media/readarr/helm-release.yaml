@@ -28,7 +28,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: 'true'
-          hajimari.io/icon: radar
+          hajimari.io/icon: book-open-page-variant
           hajimari.io/appName: Readarr
         hosts:
           - host: readarr.${SECRET_DOMAIN}

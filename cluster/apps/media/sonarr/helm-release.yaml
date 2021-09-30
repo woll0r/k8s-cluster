@@ -28,7 +28,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: 'true'
-          hajimari.io/icon: radar
+          hajimari.io/icon: television-classic
           hajimari.io/appName: Sonarr
         hosts:
           - host: sonarr.${SECRET_DOMAIN}

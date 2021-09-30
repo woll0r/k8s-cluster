@@ -28,7 +28,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: 'true'
-          hajimari.io/icon: radar
+          hajimari.io/icon: filmstrip-box
           hajimari.io/appName: Radarr
         hosts:
           - host: radarr.${SECRET_DOMAIN}
