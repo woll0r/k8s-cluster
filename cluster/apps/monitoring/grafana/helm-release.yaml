@@ -23,7 +23,7 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
-    adminPassword: $GRAFANA_PASSWORD
+    adminPassword: ${GRAFANA_PASSWORD}
     grafana.ini:
       server:
         root_url: https://grafana.${SECRET_DOMAIN}
