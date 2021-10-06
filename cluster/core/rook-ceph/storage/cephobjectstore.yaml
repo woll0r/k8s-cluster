@@ -3,7 +3,7 @@ apiVersion: ceph.rook.io/v1
 kind: CephObjectStore
 metadata:
   name: object-store
-  namespace: system-rook-ceph
+  namespace: rook-ceph
 spec:
   metadataPool:
     failureDomain: host
