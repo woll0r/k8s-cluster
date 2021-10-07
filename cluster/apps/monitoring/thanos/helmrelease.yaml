@@ -1,0 +1,92 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: thanos
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: thanos
+      version: 6.0.12
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      registry: public.ecr.aws
+      repository: bitnami/thanos
+    query:
+      enabled: true
+      replicaLabels:
+        - replica
+      dnsDiscovery:
+        sidecarsService: prometheus-thanos-discovery
+        sidecarsNamespace: monitoring
+      ingress:
+        enabled: true
+        hostname: thanos.${SECRET_DOMAIN}
+        ingressClassName: nginx
+        tls: true
+    objstore:
+      type: S3
+      config:
+        # bucket: substituted in from configmap
+        # endpoint: substituted in from configmap
+        # region: substituted in from configmap
+        # access_key: substituted in from secret
+        # secret_key: substituted in from secret
+        insecure: true
+        signature_version2: false
+        put_user_metadata: {}
+        http_config:
+          idle_conn_timeout: 0s
+          response_header_timeout: 0s
+          insecure_skip_verify: false
+        trace:
+          enable: false
+        part_size: 0
+    queryFrontend:
+      enabled: false
+    bucketweb:
+      enabled: true
+    compactor:
+      enabled: true
+      persistence:
+        enabled: false
+    storegateway:
+      enabled: true
+      persistence:
+        enabled: true
+        size: 5Gi
+    ruler:
+      enabled: false
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    valuesFrom:
+      - kind: ConfigMap
+        name: thanos-bucket
+        valuesKey: BUCKET_NAME
+        targetPath: objstore.config.bucket
+      - kind: ConfigMap
+        name: thanos-bucket
+        valuesKey: BUCKET_HOST
+        targetPath: objstore.config.endpoint
+      - kind: ConfigMap
+        name: thanos-bucket
+        valuesKey: BUCKET_REGION
+        targetPath: objstore.config.region
+      - kind: Secret
+        name: thanos-bucket
+        valuesKey: AWS_ACCESS_KEY_ID
+        targetPath: objstore.config.access_key
+      - kind: Secret
+        name: thanos-bucket
+        valuesKey: AWS_SECRET_ACCESS_KEY
+        targetPath: objstore.config.secret_key

@@ -27,6 +27,7 @@ spec:
         kubeApiserver: false
     prometheusOperator:
       createCustomResource: false
+      configReloaderCpu: 0
     alertmanager:
       config:
         global:
@@ -157,6 +158,10 @@ spec:
         tls:
           - hosts:
               - prometheus.${SECRET_DOMAIN}
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
       prometheusSpec:
         ruleSelector: {}
         ruleNamespaceSelector: {}
@@ -170,6 +175,12 @@ spec:
         retention: 672h
         enableAdminAPI: true
         walCompression: true
+        thanos:
+          image: quay.io/thanos/thanos:v0.23.1
+          version: v0.22.0
+          objectStorageConfig:
+            name: thanos-objstore-secret
+            key: object-store.yaml
         storageSpec:
           volumeClaimTemplate:
             spec:
