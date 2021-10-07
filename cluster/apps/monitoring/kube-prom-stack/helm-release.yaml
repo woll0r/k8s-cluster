@@ -172,7 +172,7 @@ spec:
         podMonitorSelector: {}
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
-        retention: 672h
+        retention: 168h
         enableAdminAPI: true
         walCompression: true
         thanos:
