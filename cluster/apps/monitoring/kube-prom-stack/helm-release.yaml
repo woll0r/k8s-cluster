@@ -180,7 +180,7 @@ spec:
           version: v0.22.0
           objectStorageConfig:
             name: thanos-objstore-secret
-            key: object-store.yaml
+            key: objstore.yml
         storageSpec:
           volumeClaimTemplate:
             spec:
