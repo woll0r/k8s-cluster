@@ -7,3 +7,4 @@ resources:
   - dashboard
   - monitoring
   - rook-direct-mount
+  - external-snapshotter
