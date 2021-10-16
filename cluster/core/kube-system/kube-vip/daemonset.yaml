@@ -51,6 +51,10 @@ spec:
                 - NET_ADMIN
                 - NET_RAW
                 - SYS_TIME
+      hostAliases:
+        - ip: 127.0.0.1
+          hostnames:
+            - kubernetes
       hostNetwork: true
       nodeSelector:
         node-role.kubernetes.io/master: 'true'
