@@ -18,6 +18,7 @@ resources:
   - longhorn-charts.yaml
   - lwolf-charts.yaml
   - metallb-charts.yaml
+  - metrics-server-charts.yaml
   - node-feature-discovery-charts.yaml
   - oauth2-proxy-charts.yaml
   - prometheus-community-charts.yaml
