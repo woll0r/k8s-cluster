@@ -10,17 +10,19 @@ spec:
       rules:
         - alert: VeleroBackupPartialFailures
           annotations:
-            message: Velero backup {{ $labels.schedule }} has {{ $value }} partially failed backups.
+            message: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} partially failed backups.
+            description: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} partially failed backups.
           expr: |-
-            sum(increase(velero_backup_partial_failure_total{schedule != ""}[24h])) > 0
-          for: 5m
+            velero_backup_partial_failure_total{schedule!=""} / velero_backup_attempt_total{schedule!=""} > 0.25
+          for: 15m
           labels:
             severity: warning
         - alert: VeleroBackupFailures
           annotations:
-            message: Velero backup {{ $labels.schedule }} has {{ $value }} failed backups.
+            message: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} failed backups.
+            description: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} failed backups.
           expr: |-
-            sum(increase(velero_backup_failure_total{schedule != ""}[24h])) > 0
-          for: 5m
+            velero_backup_failure_total{schedule!=""} / velero_backup_attempt_total{schedule!=""} > 0.25
+          for: 15m
           labels:
             severity: warning
