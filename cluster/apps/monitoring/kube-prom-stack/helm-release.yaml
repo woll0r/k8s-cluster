@@ -81,8 +81,6 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: alert-circle
           hajimari.io/appName: Alert-manager
-          # nginx.ingress.kubernetes.io/auth-url: https://auth.${SECRET_DOMAIN}/oauth2/auth
-          # nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN}/oauth2/start
         hosts:
           - alert-manager.${SECRET_DOMAIN}
         tls:
@@ -188,3 +186,9 @@ spec:
               resources:
                 requests:
                   storage: 50Gi
+        additionalScrapeConfigs:
+          - job_name: node-exporter
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - 172.16.1.10:9100
