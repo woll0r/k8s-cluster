@@ -31,6 +31,10 @@ spec:
         enabled: true
         hostname: thanos.${SECRET_DOMAIN}
         ingressClassName: nginx
+        annotations:
+          hajimari.io/enable: 'true'
+          hajimari.io/icon: archive
+          hajimari.io/appName: Thanos
         tls: true
     objstoreConfig:
       type: S3
