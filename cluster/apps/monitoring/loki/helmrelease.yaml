@@ -21,8 +21,9 @@ spec:
       repository: grafana/loki
     ingress:
       enabled: true
-      ingressClassName: nginx
+      # ingressClassName: nginx
       annotations:
+        kubernetes.io/ingress.class: nginx
         hajimari.io/enable: 'true'
         hajimari.io/icon: file-move
         hajimari.io/appName: Loki
