@@ -1,0 +1,113 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: loki
+      version: 2.7.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: grafana/loki
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        hajimari.io/enable: 'true'
+        hajimari.io/icon: file-move
+        hajimari.io/appName: Loki
+      hosts:
+        - host: loki.${SECRET_DOMAIN}
+          paths:
+            - /
+      tls:
+        - hosts:
+            - loki.${SECRET_DOMAIN}
+    serviceMonitor:
+      enabled: true
+    config:
+      storage_config:
+        aws:
+          # bucketnames substituted in from configmap
+          # endpoint substituted in from configmap
+          # access_key_id substituted in from configmap
+          # secret_access_key substituted in from configmap
+          # region substituted in from configmap
+          s3forcepathstyle: true
+          insecure: true
+        boltdb_shipper:
+          active_index_directory: /data/loki/index
+          cache_location: /data/loki/index_cache
+          resync_interval: 5s
+          shared_store: s3
+      ruler:
+        storage:
+          type: local
+          local:
+            directory: /rules
+        rule_path: /tmp/scratch
+        alertmanager_url: http://prometheus-alertmanager:9093
+        ring:
+          kvstore:
+            store: inmemory
+        enable_api: true
+    alerting_groups:
+      #
+      # SMART Failures
+      #
+      - name: smart-failure
+        rules:
+          - alert: SmartFailures
+            expr: |
+              sum by (hostname) (count_over_time({hostname=~".+"} |~ "(?i).*smartd.*(error|fail).*"[2m])) > 0
+            for: 10s
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              summary: SMART has reported failures a drive on {{$hostname}}
+      #
+      # *arr applications
+      #
+      - name: arr
+        rules:
+          - alert: ArrDatabaseIsLocked
+            expr: |
+              sum by (app) (count_over_time({app=~".*arr"} |~ "(?i)database is locked"[2m])) > 0
+            for: 10s
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              summary: '{{$app}} is experiencing locked database issues'
+  valuesFrom:
+    - kind: ConfigMap
+      name: loki-bucket
+      valuesKey: BUCKET_NAME
+      targetPath: config.storage_config.aws.bucketnames
+    - kind: ConfigMap
+      name: loki-bucket
+      valuesKey: BUCKET_HOST
+      targetPath: config.storage_config.aws.endpoint
+    - kind: ConfigMap
+      name: loki-bucket
+      valuesKey: BUCKET_REGION
+      targetPath: config.storage_config.aws.region
+    - kind: Secret
+      name: loki-bucket
+      valuesKey: AWS_ACCESS_KEY_ID
+      targetPath: config.storage_config.aws.access_key_id
+    - kind: Secret
+      name: loki-bucket
+      valuesKey: AWS_SECRET_ACCESS_KEY
+      targetPath: config.storage_config.aws.secret_access_key
