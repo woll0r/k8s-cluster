@@ -173,6 +173,15 @@ spec:
         retention: 168h
         enableAdminAPI: true
         walCompression: true
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+                      operator: In
+                      values:
+                        - 'true'
         thanos:
           image: quay.io/thanos/thanos:v0.23.1
           version: v0.22.0
