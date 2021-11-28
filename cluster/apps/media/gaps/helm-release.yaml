@@ -39,17 +39,6 @@ spec:
         tls:
           - hosts:
               - gaps.${SECRET_DOMAIN}
-      api:
-        enabled: true
-        ingressClassName: nginx
-        hosts:
-          - host: gaps.${SECRET_DOMAIN}
-            paths:
-              - path: /api
-                pathType: Prefix
-        tls:
-          - hosts:
-              - gaps.${SECRET_DOMAIN}
     persistence:
       config:
         enabled: true
