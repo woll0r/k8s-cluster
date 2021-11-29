@@ -1,11 +1,9 @@
 # Bootstrap
 
-## Fetch the cluster's GPG keys
+## Create an age key
 
 ```sh
-export GPG_TTY=$(tty)
-gpg --list-secret-keys "Kubernetes (Flux)"
-export FLUX_KEY_FP=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+age-keygen -o age.agekey
 ```
 
 ## Verify if the cluster is ready for Flux
@@ -19,13 +17,12 @@ flux check --pre
 kubectl create namespace flux-system
 ```
 
-## Add the Flux GPG key for decrypting secrets
+## Add the AGE key for decrypting secrets
 
 ```sh
-gpg --export-secret-keys --armor "${FLUX_KEY_FP}" |
-kubectl create secret generic sops-gpg \
-    --namespace=flux-system \
-    --from-file=sops.asc=/dev/stdin
+cat age.agekey |
+kubectl -n default create secret generic sops-age \
+--from-file=age.agekey=/dev/stdin
 ```
 
 ## Install Flux
