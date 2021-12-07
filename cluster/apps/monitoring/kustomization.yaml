@@ -8,4 +8,5 @@ resources:
   - kube-prom-stack
   - loki
   - promtail
+  - snmp-exporter
   - thanos
