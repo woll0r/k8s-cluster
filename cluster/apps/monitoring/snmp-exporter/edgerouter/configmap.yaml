@@ -5,7 +5,7 @@ metadata:
   name: snmp-exporter-edgerouter
   namespace: monitoring
 data:
-  snmp.yml: |
+  snmp.yaml: |
     ubiquiti_edgemax:
       walk:
       - 1.3.6.1.2.1.2
