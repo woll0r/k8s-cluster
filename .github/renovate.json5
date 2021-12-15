@@ -107,7 +107,11 @@
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["major"],
-      "labels": ["renovate/helm", "dep/major"]
+      "labels": ["renovate/helm", "dep/major"],
+      "excludePackagePatterns": [
+          // Ignore rook-ceph for now due to 1.8.0 issues
+          "^rook.ceph"
+      ]
     },
     {
       "matchDatasources": ["helm"],
@@ -152,6 +156,6 @@
       "groupName": "rook-ceph-suite",
       "additionalBranchPrefix": "",
       "separateMinorPatch": true
-    }
+    },
   ]
 }
