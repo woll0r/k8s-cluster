@@ -108,7 +108,7 @@ spec:
     kubeApiServer:
       enabled: true
     kubeControllerManager:
-      enabled: true
+      enabled: false
       endpoints:
         - 172.17.2.1
         - 172.17.2.2
