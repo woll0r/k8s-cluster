@@ -5,6 +5,9 @@
   "dependencyDashboardTitle": "Renovate Dashboard",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
+  "pre-commit": {
+    "enabled": true
+  },
   "helm-values": {
     "fileMatch": [
       "cluster/.+/helm-release\\.yaml$"
