@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: monica
-      tag: 3.5.0-apache
+      tag: 3.6.1-apache
     env:
       APP_KEY: ${MONICA_APP_KEY}
       APP_URL: https://monica.${SECRET_DOMAIN}
