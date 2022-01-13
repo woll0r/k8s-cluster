@@ -83,10 +83,6 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: nginx
-        annotations:
-          hajimari.io/enable: 'true'
-          hajimari.io/icon: alert-circle
-          hajimari.io/appName: Alert-manager
         hosts:
           - alert-manager.${SECRET_DOMAIN}
         tls:
@@ -161,10 +157,6 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: nginx
-        annotations:
-          hajimari.io/enable: 'true'
-          hajimari.io/icon: torch
-          hajimari.io/appName: Prometheus
         hosts:
           - prometheus.${SECRET_DOMAIN}
         tls:
