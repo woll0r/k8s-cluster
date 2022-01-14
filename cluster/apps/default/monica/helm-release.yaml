@@ -17,6 +17,8 @@ spec:
         name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
+  dependsOn:
+    - name: monica-mariadb
   values:
     image:
       repository: monica
@@ -57,17 +59,4 @@ spec:
       limits:
         memory: 250Mi
     mariadb:
-      enabled: true
-      image:
-        registry: docker.io
-        repository: bitnami/mariadb
-        tag: 10.6.5-debian-10-r46
-      primary:
-        persistence:
-          enabled: true
-          existingClaim: monica-mariadb
-      auth:
-        database: monica
-        username: monica
-        password: ${MONICA_DB_PASSWORD}
-        rootPassword: ${MONICA_DB_ROOTPASSWORD}
+      enabled: false
