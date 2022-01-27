@@ -4,7 +4,3 @@ kind: Kustomization
 resources:
   - rook-ceph
   - storage
-  - dashboard
-  - monitoring
-  - rook-direct-mount
-  - external-snapshotter
