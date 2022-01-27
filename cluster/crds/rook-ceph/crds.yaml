@@ -33,13 +33,25 @@ spec:
       name: cephblockpools.ceph.rook.io
     - apiVersion: apiextensions.k8s.io/v1
       kind: CustomResourceDefinition
+      name: cephbucketnotifications.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: cephbuckettopics.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
       name: cephclients.ceph.rook.io
     - apiVersion: apiextensions.k8s.io/v1
       kind: CustomResourceDefinition
       name: cephclusters.ceph.rook.io
     - apiVersion: apiextensions.k8s.io/v1
       kind: CustomResourceDefinition
+      name: cephfilesystemmirrors.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
       name: cephfilesystems.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: cephfilesystemsubvolumegroups.ceph.rook.io
     - apiVersion: apiextensions.k8s.io/v1
       kind: CustomResourceDefinition
       name: cephnfses.ceph.rook.io
@@ -61,9 +73,3 @@ spec:
     - apiVersion: apiextensions.k8s.io/v1
       kind: CustomResourceDefinition
       name: cephrbdmirrors.ceph.rook.io
-    - apiVersion: apiextensions.k8s.io/v1
-      kind: CustomResourceDefinition
-      name: volumes.rook.io
-    - apiVersion: apiextensions.k8s.io/v1
-      kind: CustomResourceDefinition
-      name: cephfilesystemsubvolumegroups.ceph.rook.io
