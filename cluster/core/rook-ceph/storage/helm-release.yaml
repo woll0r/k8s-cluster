@@ -69,6 +69,7 @@ spec:
             requireSafeReplicaSize: true
         storageClass:
           name: rook-ceph-block
+          enabled: true
           isDefault: true
           reclaimPolicy: Delete
           allowVolumeExpansion: true
@@ -107,6 +108,7 @@ spec:
               interval: 60s
         storageClass:
           name: rook-ceph-bucket
+          enabled: true
           reclaimPolicy: Delete
           parameters:
             region: us-east-1
