@@ -27,11 +27,11 @@ spec:
           hajimari.io/icon: chess-rook
           hajimari.io/appName: Rook
         host:
-          name: rook.${SECRET_PUBLIC_DOMAIN}
+          name: rook.${SECRET_DOMAIN}
           path: /
         tls:
           - hosts:
-              - rook.${SECRET_PUBLIC_DOMAIN}
+              - rook.${SECRET_DOMAIN}
     cephClusterSpec:
       crashCollector:
         disable: false
