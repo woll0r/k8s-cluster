@@ -8,7 +8,7 @@ spec:
   interval: 1h
   ref:
     branch: patch-1
-  url: https://github.com/stephenc/cert-manager-webhook-linode
+  url: https://github.com/slicen/cert-manager-webhook-linode
   ignore: |
     # exclude all
     /*
