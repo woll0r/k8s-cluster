@@ -21,3 +21,19 @@ spec:
       tag: v0.2.0
     api:
       groupName: acme.${SECRET_DOMAIN}
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: cert-manager-webhook-linode
+              namespace: cert-manager
+            spec:
+              template:
+                spec:
+                  containers:
+                    - name: cert-manager-webhook-linode
+                      args:
+                        - --tls-cert-file=/tls/tls.crt
+                        - --tls-private-key-file=/tls/tls.key
