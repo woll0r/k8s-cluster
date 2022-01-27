@@ -8,6 +8,8 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: crds
+    - name: kube-prometheus-stack-crds
+    - name: rook-ceph-crds
   path: ./cluster/core
   prune: false
   sourceRef:
@@ -24,3 +26,24 @@ spec:
         name: cluster-settings
       - kind: Secret
         name: cluster-secrets
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: rook-ceph
+      namespace: rook-ceph
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: rook-ceph-cluster
+      namespace: rook-ceph
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: cert-manager-webhook-linode
+      namespace: cert-manager
