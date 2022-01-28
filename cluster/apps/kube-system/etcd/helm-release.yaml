@@ -21,6 +21,7 @@ spec:
     auth:
       rbac:
         enabled: false
+        create: false
     persistence:
       enabled: false
     metrics:
