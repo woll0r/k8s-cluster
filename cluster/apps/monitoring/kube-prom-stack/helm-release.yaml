@@ -122,12 +122,16 @@ spec:
         - 172.17.2.1
         - 172.17.2.2
         - 172.17.2.3
+      service:
+        port: 10257
     kubeScheduler:
       enabled: true
       endpoints:
         - 172.17.2.1
         - 172.17.2.2
         - 172.17.2.3
+      service:
+        port: 10259
     kubeProxy:
       enabled: true
       endpoints:
