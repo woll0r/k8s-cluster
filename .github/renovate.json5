@@ -8,6 +8,14 @@
   "pre-commit": {
     "enabled": true
   },
+  "flux": {
+    "fileMatch": [
+      "cluster/.+\\.ya?ml$"
+    ],
+    "ignorePaths": [
+      "cluster/.+/gotk-components\\.ya?ml$"
+    ]
+  },
   "helm-values": {
     "fileMatch": [
       "cluster/.+/helm-release\\.yaml$"
