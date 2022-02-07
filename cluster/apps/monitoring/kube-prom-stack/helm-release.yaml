@@ -75,7 +75,7 @@ spec:
           routes:
             - receiver: 'null'
               match_re:
-                alertname: Watchdog|etcdHighNumberOfFailedGRPCRequests
+                alertname: Watchdog|etcdHighNumberOfFailedGRPCRequests|InfoInhibitor
             - receiver: discord
               match_re:
                 severity: critical
