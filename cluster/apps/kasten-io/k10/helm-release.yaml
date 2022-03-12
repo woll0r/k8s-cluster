@@ -47,6 +47,6 @@ spec:
         - k10.${SECRET_DOMAIN}
       tls:
         enabled: true
-        secretName: ${SECRET_PUBLIC_DOMAIN/./-}-tls
+        secretName: ${SECRET_DOMAIN/./-}-tls
     grafana:
       enabled: false
