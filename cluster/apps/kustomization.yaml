@@ -4,10 +4,10 @@ kind: Kustomization
 resources:
   - default
   - flux-system
+  - kasten-io
   - kube-system
   - media
   - monitoring
   - networking
   - rook-ceph
   - system-upgrade
-  - velero
