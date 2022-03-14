@@ -21,7 +21,7 @@ kubectl create namespace flux-system
 
 ```sh
 cat age.agekey |
-kubectl -n default create secret generic sops-age \
+kubectl -n flux-system create secret generic sops-age \
 --from-file=age.agekey=/dev/stdin
 ```
 
