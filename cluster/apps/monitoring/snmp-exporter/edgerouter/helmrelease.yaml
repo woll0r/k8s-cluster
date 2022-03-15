@@ -33,11 +33,11 @@ spec:
       enabled: true
       namespace: monitoring
       params:
-        enabled: true
-        name: edgerouter
-        module:
-          - ubiquiti_edgemax
-        target: 172.16.1.1
+        - name: edgerouter
+          enabled: true
+          module:
+            - ubiquiti_edgemax
+          target: 172.16.1.1
       path: /snmp
       # interval: 60s
       scrapeTimeout: 10s
