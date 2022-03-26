@@ -48,5 +48,9 @@ spec:
       tls:
         enabled: true
         secretName: ${SECRET_DOMAIN//./-}-tls
+      annotations:
+        hajimari.io/enable: 'true'
+        hajimari.io/icon: backup-restore
+        hajimari.io/appName: Kasten K10
     grafana:
       enabled: false
