@@ -28,6 +28,7 @@ spec:
         matchNames:
           - default
           - rook-ceph
+          - kasten-io
           - media
           - monitoring
           - networking
