@@ -23,6 +23,8 @@ spec:
     isClusterService: false
     serviceType: LoadBalancer
     service:
+      annotations:
+        break-with-bad-annotations: 'false'
       externalIPs:
         - ${COREDNS_LB}
       externalTrafficPolicy: Local
