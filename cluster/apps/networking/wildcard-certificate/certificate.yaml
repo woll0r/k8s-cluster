@@ -6,6 +6,8 @@ metadata:
   namespace: networking
 spec:
   secretName: ${SECRET_DOMAIN//./-}-tls
+  privateKey:
+    rotationPolicy: Always
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
