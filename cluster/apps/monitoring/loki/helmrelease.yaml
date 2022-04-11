@@ -20,17 +20,7 @@ spec:
     image:
       repository: grafana/loki
     ingress:
-      enabled: true
-      # ingressClassName: nginx
-      annotations:
-        kubernetes.io/ingress.class: nginx
-      hosts:
-        - host: loki.${SECRET_DOMAIN}
-          paths:
-            - /
-      tls:
-        - hosts:
-            - loki.${SECRET_DOMAIN}
+      enabled: false
     serviceMonitor:
       enabled: true
     config:
