@@ -6,7 +6,7 @@ repos:
   hooks:
   - args:
     - -c
-    - .github/yamllint.config.yaml
+    - .github/linters/.yamllint.yml
     id: yamllint
 - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
   rev: 0.1.1
@@ -33,3 +33,33 @@ repos:
   rev: v2.1.0
   hooks:
   - id: forbid-secrets
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0.14.2
+  hooks:
+    - id: check-jsonschema
+      name: "Check GitHub Workflows"
+      files: ^\.github/workflows/
+      types: [yaml]
+      args: ["--schemafile", "https://json.schemastore.org/github-workflow"]
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.31.1
+  hooks:
+  - id: markdownlint
+    name: "Check Markdown files"
+    args:
+    - --config
+    - .github/linters/.markdownlint.yml
+- repo: https://github.com/tcort/markdown-link-check
+  rev: v3.10.0
+  hooks:
+  - id: markdown-link-check
+- repo: local
+  hooks:
+  - id: kubeval
+    name: "Check Kubernetes manifests"
+    description: Lint kube files with system.
+    entry: kubeval
+    language: system
+    files: cluster/
+    types: [yaml]
+    args: [--ignore-missing-schemas]
