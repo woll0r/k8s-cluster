@@ -2,7 +2,7 @@
 ignore: |
   .github/
   .pre-commit-config.yaml
-  cluster/base/flux-system/gotk-components.yaml
+  gotk-components.yaml
 extends: default
 rules:
   truthy:

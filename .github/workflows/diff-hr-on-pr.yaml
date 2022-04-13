@@ -35,7 +35,7 @@ jobs:
         run: |
           filtered=$(grep -zl "kind: HelmRelease.*registryUrl=" ${{ steps.filter.outputs.changed_files }} \
             | jq -nR '[inputs | select(length>0)]')
-          echo ::set-output name=files::${filtered}
+          echo "::set-output name=files::${filtered}"
 
   helm:
     name: Template HelmReleases
@@ -105,7 +105,7 @@ jobs:
             resources_pr=$(echo "$resources_pr" | yq e "del($labels)" -)
           fi
 
-          diff=$((diff -u <(echo "$resources_live") <(echo "$resources_pr") || true) | tail +3)
+          diff=$( (diff -u <(echo "$resources_live") <(echo "$resources_pr") || true) | tail +3)
           echo "$diff"
 
           message="Path: \`${{ matrix.file }}\`"

@@ -5,6 +5,9 @@ metadata:
   name: source-controller
   namespace: flux-system
 spec:
+  selector:
+    matchLabels:
+      app: source-controller
   template:
     spec:
       containers:
@@ -19,6 +22,9 @@ metadata:
   name: helm-controller
   namespace: flux-system
 spec:
+  selector:
+    matchLabels:
+      app: helm-controller
   template:
     spec:
       containers:

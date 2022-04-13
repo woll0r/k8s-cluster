@@ -4,3 +4,5 @@
 .decrypted~*
 # Kubernetes
 kubeconfig
+# Mega-Linter
+report/
