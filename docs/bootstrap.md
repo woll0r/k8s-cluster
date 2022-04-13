@@ -7,6 +7,7 @@ age-keygen -o age.agekey
 ```
 
 ## Verify if the cluster is ready for Flux
+
 ```sh
 flux check --pre
 ```

@@ -47,6 +47,6 @@ rbd unmap -p replicapool csi-vol-d72a57f3-1370-11ec-aa8b-babccd65caf2
 ## Correcting cluster health issues
 
 Whenever a health issue occurs, usually the solution and/or troubleshooting
-steps can be found in the [Ceph docs](ceph-docs).
+steps can be found in the [Ceph docs].
 
-[ceph-docks]: https://docs.ceph.com/en/pacific/rados/operations/health-checks/
+[Ceph docs]: https://docs.ceph.com/en/pacific/rados/operations/health-checks/
