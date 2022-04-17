@@ -11,6 +11,8 @@ spec:
       name: letsencrypt-staging
     solvers:
       - dns01:
-          webhook:
-            solverName: linode
-            groupName: acme.${SECRET_DOMAIN}
+          cloudflare:
+            email: ${SECRET_EMAIL}
+            apiKeySecretRef:
+              name: cloudflare-token-secret
+              key: cloudflare-token
