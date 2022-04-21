@@ -11,7 +11,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: mariadb
-      version: 11.0.0
+      version: 10.5.0
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -23,32 +23,6 @@ spec:
       repository: bitnami/mariadb
       tag: 10.6.5-debian-10-r46
     primary:
-      # Straight up copypasted from the defaults, except for the bind-address.
-      # MariaDB 10.6 made bind-address=:: explicitly ipv6 only
-      configuration: |-
-        [mysqld]
-        skip-name-resolve
-        explicit_defaults_for_timestamp
-        basedir=/opt/bitnami/mariadb
-        plugin_dir=/opt/bitnami/mariadb/plugin
-        port=3306
-        socket=/opt/bitnami/mariadb/tmp/mysql.sock
-        tmpdir=/opt/bitnami/mariadb/tmp
-        max_allowed_packet=16M
-        bind-address=*
-        pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
-        log-error=/opt/bitnami/mariadb/logs/mysqld.log
-        character-set-server=UTF8
-        collation-server=utf8_general_ci
-        [client]
-        port=3306
-        socket=/opt/bitnami/mariadb/tmp/mysql.sock
-        default-character-set=UTF8
-        plugin_dir=/opt/bitnami/mariadb/plugin
-        [manager]
-        port=3306
-        socket=/opt/bitnami/mariadb/tmp/mysql.sock
-        pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
       persistence:
         enabled: true
         existingClaim: monica-mariadb
