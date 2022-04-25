@@ -30,7 +30,7 @@ spec:
             name: cloudflare-credentials
             key: cloudflare-api-token
     domainFilters:
-      - ${SECRET_DOMAIN}
+      - ${SECRET_ROOT_DOMAIN}
     serviceMonitor:
       enabled: true
     resources:
