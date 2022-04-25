@@ -18,10 +18,17 @@ spec:
       interval: 5m
   values:
     logLevel: debug
-    provider: coredns
+    # provider: coredns
+    # env:
+    #   - name: ETCD_URLS
+    #     value: http://etcd:2379
+    provider: cloudflare
     env:
-      - name: ETCD_URLS
-        value: http://etcd:2379
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-credentials
+            key: cloudflare-api-token
     domainFilters:
       - ${SECRET_DOMAIN}
     serviceMonitor:

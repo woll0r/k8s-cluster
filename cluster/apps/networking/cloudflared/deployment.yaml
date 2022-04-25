@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloudflared
+  name: cloudflared
+  namespace: networking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9090'
+        prometheus.io/scrape: 'true'
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:2022.4.1
+          imagePullPolicy: Always
+          args:
+            - tunnel
+            - --config
+            - /etc/cloudflared/default.yaml
+            - --metrics
+            - 0.0.0.0:9090
+            - run
+          ports:
+            - containerPort: 9090
+              name: exporterport
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/cloudflared/default.yaml
+              name: cloudflare-tunnel
+              readOnly: true
+              subPath: default.yaml
+            - mountPath: /etc/cloudflared/cred.json
+              name: cloudflare-tunnel
+              readOnly: true
+              subPath: cred.json
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 10m
+            limits:
+              memory: 128Mi
+              cpu: 200m
+      volumes:
+        - name: cloudflare-tunnel
+          secret:
+            secretName: cloudflare-tunnel
