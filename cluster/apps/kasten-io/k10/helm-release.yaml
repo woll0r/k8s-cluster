@@ -52,5 +52,6 @@ spec:
         hajimari.io/enable: 'true'
         hajimari.io/icon: backup-restore
         hajimari.io/appName: Kasten K10
+        external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
     grafana:
       enabled: false
