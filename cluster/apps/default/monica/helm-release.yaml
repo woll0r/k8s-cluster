@@ -40,6 +40,7 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: contacts
           hajimari.io/appName: Monica
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - host: monica.${SECRET_DOMAIN}
             paths:

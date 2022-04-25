@@ -123,6 +123,7 @@ spec:
         hajimari.io/enable: 'true'
         hajimari.io/icon: chart-bar
         hajimari.io/appName: Grafana
+        external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
       hosts:
         - grafana.${SECRET_DOMAIN}
       tls:

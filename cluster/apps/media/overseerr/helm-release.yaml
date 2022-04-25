@@ -31,6 +31,7 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: eye
           hajimari.io/appName: Overseerr
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - host: overseerr.${SECRET_DOMAIN}
             paths:

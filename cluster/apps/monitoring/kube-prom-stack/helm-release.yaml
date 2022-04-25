@@ -95,6 +95,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: https://authentik.${SECRET_DOMAIN}/outpost.goauthentik.io/start?rd=$escaped_request_uri
           nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - alert-manager.${SECRET_DOMAIN}
         tls:
@@ -170,6 +171,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: https://authentik.${SECRET_DOMAIN}/outpost.goauthentik.io/start?rd=$escaped_request_uri
           nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - prometheus.${SECRET_DOMAIN}
         tls:

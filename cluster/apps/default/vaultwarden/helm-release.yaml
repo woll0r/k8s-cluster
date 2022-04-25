@@ -30,6 +30,7 @@ spec:
           hajimari.io/enable: 'true'
           hajimari.io/icon: key-chain-variant
           hajimari.io/appName: Vaultwarden
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - host: vaultwarden.${SECRET_DOMAIN}
             paths:
