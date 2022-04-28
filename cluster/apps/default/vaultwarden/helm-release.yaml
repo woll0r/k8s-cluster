@@ -22,6 +22,10 @@ spec:
       tag: 1.24.0
     env:
       TZ: Europe/Brussels
+      SIGNUPS_ALLOWED: 'false'
+    envFrom:
+      - secretRef:
+          name: vaultwarden-secrets
     ingress:
       main:
         enabled: true
@@ -35,6 +39,23 @@ spec:
           - host: vaultwarden.${SECRET_DOMAIN}
             paths:
               - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - vaultwarden.${SECRET_DOMAIN}
+      admin:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+          nginx.ingress.kubernetes.io/auth-signin: https://authentik.${SECRET_DOMAIN}/outpost.goauthentik.io/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+          nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
+        hosts:
+          - host: vaultwarden.${SECRET_DOMAIN}
+            paths:
+              - path: /admin
                 pathType: Prefix
         tls:
           - hosts:
