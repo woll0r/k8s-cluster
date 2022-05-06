@@ -43,17 +43,6 @@ spec:
         tls:
           - hosts:
               - lidarr.${SECRET_DOMAIN}
-      api:
-        enabled: true
-        ingressClassName: nginx
-        hosts:
-          - host: lidarr.${SECRET_DOMAIN}
-            paths:
-              - path: /api
-                pathType: Prefix
-        tls:
-          - hosts:
-              - lidarr.${SECRET_DOMAIN}
     podSecurityContext:
       supplementalGroups:
         - 100

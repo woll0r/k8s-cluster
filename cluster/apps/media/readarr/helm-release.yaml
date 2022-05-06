@@ -43,17 +43,6 @@ spec:
         tls:
           - hosts:
               - readarr.${SECRET_DOMAIN}
-      api:
-        enabled: true
-        ingressClassName: nginx
-        hosts:
-          - host: readarr.${SECRET_DOMAIN}
-            paths:
-              - path: /api
-                pathType: Prefix
-        tls:
-          - hosts:
-              - readarr.${SECRET_DOMAIN}
     podSecurityContext:
       supplementalGroups:
         - 100
