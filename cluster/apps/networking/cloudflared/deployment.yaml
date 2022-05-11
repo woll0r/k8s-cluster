@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2022.5.0
+          image: cloudflare/cloudflared:2022.5.1
           imagePullPolicy: Always
           args:
             - tunnel
