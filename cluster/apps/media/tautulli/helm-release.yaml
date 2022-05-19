@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/k8s-at-home/tautulli
       tag: v2.9.7
     env:
-      TZ: Europe/Brussels
+      TZ: ${TIMEZONE}
     ingress:
       main:
         enabled: true

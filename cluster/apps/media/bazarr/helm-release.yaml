@@ -43,7 +43,7 @@ spec:
           - hosts:
               - bazarr.${SECRET_DOMAIN}
     env:
-      TZ: Europe/Brussels
+      TZ: ${TIMEZONE}
     persistence:
       config:
         enabled: true

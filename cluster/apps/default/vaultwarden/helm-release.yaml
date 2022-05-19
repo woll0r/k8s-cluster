@@ -21,7 +21,7 @@ spec:
       repository: vaultwarden/server
       tag: 1.24.0
     env:
-      TZ: Europe/Brussels
+      TZ: ${TIMEZONE}
       SIGNUPS_ALLOWED: 'false'
     envFrom:
       - secretRef:

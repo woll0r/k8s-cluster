@@ -21,7 +21,7 @@ spec:
     configuration:
       startTime: 4:00
       endTime: 9:00
-      timeZone: Europe/Brussels
+      timeZone: ${TIMEZONE}
       notifyUrl: ${SECRET_KURED_DISCORD_WEBHOOK}
       messageTemplateDrain: Draining node %s
       messageTemplateReboot: Rebooted node %s
