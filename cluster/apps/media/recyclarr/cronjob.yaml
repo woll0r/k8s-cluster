@@ -30,8 +30,9 @@ spec:
                 - --config
                 - /config/recyclarr.yaml
               volumeMounts:
-                - mountPath: /config
+                - mountPath: /config/recyclarr.yaml
                   name: config
+                  subPath: recyclarr.yaml
             - name: radarr
               image: ghcr.io/k8s-at-home/recyclarr:v2.0.0
               imagePullPolicy: IfNotPresent
@@ -41,9 +42,13 @@ spec:
               command:
                 - /app/recyclarr
               args:
-                - sonarr
+                - radarr
                 - --config
                 - /config/recyclarr.yaml
+              volumeMounts:
+                - mountPath: /config/recyclarr.yaml
+                  name: config
+                  subPath: recyclarr.yaml
           volumes:
             - name: config
               secret:
