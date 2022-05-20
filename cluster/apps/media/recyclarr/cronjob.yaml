@@ -1,0 +1,49 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: recyclarr
+  namespace: media
+spec:
+  schedule: '@daily'
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      ttlSecondsAfterFinished: 300
+      template:
+        spec:
+          containers:
+            - name: sonarr
+              image: ghcr.io/k8s-at-home/recyclarr:v2.0.0
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: TZ
+                  value: ${TIMEZONE}
+              command:
+                - /app/recyclarr
+              args:
+                - sonarr
+                - --config
+                - /config/recyclarr.yaml
+              volumeMounts:
+                - mountPath: /config
+                  name: config
+            - name: radarr
+              image: ghcr.io/k8s-at-home/recyclarr:v2.0.0
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: TZ
+                  value: ${TIMEZONE}
+              command:
+                - /app/recyclarr
+              args:
+                - sonarr
+                - --config
+                - /config/recyclarr.yaml
+          volumes:
+            - name: config
+              secret:
+                secretName: recyclarr-config

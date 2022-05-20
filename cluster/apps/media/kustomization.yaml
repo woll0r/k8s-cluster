@@ -9,5 +9,6 @@ resources:
   - prowlarr
   - qbittorrent
   - radarr
+  - recyclarr
   - sonarr
   - tautulli

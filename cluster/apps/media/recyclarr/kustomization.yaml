@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cronjob.yaml
+# Yes, a bit silly to sops encrypt parts of a config file to slurp into a secret...
+# But seems less of a roundabout way than separate secrets, configmaps and envsubst tomfoolery
+secretGenerator:
+  - name: recyclarr-config
+    files:
+      - recyclarr.yaml=recyclarr.yaml.encrypted
+generatorOptions:
+  disableNameSuffixHash: true
