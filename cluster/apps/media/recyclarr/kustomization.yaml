@@ -7,6 +7,7 @@ resources:
 # But seems less of a roundabout way than separate secrets, configmaps and envsubst tomfoolery
 secretGenerator:
   - name: recyclarr-config
+    namespace: media
     files:
       - recyclarr.yaml=recyclarr.yaml.encrypted
 generatorOptions:
