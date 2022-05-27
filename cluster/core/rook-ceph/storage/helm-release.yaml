@@ -88,8 +88,8 @@ spec:
               cpu: 100m
               memory: 128Mi
             limits:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 1000m
+              memory: 1024Mi
           mon:
             requests:
               cpu: 100m
