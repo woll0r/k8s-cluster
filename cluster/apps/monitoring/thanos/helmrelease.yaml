@@ -62,6 +62,9 @@ spec:
       enabled: true
     compactor:
       enabled: true
+      retentionResolutionRaw: 14d
+      retentionResolution5m: 30d
+      retentionResolution1h: 180d
       persistence:
         enabled: false
     storegateway:
