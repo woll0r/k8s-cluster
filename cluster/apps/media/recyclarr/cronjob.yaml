@@ -29,6 +29,8 @@ spec:
                 - sonarr
                 - --config
                 - /config/recyclarr.yaml
+                - --app-data
+                - /config
               volumeMounts:
                 - mountPath: /config/recyclarr.yaml
                   name: config
@@ -45,6 +47,8 @@ spec:
                 - radarr
                 - --config
                 - /config/recyclarr.yaml
+                - --app-data
+                - /config
               volumeMounts:
                 - mountPath: /config/recyclarr.yaml
                   name: config
