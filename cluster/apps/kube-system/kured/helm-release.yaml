@@ -19,8 +19,6 @@ spec:
   values:
     updateStrategy: RollingUpdate
     configuration:
-      startTime: 4:00
-      endTime: 9:00
       timeZone: ${TIMEZONE}
       notifyUrl: ${SECRET_KURED_DISCORD_WEBHOOK}
       messageTemplateDrain: Draining node %s
