@@ -48,7 +48,7 @@ repos:
     name: "Check Markdown files"
     args:
     - --config
-    - .github/linters/.markdownlint.yml
+    - .github/linters/.markdownlint.json
 - repo: https://github.com/tcort/markdown-link-check
   rev: v3.10.2
   hooks:
