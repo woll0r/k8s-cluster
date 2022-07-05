@@ -74,18 +74,37 @@ spec:
           receiver: discord
           routes:
             - receiver: 'null'
+              matchers:
+                - alertname = CephNodeNetworkPacketDrops
+                - outside-cluster = ignoreceph
+            - receiver: 'null'
               match_re:
-                alertname: Watchdog|etcdHighNumberOfFailedGRPCRequests|InfoInhibitor
+                alertname: Watchdog|InfoInhibitor
             - receiver: discord
               match_re:
                 severity: critical
               continue: true
         inhibit_rules:
-          - source_match:
-              severity: critical
-            target_match:
-              severity: warning
-            equal: [alertname, namespace]
+          - source_matchers:
+              - severity = critical
+            target_matchers:
+              - severity =~ warning|info
+            equal:
+              - namespace
+              - alertname
+          - source_matchers:
+              - severity = warning
+            target_matchers:
+              - severity = info
+            equal:
+              - namespace
+              - alertname
+          - source_matchers:
+              - alertname = InfoInhibitor
+            target_matchers:
+              - severity = info
+            equal:
+              - namespace
       ingress:
         enabled: true
         pathType: Prefix
@@ -220,5 +239,8 @@ spec:
           - job_name: node-exporter
             honor_timestamps: true
             static_configs:
+              - label:
+                  outside-cluster: ignoreceph
               - targets:
+                  - 172.16.1.1:9100
                   - 172.16.1.10:9100
