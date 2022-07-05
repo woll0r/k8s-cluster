@@ -76,7 +76,7 @@ spec:
             - receiver: 'null'
               matchers:
                 - alertname = CephNodeNetworkPacketDrops
-                - outside-cluster = ignoreceph
+                - instance =~ "172.16.1.10:9100|172.16.1.1:9100"
             - receiver: 'null'
               match_re:
                 alertname: Watchdog|InfoInhibitor
