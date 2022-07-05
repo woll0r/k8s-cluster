@@ -20,7 +20,7 @@ spec:
       nameOverride: cloudflared
     image:
       repository: cloudflare/cloudflared
-      tag: 2022.6.3
+      tag: 2022.7.0
     args:
       - tunnel
       - --config
