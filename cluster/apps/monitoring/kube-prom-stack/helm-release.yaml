@@ -79,7 +79,7 @@ spec:
                 - instance =~ "172.16.1.10:9100|172.16.1.1:9100"
             - receiver: 'null'
               match_re:
-                alertname: Watchdog|InfoInhibitor
+                alertname: Watchdog|InfoInhibitor|etcdHighNumberOfFailedGRPCRequests
             - receiver: discord
               match_re:
                 severity: critical
@@ -239,8 +239,8 @@ spec:
           - job_name: node-exporter
             honor_timestamps: true
             static_configs:
-              - label:
-                  outside-cluster: ignoreceph
-              - targets:
+              - labels:
+                  outsidecluster: ignoreceph
+                targets:
                   - 172.16.1.1:9100
                   - 172.16.1.10:9100
