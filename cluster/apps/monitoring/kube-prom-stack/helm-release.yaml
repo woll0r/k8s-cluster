@@ -73,10 +73,16 @@ spec:
           repeat_interval: 6h
           receiver: discord
           routes:
+            # Ignore packet drops from outside the Ceph cluster
             - receiver: 'null'
               matchers:
                 - alertname = CephNodeNetworkPacketDrops
-                - instance =~ "172.16.1.10:9100|172.16.1.1:9100"
+                - outsidecluster = ignoreceph
+            # Ignore inode free alerts from msdosfs/vfat partitions (no inodes there)
+            - receiver: 'null'
+              matchers:
+                - alertname = NodeFilesystemAlmostOutOfFiles
+                - fstype =~ msdosfs|vfat
             - receiver: 'null'
               match_re:
                 alertname: Watchdog|InfoInhibitor|etcdHighNumberOfFailedGRPCRequests
