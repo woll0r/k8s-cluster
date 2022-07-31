@@ -6,3 +6,5 @@
 kubeconfig
 # Mega-Linter
 report/
+
+megalinter-reports/
