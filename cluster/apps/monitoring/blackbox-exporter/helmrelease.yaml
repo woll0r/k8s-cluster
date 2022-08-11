@@ -18,7 +18,11 @@ spec:
       interval: 5m
   values:
     fullnameOverride: blackbox-exporter
-    allowIcmp: true
+    securityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        add: [NET_RAW]
     config:
       modules:
         icmp:
