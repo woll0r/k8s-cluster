@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/goauthentik/server
-      tag: 2022.7.3
+      tag: 2022.8.1
 
     authentik:
       secret_key: ${AUTHENTIK_SECRET_KEY}
