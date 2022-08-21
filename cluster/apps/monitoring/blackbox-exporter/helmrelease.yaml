@@ -18,6 +18,10 @@ spec:
       interval: 5m
   values:
     fullnameOverride: blackbox-exporter
+    podSecurityContext:
+      sysctls:
+        - name: net.ipv4.ping_group_range
+          value: 0 65536
     securityContext:
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false
