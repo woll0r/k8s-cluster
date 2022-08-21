@@ -73,9 +73,9 @@ spec:
           - name: nuc-kube-03
             devices:
               - name: sdb
-          - name: nuc-kube-04
-            devices:
-              - name: sdb
+          # - name: nuc-kube-04
+          #   devices:
+          #     - name: sdb
         resources:
           api:
             requests:
