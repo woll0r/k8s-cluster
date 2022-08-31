@@ -8,12 +8,12 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://infracloudio.github.io/charts
+      # renovate: registryUrl=https://charts.botkube.io/
       chart: botkube
-      version: v0.12.4
+      version: v0.13.0
       sourceRef:
         kind: HelmRepository
-        name: infracloudio-charts
+        name: botkubeio-charts
         namespace: flux-system
       interval: 5m
   values:
