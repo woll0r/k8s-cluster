@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - authentik-charts.yaml
   - bitnami-charts.yaml
+  - botkubeio-charts.yaml
   - cert-manager-linode-webhook-charts-git.yaml
   - coredns-charts.yaml
   - deliveryhero-charts.yaml
