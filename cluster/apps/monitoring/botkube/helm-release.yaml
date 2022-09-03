@@ -21,7 +21,7 @@ spec:
     serviceMonitor:
       enabled: true
     settings:
-      clustername: k8s-cluster
+      clusterName: k8s-cluster
       configWatcher: true
     executors:
       kubectl-read-only:
