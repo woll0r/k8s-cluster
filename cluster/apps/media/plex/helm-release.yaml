@@ -38,9 +38,6 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          hajimari.io/enable: 'true'
-          hajimari.io/icon: plex
-          hajimari.io/appName: Plex
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - host: plex.${SECRET_DOMAIN}
