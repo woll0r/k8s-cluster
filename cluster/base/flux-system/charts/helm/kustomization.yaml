@@ -4,28 +4,18 @@ kind: Kustomization
 resources:
   - authentik-charts.yaml
   - bitnami-charts.yaml
+  - bjw-s-charts.yaml
   - botkubeio-charts.yaml
-  - cert-manager-linode-webhook-charts-git.yaml
-  - coredns-charts.yaml
-  - deliveryhero-charts.yaml
-  - dex-charts.yaml
   - external-dns-charts.yaml
   - grafana-charts.yaml
-  - hajimari-charts.yaml
-#  - infracloudio-charts.yaml
   - ingress-nginx-charts.yaml
   - jetstack-charts.yaml
   - k8s-at-home-charts.yaml
-  - kasten-charts.yaml
+  - kubereboot-charts.yaml
   - kubernetes-sigs-descheduler-charts.yaml
-  - longhorn-charts.yaml
   - lwolf-charts.yaml
-  - metallb-charts.yaml
   - metrics-server-charts.yaml
   - node-feature-discovery-charts.yaml
-  - oauth2-proxy-charts.yaml
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml
   - stakater-charts.yaml
-  - vmware-tanzu-charts.yaml
-  - weaveworks-kured-charts.yaml
