@@ -13,7 +13,6 @@
     "github>woll0r/k8s-cluster//.github/renovate/looseversioning.json5",
     "github>woll0r/k8s-cluster//.github/renovate/packagegroups.json5",
     "github>woll0r/k8s-cluster//.github/renovate/packagelabels.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/labels.json5",
     "github>woll0r/k8s-cluster//.github/renovate/semanticcommits.json5"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard",
