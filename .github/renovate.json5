@@ -1,171 +1,77 @@
 {
-  "enabled": true,
-  "semanticCommits": "enabled",
-  "dependencyDashboard": true,
+  "extends": [
+    "config:base",
+    "docker:enableMajor",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":enablePreCommit",
+    ":automergeDigest",
+    ":automergeBranchPush",
+    "github>woll0r/k8s-cluster//.github/renovate/automerge.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/disabledsources.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/looseversioning.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/packagegroups.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/packagelabels.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/labels.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/semanticcommits.json5"
+  ],
   "dependencyDashboardTitle": "Renovate Dashboard",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
-  "pre-commit": {
-    "enabled": true
-  },
+  "commitBodyTable": true,
   "flux": {
-    "fileMatch": [
-      "cluster/.+\\.ya?ml$"
-    ],
-    "ignorePaths": [
-      "cluster/.+/gotk-components\\.ya?ml$"
-    ]
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
   },
   "helm-values": {
-    "fileMatch": [
-      "cluster/.+/helm-release\\.yaml$"
-    ]
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
   },
   "kubernetes": {
-    "fileMatch": [
-      "cluster/.+\\.yaml$"
-    ],
-    "ignorePaths": [
-      "cluster/base/"
-    ]
+    "fileMatch": ["cluster/.+\\.ya?ml$"]
   },
   "regexManagers": [
-    // regexManager to read and process HelmRelease files
     {
-      "fileMatch": [
-        "cluster/.+\\.yaml$"
-      ],
+      "description": "CRDs",
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
       "matchStrings": [
-        // helm releases
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+        // GitRepository where 'Git release/tag' matches 'Helm' version
+        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
+        // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
+        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
       ],
-      "datasourceTemplate": "helm"
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
     },
-    // regexManager to read and process cert-manager CRD's
     {
+      "description": "Process various dependencies",
       "fileMatch": [
-        "cluster/crds/cert-manager/.+\\.yaml$"
+        "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
       ],
-      "datasourceTemplate": "helm"
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
-    // regexManager to read and process kube-prometheus-stack and velero CRD's
     {
-      "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
-        "cluster/crds/velero/.+\\.yaml$"
-      ],
+      "description": "Process raw GitHub URLs",
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
+        "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
       ],
-      "datasourceTemplate": "helm"
-    },
-    // regexManager to read and process Rook-Ceph CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/rook-ceph/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    // regexManager to read and process External Snapshotter and External DNS CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/external-snapshotter/.+\\.yaml$",
-        "cluster/crds/external-dns/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
-    // setup datasources
     {
-      "matchDatasources": ["helm"],
-      "separateMinorPatch": true,
-      "ignoreDeprecated": true
-    },
-    // global docker datasource settings
-    {
-      "matchDatasources": ["docker"],
-      "enabled": true,
-      "commitMessageTopic": "container image {{depName}}",
-      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      "matchUpdateTypes": ["major", "minor", "patch"],
-    },
-    // add labels according to package and update types
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/image", "dep/major"]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/image", "dep/minor"]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/image", "dep/patch"]
-    },
-    {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/helm", "dep/major"],
-      "excludePackagePatterns": [
-          // Ignore rook-ceph for now due to 1.8.0 issues
-          "^rook.ceph"
-      ]
-    },
-    {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/helm", "dep/minor"]
-    },
-    {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/helm", "dep/patch"]
-    },
-    // version strategies
-    {
-      "matchDatasources": ["docker"],
+      "description": "Use loose versioning for certain dependencies",
+      "matchDatasources": ["docker", "github-releases"],
       "versioning": "loose",
       "matchPackageNames": [
         "ghcr.io/onedr0p/plex",
         "ghcr.io/onedr0p/qbittorrent",
-      ],
-    },
-    // enable auto-merge
-    {
-      "matchDatasources": ["docker"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": [
-        "ghcr.io/onedr0p/prowlarr-nightly",
-        "ghcr.io/onedr0p/radarr",
-        "ghcr.io/onedr0p/sonarr",
-        "ghcr.io/onedr0p/lidarr",
-        "ghcr.io/onedr0p/readarr",
-        "ghcr.io/onedr0p/bazarr",
-     ],
-    },
-    // Group packages
-    {
-      "matchDatasources": ["helm", "docker"],
-      "matchPackagePatterns": ["^rook.ceph"],
-      "groupName": "rook-ceph-suite",
-      "additionalBranchPrefix": "",
-      "separateMinorPatch": true
-    },
+        "Hypfer/Valetudo"
+      ]
+    }
   ]
 }
