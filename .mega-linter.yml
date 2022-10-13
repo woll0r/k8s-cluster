@@ -23,3 +23,6 @@ LINTER_RULES_PATH: .github/linters
 
 KUBERNETES_DIRECTORY: cluster
 KUBERNETES_KUBEVAL_ARGUMENTS: --ignore-missing-schemas
+
+JSON_JSONLINT_FILE_EXTENSIONS: [.json, .json5]
+JSON_JSONLINT_ARGUMENTS: [--mode, json5]
