@@ -1,0 +1,15 @@
+---
+version: '3'
+
+tasks:
+  reconcile:
+    desc: Make Flux reconcile the cluster
+    cmds:
+      - flux reconcile -n flux-system source git flux-cluster
+      - flux reconcile -n flux-system kustomization flux-cluster
+
+  restart-failed:
+    desc: Restart all failed Helm Releases
+    cmds:
+      - kubectl get hr --all-namespaces | grep False | awk '{print $2, $1}' | xargs -l bash -c 'flux suspend hr $0 -n $1'
+      - kubectl get hr --all-namespaces | grep False | awk '{print $2, $1}' | xargs -l bash -c 'flux resume hr $0 -n $1'
