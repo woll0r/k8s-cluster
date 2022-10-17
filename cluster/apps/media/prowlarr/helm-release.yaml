@@ -8,20 +8,33 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: prowlarr
-      version: 4.5.2
+      chart: app-template
+      version: 0.2.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
       tag: 0.4.7.2016
     env:
       TZ: ${TIMEZONE}
+    service:
+      main:
+        ports:
+          http:
+            port: 9696
     ingress:
       main:
         enabled: true
@@ -33,13 +46,13 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - host: prowlarr.${SECRET_DOMAIN}
+          - host: &host prowlarr.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - prowlarr.${SECRET_DOMAIN}
+              - *host
     persistence:
       config:
         enabled: true

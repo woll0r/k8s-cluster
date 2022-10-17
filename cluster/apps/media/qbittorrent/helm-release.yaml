@@ -8,14 +8,22 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: qbittorrent
-      version: 13.5.2
+      chart: app-template
+      version: 0.2.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
   values:
     image:
       repository: ghcr.io/onedr0p/qbittorrent
@@ -50,13 +58,13 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - host: qb.${SECRET_DOMAIN}
+          - host: &host qb.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - qb.${SECRET_DOMAIN}
+              - *host
     podSecurityContext:
       supplementalGroups:
         - 100

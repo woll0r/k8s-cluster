@@ -16,6 +16,13 @@ spec:
         name: botkubeio-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     existingCommunicationsSecretName: botkube-communications
     serviceMonitor:
