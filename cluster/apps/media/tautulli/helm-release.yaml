@@ -8,20 +8,33 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: tautulli
-      version: 11.4.2
+      chart: app-template
+      version: 0.2.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
   values:
     image:
       repository: ghcr.io/onedr0p/tautulli
       tag: 2.10.4
     env:
       TZ: ${TIMEZONE}
+    service:
+      main:
+        ports:
+          http:
+            port: 8181
     ingress:
       main:
         enabled: true
@@ -29,13 +42,13 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - host: tautulli.${SECRET_DOMAIN}
+          - host: &host tautulli.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - tautulli.${SECRET_DOMAIN}
+              - *host
     persistence:
       config:
         enabled: true

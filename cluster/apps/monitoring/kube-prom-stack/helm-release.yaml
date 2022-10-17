@@ -17,12 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   install:
-    disableWait: true
+    createNamespace: true
     remediation:
-      retries: 3
+      retries: 5
   upgrade:
     remediation:
-      retries: 3
+      retries: 5
   dependsOn:
     - name: rook-ceph
       namespace: rook-ceph
@@ -122,10 +122,10 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - alert-manager.${SECRET_DOMAIN}
+          - &amhost alert-manager.${SECRET_DOMAIN}
         tls:
           - hosts:
-              - alert-manager.${SECRET_DOMAIN}
+              - *amhost
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -198,10 +198,10 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: http://authentik.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - prometheus.${SECRET_DOMAIN}
+          - &promhost prometheus.${SECRET_DOMAIN}
         tls:
           - hosts:
-              - prometheus.${SECRET_DOMAIN}
+              - *promhost
       thanosService:
         enabled: true
       thanosServiceMonitor:

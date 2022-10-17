@@ -8,14 +8,25 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: plex
-      version: 6.4.3
+      chart: app-template
+      version: 0.2.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  dependsOn:
+    - name: intel-gpu-plugin
+      namespace: kube-system
   values:
     image:
       repository: ghcr.io/onedr0p/plex
@@ -29,10 +40,34 @@ spec:
         - 100
     service:
       main:
+        primary: true
         type: LoadBalancer
         externalIPs:
           - ${PLEX_LB}
+        ports:
+          http:
+            port: 32400
         externalTrafficPolicy: Local
+      dnla-tcp:
+        enabled: false
+        type: NodePort
+        ports:
+          dnla-tcp:
+            enabled: true
+            port: 32469
+            protocol: TCP
+            targetPort: 32469
+        externalTrafficPolicy: Local
+      dnla-udp:
+        enabled: false
+        type: NodePort
+        ports:
+          dnla-udp:
+            enabled: true
+            port: 1900
+            protocol: TCP
+            targetPort: 1900
+    externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
@@ -40,13 +75,13 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
-          - host: plex.${SECRET_DOMAIN}
+          - host: &host plex.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - plex.${SECRET_DOMAIN}
+              - *host
     persistence:
       config:
         enabled: true

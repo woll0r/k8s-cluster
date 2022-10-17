@@ -16,6 +16,13 @@ spec:
         name: grafana-charts
         namespace: flux-system
       interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     deploymentStrategy:
       type: Recreate
@@ -104,15 +111,6 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
           datasource: Prometheus
-        lidarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
-          datasource: Prometheus
-        radarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
-          datasource: Prometheus
-        sonarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
-          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true
@@ -138,10 +136,10 @@ spec:
         hajimari.io/appName: Grafana
         external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
       hosts:
-        - grafana.${SECRET_DOMAIN}
+        - &host grafana.${SECRET_DOMAIN}
       tls:
         - hosts:
-            - grafana.${SECRET_DOMAIN}
+            - *host
     persistence:
       enabled: true
       storageClassName: rook-ceph-block

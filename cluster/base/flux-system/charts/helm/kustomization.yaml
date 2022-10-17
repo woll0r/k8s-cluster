@@ -6,6 +6,7 @@ resources:
   - bitnami-charts.yaml
   - bjw-s-charts.yaml
   - botkubeio-charts.yaml
+  - deliveryheroio-charts.yaml
   - external-dns-charts.yaml
   - grafana-charts.yaml
   - ingress-nginx-charts.yaml
