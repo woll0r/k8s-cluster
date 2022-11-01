@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - dashboards
   - bucket.yaml
-  - helmrelease.yaml
+  - helm-release.yaml
