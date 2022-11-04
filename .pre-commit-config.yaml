@@ -63,3 +63,4 @@ repos:
     files: cluster/
     types: [yaml]
     args: [--ignore-missing-schemas]
+    exclude: ^cluster/apps/recyclarr/recyclarr.enc.yaml$
