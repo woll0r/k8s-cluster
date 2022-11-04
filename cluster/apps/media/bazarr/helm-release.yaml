@@ -30,7 +30,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/bazarr
-      tag: 1.1.2
+      tag: 1.1.2@sha256:527ea7b4dfedbfca7bb6cc76120ede7fc3fc8ceb25f427d30e66213808d53381
     service:
       main:
         ports:
