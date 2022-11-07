@@ -16,7 +16,7 @@
       automergeType: 'branch',
       requiredStatusChecks: null,
       matchUpdateTypes: ['minor', 'patch'],
-      matchPackageNames: ['ghcr.io/onedr0p/prowlarr-nightly']
+      matchPackageNames: ['ghcr.io/onedr0p/prowlarr-nightly', 'ghcr.io/onedr0p/sonarr-develop', 'ghcr.io/onedr0p/radarr-develop']
     },
     {
       description: 'Auto merge GitHub Actions',
