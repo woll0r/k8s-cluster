@@ -36,7 +36,7 @@ jobs:
           filtered=$(grep -zl "kind: HelmRelease.*registryUrl=" ${{ steps.filter.outputs.changed_files }} \
             | jq -nR '[inputs | select(length>0)]')
           # shellcheck disable=SC2086
-          echo ::set-output name=files::${filtered}
+          echo name=files::${filtered} >> $GITHUB_OUTPUT
 
   helm:
     name: Template HelmReleases
@@ -126,7 +126,7 @@ jobs:
             message="$message"'```diff'$'\n'"$diff"$'\n''```'
           fi
 
-          echo "::set-output name=message::$(echo "$message" | jq --raw-input --slurp)"
+          echo "name=message::$(echo "$message" | jq --raw-input --slurp)" >> $GITHUB_OUTPUT
 
       - name: Add PR Comment
         uses: mshick/add-pr-comment@v2
