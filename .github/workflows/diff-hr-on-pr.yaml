@@ -126,6 +126,7 @@ jobs:
             message="$message"'```diff'$'\n'"$diff"$'\n''```'
           fi
 
+          # shellcheck disable=SC2086
           echo "name=message::$(echo "$message" | jq --raw-input --slurp)" >> $GITHUB_OUTPUT
 
       - name: Add PR Comment
