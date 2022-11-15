@@ -5,8 +5,8 @@ tasks:
   reconcile:
     desc: Make Flux reconcile the cluster
     cmds:
-      - flux reconcile -n flux-system source git flux-cluster
-      - flux reconcile -n flux-system kustomization flux-cluster
+      - flux reconcile -n flux-system source git flux-system
+      - flux reconcile -n flux-system kustomization flux-system
 
   restart-failed:
     desc: Restart all failed Helm Releases
