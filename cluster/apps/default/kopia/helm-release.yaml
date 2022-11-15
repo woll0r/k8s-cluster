@@ -103,7 +103,7 @@ spec:
         enabled: true
         type: nfs
         server: 172.16.1.6
-        path: /volume1/Backups/k8s
+        path: /volume1/backups/k8s
         mountPath: /snapshots
     podAnnotations:
       configmap.reloader.stakater.com/reload: *app
