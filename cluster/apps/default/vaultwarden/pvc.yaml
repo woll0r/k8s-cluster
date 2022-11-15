@@ -4,6 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: vaultwarden-config
   namespace: default
+  labels:
+    app.kubernetes.io/instance: vaultwarden
+    app.kubernetes.io/name: vaultwarden
+    snapshot.home.arpa/enabled: 'true'
 spec:
   accessModes:
     - ReadWriteOnce

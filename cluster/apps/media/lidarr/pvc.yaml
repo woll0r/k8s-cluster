@@ -4,6 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: lidarr-config
   namespace: media
+  labels:
+    app.kubernetes.io/instance: lidarr
+    app.kubernetes.io/name: lidarr
+    snapshot.home.arpa/enabled: 'true'
 spec:
   accessModes:
     - ReadWriteOnce
