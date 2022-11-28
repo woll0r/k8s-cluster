@@ -46,84 +46,94 @@ spec:
       k8s-events:
         kubernetes:
           resources:
-            - name: v1/pods
+            - type: v1/pods
               events:
                 - create
                 - delete
                 - error
-            - name: v1/services
+            - type: v1/services
               events:
                 - create
                 - delete
                 - error
-            - name: apps/v1/deployments
-              events:
-                - create
-                - update
-                - delete
-                - error
+            - type: apps/v1/deployments
+              event:
+                types:
+                  - create
+                  - update
+                  - delete
+                  - error
               updateSetting:
                 includeDiff: true
                 fields:
                   - spec.template.spec.containers[*].image
                   - status.availableReplicas
-            - name: apps/v1/statefulsets
-              events:
-                - create
-                - update
-                - delete
-                - error
+            - type: apps/v1/statefulsets
+              event:
+                types:
+                  - create
+                  - update
+                  - delete
+                  - error
               updateSetting:
                 includeDiff: true
                 fields:
                   - spec.template.spec.containers[*].image
                   - status.readyReplicas
-            - name: networking.k8s.io/v1/ingresses
-              events:
-                - create
-                - delete
-                - error
-            - name: v1/nodes
-              events:
-                - create
-                - delete
-                - error
-            - name: v1/namespaces
-              events:
-                - create
-                - delete
-                - error
-            - name: v1/persistentvolumes
-              events:
-                - create
-                - delete
-                - error
-            - name: v1/persistentvolumeclaims
-              events:
-                - create
-                - delete
-                - error
-            - name: v1/configmaps
-              events:
-                - create
-                - delete
-                - error
-            - name: apps/v1/daemonsets
-              events:
-                - create
-                - delete
-                - error
+            - type: networking.k8s.io/v1/ingresses
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: v1/nodes
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: v1/namespaces
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: v1/persistentvolumes
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: v1/persistentvolumeclaims
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: v1/configmaps
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
+            - type: apps/v1/daemonsets
+              event:
+                types:
+                  - create
+                  - delete
+                  - error
               updateSetting:
                 includeDiff: true
                 fields:
                   - spec.template.spec.containers[*].image
                   - status.numberReady
-            - name: batch/v1/jobs
-              events:
-                - create
-                - update
-                - delete
-                - error
+            - type: batch/v1/jobs
+              event:
+                types:
+                  - create
+                  - update
+                  - delete
+                  - error
               updateSetting:
                 includeDiff: true
                 fields:
