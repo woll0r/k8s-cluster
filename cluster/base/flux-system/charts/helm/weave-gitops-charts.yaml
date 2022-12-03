@@ -7,5 +7,4 @@ metadata:
 spec:
   interval: 1h
   timeout: 3m
-  type: oci
-  url: oci://ghcr.io/weaveworks/charts
+  url: https://helm.gitops.weave.works
