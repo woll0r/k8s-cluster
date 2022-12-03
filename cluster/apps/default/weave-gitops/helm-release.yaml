@@ -28,7 +28,7 @@ spec:
       username: admin
     oidcSecret:
       create: true
-      issuerURL: https://authentik.${SECRET_DOMAIN}
+      issuerURL: https://authentik.${SECRET_DOMAIN}/application/o/weave-gitops/
       redirectURL: https://gitops.${SECRET_DOMAIN}/oauth2/callback
     ingress:
       enabled: true
