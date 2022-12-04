@@ -18,13 +18,13 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: sonarr
-              image: ghcr.io/onedr0p/recyclarr:3.0.0@sha256:15ac3b69ea9fe66ab2b03f5f3daff36d188a6f2f81a894f64707079ef76989aa
+              image: ghcr.io/recyclarr/recyclarr:3.0.0@sha256:6f43a88f17901bcccdb1051cb6d824bed4b1f70431594989d6e26bd3a53898ec
               imagePullPolicy: IfNotPresent
               env:
                 - name: TZ
                   value: ${TIMEZONE}
               command:
-                - /app/recyclarr
+                - /app/recyclarr/recyclarr
               args:
                 - sonarr
                 - --config
@@ -36,13 +36,13 @@ spec:
                   name: config
                   subPath: recyclarr.yaml
             - name: radarr
-              image: ghcr.io/onedr0p/recyclarr:3.0.0@sha256:15ac3b69ea9fe66ab2b03f5f3daff36d188a6f2f81a894f64707079ef76989aa
+              image: ghcr.io/recyclarr/recyclarr:3.0.0@sha256:6f43a88f17901bcccdb1051cb6d824bed4b1f70431594989d6e26bd3a53898ec
               imagePullPolicy: IfNotPresent
               env:
                 - name: TZ
                   value: ${TIMEZONE}
               command:
-                - /app/recyclarr
+                - /app/recyclarr/recyclarr
               args:
                 - radarr
                 - --config
