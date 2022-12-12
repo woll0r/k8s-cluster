@@ -3,7 +3,9 @@ sonarr:
   instance1:
     base_url: http://sonarr.media.svc:8989
     api_key: ENC[AES256_GCM,data:7HwyhJvoHfmw2mj3EAjiSJRoXlRF7J35aY9P0J0nmac=,iv:sqXPaSooEu0Rk5wsXRewNE7iSX2a7vgrQY0kVg+KZG8=,tag:roAebgI3l9o2qvC/A/fDbA==,type:str]
-    quality_definition: hybrid
+    quality_definition:
+      type: series
+      preferred_ratio: 0.5
     delete_old_custom_formats: true
     custom_formats:
       - trash_ids:
@@ -247,8 +249,8 @@ sops:
         VHFyS2o2NE00RzEzNkRvY3hsRHJmN28K0YqmRFQEPQ9F3NXXgHkjwttjaPrqeJBL
         cPem1awxYnH85qdAaDiSXQUc0ruoh0Bube5gGLDjwsT/QtRUv8ckKw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: '2022-12-04T06:03:44Z'
-  mac: ENC[AES256_GCM,data:fFChjiI02N570JFT4F4503qnClP13pdWJtGhCNbrCv3iQkzX+jJdq5A7dhdm6DvdytGJKpcJw0dbjpkRUiFTz1CPTgtIm18xhacJf9+/0M2dH3Ihvgo+eYcy4VEZa5MBg2QDPL2ME1MlFMMcw9sGxtgfItVUV+UUAmL0aKBa9Cw=,iv:SlDgTvIe5xw/Zp/rRByYFPSROhWNLtbOYFkx4CzDpRU=,tag:uv+AhSIJHnOtqiuqQyMtug==,type:str]
+  lastmodified: '2022-12-12T02:18:22Z'
+  mac: ENC[AES256_GCM,data:P397geA8q57GbFPJckKPjSOHeOJ1D9FGg6s2nLb0TItU+8eC8mvZsLuUh/FoAkjM2SafshjTfGC+ErlgjtZGDqPJSdKhOAGqGsNhhxBWJLUWqHC0CvD2GnxU4j9oQGX8ARa2geQ8ABFV3wR03IHD/8Kll6O72N3qYkCPS6R4kyc=,iv:LwkcuFPE8Kn8EWFSiFaXd7YSrLn/0xiIpuW4it4r7Lc=,tag:s2+4ya8at28iO1QINxWFRA==,type:str]
   pgp: []
   encrypted_regex: (data|stringData|api_key)
   version: 3.7.3
