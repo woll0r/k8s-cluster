@@ -5,3 +5,4 @@ resources:
   - discord
   - github
   - monitoring
+  - weave-gitops
