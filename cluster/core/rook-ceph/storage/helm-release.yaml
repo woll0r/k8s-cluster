@@ -8,7 +8,6 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.rook.io/release
       chart: rook-ceph-cluster
       version: v1.10.10
       sourceRef:
@@ -34,9 +33,6 @@ spec:
       dashboard:
         annotations:
           kubernetes.io/ingress.class: nginx
-          hajimari.io/enable: 'true'
-          hajimari.io/icon: chess-rook
-          hajimari.io/appName: Rook
           nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
           nginx.ingress.kubernetes.io/auth-signin: https://authentik.${SECRET_DOMAIN}/outpost.goauthentik.io/start?rd=$escaped_request_uri
           nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
@@ -73,9 +69,6 @@ spec:
           - name: nuc-kube-03
             devices:
               - name: sdb
-          # - name: nuc-kube-04
-          #   devices:
-          #     - name: sdb
         resources:
           api:
             requests:
@@ -138,9 +131,6 @@ spec:
     cephBlockPoolsVolumeSnapshotClass:
       enabled: true
       name: csi-rbdplugin-snapclass
-      annotations:
-        k10.kasten.io/is-snapshot-class: 'true'
-        velero.io/csi-volumesnapshot-class: 'true'
     cephFilesystems:
       - name: ceph-filesystem
         spec:

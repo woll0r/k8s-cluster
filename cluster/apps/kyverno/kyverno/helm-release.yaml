@@ -16,13 +16,15 @@ spec:
         namespace: flux-system
   install:
     createNamespace: true
+    crds: CreateReplace
     remediation:
       retries: 5
   upgrade:
+    crds: CreateReplace
     remediation:
       retries: 5
   values:
-    installCRDs: false
+    installCRDs: true
     replicaCount: 3
     serviceMonitor:
       enabled: true
