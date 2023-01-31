@@ -2,10 +2,10 @@
 
 # My home Kubernetes cluster
 
-[![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/woll0r/k8s-cluster/MegaLinter?event=push&logo=githubactions&logoColor=white&label=MegaLinter&style=for-the-badge)](https://github.com/Woll0r/k8s-cluster/actions/workflows/mega-linter.yml)
-[![GitHub branch checks state](https://img.shields.io/github/checks-status/woll0r/k8s-cluster/main?logo=github&style=for-the-badge)](https://github.com/woll0r/k8s-cluster/)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/woll0r/k8s-cluster/mega-linter.yml?branch=main&label=Megalinter&logo=githubactions&logoColor=white&style=for-the-badge)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/woll0r/k8s-cluster/main?logo=github&style=for-the-badge)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
-[![k3s](https://img.shields.io/badge/K3S-v1.23-brightgreen?logo=kubernetes&logoColor=white&style=for-the-badge)](https://k3s.io)
+[![k3s](https://img.shields.io/badge/v1.26-brightgreen?logo=kubernetes&logoColor=white&style=for-the-badge)](https://k3s.io)
 
 ---
 
