@@ -30,6 +30,9 @@ spec:
       create: true
       issuerURL: https://authentik.${SECRET_DOMAIN}/application/o/weave-gitops/
       redirectURL: https://gitops.${SECRET_DOMAIN}/oauth2/callback
+    rbac:
+      create: true
+      impersonationResourceNames: [admin]
     ingress:
       enabled: true
       className: nginx
