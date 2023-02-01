@@ -27,9 +27,6 @@ spec:
     - name: rook-ceph-cluster
       namespace: rook-ceph
   values:
-    image:
-      registry: public.ecr.aws
-      repository: bitnami/thanos
     query:
       enabled: true
       replicaLabels:
