@@ -10,7 +10,7 @@ and workloads sharing machines and NFS on a NAS for larger files.
 - [Calico]: for internal networking for the cluster using BGP.
 - [Rook]: Persistent volumes using Ceph RBD storage.
 - [Mozilla SOPS]: Encryption of secrets.
-- [external-dns]: Create DNS entries in a [coredns] deployment for use outside the cluster.
+- [external-dns]: Create DNS entries in [Cloudflare] DNS for access through a [Cloudflare tunnel].
 - [cert-manager]: Provides the TLS certificates for the ingresses.
 - [kube-vip]: HA for the control plane, inside the cluster.
 
@@ -20,8 +20,7 @@ Under the `cluster` directory, the following structure is present for
 [flux] to apply:
 
 - **base** is the entrypoint for Flux
-- **crds** contains the custom resource definitions (CRDs) that need to exist for other parts of the cluster to exist
-- **core** has all the important core components that should be present, such as storage, with a dependency on **crds**
+- **core** has all the important core components that should be present, such as storage
 - **apps** contains the applications that run inside the cluster, with a dependency on **core**
 
 ## Automation
@@ -33,11 +32,12 @@ Under the `cluster` directory, the following structure is present for
 
 [k3s]: https://k3s.io/
 [ansible-role-k3s]: https://github.com/PyratLabs/ansible-role-k3s/
-[Calico]: https://docs.projectcalico.org/about/about-calico/
+[Calico]: https://docs.tigera.io/calico/
 [Rook]: https://rook.io/
 [Mozilla SOPS]: https://toolkit.fluxcd.io/guides/mozilla-sops/
 [external-dns]: https://github.com/kubernetes-sigs/external-dns/
-[coredns]: https://github.com/coredns/coredns/
+[Cloudflare]: https://cloudflare.com/
+[Cloudflare tunnel]: https://www.cloudflare.com/products/tunnel/
 [cert-manager]: https://cert-manager.io/docs/
 [kube-vip]: https://kube-vip.io/
 [flux]: https://github.com/fluxcd/flux2/
