@@ -485,8 +485,6 @@ radarr:
           - b6832f586342ef70d9c128d40c07b872
                 # DV (FEL)
           - f700d29429c023a5734505e77daeaea7
-                # DV (WEBDL)
-          - 923b6abef9b17f937fab56cfcf89e1f1
                 # EVO (no WEBDL)
           - 90cedc1fea7ea5d11298bebd3d1d3223
                 # HDR10+ Boost
@@ -547,16 +545,6 @@ radarr:
           - name: SD
             reset_unmatched_scores: true
       - trash_ids:
-                # HQ
-          - 1c7d7b04b15cc53ea61204bebbcc1ee2
-                # Optional: Multi
-          - 4b900e171accbfb172729b63323ea8ca
-        quality_profiles:
-          - name: HD
-            score: 0
-          - name: SD
-            score: 0
-      - trash_ids:
                 # Optional: DV (WEBDL) without fallback to HDR, set to manual score 0 or -10000
           - 923b6abef9b17f937fab56cfcf89e1f1
         quality_profiles:
@@ -579,8 +567,8 @@ sops:
         VHFyS2o2NE00RzEzNkRvY3hsRHJmN28K0YqmRFQEPQ9F3NXXgHkjwttjaPrqeJBL
         cPem1awxYnH85qdAaDiSXQUc0ruoh0Bube5gGLDjwsT/QtRUv8ckKw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: '2023-02-13T14:13:17Z'
-  mac: ENC[AES256_GCM,data:oRJca92wyZ/tW97CH2QOC3nNs4VXer6DC98O/WqhhshnrakAqPGnKr8BHxj27BMGrZxOFgfxf/syc/GS4o2W0/gy2//C5cm9eHgyYn2HwHHbQY+PRUzfIIl4oHJ/qaq2dvTEMdxWfytzbzhiYOZONfdUCTPv1KcWySUyDKJqkFs=,iv:ZNawGW4FJPni8/wU1Kp0ZDHrazx5uooiGM7ocvcQXjk=,tag:evgsZFDGp6chH3XoXxgnIA==,type:str]
+  lastmodified: '2023-02-13T14:19:51Z'
+  mac: ENC[AES256_GCM,data:WXh5pwTMh3mG/zNU0ug7oRRmzqCkGxGiBSEWxTa/2/CBA9ehoU1UAHnDvCBcsQotraeHXGtZnJm+Sff7OJQdSuN+dIH8Za+3GZkSDOXVotSvX7zZA8JBB4Ah6JphIOb6oyAUmaQkVPesg8zqWDFjc/2yH5rOBFX+SrBuXot4FDY=,iv:XyW51OgN8gXhM/5Mlk0hzJga1aanewgt0suG7tyflpc=,tag:9hkZVL6jhu2ZHW84cw8Asw==,type:str]
   pgp: []
   encrypted_regex: (data|stringData|api_key)
   version: 3.7.3
