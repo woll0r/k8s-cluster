@@ -1,5 +1,8 @@
 # Bootstrap
 
+!!! danger "Refactoring is in progress!"
+    Stuff in this document is not going to work anymore, at least not for now.
+
 ## Create an age key
 
 ```sh
@@ -28,8 +31,9 @@ kubectl -n flux-system create secret generic sops-age \
 
 ## Install Flux
 
-!!! warning "You should run this command twice because there are race conditions
-on the Flux CRDs. The second run should work without errors.
+!!! warning
+    You should run this command twice because there are race conditions
+    on the Flux CRDs. The second run should work without errors.
 
 ```sh
 kubectl apply --kustomize=./cluster/base/flux-system

@@ -6,6 +6,7 @@ resources:
   - external-dns
   - intel-gpu-plugin
   - kube-cleanup-operator
+  - kube-vip
   - kured
   - metrics-server
   - node-feature-discovery

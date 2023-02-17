@@ -20,8 +20,7 @@ Under the `cluster` directory, the following structure is present for
 [flux] to apply:
 
 - **base** is the entrypoint for Flux
-- **core** has all the important core components that should be present, such as storage
-- **apps** contains the applications that run inside the cluster, with a dependency on **core**
+- **apps** contains the applications that run inside the cluster
 
 ## Automation
 
