@@ -26,9 +26,6 @@ spec:
     crds: CreateReplace
     remediation:
       retries: 5
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
   timeout: 20m
   values:
     defaultRules:

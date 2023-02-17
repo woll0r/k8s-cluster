@@ -24,9 +24,6 @@ spec:
     remediation:
       retries: 5
       remediateLastFailure: true
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
   values:
     image:
       repository: ghcr.io/sct/overseerr
