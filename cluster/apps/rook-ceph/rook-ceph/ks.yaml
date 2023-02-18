@@ -1,0 +1,64 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-apps-rook-ceph
+  namespace: flux-system
+spec:
+  path: ./cluster/rook-ceph/rook-ceph/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: cluster
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: rook-ceph
+      namespace: rook-ceph
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-apps-rook-ceph-cluster
+  namespace: flux-system
+spec:
+  path: ./cluster/rook-ceph/rook-ceph/cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: cluster
+  dependsOn:
+    - name: cluster-apps-rook-ceph
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: rook-ceph-cluster
+      namespace: rook-ceph
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-apps-rook-ceph-direct-mount
+  namespace: flux-system
+spec:
+  path: ./cluster/rook-ceph/rook-ceph/direct-mount
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: cluster
+  dependsOn:
+    - name: cluster-apps-rook-ceph-cluster
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: rook-direct-mount
+      namespace: rook-ceph
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m

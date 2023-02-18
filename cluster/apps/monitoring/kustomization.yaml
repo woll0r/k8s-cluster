@@ -2,9 +2,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # Namespace
   - namespace.yaml
-  - blackbox-exporter
-  - botkube
-  - grafana
-  - kube-prom-stack
-  - thanos
+  # Flux kustomizations
+  - blackbox-exporter/ks.yaml
+  - botkube/ks.yaml
+  - grafana/ks.yaml
+  - kube-prom-stack/ks.yaml
+  - thanos/ks.yaml
