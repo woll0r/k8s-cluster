@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-cloudflared
   namespace: flux-system
 spec:
-  path: ./cluster/networking/cloudflared/app
+  path: ./cluster/apps/networking/cloudflared/app
   prune: true
   sourceRef:
     kind: GitRepository

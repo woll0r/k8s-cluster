@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-blackbox-exporter
   namespace: flux-system
 spec:
-  path: ./cluster/monitoring/blackbox-exporter/app
+  path: ./cluster/apps/monitoring/blackbox-exporter/app
   prune: true
   sourceRef:
     kind: GitRepository

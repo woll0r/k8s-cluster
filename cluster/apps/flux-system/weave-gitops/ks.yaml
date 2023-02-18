@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-weave-gitops
   namespace: flux-system
 spec:
-  path: ./cluster/flux-system/weave-gitops/app
+  path: ./cluster/apps/flux-system/weave-gitops/app
   prune: true
   sourceRef:
     kind: GitRepository

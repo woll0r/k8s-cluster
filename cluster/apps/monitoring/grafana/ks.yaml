@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-grafana
   namespace: flux-system
 spec:
-  path: ./cluster/monitoring/grafana/app
+  path: ./cluster/apps/monitoring/grafana/app
   prune: true
   sourceRef:
     kind: GitRepository

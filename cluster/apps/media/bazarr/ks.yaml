@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-bazarr
   namespace: flux-system
 spec:
-  path: ./cluster/media/bazarr/app
+  path: ./cluster/apps/media/bazarr/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -9,10 +9,10 @@ resources:
 configMapGenerator:
   - name: felix-dashboard
     files:
-      - felix-dashboard.json=./config/felix-dashboard.json
+      - felix-dashboard.json=./dashboards/felix-dashboard.json
   - name: typha-dashboard
     files:
-      - typha-dashboard.json=./config/typha-dashboard.json
+      - typha-dashboard.json=./dashboards/typha-dashboard.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

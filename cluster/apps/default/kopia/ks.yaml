@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-kopia
   namespace: flux-system
 spec:
-  path: ./cluster/default/kopia/app
+  path: ./cluster/apps/default/kopia/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-tautulli
   namespace: flux-system
 spec:
-  path: ./cluster/media/tautulli/app
+  path: ./cluster/apps/media/tautulli/app
   prune: true
   sourceRef:
     kind: GitRepository

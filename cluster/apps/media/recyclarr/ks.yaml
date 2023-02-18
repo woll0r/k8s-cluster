@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-recyclarr
   namespace: flux-system
 spec:
-  path: ./cluster/media/recyclarr/app
+  path: ./cluster/apps/media/recyclarr/app
   prune: true
   sourceRef:
     kind: GitRepository

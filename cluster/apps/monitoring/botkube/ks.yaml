@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-botkube
   namespace: flux-system
 spec:
-  path: ./cluster/monitoring/botkube/app
+  path: ./cluster/apps/monitoring/botkube/app
   prune: true
   sourceRef:
     kind: GitRepository

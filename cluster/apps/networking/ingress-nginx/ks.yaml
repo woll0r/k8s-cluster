@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-nginx-certificates
   namespace: flux-system
 spec:
-  path: ./cluster/networking/ingress-nginx/certificates
+  path: ./cluster/apps/networking/ingress-nginx/certificates
   prune: true
   sourceRef:
     kind: GitRepository
@@ -22,7 +22,7 @@ metadata:
   name: cluster-apps-ingress-nginx
   namespace: flux-system
 spec:
-  path: ./cluster/networking/ingress-nginx/app
+  path: ./cluster/apps/networking/ingress-nginx/app
   prune: true
   sourceRef:
     kind: GitRepository

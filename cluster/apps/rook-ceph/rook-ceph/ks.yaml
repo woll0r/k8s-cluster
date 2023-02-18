@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-rook-ceph
   namespace: flux-system
 spec:
-  path: ./cluster/rook-ceph/rook-ceph/app
+  path: ./cluster/apps/rook-ceph/rook-ceph/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -25,7 +25,7 @@ metadata:
   name: cluster-apps-rook-ceph-cluster
   namespace: flux-system
 spec:
-  path: ./cluster/rook-ceph/rook-ceph/cluster
+  path: ./cluster/apps/rook-ceph/rook-ceph/cluster
   prune: true
   sourceRef:
     kind: GitRepository
@@ -47,7 +47,7 @@ metadata:
   name: cluster-apps-rook-ceph-direct-mount
   namespace: flux-system
 spec:
-  path: ./cluster/rook-ceph/rook-ceph/direct-mount
+  path: ./cluster/apps/rook-ceph/rook-ceph/direct-mount
   prune: true
   sourceRef:
     kind: GitRepository

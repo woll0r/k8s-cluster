@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-kured
   namespace: flux-system
 spec:
-  path: ./cluster/kube-system/kured/app
+  path: ./cluster/apps/kube-system/kured/app
   prune: true
   sourceRef:
     kind: GitRepository

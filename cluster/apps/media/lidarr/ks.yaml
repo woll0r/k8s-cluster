@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-lidarr
   namespace: flux-system
 spec:
-  path: ./cluster/media/lidarr/app
+  path: ./cluster/apps/media/lidarr/app
   prune: true
   sourceRef:
     kind: GitRepository

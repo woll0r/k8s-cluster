@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-kube-cleanup-operator
   namespace: flux-system
 spec:
-  path: ./cluster/kube-system/kube-cleanup-operator/app
+  path: ./cluster/apps/kube-system/kube-cleanup-operator/app
   prune: true
   sourceRef:
     kind: GitRepository

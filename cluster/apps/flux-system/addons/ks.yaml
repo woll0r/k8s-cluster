@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-flux-addons-monitoring
   namespace: flux-system
 spec:
-  path: ./cluster/flux-system/addons/monitoring
+  path: ./cluster/apps/flux-system/addons/monitoring
   prune: true
   sourceRef:
     kind: GitRepository
@@ -20,7 +20,7 @@ metadata:
   name: cluster-apps-flux-addons-notifications
   namespace: flux-system
 spec:
-  path: ./cluster/flux-system/addons/notifications
+  path: ./cluster/apps/flux-system/addons/notifications
   prune: true
   sourceRef:
     kind: GitRepository
@@ -35,7 +35,7 @@ metadata:
   name: cluster-apps-flux-addons-webhooks
   namespace: flux-system
 spec:
-  path: ./cluster/flux-system/addons/webhooks
+  path: ./cluster/apps/flux-system/addons/webhooks
   prune: true
   sourceRef:
     kind: GitRepository

@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-radarr
   namespace: flux-system
 spec:
-  path: ./cluster/media/radarr/app
+  path: ./cluster/apps/media/radarr/app
   prune: true
   sourceRef:
     kind: GitRepository

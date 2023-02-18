@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-kube-prom-stack
   namespace: flux-system
 spec:
-  path: ./cluster/monitoring/kube-prom-stack/app
+  path: ./cluster/apps/monitoring/kube-prom-stack/app
   prune: true
   sourceRef:
     kind: GitRepository
