@@ -9,6 +9,6 @@ secretGenerator:
   - name: recyclarr-config
     namespace: media
     files:
-      - recyclarr.yaml=recyclarr.enc.yaml
+      - recyclarr.yaml=recyclarr.sops.yaml
 generatorOptions:
   disableNameSuffixHash: true

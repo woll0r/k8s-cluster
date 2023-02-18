@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - pvc.yaml
-  - secret.enc.yaml
+  - secret.sops.yaml
