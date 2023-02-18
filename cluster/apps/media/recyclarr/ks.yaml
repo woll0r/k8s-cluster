@@ -13,11 +13,6 @@ spec:
   dependsOn:
     - name: cluster-apps-radarr
     - name: cluster-apps-sonarr
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: recyclarr
-      namespace: media
   interval: 30m
   retryInterval: 1m
   timeout: 3m
