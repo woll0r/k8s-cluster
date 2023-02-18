@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: flux-system
+  name: cluster
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -13,15 +13,15 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: flux-system
+  name: cluster
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./cluster/base
+  path: ./cluster/flux
   prune: false
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: cluster
   decryption:
     provider: sops
     secretRef:
