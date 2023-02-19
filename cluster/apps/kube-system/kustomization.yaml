@@ -7,7 +7,7 @@ resources:
   # Flux kustomizations
   - descheduler/ks.yaml
   - external-dns/ks.yaml
-  - intel-gpu-plugin/ks.yaml
+  - intel-device-plugin/ks.yaml
   - kube-cleanup-operator/ks.yaml
   - kube-vip/ks.yaml
   - kured/ks.yaml
