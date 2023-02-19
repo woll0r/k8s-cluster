@@ -30,6 +30,7 @@ spec:
       DATA_FOLDER: config
       TZ: ${TIMEZONE}
       SIGNUPS_ALLOWED: 'false'
+      DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
     envFrom:
       - secretRef:
           name: vaultwarden-secrets
