@@ -18,12 +18,16 @@ spec:
       interval: 5m
   install:
     createNamespace: true
+    crds: CreateReplace
     remediation:
       retries: 5
   upgrade:
+    crds: CreateReplace
     remediation:
       retries: 5
   values:
+    nodeFeatureRule:
+      createCRD: true
     master:
       tolerations:
         - key: node-role.kubernetes.io/master
