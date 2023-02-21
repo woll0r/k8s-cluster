@@ -73,10 +73,10 @@ spec:
           repeat_interval: 6h
           receiver: discord
           routes:
-            # Ignore packet drops from outside the Ceph cluster
+            # Ignore Ceph alerts from outside the Ceph cluster
             - receiver: 'null'
               matchers:
-                - alertname = CephNodeNetworkPacketDrops
+                - alertname =~ "CephNode.+"
                 - outsidecluster = ignoreceph
             # Ignore inode free alerts from msdosfs/vfat partitions (no inodes there)
             - receiver: 'null'
