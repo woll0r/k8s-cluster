@@ -19,6 +19,7 @@ resources:
   - lwolf-charts.yaml
   - metrics-server-charts.yaml
   - node-feature-discovery-charts.yaml
+  - piraeus-charts.yaml
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml
   - stakater-charts.yaml
