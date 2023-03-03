@@ -249,4 +249,3 @@ spec:
                   outsidecluster: ignoreceph
                 targets:
                   - 172.16.1.1:9100
-                  - 172.16.1.10:9100
