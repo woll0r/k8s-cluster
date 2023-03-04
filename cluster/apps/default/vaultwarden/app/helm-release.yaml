@@ -34,6 +34,11 @@ spec:
     envFrom:
       - secretRef:
           name: vaultwarden-secrets
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         ports:
