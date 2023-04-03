@@ -6,7 +6,6 @@ resources:
   - namespace.yaml
   # Flux kustomizations
   - blackbox-exporter/ks.yaml
-  - botkube/ks.yaml
   - grafana/ks.yaml
   - kube-prom-stack/ks.yaml
   - thanos/ks.yaml
