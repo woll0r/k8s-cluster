@@ -25,7 +25,7 @@ spec:
   values:
     image:
       repository: vaultwarden/server
-      tag: 1.28.0
+      tag: 1.28.1
     env:
       DATA_FOLDER: config
       TZ: ${TIMEZONE}
