@@ -51,7 +51,7 @@ repos:
     - --config
     - .github/linters/.markdownlint.json
 - repo: https://github.com/tcort/markdown-link-check
-  rev: v3.11.0
+  rev: v3.11.1
   hooks:
   - id: markdown-link-check
 - repo: local
