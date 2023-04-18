@@ -35,7 +35,13 @@ spec:
       error_reporting:
         enabled: true
       postgresql:
+        host: postgres-rw.default.svc
+        name: authentik
+        user: authentik
         password: ${AUTHENTIK_DB_PASSWORD}
+      redis:
+        host: authentik-redis-master
+        password: ${AUTHENTIK_REDIS_PASSWORD}
 
     ingress:
       enabled: true
@@ -52,7 +58,6 @@ spec:
             - authentik.${SECRET_DOMAIN}
 
     postgresql:
-      enabled: true
-      postgresqlPassword: ${AUTHENTIK_DB_PASSWORD}
+      enabled: false
     redis:
-      enabled: true
+      enabled: false
