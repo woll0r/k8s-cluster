@@ -50,6 +50,14 @@
         "commitMessageTopic": "{{{groupName}}} group"
       },
       "separateMinorPatch": true
-    }
+    },
+    {
+      description: 'Authentik image and chart',
+      groupName: 'Authentik',
+      matchPackagePatterns: ['authentik'],
+      matchDatasources: ['docker', 'helm'],
+      group: { commitMessageTopic: '{{{groupName}}} group' },
+      separateMinorPatch: true
+    },
   ]
 }
