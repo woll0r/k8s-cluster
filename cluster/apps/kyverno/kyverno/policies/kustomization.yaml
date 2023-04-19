@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - delete-cpu-limits.yaml
   - ingress-external-dns-annotations.yaml
-  - snapshot-cronjob-controller.yaml

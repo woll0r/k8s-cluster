@@ -7,5 +7,4 @@ resources:
   # Flux kustomizations
   - authentik/ks.yaml
   - cloudnative-pg/ks.yaml
-  - kopia/ks.yaml
   - vaultwarden/ks.yaml
