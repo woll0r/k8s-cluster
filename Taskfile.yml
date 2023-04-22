@@ -13,6 +13,7 @@ includes:
   cluster: .taskfiles/cluster.yml
   precommit: .taskfiles/precommit.yml
   snapshot: .taskfiles/snapshots.yml
+  volsync: .taskfiles/volsync.yml
 
 tasks:
 
