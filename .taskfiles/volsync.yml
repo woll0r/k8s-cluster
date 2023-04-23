@@ -57,6 +57,7 @@ tasks:
     desc: Trigger a Restic ReplicationSource snapshot (ex. task vs:snapshot rsrc=plex [namespace=default])
     cmds:
       - kubectl -n {{.namespace}} patch replicationsources {{.rsrc}} --type merge -p '{"spec":{"trigger":{"manual":"{{.ts}}"}}}'
+      - until kubectl -n {{.namespace}} get job/volsync-src-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait --selector=job-name=volsync-src-{{.rsrc}} --for condition=ready --timeout=1m pod
       - kubectl -n {{.namespace}} wait job/volsync-src-{{.rsrc}} --for condition=complete --timeout=120m
       # TODO: Error from server (NotFound): jobs.batch "volsync-src-zzztest" not found
@@ -136,6 +137,7 @@ tasks:
     internal: true
     cmds:
       - envsubst < <(cat {{.destinationTemplate}}) | kubectl apply -f -
+      - until kubectl -n {{.namespace}} get job/volsync-dst-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait --selector=job-name=volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=ready --timeout=1m pod
       - kubectl -n {{.namespace}} wait job/volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=complete --timeout=120m
       - kubectl -n {{.namespace}} delete replicationdestination {{.rsrc}}-{{.claim}}-{{.ts}}
