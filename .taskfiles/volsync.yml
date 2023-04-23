@@ -23,7 +23,7 @@ tasks:
     silent: true
     cmds:
       - envsubst < <(cat {{.listJobTemplate}}) | kubectl apply -f -
-      - kubectl -n {{.namespace}} wait --selector=job-name=list-{{.rsrc}}-{{.ts}} --for condition=ready --timeout=1m pod
+      - until kubectl -n {{.namespace}} get job/list-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/list-{{.rsrc}}-{{.ts}} --for condition=complete --timeout=1m
       - kubectl -n {{.namespace}} logs job/list-{{.rsrc}}-{{.ts}} --container list
       - kubectl -n {{.namespace}} delete job list-{{.rsrc}}-{{.ts}}
@@ -39,7 +39,7 @@ tasks:
     silent: true
     cmds:
       - envsubst < <(cat {{.unlockJobTemplate}}) | kubectl apply -f -
-      - kubectl -n {{.namespace}} wait --selector=job-name=unlock-{{.rsrc}}-{{.ts}} --for condition=ready --timeout=1m pod
+      - until kubectl -n {{.namespace}} get job/unlock-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/unlock-{{.rsrc}}-{{.ts}} --for condition=complete --timeout=1m
       - kubectl -n {{.namespace}} logs job/unlock-{{.rsrc}}-{{.ts}} --container unlock
       - kubectl -n {{.namespace}} delete job unlock-{{.rsrc}}-{{.ts}}
@@ -58,7 +58,6 @@ tasks:
     cmds:
       - kubectl -n {{.namespace}} patch replicationsources {{.rsrc}} --type merge -p '{"spec":{"trigger":{"manual":"{{.ts}}"}}}'
       - until kubectl -n {{.namespace}} get job/volsync-src-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
-      - kubectl -n {{.namespace}} wait --selector=job-name=volsync-src-{{.rsrc}} --for condition=ready --timeout=1m pod
       - kubectl -n {{.namespace}} wait job/volsync-src-{{.rsrc}} --for condition=complete --timeout=120m
       # TODO: Error from server (NotFound): jobs.batch "volsync-src-zzztest" not found
       # - kubectl -n {{.namespace}} logs job/volsync-src-{{.rsrc}}
@@ -126,7 +125,7 @@ tasks:
     internal: true
     cmds:
       - envsubst < <(cat {{.wipeJobTemplate}}) | kubectl apply -f -
-      - kubectl -n {{.namespace}} wait --selector=job-name=wipe-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=ready --timeout=1m pod
+      - until kubectl -n {{.namespace}} get job/wipe-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/wipe-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=complete --timeout=120m
       - kubectl -n {{.namespace}} logs job/wipe-{{.rsrc}}-{{.claim}}-{{.ts}} --container wipe
       - kubectl -n {{.namespace}} delete job wipe-{{.rsrc}}-{{.claim}}-{{.ts}}
@@ -138,7 +137,6 @@ tasks:
     cmds:
       - envsubst < <(cat {{.destinationTemplate}}) | kubectl apply -f -
       - until kubectl -n {{.namespace}} get job/volsync-dst-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
-      - kubectl -n {{.namespace}} wait --selector=job-name=volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=ready --timeout=1m pod
       - kubectl -n {{.namespace}} wait job/volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=complete --timeout=120m
       - kubectl -n {{.namespace}} delete replicationdestination {{.rsrc}}-{{.claim}}-{{.ts}}
     env: *task-vars
