@@ -23,7 +23,7 @@ tasks:
     silent: true
     cmds:
       - envsubst < <(cat {{.listJobTemplate}}) | kubectl apply -f -
-      - until kubectl -n {{.namespace}} get job/list-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
+      #- until kubectl -n {{.namespace}} get job/list-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/list-{{.rsrc}}-{{.ts}} --for condition=complete --timeout=1m
       - kubectl -n {{.namespace}} logs job/list-{{.rsrc}}-{{.ts}} --container list
       - kubectl -n {{.namespace}} delete job list-{{.rsrc}}-{{.ts}}
@@ -39,7 +39,7 @@ tasks:
     silent: true
     cmds:
       - envsubst < <(cat {{.unlockJobTemplate}}) | kubectl apply -f -
-      - until kubectl -n {{.namespace}} get job/unlock-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
+      #- until kubectl -n {{.namespace}} get job/unlock-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/unlock-{{.rsrc}}-{{.ts}} --for condition=complete --timeout=1m
       - kubectl -n {{.namespace}} logs job/unlock-{{.rsrc}}-{{.ts}} --container unlock
       - kubectl -n {{.namespace}} delete job unlock-{{.rsrc}}-{{.ts}}

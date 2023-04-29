@@ -10,10 +10,18 @@ env:
   KUBECONFIG: '{{.PROJECT_DIR}}/kubeconfig'
 
 includes:
-  cluster: .taskfiles/cluster.yml
-  precommit: .taskfiles/precommit.yml
-  snapshot: .taskfiles/snapshots.yml
-  volsync: .taskfiles/volsync.yml
+  cluster:
+    taskfile: .taskfiles/cluster.yml
+  precommit:
+    taskfile: .taskfiles/precommit.yml
+    aliases:
+      - pre
+  snapshot:
+    taskfile: .taskfiles/snapshots.yml
+  volsync:
+    taskfile: .taskfiles/volsync.yml
+    aliases:
+      - vs
 
 tasks:
 
