@@ -1,5 +1,11 @@
 ---
 creation_rules:
-  - encrypted_regex: ^(data|stringData)$
-    age: >-
-      age1wkeqj9ce5t24ec5u4zst942q8y2xstg8g9shjfqrsw5kpl6yl9nscc9jpe
+  - path_regex: cluster/.*\.sops\.ya?ml
+    encrypted_regex: ^(data|stringData)$
+    key_groups:
+      - age:
+          - age1wkeqj9ce5t24ec5u4zst942q8y2xstg8g9shjfqrsw5kpl6yl9nscc9jpe
+  - path_regex: ansible/.*\.sops\.ya?ml
+    key_groups:
+      - age:
+          - age1wkeqj9ce5t24ec5u4zst942q8y2xstg8g9shjfqrsw5kpl6yl9nscc9jpe

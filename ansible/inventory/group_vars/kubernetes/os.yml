@@ -1,0 +1,17 @@
+---
+timezone: Europe/Brussels
+
+public_ssh_keys:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHYTLxO4Gs6/0RiVeN82YhPozoO51BMQHpWC3EADJi+B wolfgang@calypso
+
+packages_install:
+  - hdparm
+  - htop
+  - ipvsadm
+  - lm-sensors
+  - nano
+  - nfs-common
+  - nvme-cli
+  - socat
+  - python3-kubernetes
+  - python3-yaml
