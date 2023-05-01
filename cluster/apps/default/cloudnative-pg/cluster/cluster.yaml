@@ -16,15 +16,8 @@ spec:
   superuserSecret:
     name: cloudnative-pg
   bootstrap:
-    initdb:
-      import:
-        type: monolith
-        databases:
-          - authentik
-        roles:
-          - authentik
-        source:
-          externalCluster: authentik-postgres
+    recovery:
+      source: &previous-cluster postgres
   monitoring:
     enablePodMonitor: true
   backup:
@@ -35,7 +28,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
-      serverName: postgres
+      serverName: postgres-v2
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg
@@ -45,11 +38,18 @@ spec:
           key: MINIO_SECRET_KEY
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   externalClusters:
-    - name: authentik-postgres
-      connectionParameters:
-        host: authentik-postgresql.default.svc.cluster.local
-        user: postgres
-        dbname: authentik
-      password:
-        name: authentik-postgresql
-        key: postgresql-postgres-password
+    - name: *previous-cluster
+      barmanObjectStore:
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cloudnative-pg/
+        endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+        serverName: postgres
+        s3Credentials:
+          accessKeyId:
+            name: cloudnative-pg
+            key: MINIO_ACCESS_KEY
+          secretAccessKey:
+            name: cloudnative-pg
+            key: MINIO_SECRET_KEY
