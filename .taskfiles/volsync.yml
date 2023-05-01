@@ -125,7 +125,7 @@ tasks:
     internal: true
     cmds:
       - envsubst < <(cat {{.wipeJobTemplate}}) | kubectl apply -f -
-      - until kubectl -n {{.namespace}} get job/wipe-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
+      #- until kubectl -n {{.namespace}} get job/wipe-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
       - kubectl -n {{.namespace}} wait job/wipe-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=complete --timeout=120m
       - kubectl -n {{.namespace}} logs job/wipe-{{.rsrc}}-{{.claim}}-{{.ts}} --container wipe
       - kubectl -n {{.namespace}} delete job wipe-{{.rsrc}}-{{.claim}}-{{.ts}}
@@ -136,7 +136,8 @@ tasks:
     internal: true
     cmds:
       - envsubst < <(cat {{.destinationTemplate}}) | kubectl apply -f -
-      - until kubectl -n {{.namespace}} get job/volsync-dst-{{.rsrc}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep 1; done
+      - until kubectl -n {{.namespace}} get job/volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} -o=jsonpath='{.items[0].metadata.name}' >/dev/null 2>&1; do sleep
+        1; done
       - kubectl -n {{.namespace}} wait job/volsync-dst-{{.rsrc}}-{{.claim}}-{{.ts}} --for condition=complete --timeout=120m
       - kubectl -n {{.namespace}} delete replicationdestination {{.rsrc}}-{{.claim}}-{{.ts}}
     env: *task-vars

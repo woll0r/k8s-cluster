@@ -67,42 +67,42 @@ spec:
           - name: nuc-kube-03
             devices:
               - name: sdb
-        resources:
-          api:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 500m
-              memory: 512Mi
-          mgr:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 1000m
-              memory: 1024Mi
-          mon:
-            requests:
-              cpu: 100m
-              memory: 512Mi
-            limits:
-              cpu: 1000m
-              memory: 1Gi
-          osd:
-            requests:
-              cpu: 200m
-              memory: 512Mi
-            limits:
-              cpu: 2000m
-              memory: 2Gi
-          prepareosd:
-            requests:
-              cpu: 100m
-              memory: 50Mi
-            limits:
-              cpu: 500m
-              memory: 200Mi
+      resources:
+        api:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        mgr:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+        mon:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+        osd:
+          requests:
+            cpu: 200m
+            memory: 512Mi
+          limits:
+            cpu: 2000m
+            memory: 2Gi
+        prepareosd:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 500m
+            memory: 200Mi
     cephBlockPools:
       - name: ceph-blockpool
         spec:
