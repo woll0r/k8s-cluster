@@ -71,6 +71,12 @@ spec:
         tls:
           - hosts:
               - *host
+    resources:
+      requests:
+        memory: 512Mi
+        cpu: 10m
+      limits:
+        memory: 1024Mi
     persistence:
       config:
         enabled: true
