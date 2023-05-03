@@ -42,6 +42,8 @@ spec:
         tls:
           - hosts:
               - rook.${SECRET_DOMAIN}
+    toolbox:
+      enabled: true
     cephClusterSpec:
       crashCollector:
         disable: false
@@ -57,16 +59,19 @@ spec:
         nodes:
           - name: big-kube-01
             devices:
-              - name: sda
+              - name: /dev/disk/by-id/ata-Samsung_SSD_840_EVO_250GB_S1DFNEAF307832M
           - name: nuc-kube-01
             devices:
-              - name: sdb
+              - name: /dev/disk/by-id/usb-ASMT_ASM105x_123456797059-0:0
           - name: nuc-kube-02
             devices:
-              - name: sdb
+              - name: /dev/disk/by-id/usb-ASMT_ASM105x_123456797008-0:0
           - name: nuc-kube-03
             devices:
-              - name: sdb
+              - name: /dev/disk/by-id/usb-ASMT_ASM105x_123456797726-0:0
+          - name: nuc-kube-04
+            devices:
+              - name: /dev/disk/by-id/usb-ASMT_ASM105x_1234567943CF-0:0
       resources:
         api:
           requests:
