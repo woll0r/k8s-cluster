@@ -5,6 +5,7 @@ resources:
   - home-ops.yaml
 configMapGenerator:
   - name: daemon-json
+    namespace: actions-runner
     files:
       - daemon.json
 generatorOptions:
