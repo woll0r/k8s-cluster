@@ -13,4 +13,5 @@ resources:
   - networking
   - rook-ceph
   - system-upgrade
+  - tigera-operator
   - volsync
