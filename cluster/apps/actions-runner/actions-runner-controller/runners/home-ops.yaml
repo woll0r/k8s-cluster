@@ -13,11 +13,11 @@ spec:
       ephemeral: true
       repository: woll0r/k8s-cluster
       labels: [self-hosted]
-      dockerVolumeMounts:
-        - name: daemon-json
-          mountPath: /etc/docker/daemon.json
-          subPath: daemon.json
-          readOnly: true
+      env:
+        - name: DOCKER_DEFAULT_ADDRESS_POOL_BASE
+          value: 172.20.0.0/16
+        - name: DOCKER_DEFAULT_ADDRESS_POOL_SIZE
+          value: '24'
       volumeMounts:
         - name: cache-volume
           mountPath: /cache
@@ -25,9 +25,6 @@ spec:
         - name: cache-volume
           persistentVolumeClaim:
             claimName: actions-runner-controller-cache
-        - name: daemon-json
-          configMap:
-            name: daemon-json
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
