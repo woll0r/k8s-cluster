@@ -10,8 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: cluster
-  dependsOn:
-    - name: cluster-apps-authentik
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
