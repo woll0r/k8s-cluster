@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: actions-runner
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
