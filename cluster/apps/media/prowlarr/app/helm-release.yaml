@@ -64,7 +64,7 @@ spec:
         existingClaim: prowlarr-config
     resources:
       requests:
-        memory: 100Mi
+        memory: 250Mi
         cpu: 10m
       limits:
-        memory: 500Mi
+        memory: 750Mi
