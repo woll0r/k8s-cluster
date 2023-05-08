@@ -34,6 +34,9 @@ spec:
     domainFilters:
       - ${SECRET_DOMAIN}
       - ${SECRET_ROOT_DOMAIN}
+    extraArgs:
+      - --annotation-filter=external-dns.alpha.kubernetes.io/target
+      - --cloudflare-proxied
     serviceMonitor:
       enabled: true
     resources:
