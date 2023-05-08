@@ -37,6 +37,7 @@ spec:
     extraArgs:
       - --annotation-filter=external-dns.alpha.kubernetes.io/target
       - --cloudflare-proxied
+    policy: sync
     serviceMonitor:
       enabled: true
     resources:
