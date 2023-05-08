@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: botkubeio-charts
+  name: k8s-gateway-charts
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://charts.botkube.io/
+  url: https://ori-edge.github.io/k8s_gateway/
   timeout: 3m

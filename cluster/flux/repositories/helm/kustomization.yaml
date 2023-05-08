@@ -7,7 +7,6 @@ resources:
   - backube-charts.yaml
   - bitnami-charts.yaml
   - bjw-s-charts.yaml
-  - botkubeio-charts.yaml
   - calico-charts.yaml
   - cloudnative-pg-charts.yaml
   - deliveryheroio-charts.yaml
@@ -16,7 +15,7 @@ resources:
   - ingress-nginx-charts.yaml
   - intel-charts.yaml
   - jetstack-charts.yaml
-  - k8s-at-home-charts.yaml
+  - k8s-gateway-charts.yaml
   - kubereboot-charts.yaml
   - kubernetes-sigs-descheduler-charts.yaml
   - kyverno-charts.yaml
