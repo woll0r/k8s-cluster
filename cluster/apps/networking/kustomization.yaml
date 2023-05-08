@@ -7,3 +7,4 @@ resources:
   # Flux kustomizations
   - cloudflared/ks.yaml
   - ingress-nginx/ks.yaml
+  - k8s-gateway/ks.yaml
