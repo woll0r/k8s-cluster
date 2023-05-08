@@ -32,8 +32,6 @@ spec:
     ingress:
       enabled: true
       className: nginx
-      annotations:
-        external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
       hosts:
         - host: &host gitops.${SECRET_DOMAIN}
           paths:

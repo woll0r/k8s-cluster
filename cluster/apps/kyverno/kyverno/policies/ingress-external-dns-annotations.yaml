@@ -19,6 +19,8 @@ spec:
         any:
           - resources:
               kinds: [Ingress]
+              annotations:
+                external-dns.home.arpa/enabled: 'true'
       mutate:
         patchStrategicMerge:
           metadata:

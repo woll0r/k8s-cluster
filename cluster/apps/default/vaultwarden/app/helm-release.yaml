@@ -52,7 +52,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
+          external-dns.home.arpa/enabled: 'true'
         hosts:
           - host: &host vaultwarden.${SECRET_DOMAIN}
             paths:

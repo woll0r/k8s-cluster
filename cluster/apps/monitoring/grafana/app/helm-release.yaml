@@ -81,10 +81,6 @@ spec:
             url: http://thanos-query:9090
             access: proxy
             isDefault: true
-          - name: Loki
-            type: loki
-            access: proxy
-            url: http://loki:3100
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/2842
@@ -131,10 +127,7 @@ spec:
       enabled: true
       ingressClassName: nginx
       annotations:
-        hajimari.io/enable: 'true'
-        hajimari.io/icon: chart-bar
-        hajimari.io/appName: Grafana
-        external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
+        external-dns.home.arpa/enabled: 'true'
       hosts:
         - &host grafana.${SECRET_DOMAIN}
       tls:

@@ -39,8 +39,6 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
-        annotations:
-          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
         hosts:
           - host: &host tautulli.${SECRET_DOMAIN}
             paths:

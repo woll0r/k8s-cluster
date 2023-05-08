@@ -46,7 +46,7 @@ spec:
       ingress:
         enabled: true
         annotations:
-          external-dns.alpha.kubernetes.io/target: k8s-tunnel.${SECRET_ROOT_DOMAIN}
+          external-dns.home.arpa/enabled: 'true'
         ingressClassName: nginx
         hosts:
           - host: &host arc-webhook.${SECRET_DOMAIN}
