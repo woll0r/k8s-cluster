@@ -1,0 +1,75 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres-v15
+  namespace: default
+  annotations:
+    kyverno.io/ignore: 'true'
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.3-2
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 10Gi
+    storageClass: rook-ceph-block
+  superuserSecret:
+    name: cloudnative-pg
+  monitoring:
+    enablePodMonitor: true
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+      serverName: postgres-v15
+      s3Credentials:
+        accessKeyId:
+          name: cloudnative-pg
+          key: MINIO_ACCESS_KEY
+        secretAccessKey:
+          name: cloudnative-pg
+          key: MINIO_SECRET_KEY
+
+  # bootstrap:
+  #   initdb:
+  #     import:
+  #       type: monolith
+  #       databases:
+  #         - "*"
+  #       roles:
+  #         - "*"
+  #       source:
+  #         externalCluster: cluster-pg14
+  #   recovery:
+  #     source: &previous-cluster postgres
+
+  # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  externalClusters: []
+    # - name: cluster-pg14
+    #   connectionParameters:
+    #     host: postgres-ro.default.svc
+    #     user: postgres
+    #     dbname: postgres
+    #     sslmode: require
+    #   password:
+    #     name: cloudnative-pg
+    #     key: password
+    # - name: *previous-cluster
+    #   barmanObjectStore:
+    #     wal:
+    #       compression: bzip2
+    #       maxParallel: 8
+    #     destinationPath: s3://cloudnative-pg/
+    #     endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+    #     serverName: postgres
+    #     s3Credentials:
+    #       accessKeyId:
+    #         name: cloudnative-pg
+    #         key: MINIO_ACCESS_KEY
+    #       secretAccessKey:
+    #         name: cloudnative-pg
+    #         key: MINIO_SECRET_KEY

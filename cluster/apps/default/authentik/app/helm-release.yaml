@@ -35,7 +35,7 @@ spec:
       error_reporting:
         enabled: true
       postgresql:
-        host: postgres-rw.default.svc
+        host: postgres-v15-rw.default.svc
         name: authentik
         user: authentik
         password: ${AUTHENTIK_DB_PASSWORD}
