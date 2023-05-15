@@ -59,18 +59,17 @@
       ],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver"
-    }
-  ],
-  "packageRules": [
+    },
     {
-      "description": "Use loose versioning for certain dependencies",
-      "matchDatasources": ["docker", "github-releases"],
-      "versioning": "loose",
-      "matchPackageNames": [
-        "ghcr.io/onedr0p/plex",
-        "ghcr.io/onedr0p/qbittorrent",
-        "Hypfer/Valetudo"
-      ]
+      "description": "Process imageName values",
+      "fileMatch": [
+        "kubernetes/.+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "imageName: (?<depName>\\S+):(?<currentValue>.*\\-.*)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "redhat"
     }
   ]
 }
