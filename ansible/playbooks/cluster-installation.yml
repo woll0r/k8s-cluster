@@ -1,5 +1,6 @@
 ---
-- hosts:
+- name: Cluster installation
+  hosts:
     - master
     - worker
   become: true
@@ -25,7 +26,7 @@
       vars:
         k3s_state: installed
 
-    - name: Get absolute path to this Git repository
+    - name: Get absolute path to this Git repository # noqa: run-once[task] command-instead-of-module
       delegate_to: localhost
       become: false
       run_once: true
@@ -33,8 +34,9 @@
       ansible.builtin.command: |-
         git rev-parse --show-toplevel
       register: repo_abs_path
+      changed_when: false
 
-    - name: Copy kubeconfig project directory
+    - name: Copy kubeconfig project directory # noqa: run-once[task]
       run_once: true
       ansible.builtin.fetch:
         src: "/etc/rancher/k3s/k3s.yaml"
@@ -44,7 +46,7 @@
         - k3s_control_node is defined
         - k3s_control_node
 
-    - name: Update kubeconfig with the correct IPv4 address
+    - name: Update kubeconfig with the correct IPv4 address # noqa: run-once[task]
       delegate_to: localhost
       become: false
       run_once: true
@@ -53,7 +55,7 @@
         regexp: "https://127.0.0.1:6443"
         replace: "https://{{ k3s_registration_address }}:6443"
 
-    - name: Resource Readiness Check
+    - name: Resource Readiness Check # noqa: run-once[task]
       run_once: true
       kubernetes.core.k8s_info:
         kubeconfig: /etc/rancher/k3s/k3s.yaml

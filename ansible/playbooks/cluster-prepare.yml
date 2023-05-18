@@ -1,5 +1,6 @@
 ---
-- hosts:
+- name: Cluster prepare
+  hosts:
     - master
     - worker
   become: true
@@ -31,11 +32,13 @@
             service: fstrim.timer
             enabled: true
     - name: Host configuration part 2
+      notify: Reboot
       block:
         - name: Host (2) | Disable swap at runtime
           ansible.builtin.command: swapoff -a
           when:
             - ansible_swaptotal_mb > 0
+          changed_when: false
         - name: Host (2) | Disable swap at boot
           ansible.posix.mount:
             name: '{{ item }}'
@@ -49,7 +52,7 @@
           loop: [br_netfilter, ip_vs, ip_vs_rr, overlay, rbd]
         - name: Host (2) | Enable kernel modules on boot
           ansible.builtin.copy:
-            mode: 0644
+            mode: '0644'
             content: '{{ item }}'
             dest: /etc/modules-load.d/{{ item }}.conf
           loop: [br_netfilter, ip_vs, ip_vs_rr, overlay, rbd]
@@ -71,7 +74,6 @@
               net.bridge.bridge-nf-call-ip6tables: 1
               fs.inotify.max_user_watches: 524288
               fs.inotify.max_user_instances: 512
-      notify: Reboot
     - name: Packages
       block:
         - name: Packages | Install required packages

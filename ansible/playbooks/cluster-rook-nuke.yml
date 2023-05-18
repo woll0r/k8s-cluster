@@ -1,5 +1,5 @@
 ---
-- name: Cluster Rook-Ceph
+- name: Cluster Rook-Ceph nuke
   hosts:
     - master
     - worker
@@ -23,7 +23,7 @@
         seconds: 2
   tasks:
     - # https://rook.io/docs/rook/v1.10/Getting-Started/ceph-teardown/
-      name: Reset Rook Ceph
+      name: Reset Rook Ceph # noqa: ignore-errors
       ignore_errors: true
       block:
         - name: Remove /var/lib/rook
@@ -32,17 +32,23 @@
             path: /var/lib/rook
         - name: Zap the disk to a fresh, usable state (zap-all is important, b/c MBR has to be clean)
           ansible.builtin.command: sgdisk --zap-all "{{ rook_block_device }}" || true
+          changed_when: false
         - name: Wipe a large portion of the beginning of the disk to remove more LVM metadata that may be present
           ansible.builtin.command: dd if=/dev/zero of="{{ rook_block_device }}" bs=1M count=100 oflag=direct,dsync
+          changed_when: false
         - name: Wipe the block device with wipefs
           ansible.builtin.command: wipefs --all --force "{{ rook_block_device }}"
+          changed_when: false
         - name: SSDs may be better cleaned with blkdiscard instead of dd
           ansible.builtin.command: blkdiscard "{{ rook_block_device }}"
+          changed_when: false
         - name: Inform the OS of partition table changes
           ansible.builtin.command: partprobe "{{ rook_block_device }}"
+          changed_when: false
         - name: Ceph can leave LVM and device mapper data that can lock the disks
           ansible.builtin.command: "{{ item }}"
           loop:
             - ls /dev/mapper/ceph-* | xargs -I% -- dmsetup remove %
             - rm -rf /dev/ceph-*
             - rm -rf /dev/mapper/ceph--*
+          changed_when: false
