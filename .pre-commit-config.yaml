@@ -28,6 +28,6 @@ repos:
       - id: forbid-secrets
         exclude: volsync.yaml
   - repo: https://github.com/oxsecurity/megalinter
-    rev: v6.22.1
+    rev: v6.22.2
     hooks:
       - id: megalinter-incremental # Faster, less thorough
