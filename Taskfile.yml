@@ -19,8 +19,6 @@ includes:
     taskfile: .taskfiles/precommit.yml
     aliases:
       - pre
-  snapshot:
-    taskfile: .taskfiles/snapshots.yml
   volsync:
     taskfile: .taskfiles/volsync.yml
     aliases:
