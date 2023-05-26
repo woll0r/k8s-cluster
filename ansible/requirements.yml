@@ -15,4 +15,4 @@ roles:
     src: https://github.com/PyratLabs/ansible-role-k3s.git
     version: v3.4.1
   - name: hifis.unattended_upgrades
-    version: v2.0.1
+    version: v3.0.0
