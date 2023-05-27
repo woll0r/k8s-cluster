@@ -1,5 +1,8 @@
 # K8S-GitOps
 
+!!! warning
+    These docs haven't been touched in a while, so they might be out of date.
+
 This repository serves as the declarative "source of truth" for my Kubernetes
 cluster at home. [Flux] watches over the
 `cluster` folder to check for changes and apply them to the cluster.
