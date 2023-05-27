@@ -6,6 +6,7 @@ exclude_paths:
 
 skip_list:
   - yaml[line-length]
+  - yaml[comments] # This one should get caught earlier by actual yamllint
   - var-naming
 warn_list:
   - command-instead-of-shell

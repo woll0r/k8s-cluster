@@ -40,4 +40,4 @@ ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS:
   - command: ansible-galaxy collection install -r ansible/requirements.yml --collections-path ~/.ansible/collections --force
     cwd: workspace
 
-SPELL_FILTER_REGEX_EXCLUDE: (ansible|cluster)/.*\.sops\.ya?ml
+SPELL_FILTER_REGEX_EXCLUDE: (\.vscode|(ansible|cluster)/.*\.sops\.ya?ml)
