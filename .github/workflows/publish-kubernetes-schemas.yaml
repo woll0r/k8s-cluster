@@ -55,8 +55,8 @@
           env:
             KUBECONFIG: "${{ steps.kubeconfig.outputs.filePath }}"
           run: |
-            unzip -j $GITHUB_WORKSPACE/crd-extractor.zip -d $GITHUB_WORKSPACE
-            bash "$GITHUB_WORKSPACE"/crd-extractor.sh
+            unzip -j "$GITHUB_WORKSPACE/crd-extractor.zip" -d "$GITHUB_WORKSPACE"
+            bash "$GITHUB_WORKSPACE/crd-extractor.sh"
 
         - name: Login to GHCR
           uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2
@@ -67,7 +67,7 @@
 
         - name: Publish schemas as OCI
           run: |
-            flux push artifact $OCI_REPO:$(git rev-parse --short HEAD) \
+            flux push artifact "$OCI_REPO:$(git rev-parse --short HEAD)" \
                 --path="/home/runner/.datree/crdSchemas" \
                 --source="${{ github.repositoryUrl }}" \
                 --revision="main"
@@ -98,7 +98,7 @@
         - name: Pull schemas as OCI
           run: |
             mkdir -p /home/runner/crdSchemas
-            flux pull artifact $OCI_REPO:$(git rev-parse --short HEAD) --output /home/runner/crdSchemas
+            flux pull artifact "$OCI_REPO:$(git rev-parse --short HEAD)" --output /home/runner/crdSchemas
 
         - name: Write nginx-unprivileged Dockerfile
           run: |
