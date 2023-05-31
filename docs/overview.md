@@ -31,7 +31,7 @@ Under the `cluster` directory, the following structure is present for
 
 [k3s]: https://k3s.io/
 [ansible-role-k3s]: https://github.com/PyratLabs/ansible-role-k3s/
-[Calico]: https://docs.tigera.io/calico/
+[Calico]: https://docs.tigera.io/calico/latest/about/about-calico/
 [Rook]: https://rook.io/
 [Mozilla SOPS]: https://toolkit.fluxcd.io/guides/mozilla-sops/
 [external-dns]: https://github.com/kubernetes-sigs/external-dns/
