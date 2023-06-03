@@ -10,7 +10,6 @@ ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be 
   - ANSIBLE_ANSIBLE_LINT
   - ENV_DOTENV_LINTER
   - JSON_JSONLINT
-  - KUBERNETES_KUBEVAL
   - KUBERNETES_KUBECONFORM
   - MARKDOWN_MARKDOWNLINT
   - MARKDOWN_MARKDOWN_LINK_CHECK
@@ -26,8 +25,16 @@ CLEAR_REPORT_FOLDER: true
 LINTER_RULES_PATH: .github/linters
 
 KUBERNETES_DIRECTORY: cluster
-KUBERNETES_KUBEVAL_ARGUMENTS: [--ignore-missing-schemas]
-KUBERNETES_KUBECONFORM_ARGUMENTS: [--ignore-missing-schemas]
+KUBERNETES_KUBECONFORM_ARGUMENTS:
+  # Default Kubernetes schemas
+  - -schema-location
+  - default
+  # Custom CRDs in the cluster
+  - -schema-location
+  - 'https://kubernetes-schemas.minuette.horse/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json'
+  # Schemas for Kustomizations
+  - -schema-location
+  - https://json.schemastore.org/kustomization.json
 
 JSON_JSONLINT_FILE_EXTENSIONS: [.json, .json5]
 JSON_JSONLINT_ARGUMENTS: [--mode, json5]
