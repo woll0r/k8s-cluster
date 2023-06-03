@@ -11,7 +11,6 @@ metadata:
       When `auth.home.arpa` is `true`, the annotations for
       Authentik are added.
 spec:
-  mutateExistingOnPolicyUpdate: true
   generateExistingOnPolicyUpdate: true
   rules:
     - name: auth
