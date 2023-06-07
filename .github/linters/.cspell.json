@@ -137,6 +137,8 @@
         "ipvsadm",
         "jetstack",
         "jsonschema",
+        "kareadita",
+        "kavita",
         "kopia",
         "kubeconfig",
         "kubelet",

@@ -1,0 +1,76 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app kavita
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  values:
+    image:
+      repository: ghcr.io/kareadita/kavita
+      tag: 0.7.2@sha256:5ff555007ad7fd38ea1d0e59f5b35140bd4a5f2975c2bca5d58c40940fcc9484
+    service:
+      main:
+        ports:
+          http:
+            port: 5000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        # annotations:
+        #   auth.home.arpa/enabled: 'true'
+        hosts:
+          - host: &host kavita.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    env:
+      TZ: ${TIMEZONE}
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      config:
+        enabled: true
+        mountPath: /kavita/config
+        existingClaim: kavita-config
+      media:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: 172.16.1.6
+            path: /volume1/Media
+        mountPath: /media
+    resources:
+      requests:
+        memory: 512Mi
+        cpu: 10m
+      limits:
+        memory: 1024Mi
