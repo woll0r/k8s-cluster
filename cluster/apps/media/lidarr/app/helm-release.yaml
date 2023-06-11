@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/lidarr-develop
-      tag: 1.2.3.3267@sha256:62cb5ae989b82cd8bceaf721639b4baf9cdc7f907b41a5e9f0b29b18011e6bd9
+      tag: 1.2.4.3273@sha256:7f36b073d3fcbbca2da435528d9c327ac34db978bbc4c557f4c93da03b449f9a
     env:
       TZ: ${TIMEZONE}
       LIDARR__AUTHENTICATION_METHOD: None
