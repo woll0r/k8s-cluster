@@ -238,6 +238,7 @@
         "snapclass",
         "snapshotter",
         "socat",
+        "softreboot",
         "sonarr",
         "sparkline",
         "sslmode",
