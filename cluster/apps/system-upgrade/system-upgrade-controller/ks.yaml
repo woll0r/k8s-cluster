@@ -11,9 +11,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: cluster
+  wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -29,6 +30,7 @@ spec:
     name: cluster
   dependsOn:
     - name: cluster-apps-system-upgrade-controller
+  wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m

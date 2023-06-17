@@ -13,14 +13,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: cluster
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: actions-runner-controller
-      namespace: actions-runner
+  wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -39,4 +35,4 @@ spec:
   wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m

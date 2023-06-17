@@ -14,6 +14,7 @@ spec:
   dependsOn:
     - name: cluster-apps-radarr
     - name: cluster-apps-sonarr
+  wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m

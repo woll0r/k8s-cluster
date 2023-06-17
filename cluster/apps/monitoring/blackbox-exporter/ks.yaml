@@ -13,11 +13,7 @@ spec:
     name: cluster
   dependsOn:
     - name: cluster-apps-kube-prom-stack
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: blackbox-exporter
-      namespace: monitoring
+  wait: true
   interval: 30m
   retryInterval: 1m
-  timeout: 3m
+  timeout: 5m
