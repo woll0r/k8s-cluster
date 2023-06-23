@@ -18,7 +18,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: recyclarr
-              image: ghcr.io/recyclarr/recyclarr:4.4.1@sha256:825ab392a0f99e8eaa6c0d1468eae83f9dab449eff7456f011a2fbfd82330bf8
+              image: ghcr.io/recyclarr/recyclarr:5.0.1@sha256:e69f238dc6ea92eea7a37bb5a4ce141b62a403462616471e1bc2a11cabce82b2
               imagePullPolicy: IfNotPresent
               env:
                 - name: TZ
