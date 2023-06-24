@@ -3,6 +3,7 @@ ignore: |
   .github/
   .pre-commit-config.yaml
   gotk-components.yaml
+  *.sops.yaml
 extends: default
 rules:
   truthy:
