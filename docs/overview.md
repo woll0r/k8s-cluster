@@ -27,7 +27,7 @@ Under the `cluster` directory, the following structure is present for
 - Github actions check for code formatting, build docs and some other very important background tasks on Git changes.
 - [System Upgrade Controller] will automatically update k3s.
 - [Kured] automatically reboots the nodes whenever reboots are required for OS updates.
-- [Renovate] will automatically open pull requests for new versions of Helm charts and container images, with some help from the [k8s-at-home Github action] for annotations.
+- [Renovate] will automatically open pull requests for new versions of Helm charts and container images.
 
 [k3s]: https://k3s.io/
 [ansible-role-k3s]: https://github.com/PyratLabs/ansible-role-k3s/
@@ -43,4 +43,3 @@ Under the `cluster` directory, the following structure is present for
 [System Upgrade Controller]: https://github.com/rancher/system-upgrade-controller/
 [Kured]: https://github.com/weaveworks/kured/
 [Renovate]: https://github.com/renovatebot/renovate/
-[k8s-at-home Github action]: https://github.com/k8s-at-home/renovate-helm-releases/
