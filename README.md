@@ -31,5 +31,5 @@ The cluster is stood up using an Ansible runbook that runs against the manually 
 
 ## Acknowledgements
 
-Loosely based on the amazing work in [k8s-at-home/template-cluster-k3s](https://github.com/k8s-at-home/template-cluster-k3s) and grabbing bits and pieces from
-[awesome-home-kubernetes](https://github.com/k8s-at-home/awesome-home-kubernetes)
+Loosely based on the amazing work in [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template) and grabbing bits and pieces found with
+[k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
