@@ -19,16 +19,16 @@ spec:
       interval: 5m
   install:
     createNamespace: true
-    crds: CreateReplace
     remediation:
       retries: 5
   upgrade:
     cleanupOnFail: true
-    crds: CreateReplace
     remediation:
       retries: 5
   timeout: 20m
   values:
+    crds:
+      enabled: true
     defaultRules:
       create: true
       rules:
