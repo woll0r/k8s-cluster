@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/kareadita/kavita
-      tag: 0.7.3@sha256:d9dce54f23b7a8017ec2a6abb95737eb0e0b478d48d2328323f6dfa4a9bb900b
+      tag: 0.7.4@sha256:fa3cd41837f1a91e8b6bf0865e909d562cd810146d16ad492695984e4b0341d1
     service:
       main:
         ports:
