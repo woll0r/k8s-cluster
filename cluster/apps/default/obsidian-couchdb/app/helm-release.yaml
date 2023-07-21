@@ -87,5 +87,5 @@ spec:
         mountPath: /opt/couchdb/etc/default.d
       data:
         enabled: true
-        existingClaim: obsidian-couchdb-config
+        existingClaim: obsidian-couchdb-data
         mountPath: /opt/couchdb/data
