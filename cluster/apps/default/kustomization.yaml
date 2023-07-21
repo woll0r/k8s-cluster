@@ -9,4 +9,5 @@ resources:
   - authentik/ks.yaml
   - cloudnative-pg/ks.yaml
   - kubernetes-schemas/ks.yaml
+  - obsidian-couchdb/ks.yaml
   - vaultwarden/ks.yaml
