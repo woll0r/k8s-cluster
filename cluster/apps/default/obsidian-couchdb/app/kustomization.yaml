@@ -9,6 +9,7 @@ resources:
   - volsync.yaml
 configMapGenerator:
   - name: obsidian-couchdb-configmap
+    namespace: default
     files:
       - config/config.ini
 generatorOptions:
