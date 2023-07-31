@@ -3,7 +3,7 @@
   # It is triggered by a push to the main branch, a weekly schedule, or a manual dispatch.
   name: "Publish Kubernetes Schemas"
 
-  on:
+  on: # yamllint disable-line rule:truthy
     # Allows manually triggering the workflow from the Github Actions UI
     workflow_dispatch: {}
     # Runs the workflow weekly at midnight (UTC)
