@@ -1,5 +1,6 @@
 # VS Code stuff
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 # Sops decrypted leftovers
 .decrypted~*
 # Kubernetes

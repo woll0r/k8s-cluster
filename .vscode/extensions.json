@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "redhat.vscode-yaml",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "redhat.ansible",
+        "signageos.signageos-vscode-sops",
+        "github.vscode-github-actions",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
+    ]
+}
