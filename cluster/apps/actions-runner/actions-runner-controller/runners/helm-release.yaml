@@ -34,9 +34,6 @@ spec:
       type: dind
     template:
       spec:
-        initContainers:
-          - name: init-dind-externals
-            image: ghcr.io/actions/actions-runner:2.307.1
         containers:
           - name: runner
             image: ghcr.io/actions/actions-runner:2.307.1
