@@ -36,7 +36,7 @@ spec:
       spec:
         containers:
           - name: runner
-            image: ghcr.io/actions/actions-runner:2.307.1
+            image: ghcr.io/onedr0p/github-actions-runner:rolling@sha256:6780c669254d0bb13c90505ac872c80ca83f1c5e31764957949eb80a353caf0b
             env:
               - name: DOCKER_DEFAULT_ADDRESS_POOL_BASE
                 value: 172.20.0.0/16
