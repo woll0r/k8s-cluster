@@ -34,8 +34,12 @@ spec:
       type: dind
     template:
       spec:
+        initContainers:
+          - name: init-dind-externals
+            image: ghcr.io/actions/actions-runner:2.307.1
         containers:
           - name: runner
+            image: ghcr.io/actions/actions-runner:2.307.1
             env:
               - name: DOCKER_DEFAULT_ADDRESS_POOL_BASE
                 value: 172.20.0.0/16
