@@ -93,6 +93,7 @@
         "cnpg",
         "cpuid",
         "crds",
+        "daemonconfig",
         "daemonset",
         "dashboardproviders",
         "dataplane",
