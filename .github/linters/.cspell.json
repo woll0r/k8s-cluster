@@ -61,6 +61,7 @@
         "alertmanagerconfigs",
         "alertmanagers",
         "alertname",
+        "allowedversions",
         "amhost",
         "apiserver",
         "arithmatex",
