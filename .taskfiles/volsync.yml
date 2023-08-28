@@ -14,6 +14,7 @@ vars:
   wipeJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/WipeJob.tmpl.yaml'
   listJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/ListJob.tmpl.yaml'
   unlockJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/UnlockJob.tmpl.yaml'
+  pruneJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/PruneJob.tmpl.yaml'
   ts: '{{now | date "150405"}}'
 
 tasks:
@@ -47,6 +48,21 @@ tasks:
     env: *task-vars
     preconditions:
       - sh: test -f {{.unlockJobTemplate}}
+
+  prune:
+    desc: prunes all snapshots taken by restic for a given ReplicationSource except for the 10 latest dailies (ex. task vs:prune rsrc=plex [namespace=default])
+    silent: true
+    cmds:
+      - envsubst < <(cat {{.pruneJobTemplate}}) | kubectl apply -f -
+      - kubectl -n {{.namespace}} wait job/prune-{{.rsrc}}-{{.ts}} --for condition=complete --timeout=120m
+      - kubectl -n {{.namespace}} logs job/prune-{{.rsrc}}-{{.ts}} --container prune
+      - kubectl -n {{.namespace}} delete job prune-{{.rsrc}}-{{.ts}}
+    vars:
+      rsrc: '{{ or .rsrc (fail "ReplicationSource `rsrc` is required") }}'
+      namespace: '{{.namespace | default "default"}}'
+    env: *task-vars
+    preconditions:
+      - sh: test -f {{.pruneJobTemplate}}
 
   # To run backup jobs in parallel for all replicationsources:
   #  - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=4 -l bash -c 'task vs:snapshot rsrc=$0 namespace=$1'
