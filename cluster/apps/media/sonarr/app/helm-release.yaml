@@ -32,6 +32,9 @@ spec:
     env:
       TZ: ${TIMEZONE}
       SONARR__AUTHENTICATION_METHOD: External
+    envFrom:
+      - secretRef:
+          name: sonarr-api-key
     service:
       main:
         ports:

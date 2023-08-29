@@ -23,6 +23,11 @@ spec:
               env:
                 - name: TZ
                   value: ${TIMEZONE}
+              envFrom:
+                - secretRef:
+                    name: radarr-api-key
+                - secretRef:
+                    name: sonarr-api-key
               command:
                 - /app/recyclarr/recyclarr
               args:

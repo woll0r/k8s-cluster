@@ -32,6 +32,9 @@ spec:
     env:
       TZ: ${TIMEZONE}
       RADARR__AUTHENTICATION_METHOD: External
+    envFrom:
+      - secretRef:
+          name: radarr-api-key
     service:
       main:
         ports:

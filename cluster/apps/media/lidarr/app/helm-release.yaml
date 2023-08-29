@@ -32,6 +32,9 @@ spec:
     env:
       TZ: ${TIMEZONE}
       LIDARR__AUTHENTICATION_METHOD: None
+    envFrom:
+      - secretRef:
+          name: lidarr-api-key
     service:
       main:
         ports:
