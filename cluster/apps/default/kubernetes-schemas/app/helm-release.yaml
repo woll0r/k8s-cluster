@@ -26,7 +26,7 @@ spec:
   values:
     image:
       repository: ghcr.io/woll0r/kubernetes-schemas-web
-      tag: latest@sha256:55681e32cea0fab3936313fe7204ac021cd3c379905d6dae3b4dbb974688a538
+      tag: latest@sha256:a01a3473d57a635986ea1779dfde423e4c3311d65fb67c2ba3b41685447e794d
     service:
       main:
         ports:
