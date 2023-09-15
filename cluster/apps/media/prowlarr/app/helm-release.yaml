@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.8.6.3931@sha256:1567d1fe7361b7354d4f013ba79817c1c3ac8320574ff42baca057f77edae14b
+      tag: 1.9.0.3964@sha256:7cd75c3694d323a81ebc51d3656569fc05a6d58d6d5fc577756f875256fe97ab
     env:
       TZ: ${TIMEZONE}
       PROWLARR__AUTHENTICATION_METHOD: External
