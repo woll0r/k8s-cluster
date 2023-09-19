@@ -225,7 +225,7 @@ spec:
           image: quay.io/thanos/thanos:v0.32.2
           version: v0.22.0
           objectStorageConfig:
-            name: thanos-objstore-secret
+            name: thanos-s3-secret
             key: objstore.yml
         storageSpec:
           volumeClaimTemplate:
