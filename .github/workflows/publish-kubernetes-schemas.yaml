@@ -126,12 +126,12 @@
     clean-images:
       name: Delete old versions of container images
       runs-on: ["arc-runner-set-home-ops"]
-      needs: ["publish-kubernetes-schemas"]
+      needs: ["publish-kubernetes-schemas-web"]
       steps:
-        - name: Setup GCC
-          uses: egor-tensin/setup-gcc@eaa888eb19115a521fa72b65cd94fe1f25bbcaac # v1.3
-          with:
-            version: latest
+        - name: Setup GCC and other build essentials
+          run: |
+            sudo apt-get update
+            sudo apt-get install -yq --no-install-recommends build-essential
 
         - name: Delete old images
           uses: snok/container-retention-policy@04c70fd030033036d69c0057e0d125bf25820544 # v2.1.2
