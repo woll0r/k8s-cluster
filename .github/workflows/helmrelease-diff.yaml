@@ -1,99 +1,37 @@
 ---
 name: HelmRelease Diff
 
-on: # yamllint disable-line rule:truthy
+on:
   pull_request:
-    branches: [main]
-    paths: ['**.yaml']
-
-env:
-  KUBERNETES_DIR: ./
+    branches: ["main"]
+    paths: ["kubernetes/**.yaml"]
 
 jobs:
-  changed-files:
-    name: Detect File Changes
-    # runs-on: ubuntu-latest
+  flux-diff:
+    name: Flux Diff
     runs-on: ["arc-runner-set-home-ops"]
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@8238a4103220c636f2dad328ead8a7c8dbe316a3 # v39.2.0
-        with:
-          json: true
-          files: |
-            cluster/**/helm-release.yaml
-
-      - id: set-matrix
-        run: echo "matrix={\"file\":${{ steps.changed-files.outputs.all_changed_files }}}" >> "${GITHUB_OUTPUT}"
-
-  diff:
-    name: Diff on Helm Releases
-    # runs-on: ubuntu-latest
-    runs-on: ["arc-runner-set-home-ops"]
-    needs: [changed-files]
+    permissions:
+      pull-requests: write
     strategy:
-      matrix: ${{ fromJSON(needs.changed-files.outputs.matrix) }}
+      matrix:
+        path: ["kubernetes"]
+        resource: ["helmrelease", "kustomization"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-
-      - name: Checkout default branch
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-        with:
-          ref: ${{ github.event.repository.default_branch }}
-          path: default_branch
-
-      - name: Install Homebrew requirements
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential procps curl file git
-
-      - name: Install Homebrew
-        run: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-      - name: Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Setup Tools
-        run: |
-          brew install helm homeport/tap/dyff kustomize yq
-
-      - name: Diff
+      - name: Diff Resources
+        uses: allenporter/flux-local/action/diff@efbe055c6dc2a63d1102db582632d2aa03696664 # 3.1.1
         id: diff
-        run: |
-          diff=$(npx zx ./.github/scripts/helmReleaseDiff.mjs \
-            --current-release "default_branch/${{ matrix.file }}" \
-            --incoming-release "${{ matrix.file }}" \
-            --kubernetes-dir ${{ env.KUBERNETES_DIR }} \
-            --diff-tool "diff")
-          # shellcheck disable=SC2129
-          echo "diff<<EOF" >> "${GITHUB_OUTPUT}"
-          echo "${diff}" >> "${GITHUB_OUTPUT}"
-          echo "EOF" >> "${GITHUB_OUTPUT}"
-
-      - name: Find Comment
-        if: ${{ always() && steps.diff.outputs.diff != '' }}
-        uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2.4.0
-        id: find-comment
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body-includes: 'Helm Release Diff: ${{ matrix.file }}'
+          sources: cluster
+          path: "${{ matrix.path }}"
+          resource: "${{ matrix.resource }}"
 
-      - name: Create or update comment
-        if: ${{ always() && steps.diff.outputs.diff != '' }}
-        uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # v3.0.2
+      - if: ${{ steps.diff.outputs.diff != '' }}
+        name: Add comment
+        uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
         with:
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            Helm Release Diff: `${{ matrix.file }}`
-
+          message-id: "${{ github.event.pull_request.number }}/${{ matrix.path }}/${{ matrix.resource }}"
+          message-failure: Diff was not successful
+          message: |
             ```diff
             ${{ steps.diff.outputs.diff }}
             ```
-          edit-mode: replace
