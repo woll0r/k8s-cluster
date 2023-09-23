@@ -4,7 +4,7 @@ name: HelmRelease Diff
 on:
   pull_request:
     branches: ["main"]
-    paths: ["kubernetes/**.yaml"]
+    paths: ["cluster/**.yaml"]
 
 jobs:
   flux-diff:
