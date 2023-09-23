@@ -22,13 +22,14 @@ concurrency:
 jobs:
   build:
     name: MegaLinter
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ["arc-runner-set-home-ops"]
     steps:
       # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       # MegaLinter
@@ -46,7 +47,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        if: ${{ success() }} || ${{ failure() }}
+        if: ${{ success() || failure() }}
         uses: actions/upload-artifact@v3
         with:
           name: MegaLinter reports
@@ -62,7 +63,7 @@ jobs:
           'skip fix')
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: '[MegaLinter] Apply linters automatic fixes'
           title: '[MegaLinter] Apply linters automatic fixes'
           labels: bot
