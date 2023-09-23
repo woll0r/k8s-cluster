@@ -48,6 +48,12 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
           path: default_branch
 
+      - name: Install Homebrew requirements
+        run: sudo apt-get install -y build-essential procps curl file git
+
+      - name: Install Homebrew
+        run: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
       - name: Setup Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
