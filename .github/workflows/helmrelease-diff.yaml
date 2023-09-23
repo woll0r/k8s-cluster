@@ -49,7 +49,9 @@ jobs:
           path: default_branch
 
       - name: Install Homebrew requirements
-        run: sudo apt-get install -y build-essential procps curl file git
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential procps curl file git
 
       - name: Install Homebrew
         run: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
