@@ -25,6 +25,7 @@ spec:
       retries: 5
   values:
     controller:
+      allowSnippetAnnotations: 'true'
       ingressClass: nginx
       replicaCount: 1
       service:
