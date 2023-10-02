@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - flux.yaml
   - cluster.yaml
+  - pgp-public-keys.yaml
   - repositories
   - vars
   - apps.yaml

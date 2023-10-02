@@ -147,6 +147,7 @@
         "fontawesome",
         "fstrim",
         "fullname",
+        "gitkey",
         "gitops",
         "gnet",
         "goauthentik",
