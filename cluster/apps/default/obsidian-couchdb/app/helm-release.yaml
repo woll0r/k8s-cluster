@@ -42,7 +42,9 @@ spec:
                 memory: 1024Mi
         initContainers:
           init-config:
-            image: busybox:latest@sha256:3fbc632167424a6d997e74f52b878d7cc478225cffac6bc977eedfe51c7f4e79
+            image:
+              repository: busybox
+              tag: latest@sha256:3fbc632167424a6d997e74f52b878d7cc478225cffac6bc977eedfe51c7f4e79
             command:
               - "sh"
               - "-c"
