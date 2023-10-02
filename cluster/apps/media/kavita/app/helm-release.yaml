@@ -49,7 +49,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        className: nginx
         annotations:
           external-dns.home.arpa/enabled: 'true'
         hosts:
@@ -72,8 +72,9 @@ spec:
     persistence:
       config:
         enabled: true
-        mountPath: /kavita/config
         existingClaim: kavita-config
+        globalMounts:
+          - path: /kavita/config
       media:
         enabled: true
         type: nfs

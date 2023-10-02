@@ -50,7 +50,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        className: nginx
         annotations:
           external-dns.home.arpa/enabled: 'true'
         hosts:
@@ -74,4 +74,5 @@ spec:
       config:
         enabled: true
         existingClaim: overseerr-config
-        mountPath: /app/config
+        globalMounts:
+          - path: /app/config

@@ -33,7 +33,7 @@ spec:
               tag: 3.3.2
             envFrom:
               - secretRef:
-                name: obsidian-couchdb-secrets
+                  name: obsidian-couchdb-secrets
             resources:
               requests:
                 memory: 512Mi
@@ -68,7 +68,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        className: nginx
         annotations:
           external-dns.home.arpa/enabled: 'false'
         hosts:
