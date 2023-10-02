@@ -87,8 +87,6 @@ spec:
         enabled: true
         type: configMap
         name: obsidian-couchdb-configmap
-        globalMounts:
-          - path: "-"
       config-storage:
         enabled: true
         type: emptyDir
