@@ -33,7 +33,7 @@ spec:
               tag: 3.3.2
             envFrom:
               - secretRef:
-                  name: obsidian-couchdb-secrets
+                name: obsidian-couchdb-secrets
             resources:
               requests:
                 memory: 512Mi
@@ -62,7 +62,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 5984
+            port: 5984
     ingress:
       main:
         enabled: true
@@ -75,7 +75,8 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  port: *port
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host

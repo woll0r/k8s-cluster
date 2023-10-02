@@ -59,7 +59,7 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
-                  port: https
+                  port: http
         tls:
           - hosts:
               - *host

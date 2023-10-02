@@ -47,4 +47,5 @@ spec:
           http:
             port: 8191
     ingress:
-      enabled: false
+      main:
+        enabled: false

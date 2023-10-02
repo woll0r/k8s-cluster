@@ -48,6 +48,9 @@ spec:
         ports:
           http:
             port: 9090
+    ingress:
+      main:
+        enabled: false
     persistence:
       config:
         enabled: true
