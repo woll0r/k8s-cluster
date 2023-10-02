@@ -26,32 +26,36 @@ spec:
       retries: 5
       remediateLastFailure: true
   values:
-    image:
-      repository: ghcr.io/onedr0p/plex
-      tag: 1.32.6.7557-1cf77d501
-    env:
-      TZ: ${TIMEZONE}
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: intel.feature.node.kubernetes.io/gpu
-                  operator: In
-                  values:
-                    - 'true'
-                - key: feature.node.kubernetes.io/cpu-cpuid.AVX
-                  operator: In
-                  values:
-                    - 'true'
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 1000m
-        memory: 250Mi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 16000Mi
+    controller:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/plex
+              tag: 1.32.6.7557-1cf77d501
+            env:
+              TZ: ${TIMEZONE}
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: intel.feature.node.kubernetes.io/gpu
+                          operator: In
+                          values:
+                            - 'true'
+                        - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+                          operator: In
+                          values:
+                            - 'true'
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                gpu.intel.com/i915: 1
+                memory: 16000Mi
     defaultPodOptions:
       securityContext:
         runAsUser: 568
