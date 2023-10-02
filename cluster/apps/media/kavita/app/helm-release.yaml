@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -26,9 +26,21 @@ spec:
       retries: 5
       remediateLastFailure: true
   values:
-    image:
-      repository: ghcr.io/kareadita/kavita
-      tag: 0.7.8@sha256:60282ac17f4973f9a5ea97cbab22506a5fea3cabe38308fa88825687d5b36cc5
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/kareadita/kavita
+              tag: 0.7.8@sha256:60282ac17f4973f9a5ea97cbab22506a5fea3cabe38308fa88825687d5b36cc5
+            env:
+              TZ: ${TIMEZONE}
+            resources:
+              requests:
+                memory: 512Mi
+                cpu: 10m
+              limits:
+                memory: 1024Mi
     service:
       main:
         ports:
@@ -45,16 +57,18 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
-    env:
-      TZ: ${TIMEZONE}
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
     persistence:
       config:
         enabled: true
@@ -62,15 +76,8 @@ spec:
         existingClaim: kavita-config
       media:
         enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: 172.16.1.6
-            path: /volume1/Media
-        mountPath: /media
-    resources:
-      requests:
-        memory: 512Mi
-        cpu: 10m
-      limits:
-        memory: 1024Mi
+        type: nfs
+        server: 172.16.1.6
+        path: /volume1/Media
+        globalMounts:
+          - path: /media

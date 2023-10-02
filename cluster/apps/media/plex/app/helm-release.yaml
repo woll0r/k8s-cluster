@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -26,20 +26,46 @@ spec:
       retries: 5
       remediateLastFailure: true
   values:
-    image:
-      repository: ghcr.io/onedr0p/plex
-      tag: 1.32.6.7557-1cf77d501
-    env:
-      TZ: ${TIMEZONE}
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 44
-        - 109
-        - 100
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/plex
+              tag: 1.32.6.7557-1cf77d501
+            env:
+              TZ: ${TIMEZONE}
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: intel.feature.node.kubernetes.io/gpu
+                          operator: In
+                          values:
+                            - 'true'
+                        - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+                          operator: In
+                          values:
+                            - 'true'
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                gpu.intel.com/i915: 1
+                memory: 16000Mi
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 44
+          - 109
+          - 100
     service:
       main:
         primary: true
@@ -48,28 +74,21 @@ spec:
           - ${PLEX_LB}
         ports:
           http:
+            enabled: true
             port: 32400
-        externalTrafficPolicy: Local
-      dnla-tcp:
-        enabled: false
-        type: NodePort
-        ports:
+            protocol: TCP
+            targetPort: 32400
           dnla-tcp:
             enabled: true
             port: 32469
             protocol: TCP
             targetPort: 32469
-        externalTrafficPolicy: Local
-      dnla-udp:
-        enabled: false
-        type: NodePort
-        ports:
           dnla-udp:
             enabled: true
             port: 1900
             protocol: TCP
             targetPort: 1900
-    externalTrafficPolicy: Local
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
@@ -79,6 +98,9 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -88,35 +110,13 @@ spec:
         existingClaim: plex-config
       media:
         enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: 172.16.1.6
-            path: /volume1/Media
-        mountPath: /media
+        type: nfs
+        server: 172.16.1.6
+        path: /volume1/Media
         readOnly: true
+        globalMounts:
+          - path: /media
       transcode:
         enabled: true
         type: emptyDir
         medium: Memory
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: intel.feature.node.kubernetes.io/gpu
-                  operator: In
-                  values:
-                    - 'true'
-                - key: feature.node.kubernetes.io/cpu-cpuid.AVX
-                  operator: In
-                  values:
-                    - 'true'
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 1000m
-        memory: 250Mi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 16000Mi

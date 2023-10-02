@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -24,14 +24,24 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: ghcr.io/woll0r/kubernetes-schemas-web
-      tag: latest@sha256:0e96724633988a8934b83211a90332b1d44980c4fa50ea3543a7c9e7f490597c
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/woll0r/kubernetes-schemas-web
+              tag: latest@sha256:0e96724633988a8934b83211a90332b1d44980c4fa50ea3543a7c9e7f490597c
+            resources:
+              requests:
+                memory: 50Mi
+                cpu: 10m
+              limits:
+                memory: 100Mi
     service:
       main:
         ports:
           http:
-            port: &port 8080
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -44,13 +54,8 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  port: *port
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        memory: 50Mi
-        cpu: 10m
-      limits:
-        memory: 100Mi

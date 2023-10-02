@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -24,41 +24,39 @@ spec:
     remediation:
       retries: 5
   values:
-    global:
-      nameOverride: *app
-    image:
-      repository: cloudflare/cloudflared
-      tag: 2023.8.2-amd64
-    args:
-      - tunnel
-      - --config
-      - /etc/cloudflared/default.yaml
-      - --metrics
-      - 0.0.0.0:9090
-      - run
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: cloudflare/cloudflared
+              tag: 2023.8.2-amd64
+            args:
+              - tunnel
+              - --config
+              - /etc/cloudflared/default.yaml
+              - --metrics
+              - 0.0.0.0:9090
+              - run
+            resources:
+              requests:
+                memory: 64Mi
+                cpu: 10m
+              limits:
+                memory: 128Mi
     service:
       main:
         nameOverride: metrics
         ports:
           http:
             port: 9090
+    ingress:
+      main:
+        enabled: false
     persistence:
       config:
         enabled: true
-        type: custom
-        volumeSpec:
-          secret:
-            secretName: cloudflare-tunnel
-        subPath:
-          - path: cred.json
-            mountPath: /etc/cloudflared/cred.json
-            readOnly: true
-          - path: default.yaml
-            mountPath: /etc/cloudflared/default.yaml
-            readOnly: true
-    resources:
-      requests:
-        memory: 64Mi
-        cpu: 10m
-      limits:
-        memory: 128Mi
+        type: secret
+        name: cloudflare-tunnel
+        globalMounts:
+          - path: /etc/cloudflared
