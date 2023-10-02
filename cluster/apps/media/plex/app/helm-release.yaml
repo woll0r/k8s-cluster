@@ -26,7 +26,7 @@ spec:
       retries: 5
       remediateLastFailure: true
   values:
-    controller:
+    controllers:
       main:
         containers:
           main:

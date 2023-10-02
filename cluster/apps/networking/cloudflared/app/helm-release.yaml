@@ -24,7 +24,7 @@ spec:
     remediation:
       retries: 5
   values:
-    controller:
+    controllers:
       main:
         containers:
           main:
