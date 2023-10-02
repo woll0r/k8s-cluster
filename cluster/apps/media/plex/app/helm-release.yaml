@@ -35,19 +35,6 @@ spec:
               tag: 1.32.6.7557-1cf77d501
             env:
               TZ: ${TIMEZONE}
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: intel.feature.node.kubernetes.io/gpu
-                          operator: In
-                          values:
-                            - 'true'
-                        - key: feature.node.kubernetes.io/cpu-cpuid.AVX
-                          operator: In
-                          values:
-                            - 'true'
             resources:
               requests:
                 gpu.intel.com/i915: 1
@@ -57,6 +44,19 @@ spec:
                 gpu.intel.com/i915: 1
                 memory: 16000Mi
     defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: intel.feature.node.kubernetes.io/gpu
+                    operator: In
+                    values:
+                      - 'true'
+                  - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+                    operator: In
+                    values:
+                      - 'true'
       securityContext:
         runAsUser: 568
         runAsGroup: 568

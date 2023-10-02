@@ -35,18 +35,6 @@ spec:
               tag: 4.5.5
             env:
               TZ: ${TIMEZONE}
-            affinity:
-              podAntiAffinity:
-                preferredDuringSchedulingIgnoredDuringExecution:
-                  - weight: 100
-                    podAffinityTerm:
-                      labelSelector:
-                        matchExpressions:
-                          - key: app.kubernetes.io/name
-                            operator: In
-                            values:
-                              - kube-vip
-                      topologyKey: kubernetes.io/hostname
             resources:
               requests:
                 memory: 250Mi
@@ -86,6 +74,18 @@ spec:
           - hosts:
               - *host
     defaultPodOptions:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - kube-vip
+                topologyKey: kubernetes.io/hostname
       securityContext:
         runAsUser: 568
         runAsGroup: 568
