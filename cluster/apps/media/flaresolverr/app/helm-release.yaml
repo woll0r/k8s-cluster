@@ -26,19 +26,25 @@ spec:
       retries: 5
       remediateLastFailure: true
   values:
-    image:
-      repository: ghcr.io/flaresolverr/flaresolverr
-      tag: v3.3.6
-    env:
-      TZ: ${TIMEZONE}
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/flaresolverr/flaresolverr
+              tag: v3.3.6
+            env:
+              TZ: ${TIMEZONE}
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 10m
+              limits:
+                memory: 500Mi
     service:
       main:
         ports:
           http:
             port: 8191
-    resources:
-      requests:
-        memory: 250Mi
-        cpu: 10m
-      limits:
-        memory: 500Mi
+    ingress:
+      enabled: false

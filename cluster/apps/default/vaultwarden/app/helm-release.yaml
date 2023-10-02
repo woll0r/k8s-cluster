@@ -24,22 +24,33 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: vaultwarden/server
-      tag: 1.29.2
-    env:
-      DATA_FOLDER: config
-      TZ: ${TIMEZONE}
-      SIGNUPS_ALLOWED: 'false'
-      DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
-    envFrom:
-      - secretRef:
-          name: vaultwarden-secrets
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: vaultwarden/server
+              tag: 1.29.2
+            env:
+              DATA_FOLDER: config
+              TZ: ${TIMEZONE}
+              SIGNUPS_ALLOWED: 'false'
+              DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
+            envFrom:
+              - secretRef:
+                  name: vaultwarden-secrets
+            resources:
+              requests:
+                memory: 512Mi
+                cpu: 10m
+              limits:
+                memory: 1024Mi
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         ports:
@@ -72,12 +83,6 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        memory: 512Mi
-        cpu: 10m
-      limits:
-        memory: 1024Mi
     persistence:
       config:
         enabled: true

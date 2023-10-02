@@ -31,15 +31,37 @@ spec:
       tag: 1.32.6.7557-1cf77d501
     env:
       TZ: ${TIMEZONE}
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 44
-        - 109
-        - 100
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: intel.feature.node.kubernetes.io/gpu
+                  operator: In
+                  values:
+                    - 'true'
+                - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+                  operator: In
+                  values:
+                    - 'true'
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
+        cpu: 1000m
+        memory: 250Mi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 16000Mi
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 44
+          - 109
+          - 100
     service:
       main:
         primary: true
@@ -69,7 +91,7 @@ spec:
             port: 1900
             protocol: TCP
             targetPort: 1900
-    externalTrafficPolicy: Local
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
@@ -88,35 +110,13 @@ spec:
         existingClaim: plex-config
       media:
         enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: 172.16.1.6
-            path: /volume1/Media
-        mountPath: /media
+        type: nfs
+        server: 172.16.1.6
+        path: /volume1/Media
         readOnly: true
+        globalMounts:
+          - path: /media
       transcode:
         enabled: true
         type: emptyDir
         medium: Memory
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: intel.feature.node.kubernetes.io/gpu
-                  operator: In
-                  values:
-                    - 'true'
-                - key: feature.node.kubernetes.io/cpu-cpuid.AVX
-                  operator: In
-                  values:
-                    - 'true'
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 1000m
-        memory: 250Mi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 16000Mi

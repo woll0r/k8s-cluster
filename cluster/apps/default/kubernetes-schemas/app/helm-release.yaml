@@ -24,9 +24,19 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: ghcr.io/woll0r/kubernetes-schemas-web
-      tag: latest@sha256:8de26d0474a9c72fba31bab41245ebc2a9e62e3fdfd0b28dad670d8f5e8d6565
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/woll0r/kubernetes-schemas-web
+              tag: latest@sha256:8de26d0474a9c72fba31bab41245ebc2a9e62e3fdfd0b28dad670d8f5e8d6565
+            resources:
+              requests:
+                memory: 50Mi
+                cpu: 10m
+              limits:
+                memory: 100Mi
     service:
       main:
         ports:
@@ -48,9 +58,3 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        memory: 50Mi
-        cpu: 10m
-      limits:
-        memory: 100Mi

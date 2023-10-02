@@ -24,29 +24,40 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: public.ecr.aws/docker/library/couchdb
-      tag: 3.3.2
-    initContainers:
-      init-config:
-        image: busybox:latest@sha256:3fbc632167424a6d997e74f52b878d7cc478225cffac6bc977eedfe51c7f4e79
-        command:
-          - "sh"
-          - "-c"
-          - "cp /tmp/config/*.ini /default.d/; ls -lrt /default.d;"
-        volumeMounts:
-          - name: config
-            mountPath: /tmp/config
-          - name: config-storage
-            mountPath: /default.d
-    envFrom:
-      - secretRef:
-          name: obsidian-couchdb-secrets
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: public.ecr.aws/docker/library/couchdb
+              tag: 3.3.2
+            envFrom:
+              - secretRef:
+                  name: obsidian-couchdb-secrets
+            resources:
+              requests:
+                memory: 512Mi
+                cpu: 10m
+              limits:
+                memory: 1024Mi
+        initContainers:
+          init-config:
+            image: busybox:latest@sha256:3fbc632167424a6d997e74f52b878d7cc478225cffac6bc977eedfe51c7f4e79
+            command:
+              - "sh"
+              - "-c"
+              - "cp /tmp/config/*.ini /default.d/; ls -lrt /default.d;"
+            volumeMounts:
+              - name: config
+                mountPath: /tmp/config
+              - name: config-storage
+                mountPath: /default.d
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         ports:
@@ -68,24 +79,20 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        memory: 512Mi
-        cpu: 10m
-      limits:
-        memory: 1024Mi
     persistence:
       config:
         enabled: true
         type: configMap
         name: obsidian-couchdb-configmap
-        mountPath: "-"
-
+        globalMounts:
+          - path: "-"
       config-storage:
         enabled: true
         type: emptyDir
-        mountPath: /opt/couchdb/etc/default.d
+        globalMounts:
+          - path: /opt/couchdb/etc/default.d
       data:
         enabled: true
         existingClaim: obsidian-couchdb-data
-        mountPath: /opt/couchdb/data
+        globalMounts:
+          - path: /opt/couchdb/data
