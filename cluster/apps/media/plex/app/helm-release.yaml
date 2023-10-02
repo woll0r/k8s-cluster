@@ -74,22 +74,15 @@ spec:
           - ${PLEX_LB}
         ports:
           http:
+            enabled: true
             port: 32400
-        externalTrafficPolicy: Local
-      dnla-tcp:
-        enabled: false
-        type: NodePort
-        ports:
+            protocol: TCP
+            targetPort: 32400
           dnla-tcp:
             enabled: true
             port: 32469
             protocol: TCP
             targetPort: 32469
-        externalTrafficPolicy: Local
-      dnla-udp:
-        enabled: false
-        type: NodePort
-        ports:
           dnla-udp:
             enabled: true
             port: 1900
