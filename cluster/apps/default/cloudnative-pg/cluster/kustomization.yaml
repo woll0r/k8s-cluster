@@ -6,3 +6,4 @@ resources:
   # - cluster.yaml
   - cluster-v15.yaml
   - scheduledbackup.yaml
+  - service.yaml
