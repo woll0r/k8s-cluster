@@ -10,4 +10,5 @@ resources:
   - cloudnative-pg/ks.yaml
   - kubernetes-schemas/ks.yaml
   - obsidian-couchdb/ks.yaml
+  - redis/ks.yaml
   - vaultwarden/ks.yaml
