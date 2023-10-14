@@ -10,13 +10,13 @@ images:
   - name: rancher/system-upgrade-controller
     newTag: v0.13.1
 # Take out the namespace because it's defined earlier
-patchesStrategicMerge:
-  - |
-    $patch: delete
-    apiVersion: v1
-    kind: Namespace
-    metadata:
-      name: system-upgrade
+patches:
+  - patch: |
+      $patch: delete
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: system-upgrade
 labels:
   - pairs:
       app.kubernetes.io/name: system-upgrade-controller
