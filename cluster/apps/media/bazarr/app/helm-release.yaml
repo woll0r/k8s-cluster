@@ -35,6 +35,13 @@ spec:
               tag: 1.3.1@sha256:840242bb1dfb337e5bfa579af039738bbf9948f6f33deecf451ebdd9ca509e31
             env:
               TZ: ${TIMEZONE}
+              POSTGRES_ENABLED: "true"
+              POSTGRES_HOST: postgres-v15-rw.default.svc
+              POSTGRES_USERNAME: bazarr
+              POSTGRES_DATABASE: bazarr
+            envFrom:
+              - secretRef:
+                  name: bazarr-secrets
             resources:
               requests:
                 memory: 512Mi
