@@ -36,9 +36,13 @@ spec:
             env:
               TZ: ${TIMEZONE}
               LIDARR__AUTHENTICATION_METHOD: None
+              LIDARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+              LIDARR__POSTGRES_USER: *app
+              LIDARR__POSTGRES_MAIN_DB: lidarr_main
+              LIDARR__POSTGRES_LOG_DB: lidarr_log
             envFrom:
               - secretRef:
-                  name: lidarr-api-key
+                  name: lidarr-secrets
             resources:
               requests:
                 memory: 250Mi

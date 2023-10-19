@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: &app radarr
   namespace: media
 spec:
   interval: 5m
@@ -36,6 +36,10 @@ spec:
             env:
               TZ: ${TIMEZONE}
               RADARR__AUTHENTICATION_METHOD: External
+              RADARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+              RADARR__POSTGRES_USER: *app
+              RADARR__POSTGRES_MAIN_DB: radarr_main
+              RADARR__POSTGRES_LOG_DB: radarr_log
             envFrom:
               - secretRef:
                   name: radarr-api-key

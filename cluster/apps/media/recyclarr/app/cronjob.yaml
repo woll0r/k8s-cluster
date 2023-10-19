@@ -25,9 +25,9 @@ spec:
                   value: ${TIMEZONE}
               envFrom:
                 - secretRef:
-                    name: radarr-api-key
+                    name: radarr-secrets
                 - secretRef:
-                    name: sonarr-api-key
+                    name: sonarr-secrets
               command:
                 - /app/recyclarr/recyclarr
               args:

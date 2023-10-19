@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: &app sonarr
   namespace: media
 spec:
   interval: 5m
@@ -36,9 +36,13 @@ spec:
             env:
               TZ: ${TIMEZONE}
               SONARR__AUTHENTICATION_METHOD: External
+              SONARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+              SONARR__POSTGRES_USER: *app
+              SONARR__POSTGRES_MAIN_DB: sonarr_main
+              SONARR__POSTGRES_LOG_DB: sonarr_log
             envFrom:
               - secretRef:
-                  name: sonarr-api-key
+                  name: sonarr-secrets
             resources:
               requests:
                 memory: 250Mi

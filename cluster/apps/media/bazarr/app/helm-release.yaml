@@ -36,7 +36,7 @@ spec:
             env:
               TZ: ${TIMEZONE}
               POSTGRES_ENABLED: "true"
-              POSTGRES_HOST: postgres-v15-rw.default.svc
+              POSTGRES_HOST: ${POSTGRES_HOSTNAME}
               POSTGRES_USERNAME: bazarr
               POSTGRES_DATABASE: bazarr
             envFrom:
