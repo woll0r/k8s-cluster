@@ -42,7 +42,7 @@ spec:
               RADARR__POSTGRES_LOG_DB: radarr_log
             envFrom:
               - secretRef:
-                  name: radarr-api-key
+                  name: radarr-secrets
             resources:
               requests:
                 memory: 250Mi
