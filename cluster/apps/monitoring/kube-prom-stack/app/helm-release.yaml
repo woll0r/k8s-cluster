@@ -11,7 +11,7 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm
       chart: kube-prometheus-stack
-      version: 51.10.0
+      version: 52.0.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -225,8 +225,9 @@ spec:
           image: quay.io/thanos/thanos:v0.32.5
           version: v0.22.0
           objectStorageConfig:
-            name: thanos-s3-secret
-            key: objstore.yml
+            existingSecret:
+              name: thanos-s3-secret
+              key: objstore.yml
         storageSpec:
           volumeClaimTemplate:
             spec:
