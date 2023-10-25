@@ -84,6 +84,11 @@ spec:
               matchers:
                 - alertname = NodeFilesystemAlmostOutOfFiles
                 - fstype =~ msdosfs|vfat
+            # Ignore alerts for /snap
+            - receiver: 'null'
+              matchers:
+                - alertname = CephNodeDiskspaceWarning
+                - mountpoint = /snap
             - receiver: 'null'
               match_re:
                 alertname: Watchdog|InfoInhibitor|etcdHighNumberOfFailedGRPCRequests
