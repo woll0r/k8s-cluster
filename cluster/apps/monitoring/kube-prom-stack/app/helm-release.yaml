@@ -214,7 +214,7 @@ spec:
         podMonitorSelector: {}
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
-        retention: 168h
+        retention: 48h
         enableAdminAPI: true
         walCompression: true
         affinity:
@@ -239,7 +239,7 @@ spec:
               storageClassName: rook-ceph-block
               resources:
                 requests:
-                  storage: 50Gi
+                  storage: 20Gi
         additionalScrapeConfigs:
           - job_name: node-exporter
             honor_timestamps: true
