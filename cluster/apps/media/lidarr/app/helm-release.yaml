@@ -35,7 +35,7 @@ spec:
               tag: 2.0.5.3813@sha256:b0da2927ae973864445e468dafe13297f958ee2b9cfb197bfabcb9979cfb6db7
             env:
               TZ: ${TIMEZONE}
-              LIDARR__AUTHENTICATION_METHOD: None
+              LIDARR__AUTHENTICATION_METHOD: External
               LIDARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
               LIDARR__POSTGRES_USER: *app
               LIDARR__POSTGRES_MAIN_DB: lidarr_main
