@@ -33,7 +33,7 @@ spec:
         - name: TEMPLATE_NAME
           value: app-down
         - name: SHOW_DETAILS
-          value: "true"
+          value: "false"
     controller:
       allowSnippetAnnotations: "true"
       ingressClass: nginx
