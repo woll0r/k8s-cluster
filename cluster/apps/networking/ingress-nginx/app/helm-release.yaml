@@ -24,8 +24,18 @@ spec:
     remediation:
       retries: 5
   values:
+    defaultBackend:
+      enabled: true
+      image:
+        repository: ghcr.io/tarampampam/error-pages
+        tag: v2.26.0
+      extraEnvs:
+        - name: TEMPLATE_NAME
+          value: app-down
+        - name: SHOW_DETAILS
+          value: "true"
     controller:
-      allowSnippetAnnotations: 'true'
+      allowSnippetAnnotations: "true"
       ingressClass: nginx
       replicaCount: 1
       service:
@@ -37,7 +47,9 @@ spec:
       config:
         ssl-protocols: TLSv1.3 TLSv1.2
         proxy-body-size: 100m
-        use-forwarded-headers: 'true'
+        use-forwarded-headers: "true"
+        custom-http-errors: >-
+          401,403,404,500,501,502,503
       metrics:
         enabled: true
         serviceMonitor:
