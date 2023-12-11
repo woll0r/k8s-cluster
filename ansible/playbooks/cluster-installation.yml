@@ -115,3 +115,12 @@
         path: "{{ k3s_server_manifests_dir }}/{{ item.filename }}"
         state: absent
       loop: "{{ k3s_server_manifests_urls | default([]) }}"
+
+    # Eventually to be replaced by embedded spegel
+    - name: Copy custom containerd configuration
+      ansible.builtin.copy:
+        src: files/config.toml.tmpl
+        dest: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+        owner: root
+        group: root
+        mode: "0644"
