@@ -41,6 +41,8 @@ spec:
     toolbox:
       enabled: true
     cephClusterSpec:
+      cephVersion:
+        image: quay.io/ceph/ceph:v18.2.0
       crashCollector:
         disable: false
       dashboard:
