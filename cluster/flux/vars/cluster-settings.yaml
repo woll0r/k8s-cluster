@@ -10,5 +10,5 @@ data:
   PLEX_LB: 192.168.69.3
   QBITTORRENT_LB: 192.168.69.4
   POSTGRES_LB: 192.168.69.5
-  POSTGRES_HOSTNAME: postgres-v15-rw.default.svc
+  POSTGRES_HOSTNAME: postgres-v16-rw.default.svc
   TIMEZONE: Europe/Brussels
