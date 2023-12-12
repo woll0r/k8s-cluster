@@ -1,6 +1,6 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: &app kubernetes-schemas
@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: ghcr.io/woll0r/kubernetes-schemas-web
-              tag: latest@sha256:a6f6807fa86020f366b93cdd2daea02d6d26e5bce9694f009cbaa868e126b672
+              tag: latest@sha256:93a7a82fa04e614f8e8a63cdfb487228d5304ea991a8b44062bc0e28c4d93d14
             resources:
               requests:
                 memory: 50Mi
