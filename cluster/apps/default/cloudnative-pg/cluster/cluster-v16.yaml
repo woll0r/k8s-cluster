@@ -36,29 +36,11 @@ spec:
           key: MINIO_SECRET_KEY
 
   bootstrap:
-    initdb:
-      import:
-        type: monolith
-        databases:
-          - "*"
-        roles:
-          - "*"
-        source:
-          externalCluster: cluster-pg15
     recovery:
       source: &previous-cluster postgres-v15
 
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   externalClusters:
-    - name: cluster-pg15
-      connectionParameters:
-        host: postgres-v15-ro.default.svc
-        user: postgres
-        dbname: postgres
-        sslmode: require
-      password:
-        name: cloudnative-pg
-        key: password
     - name: *previous-cluster
       barmanObjectStore:
         wal:
