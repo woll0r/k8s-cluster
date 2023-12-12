@@ -97,6 +97,16 @@
           with:
             endpoint: builders
 
+        - name: Generate container metadata
+          id: meta
+          uses: docker/metadata-action@31cebacef4805868f9ce9a0cb03ee36c32df2ac4 # v5.3.0
+          with:
+            images: |
+              ghcr.io/${{ github.repository_owner }}/kubernetes-schemas
+            tags: |
+              type=sha
+              type=raw,value=latest,enable={{is_default_branch}}
+
         - name: Login to GHCR
           uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3
           with:
@@ -124,13 +134,8 @@
             platforms: linux/amd64,linux/arm64
             file: /home/runner/crdSchemas/Dockerfile
             push: true
-            tags: |
-              ghcr.io/woll0r/kubernetes-schemas-web:latest
-            cache-from: type=gha
-            cache-to: type=gha,mode=max
-            labels: |
-              org.opencontainers.image.source="https://github.com/${{ github.repository }}"
-              org.opencontainers.image.authors="Wolfgang Vandevenne <woll0r@users.noreply.github.com>"
+            tags: "${{ steps.meta.outputs.tags }}"
+            labels: "${{ steps.meta.outputs.labels }}"
 
     clean-images:
       name: Delete old versions of container images
