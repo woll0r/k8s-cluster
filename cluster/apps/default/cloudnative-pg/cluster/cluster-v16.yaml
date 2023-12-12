@@ -16,6 +16,7 @@ spec:
     storageClass: rook-ceph-block
   superuserSecret:
     name: cloudnative-pg
+  enableSuperuserAccess: true
   monitoring:
     enablePodMonitor: true
   backup:
