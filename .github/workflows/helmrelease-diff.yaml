@@ -30,6 +30,9 @@ jobs:
           jq: latest
           yq: latest
 
+      - name: setup Flux CLI
+        uses: fluxcd/flux2/action@5c5c15ea212b8f029a110f9975851d25c8272695 # v2.2.2
+
       - name: Diff Resources
         uses: allenporter/flux-local/action/diff@fbbc4c3d343af3ff57180a1067d7007fd4bd4d3c # 4.1.1
         id: diff
