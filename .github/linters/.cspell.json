@@ -118,6 +118,7 @@
         "cmds",
         "cnpg",
         "containerd",
+        "controlplane",
         "cpuid",
         "crds",
         "daemonconfig",
