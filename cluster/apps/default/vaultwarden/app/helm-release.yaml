@@ -26,6 +26,16 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            env:
+              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+            envFrom: &envFrom
+              - secretRef:
+                  name: vaultwarden-secrets
         containers:
           main:
             image:
@@ -36,9 +46,7 @@ spec:
               TZ: ${TIMEZONE}
               SIGNUPS_ALLOWED: 'false'
               DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
-            envFrom:
-              - secretRef:
-                  name: vaultwarden-secrets
+            envFrom: *envFrom
             resources:
               requests:
                 memory: 512Mi
@@ -56,9 +64,6 @@ spec:
         ports:
           http:
             port: 80
-          # websocket:
-          #   enabled: true
-          #   port: 3012
     ingress:
       main:
         enabled: true
@@ -73,16 +78,6 @@ spec:
                 service:
                   name: main
                   port: http
-              # - path: /notifications/hub/negotiate
-              #   pathType: Prefix
-              #   service:
-              #     name: main
-              #     port: http
-              # - path: /notifications/hub
-              #   pathType: Prefix
-              #   service:
-              #     name: main
-              #     port: websocket
         tls:
           - hosts:
               - *host

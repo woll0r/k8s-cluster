@@ -28,6 +28,16 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            env:
+              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+            envFrom: &envFrom
+              - secretRef:
+                  name: radarr-secrets
         containers:
           main:
             image:
@@ -40,9 +50,7 @@ spec:
               RADARR__POSTGRES_USER: *app
               RADARR__POSTGRES_MAIN_DB: radarr_main
               RADARR__POSTGRES_LOG_DB: radarr_log
-            envFrom:
-              - secretRef:
-                  name: radarr-secrets
+            envFrom: *envFrom
             resources:
               requests:
                 memory: 250Mi

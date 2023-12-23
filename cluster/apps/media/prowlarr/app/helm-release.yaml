@@ -28,6 +28,16 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            env:
+              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
+            envFrom: &envFrom
+              - secretRef:
+                  name: prowlarr-secrets
         containers:
           main:
             image:
@@ -40,9 +50,7 @@ spec:
               PROWLARR__POSTGRES_USER: *app
               PROWLARR__POSTGRES_MAIN_DB: prowlarr_main
               PROWLARR__POSTGRES_LOG_DB: prowlarr_log
-            envFrom:
-              - secretRef:
-                  name: prowlarr-secrets
+            envFrom: *envFrom
             resources:
               requests:
                 memory: 250Mi
