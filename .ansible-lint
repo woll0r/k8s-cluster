@@ -6,3 +6,8 @@ warn_list:
   - deprecated-command-syntax
   - experimental
   - no-changed-when
+exclude_paths:
+  - mkdocs.yaml
+  - hack/
+  - cluster/
+  - .github/

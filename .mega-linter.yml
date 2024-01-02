@@ -39,8 +39,6 @@ KUBERNETES_KUBECONFORM_ARGUMENTS:
 JSON_JSONLINT_FILE_EXTENSIONS: [.json, .json5]
 JSON_JSONLINT_ARGUMENTS: [--mode, json5]
 
-ANSIBLE_DIRECTORY: "ansible"
-ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: "ansible/.ansible-lint"
 ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS:
   # - command: pip3 install --user --requirement requirements.txt
   #   cwd: workspace

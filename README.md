@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg" width="200px" />
+<img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg" alt="Kubernetes logo" width="200px" />
 
 # My home Kubernetes cluster
 
@@ -24,10 +24,10 @@ The cluster is stood up using an Ansible runbook that runs against the manually 
 
 | Device            | Count | OS disk     | Data disk   | RAM   | OS               | Purpose     |
 | ----------------- | ----- | ----------- | ----------- | ----- | ---------------- | ----------- |
-| Whitebox i7-6700K | 1     | 250 GB NVMe | 250 GB SATA | 32 GB | Ubuntu 20.04     | K8s master  |
-| Intel NUC5i3BEH   | 2     | 120 GB NVMe | 250 GB SATA | 16 GB | Ubuntu 20.04     | K8s nodes   |
-| Intel NUC6CAYH    | 2     | 120 GB SATA | 250 GB SATA | 8 GB  | Ubuntu 20.04     | K8s nodes   |
-| Synology DS1518+  | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM 7.1 | NAS storage |
+| Whitebox N100     | 1     | 250 GB NVMe | 250 GB SATA | 32 GB | Ubuntu 23.10     | K8s master  |
+| Intel NUC5i3BEH   | 2     | 120 GB NVMe | 250 GB SATA | 16 GB | Ubuntu 23.10     | K8s nodes   |
+| Intel NUC6CAYH    | 2     | 120 GB SATA | 250 GB SATA | 8 GB  | Ubuntu 23.10     | K8s nodes   |
+| Synology DS1518+  | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM 7.2 | NAS storage |
 
 ## Acknowledgements
 
