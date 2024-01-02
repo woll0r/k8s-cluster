@@ -39,12 +39,14 @@ KUBERNETES_KUBECONFORM_ARGUMENTS:
 JSON_JSONLINT_FILE_EXTENSIONS: [.json, .json5]
 JSON_JSONLINT_ARGUMENTS: [--mode, json5]
 
+ANSIBLE_DIRECTORY: "ansible"
+ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: "ansible/.ansible-lint"
 ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS:
-  - command: pip3 install --user --requirement ansible/requirements.txt
+  # - command: pip3 install --user --requirement requirements.txt
+  #   cwd: workspace
+  - command: ansible-galaxy install -r requirements.yaml --roles-path ~/.ansible/roles --force
     cwd: workspace
-  - command: ansible-galaxy install -r ansible/requirements.yml --roles-path ~/.ansible/roles --force
-    cwd: workspace
-  - command: ansible-galaxy collection install -r ansible/requirements.yml --collections-path ~/.ansible/collections --force
+  - command: ansible-galaxy collection install -r requirements.yaml --collections-path ~/.ansible/collections --force
     cwd: workspace
 
 SPELL_FILTER_REGEX_EXCLUDE: (\.vscode|(ansible|cluster)/.*\.sops\.ya?ml)

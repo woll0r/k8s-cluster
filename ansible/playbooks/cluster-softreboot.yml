@@ -1,8 +1,6 @@
 ---
 - name: Cluster soft reboot
-  hosts:
-    - master
-    - worker
+  hosts: kubernetes
   become: true
   gather_facts: true
   any_errors_fatal: true
