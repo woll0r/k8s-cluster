@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: github-deploy-key
+    namespace: flux-system
+stringData:
+    identity: ENC[AES256_GCM,data:/XaeeRVud7LFX8OazT4zmVlHkVNznExLddzS3izg//rwADGIP9hVtp0JwWl9+Fusquen+l8AdfVa/0fk4A2qc9VeLpByi1qUk/2qUHxZ87tNyJDgvuevxaO51jTQO/23GKxslJTedFNyNCHFcfyI/Mi8z5DpT6DihWwKEcnLD7q1FRz5IJ8QcnDOkGsS9imgqi219HMBGxit+GsFK9rvFhvqiz6TJXBZsMcNaBHMEtH6zoX9Jy9YA6vyBr3Ss8wT3g/Kd5fhd7+zzj6PywoKRVaGFj+oVwM+dbubmIHfrcEGxAs=,iv:lUD4s6ca2ebtJY3fcpJQgZ1CY3duW2UZOpPMV5Wgz1o=,tag:eUJcgthDfwv0l4Qm9ZNqkA==,type:str]
+    identity.pub: ENC[AES256_GCM,data:cN/rnjMa2PbQ4il7AhvFvwusnAee9jkbqEKo9KJnfC35dNomaONEXPNJ1o7wQp5gja5mIMN3YzsnB374Fi4TYaZOxe2jnO4TBUIIDR1hsM/VbOGLXvAYj0NUC0LViu4tX5e3jowWYmh6IT/++7cT+PUyVAk/5QG04RwAKTQguC3KsOeQgspuAYkelAlG4Og6f0Yh9jY7sSjreZe4eHS+UT4=,iv:6aQbfS1mr0OMwMvJ8Vih5DT4kXClFkA/fqOw0qJp1D8=,tag:THI3xRikcLCMkODFVysZRg==,type:str]
+    known_hosts: ENC[AES256_GCM,data:ATJU2rBqopWyLPaWDhMSfe3z12WfNacBw7hWtnKhDohSzXxUYgDte4XGi6ZJX2S4rSnCyiel8nRGmeo/+3JIacFzCo6CrN2F7Hn/lVj9pNjrdvN9vMgGITMaHgodXjmo7HzZ/Pc36LIHE9Qqyv1pYHi1khUlSh8Tt3gqlt8qejKKRHkHrqkPou01bMFCz7bM6fSEz1f680y9QyVoPRrXD1qourjRHBFHFzOj,iv:ITbK0JRiqYUBYYw3J3aqBCcYZ9sAjKAxRrnqJVEqHMQ=,tag:3h5eGSMq9mM/QyB9X80Tkg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1wkeqj9ce5t24ec5u4zst942q8y2xstg8g9shjfqrsw5kpl6yl9nscc9jpe
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoM3FZdlVqNVdGdndiQ2NR
+            d0xrd2NTVGFvVFhSRGE2UjRwUEROVTdYZ3hzCktsNUhQR3dTNGliZS9zZmlDS0Z2
+            aGRNSVhCN00xOGYySGQ3M1ZKTTJibjAKLS0tIElZbjdmZEdWY3lWZFd3UlQ3cWZH
+            S0JxRHgyZU5sUkpPVmJ5Z2d4T2JmUjgKIzWWxfqrmJ2XeIBSyFENKmETlmHf+2zL
+            87+ApaOUQQQMyDrUXmLDN4BOQQTU3mYuZIy6AVMVp2Xdrc6qiUmMHw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-01-03T00:10:18Z"
+    mac: ENC[AES256_GCM,data:8QKiUXrfp7gnwXptNxAnGHh71eJyTzU4oQpUgQP7B03PY1aW8+89/Cq8XThtf+sGFstANCA+evbVYH9FxYv2r8eusOLC1CBHBnj4pbw1sCnsPgU3yFD3SHXOaudjxmFodYU9BnUXa7LFgupFZ8s5SPKfJTrCNEXQ7yOrKgULBBc=,iv:tanL7THjJYlR8mCdqWCwZRiIwl+jEfbv/EBjRPpuVFs=,tag:sgtzd/dw+fCFZvUFeCOLng==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
