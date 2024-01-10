@@ -31,6 +31,12 @@ spec:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
+      # Grafana no longer likes client-secret in "plain text", so they get put here
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://authentik.${SECRET_DOMAIN}/application/o/userinfo/
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://authentik.${SECRET_DOMAIN}/application/o/authorize/
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_CLIENT_ID}
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GRAFANA_CLIENT_SECRET}
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://authentik.${SECRET_DOMAIN}/application/o/token/
     adminPassword: ${GRAFANA_PASSWORD}
     grafana.ini:
       server:
@@ -44,12 +50,7 @@ spec:
       auth.generic_oauth:
         name: authentik
         enabled: true
-        client_id: ${GRAFANA_CLIENT_ID}
-        client_secret: ${GRAFANA_CLIENT_SECRET}
         scopes: openid email profile
-        auth_url: https://authentik.${SECRET_DOMAIN}/application/o/authorize/
-        token_url: https://authentik.${SECRET_DOMAIN}/application/o/token/
-        api_url: https://authentik.${SECRET_DOMAIN}/application/o/userinfo/
         role_attribute_path: contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'
       paths:
         data: /var/lib/grafana/data
