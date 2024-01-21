@@ -11,6 +11,6 @@ repos:
             volsync.yaml
             )$
   - repo: https://github.com/oxsecurity/megalinter
-    rev: v7.7.0
+    rev: v7.8.0
     hooks:
       - id: megalinter-incremental # Faster, less thorough
