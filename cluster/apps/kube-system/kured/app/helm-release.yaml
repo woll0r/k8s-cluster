@@ -31,6 +31,8 @@ spec:
           secretKeyRef:
             name: kured-secrets
             key: KURED_NOTIFY_URL
+    dsAnnotations:
+      secret.reloader.stakater.com/reload: kured-secrets
     updateStrategy: RollingUpdate
     configuration:
       timeZone: ${TIMEZONE}

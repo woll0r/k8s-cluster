@@ -28,6 +28,8 @@ spec:
       main:
         containers:
           main:
+            annotations:
+              secret.reloader.stakater.com/reload: cloudflare-tunnel
             image:
               repository: cloudflare/cloudflared
               tag: 2024.1.5-amd64
