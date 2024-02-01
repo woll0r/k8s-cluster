@@ -8,6 +8,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-rook-ceph-cluster
+    - name: cluster-apps-external-secrets-stores
   path: ./cluster/apps/actions-runner/actions-runner-controller/app
   prune: true
   sourceRef:

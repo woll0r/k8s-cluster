@@ -13,6 +13,7 @@ spec:
     name: cluster
   dependsOn:
     - name: cluster-apps-rook-ceph-cluster
+    - name: cluster-apps-external-secrets-stores
   wait: true
   interval: 30m
   retryInterval: 1m

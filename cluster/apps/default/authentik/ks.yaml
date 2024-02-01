@@ -14,6 +14,7 @@ spec:
   dependsOn:
     - name: cluster-apps-redis
     - name: cluster-apps-cloudnative-pg-cluster
+    - name: cluster-apps-external-secrets-stores
   wait: true
   interval: 30m
   retryInterval: 1m
