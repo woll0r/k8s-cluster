@@ -11,9 +11,12 @@ tasks:
     desc: Install Flux into your cluster
     cmds:
       - kubectl apply --kustomize {{.KUBERNETES_DIR}}/bootstrap
-      - cat {{.SOPS_AGE_KEY_FILE}} | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
-      - sops --decrypt {{.KUBERNETES_DIR}}/bootstrap/github-deploy-key.sops.yaml | kubectl apply -f -
-      - sops --decrypt {{.KUBERNETES_DIR}}/flux/vars/cluster-secrets.sops.yaml | kubectl apply -f -
+      - cat {{.SOPS_AGE_KEY_FILE}} | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin # Still add SOPS AGE key, just in case
+      - kubectl create secret generic -n flux-system doppler-token-auth-api --from-literal dopplerToken=(doppler secrets -p kube-gitops-cluster -c main get DOPPLER_PAT --plain)
+      - doppler secrets -p kube-gitops-cluster -c main get GITHUB_DEPLOY_KEY --plain | kubectl apply -f -
+      - kubectl create secret generic -n flux-system cluster-secrets --from-env-file <(doppler secrets download -p kube-gitops-cluster -c flux-cs --no-file --format docker)
+      # - sops --decrypt {{.KUBERNETES_DIR}}/bootstrap/github-deploy-key.sops.yaml | kubectl apply -f -
+      # - sops --decrypt {{.KUBERNETES_DIR}}/flux/vars/cluster-secrets.sops.yaml | kubectl apply -f -
       - kubectl apply -f {{.KUBERNETES_DIR}}/flux/vars/cluster-settings.yaml
       - kubectl apply --kustomize {{.KUBERNETES_DIR}}/flux
     preconditions:

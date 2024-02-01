@@ -33,8 +33,6 @@ spec:
             image:
               repository: ghcr.io/onedr0p/postgres-init
               tag: 16
-            env:
-              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
             envFrom: &envFrom
               - secretRef:
                   name: lidarr-secrets
@@ -46,10 +44,6 @@ spec:
             env:
               TZ: ${TIMEZONE}
               LIDARR__AUTHENTICATION_METHOD: External
-              LIDARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
-              LIDARR__POSTGRES_USER: *app
-              LIDARR__POSTGRES_MAIN_DB: lidarr_main
-              LIDARR__POSTGRES_LOG_DB: lidarr_log
             envFrom: *envFrom
             resources:
               requests:

@@ -29,20 +29,15 @@ spec:
       repository: ghcr.io/goauthentik/server
       tag: 2023.10.7
 
+    envFrom:
+      - secretRef:
+          name: authentik-secrets
+
     authentik:
-      secret_key: ${AUTHENTIK_SECRET_KEY}
       # This sends anonymous usage-data, stack traces on errors and
       # performance data to sentry.beryju.org, and is fully opt-in
       error_reporting:
         enabled: true
-      postgresql:
-        host: ${POSTGRES_HOSTNAME}
-        name: authentik
-        user: authentik
-        password: ${AUTHENTIK_DB_PASSWORD}
-      redis:
-        host: redis-master
-        password: ${SECRET_REDIS_PASSWORD}
 
     ingress:
       enabled: true

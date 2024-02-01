@@ -27,17 +27,13 @@ spec:
   values:
     deploymentStrategy:
       type: Recreate
+    envFromSecret: grafana-secrets
     env:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_LOG_FILTERS: rendering:debug
-      # Grafana no longer likes client-secret in "plain text", so they get put here
-      GF_AUTH_GENERIC_OAUTH_API_URL: https://authentik.${SECRET_DOMAIN}/application/o/userinfo/
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://authentik.${SECRET_DOMAIN}/application/o/authorize/
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_CLIENT_ID}
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GRAFANA_CLIENT_SECRET}
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://authentik.${SECRET_DOMAIN}/application/o/token/
-    adminPassword: ${GRAFANA_PASSWORD}
+    admin:
+      existingSecret: grafana-auth
     grafana.ini:
       server:
         root_url: https://grafana.${SECRET_DOMAIN}

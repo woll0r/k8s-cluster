@@ -25,10 +25,15 @@ spec:
     remediation:
       retries: 5
   values:
+    extraEnvVars:
+      - name: KURED_NOTIFY_URL
+        valueFrom:
+          secretKeyRef:
+            name: kured-secrets
+            key: KURED_NOTIFY_URL
     updateStrategy: RollingUpdate
     configuration:
       timeZone: ${TIMEZONE}
-      notifyUrl: ${SECRET_KURED_DISCORD_WEBHOOK}
       messageTemplateDrain: Draining node %s
       messageTemplateReboot: Rebooted node %s
     tolerations:

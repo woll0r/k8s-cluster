@@ -25,12 +25,11 @@ spec:
     remediation:
       retries: 5
   values:
-    global:
-      redis:
-        password: ${SECRET_REDIS_PASSWORD}
     architecture: standalone
     auth:
       enabled: true
+      existingSecret: redis-secrets
+      existingSecretPasswordKey: REDIS_PASSWORD
     master:
       persistence:
         enabled: false

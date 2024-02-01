@@ -33,8 +33,6 @@ spec:
             image:
               repository: ghcr.io/onedr0p/postgres-init
               tag: 16
-            env:
-              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
             envFrom: &envFrom
               - secretRef:
                   name: sonarr-secrets
@@ -46,10 +44,6 @@ spec:
             env:
               TZ: ${TIMEZONE}
               SONARR__AUTHENTICATION_METHOD: External
-              SONARR__POSTGRES_HOST: ${POSTGRES_HOSTNAME}
-              SONARR__POSTGRES_USER: *app
-              SONARR__POSTGRES_MAIN_DB: sonarr_main
-              SONARR__POSTGRES_LOG_DB: sonarr_log
             envFrom: *envFrom
             resources:
               requests:

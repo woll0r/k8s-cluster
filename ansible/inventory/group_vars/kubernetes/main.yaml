@@ -38,6 +38,25 @@ k3s_server_manifests_urls:
     filename: prometheus-servicemonitors.yaml
   - url: https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.61.1/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
     filename: prometheus-thanosrulers.yaml
+  # External-secrets
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/external-secrets.io_clusterexternalsecrets.yaml
+    filename: external-secrets-clusterexternalsecrets.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/external-secrets.io_clustersecretstores.yaml
+    filename: external-secrets-clustersecretstores.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/external-secrets.io_externalsecrets.yaml
+    filename: external-secrets-externalsecrets.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/external-secrets.io_secretstores.yaml
+    filename: external-secrets-secretstores.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/generators.external-secrets.io_acraccesstokens.yaml
+    filename: external-secrets-acraccesstokens.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/generators.external-secrets.io_ecrauthorizationtokens.yaml
+    filename: external-secrets-ecrauthorizationtokens.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/generators.external-secrets.io_fakes.yaml
+    filename: external-secrets-fakes.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/generators.external-secrets.io_gcraccesstokens.yaml
+    filename: external-secrets-gcraccesstokens.yaml
+  - url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/config/crds/bases/generators.external-secrets.io_passwords.yaml
+    filename: external-secrets-passwords.yaml
 
 k3s_server_manifests_templates:
   - calico-installation.yaml.j2
