@@ -29,6 +29,16 @@ spec:
       repository: ghcr.io/goauthentik/server
       tag: 2023.10.7
 
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-init:16
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - secretRef:
+              name: authentik-secrets
+    podAnnotations:
+      secret.reloader.stakater.com/reload: authentik-secrets
+
     envFrom:
       - secretRef:
           name: authentik-secrets
