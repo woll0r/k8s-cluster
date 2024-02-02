@@ -36,7 +36,7 @@ spec:
             args:
               - tunnel
               - --config
-              - /etc/cloudflared/default.yaml
+              - /etc/cloudflared/config.yaml
               - --metrics
               - 0.0.0.0:9090
               - run
