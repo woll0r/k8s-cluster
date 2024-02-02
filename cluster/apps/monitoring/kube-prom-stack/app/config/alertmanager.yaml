@@ -42,11 +42,11 @@ route:
         - alertname = CephNodeDiskspaceWarning
         - mountpoint = /snap
     - receiver: 'null'
-      match_re:
-        alertname: Watchdog|InfoInhibitor|etcdHighNumberOfFailedGRPCRequests
+      matchers:
+        - alertname: Watchdog|InfoInhibitor|etcdHighNumberOfFailedGRPCRequests
     - receiver: discord
-      match_re:
-        severity: critical
+      matchers:
+        - severity: critical
       continue: true
 inhibit_rules:
   - source_matchers:
