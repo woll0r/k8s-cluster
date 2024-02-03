@@ -25,6 +25,7 @@ CLEAR_REPORT_FOLDER: true
 LINTER_RULES_PATH: .github/linters
 
 KUBERNETES_DIRECTORY: cluster
+KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE: (cluster/templates) # It doesn't like all the templated variables
 KUBERNETES_KUBECONFORM_ARGUMENTS:
   # Default Kubernetes schemas
   - -schema-location
