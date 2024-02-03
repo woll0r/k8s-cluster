@@ -15,7 +15,13 @@ spec:
   dependsOn:
     - name: cluster-apps-radarr
     - name: cluster-apps-sonarr
+    - name: cluster-apps-rook-ceph
+    - name: cluster-apps-volsync
   wait: true
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+  postBuild:
+    substitute:
+      APP: recyclarr
+      VOLSYNC_CAPACITY: 1Gi
