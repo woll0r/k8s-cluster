@@ -30,7 +30,7 @@ spec:
       username: admin
     rbac:
       create: true
-      impersonationResourceNames: [admin]
+      # impersonationResourceNames: [admin]
     ingress:
       enabled: true
       className: nginx
