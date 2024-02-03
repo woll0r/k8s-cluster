@@ -1,12 +1,7 @@
 ---
-# Calico
-calico_bgp_peer_ip: 172.17.1.1
-calico_bgp_as_number: 64512
-calico_bgp_external_ips: 192.168.69.0/24
-
 # K3S
 # renovate: datasource=github-releases depName=k3s-io/k3s
-k3s_release_version: "v1.29.0+k3s1"
+k3s_release_version: "v1.29.1+k3s1"
 k3s_install_hard_links: true
 k3s_become: true
 k3s_debug: false
@@ -14,13 +9,22 @@ k3s_etcd_datastore: true
 k3s_use_unsupported_config: true
 k3s_registration_address: 172.17.2.0
 
+k3s_registries:
+  mirrors:
+    docker.io:
+    gcr.io:
+    ghcr.io:
+    k8s.gcr.io:
+    lscr.io:
+    mcr.microsoft.com:
+    public.ecr.aws:
+    quay.io:
+    registry.k8s.io:
+
 k3s_server_manifests_urls:
   # Kube-vip
   - url: https://raw.githubusercontent.com/kube-vip/kube-vip/main/docs/manifests/rbac.yaml
     filename: kube-vip-rbac.yaml
-  # Tigera Operator
-  - url: https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
-    filename: calico-tigera-operator.yaml
   # Prometheus Operator
   - url: https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.61.1/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
     filename: prometheus-alertmanagerconfigs.yaml
@@ -59,7 +63,8 @@ k3s_server_manifests_urls:
     filename: external-secrets-passwords.yaml
 
 k3s_server_manifests_templates:
-  - calico-installation.yaml.j2
-  - calico-bgpconfiguration.yaml.j2
-  - calico-bgppeer.yaml.j2
-  - kube-vip-daemonset.yaml.j2
+  - custom-cilium-helmchart.yaml.j2
+  - custom-cilium-l2.yaml.j2
+  - custom-coredns-helmchart.yaml.j2
+k3s_server_pod_manifests_templates:
+  - kube-vip-static-pod.yaml.j2

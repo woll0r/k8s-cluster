@@ -19,6 +19,7 @@ k3s_server:
   disable-network-policy: true
   disable-cloud-controller: true
   disable-kube-proxy: true            # Cilium uses eBPF
+  embedded-registry: true             # Embedded Spegel registry mirroring, very fancy tech
   write-kubeconfig-mode: "644"
   pause-image: registry.k8s.io/pause:3.9
   secrets-encryption: true
