@@ -7,6 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./cluster/apps/calico-system/calico/addons
+  targetNamespace: calico-system
   prune: true
   sourceRef:
     kind: GitRepository

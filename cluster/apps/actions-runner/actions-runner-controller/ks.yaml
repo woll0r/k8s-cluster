@@ -10,6 +10,7 @@ spec:
     - name: cluster-apps-rook-ceph-cluster
     - name: cluster-apps-external-secrets-stores
   path: ./cluster/apps/actions-runner/actions-runner-controller/app
+  targetNamespace: actions-runner
   prune: true
   sourceRef:
     kind: GitRepository
@@ -29,6 +30,7 @@ spec:
   dependsOn:
     - name: cluster-apps-actions-runner-controller
   path: ./cluster/apps/actions-runner/actions-runner-controller/runners
+  targetNamespace: actions-runner
   prune: true
   sourceRef:
     kind: GitRepository

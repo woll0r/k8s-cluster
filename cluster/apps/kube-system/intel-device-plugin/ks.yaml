@@ -7,6 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./cluster/apps/kube-system/intel-device-plugin/app
+  targetNamespace: kube-system
   prune: true
   sourceRef:
     kind: GitRepository
@@ -26,6 +27,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./cluster/apps/kube-system/intel-device-plugin/gpu
+  targetNamespace: kube-system
   prune: true
   sourceRef:
     kind: GitRepository

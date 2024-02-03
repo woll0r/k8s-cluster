@@ -7,6 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./cluster/apps/kube-system/node-problem-detector/app
+  targetNamespace: kube-system
   prune: true
   sourceRef:
     kind: GitRepository
