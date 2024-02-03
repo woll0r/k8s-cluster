@@ -26,6 +26,7 @@ spec:
     replicaCount: 1
     adminUser:
       create: true
+      createSecret: false
       username: admin
     rbac:
       create: true
@@ -45,6 +46,3 @@ spec:
       create: false
     metrics:
       enabled: true
-  valuesFrom:
-    - kind: Secret
-      name: weave-gitops-secret-values
