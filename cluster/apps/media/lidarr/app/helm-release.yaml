@@ -86,7 +86,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: lidarr-config
+        existingClaim: *app
       media:
         enabled: true
         type: nfs

@@ -72,7 +72,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: kavita-config
+        existingClaim: *app
         globalMounts:
           - path: /kavita/config
       media:

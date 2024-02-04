@@ -84,4 +84,4 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: prowlarr-config
+        existingClaim: *app

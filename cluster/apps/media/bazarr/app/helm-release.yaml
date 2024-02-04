@@ -83,7 +83,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: bazarr-config
+        existingClaim: *app
       media:
         enabled: true
         type: nfs

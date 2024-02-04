@@ -8,7 +8,7 @@ spec:
   trigger:
     manual: restore-once
   restic:
-    repository: ${rsrc}-restic-secret
+    repository: ${rsrc}-volsync
     destinationPVC: ${claim}
     copyMethod: Direct
     storageClassName: rook-ceph-block

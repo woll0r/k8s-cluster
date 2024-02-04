@@ -5,9 +5,10 @@ kind: Kustomization
 resources:
   - externalsecret.yaml
   - helm-release.yaml
-  - pvc.yaml
+  - ../../../../templates/volsync
+  # - pvc.yaml
   # - secret.sops.yaml
-  - volsync.yaml
+  # - volsync.yaml
 configMapGenerator:
   - name: obsidian-couchdb-configmap
     namespace: default

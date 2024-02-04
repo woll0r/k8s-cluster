@@ -94,6 +94,6 @@ spec:
           - path: /opt/couchdb/etc/default.d
       data:
         enabled: true
-        existingClaim: obsidian-couchdb-data
+        existingClaim: *app
         globalMounts:
           - path: /opt/couchdb/data
