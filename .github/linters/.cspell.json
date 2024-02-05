@@ -284,6 +284,7 @@
         "replicationdestinations",
         "replicationsource",
         "replicationsources",
+        "requirepass",
         "resolv",
         "restic",
         "resyncs",

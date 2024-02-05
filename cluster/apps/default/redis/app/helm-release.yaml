@@ -10,11 +10,11 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com
-      chart: redis
-      version: 18.12.1
+      chart: app-template
+      version: 2.5.0
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: bjw-s
         namespace: flux-system
       interval: 5m
   install:
@@ -25,15 +25,44 @@ spec:
     remediation:
       retries: 5
   values:
-    architecture: standalone
-    auth:
-      enabled: true
-      existingSecret: redis-secrets
-      existingSecretPasswordKey: REDIS_PASSWORD
-    master:
-      persistence:
-        enabled: false
-    replica:
-      replicaCount: 1
-      persistence:
-        enabled: false
+    controllers:
+      main:
+        annotations:
+          secret.reloader.stakater.com/reload: redis-secrets
+
+        pod:
+          automountServiceAccountToken: false
+
+        containers:
+          main:
+            image:
+              repository: public.ecr.aws/docker/library/redis
+              tag: 7.2.4
+            command:
+              - sh
+            args:
+              - -c
+              - >-
+                redis-server --requirepass $REDIS_PASSWORD
+            env:
+              REDIS_PORT: &port 6379
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: redis-secrets
+                    key: REDIS_PASSWORD
+            resources:
+              requests:
+                cpu: 5m
+                memory: 128M
+              limits:
+                memory: 256M
+
+    service:
+      main:
+        ports:
+          http:
+            enabled: false
+          redis:
+            enabled: true
+            port: *port
