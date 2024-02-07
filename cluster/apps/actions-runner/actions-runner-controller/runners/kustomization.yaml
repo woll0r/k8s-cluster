@@ -8,7 +8,7 @@ configMapGenerator:
   - name: dind-daemonconfig
     namespace: default
     files:
-      - daemon.json
+      - daemon.json=./config/daemon.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

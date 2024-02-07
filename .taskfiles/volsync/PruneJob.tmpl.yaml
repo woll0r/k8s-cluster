@@ -13,7 +13,7 @@ spec:
       containers:
         - name: prune
           image: docker.io/restic/restic:0.15.1
-          args: ['forget', '--keep-daily', '10', '--prune']
+          args: ['forget', '--keep-daily', '10', '--keep-hourly', '24', '--prune']
           envFrom:
             - secretRef:
                 name: ${rsrc}-volsync

@@ -6,6 +6,3 @@ resources:
   - externalsecret.yaml
   - helm-release.yaml
   - ../../../../templates/volsync
-  # - pvc.yaml
-  # - secret.sops.yaml
-  # - volsync.yaml

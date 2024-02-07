@@ -6,4 +6,3 @@ resources:
   - externalsecret.yaml
   - helm-release.yaml
   - pvc.yaml
-  # - secret.sops.yaml
