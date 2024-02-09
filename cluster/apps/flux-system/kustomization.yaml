@@ -7,4 +7,3 @@ resources:
   - namespace.yaml
   # Flux kustomizations
   - addons/ks.yaml
-  - weave-gitops/ks.yaml
