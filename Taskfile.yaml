@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: "3"
 
 vars:
@@ -21,6 +22,10 @@ includes:
   ansible: .taskfiles/AnsibleTasks.yaml
   brew: .taskfiles/BrewTasks.yaml
   cluster: .taskfiles/ClusterTasks.yaml
+  externalsecrets:
+    taskfile: .taskfiles/ExternalSecretTasks.yml
+    aliases:
+      - es
   precommit:
     taskfile: .taskfiles/PreCommitTasks.yml
     aliases:
