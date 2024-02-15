@@ -26,10 +26,6 @@ includes:
     taskfile: .taskfiles/ExternalSecretTasks.yml
     aliases:
       - es
-  precommit:
-    taskfile: .taskfiles/PreCommitTasks.yml
-    aliases:
-      - pre
   volsync:
     taskfile: .taskfiles/VolsyncTasks.yml
     aliases:
