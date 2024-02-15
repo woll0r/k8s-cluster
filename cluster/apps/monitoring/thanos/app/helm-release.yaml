@@ -79,3 +79,7 @@ spec:
         enabled: true
       networkPolicy:
         enabled: false
+    receive:
+      enabled: false
+      networkPolicy:
+        enabled: false
