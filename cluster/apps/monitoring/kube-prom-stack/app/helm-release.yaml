@@ -146,7 +146,7 @@ spec:
                       values:
                         - 'true'
         thanos:
-          image: quay.io/thanos/thanos:v0.34.0
+          image: quay.io/thanos/thanos:v0.34.1
           version: v0.22.0
           objectStorageConfig:
             existingSecret:
