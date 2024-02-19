@@ -19,15 +19,15 @@ env:
   K8S_AUTH_KUBECONFIG: "{{.ROOT_DIR}}/kubeconfig"
 
 includes:
-  ansible: .taskfiles/AnsibleTasks.yaml
-  brew: .taskfiles/BrewTasks.yaml
-  cluster: .taskfiles/ClusterTasks.yaml
+  ansible: .taskfiles/Ansible/Taskfile.yaml
+  brew: .taskfiles/Brew/Taskfile.yaml
+  cluster: .taskfiles/Cluster/Taskfile.yaml
   externalsecrets:
-    taskfile: .taskfiles/ExternalSecretTasks.yml
+    taskfile: .taskfiles/ExternalSecrets/Taskfile.yml
     aliases:
       - es
   volsync:
-    taskfile: .taskfiles/VolsyncTasks.yml
+    taskfile: .taskfiles/Volsync/Taskfile.yml
     aliases:
       - vs
 
@@ -40,9 +40,9 @@ tasks:
     summary: task {{.TASK}}
     cmds:
       - "{{.PYTHON_BIN}} -m venv {{.ROOT_DIR}}/.venv"
-      - .venv/bin/python3 -m pip install --upgrade pip setuptools wheel
-      - .venv/bin/python3 -m pip install --upgrade --requirement "{{.ROOT_DIR}}/requirements.txt"
-      - .venv/bin/ansible-galaxy install --role-file "{{.ROOT_DIR}}/requirements.yaml" --force
+      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade pip setuptools wheel'
+      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade --requirement "{{.ANSIBLE_DIR}}/requirements.txt"'
+      - '{{.VIRTUAL_ENV}}/bin/ansible-galaxy install --role-file "{{.ANSIBLE_DIR}}/requirements.yaml" --force'
 
   # Don't need these tasks since they're from the flux-cluster-template list of tasks
   # #############################################################################################

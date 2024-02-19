@@ -11,11 +11,11 @@ x-task-vars: &task-vars
   kustomization: '{{.kustomization}}'
 
 vars:
-  destinationTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/ReplicationDestination.tmpl.yaml'
-  wipeJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/WipeJob.tmpl.yaml'
-  listJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/ListJob.tmpl.yaml'
-  unlockJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/UnlockJob.tmpl.yaml'
-  pruneJobTemplate: '{{.ROOT_DIR}}/.taskfiles/volsync/PruneJob.tmpl.yaml'
+  destinationTemplate: '{{.ROOT_DIR}}/.taskfiles/Volsync/ReplicationDestination.tmpl.yaml'
+  wipeJobTemplate: '{{.ROOT_DIR}}/.taskfiles/Volsync/WipeJob.tmpl.yaml'
+  listJobTemplate: '{{.ROOT_DIR}}/.taskfiles/Volsync/ListJob.tmpl.yaml'
+  unlockJobTemplate: '{{.ROOT_DIR}}/.taskfiles/Volsync/UnlockJob.tmpl.yaml'
+  pruneJobTemplate: '{{.ROOT_DIR}}/.taskfiles/Volsync/PruneJob.tmpl.yaml'
   ts: '{{now | date "150405"}}'
 
 tasks:
