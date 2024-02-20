@@ -1,11 +1,16 @@
 {
     "recommendations": [
         "redhat.vscode-yaml",
-        "davidanson.vscode-markdownlint",
-        "streetsidesoftware.code-spell-checker",
         "redhat.ansible",
         "signageos.signageos-vscode-sops",
         "github.vscode-github-actions",
-        "ms-kubernetes-tools.vscode-kubernetes-tools"
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "remcohaszing.schemastore",
+        "task.vscode-task",
+        "mikestead.dotenv",
+        "mitchdenny.ecdc",
+        "britesnow.vscode-toggle-quotes",
+        "pkief.material-icon-theme",
+        "fcrespo82.markdown-table-formatter",
     ]
 }
