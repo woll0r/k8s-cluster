@@ -2,7 +2,6 @@
 set -e
 set -o noglob
 
-echo "Startup" > .vscode/postCreateCommand.log
 # Setup fisher plugin manager for fish and install plugins
 /usr/bin/fish -c "
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
@@ -15,10 +14,8 @@ fisher install PatrickF1/fzf.fish
 echo "Fisher done" >> .vscode/postCreateCommand.log
 
 # Create/update virtual environment
-if ! grep -q "venv /workspaces/" .venv/pyvenv.cfg; then
+if ! (grep -q "venv /workspaces/" .venv/pyvenv.cfg || true); then
     rm -rf .venv
-    echo "Venv cleanup done" >> .vscode/postCreateCommand.log
 fi
 
 task deps
-echo "Task done" >> .vscode/postCreateCommand.log
