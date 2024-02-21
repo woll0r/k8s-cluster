@@ -25,43 +25,44 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: ghcr.io/goauthentik/server
-      tag: 2024.2.0
+    global:
+      image:
+        repository: ghcr.io/goauthentik/server
+        tag: 2024.2.0
+      envFrom:
+        - secretRef:
+            name: authentik-secrets
+      podAnnotations:
+        secret.reloader.stakater.com/reload: authentik-secrets
 
-    initContainers:
-      init-db:
-        image: ghcr.io/onedr0p/postgres-init:16
-        imagePullPolicy: IfNotPresent
-        envFrom:
-          - secretRef:
-              name: authentik-secrets
-    podAnnotations:
-      secret.reloader.stakater.com/reload: authentik-secrets
-
-    envFrom:
-      - secretRef:
-          name: authentik-secrets
+    server:
+      initContainers:
+        init-db:
+        - name: 01-db-init
+          image: ghcr.io/onedr0p/postgres-init:16
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: authentik-secrets
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.home.arpa/enabled: 'true'
+        hosts:
+          - host: authentik.${SECRET_DOMAIN}
+        paths:
+          - path: /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - authentik.${SECRET_DOMAIN}
 
     authentik:
       # This sends anonymous usage-data, stack traces on errors and
       # performance data to sentry.beryju.org, and is fully opt-in
       error_reporting:
         enabled: true
-
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        external-dns.home.arpa/enabled: 'true'
-      hosts:
-        - host: authentik.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - hosts:
-            - authentik.${SECRET_DOMAIN}
 
     postgresql:
       enabled: false
