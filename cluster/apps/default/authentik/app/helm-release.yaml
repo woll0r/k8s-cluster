@@ -50,7 +50,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: 'true'
         hosts:
-          - host: authentik.${SECRET_DOMAIN}
+          - authentik.${SECRET_DOMAIN}
         paths:
           - /
         pathType: Prefix
