@@ -5,8 +5,18 @@ version: "3"
 vars:
   ANSIBLE_PLAYBOOK_DIR: "{{.ANSIBLE_DIR}}/playbooks"
   ANSIBLE_INVENTORY_DIR: "{{.ANSIBLE_DIR}}/inventory"
+  ANSIBLE_CONFIG: "{{.ANSIBLE_DIR}}/ansible.cfg"
 
 tasks:
+
+  deps:
+    desc: Create a Python virtual env and install required packages
+    summary: task {{.TASK}}
+    cmds:
+      - "{{.PYTHON_BIN}} -m venv {{.ROOT_DIR}}/.venv"
+      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade pip setuptools wheel'
+      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade --requirement "{{.ANSIBLE_DIR}}/requirements.txt"'
+      - '{{.VIRTUAL_ENV}}/bin/ansible-galaxy install --role-file "{{.ANSIBLE_DIR}}/requirements.yaml" --force'
 
   prepare:
     desc: Prepare all the k8s nodes for running k3s

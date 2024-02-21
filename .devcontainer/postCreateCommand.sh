@@ -18,4 +18,4 @@ if ! (grep -q "venv /workspaces/" .venv/pyvenv.cfg || true); then
     rm -rf .venv
 fi
 
-task deps
+task ansible:deps

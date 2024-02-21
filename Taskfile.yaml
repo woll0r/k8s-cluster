@@ -35,15 +35,6 @@ tasks:
 
   default: task -l
 
-  deps:
-    desc: Create a Python virtual env and install required packages
-    summary: task {{.TASK}}
-    cmds:
-      - "{{.PYTHON_BIN}} -m venv {{.ROOT_DIR}}/.venv"
-      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade pip setuptools wheel'
-      - '{{.VIRTUAL_ENV}}/bin/python3 -m pip install --upgrade --requirement "{{.ANSIBLE_DIR}}/requirements.txt"'
-      - '{{.VIRTUAL_ENV}}/bin/ansible-galaxy install --role-file "{{.ANSIBLE_DIR}}/requirements.yaml" --force'
-
   # Don't need these tasks since they're from the flux-cluster-template list of tasks
   # #############################################################################################
   # init:
