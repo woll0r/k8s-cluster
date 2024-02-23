@@ -16,6 +16,7 @@ kubeconfig
 # VS Code stuff
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 
 # Mega-Linter
 report/

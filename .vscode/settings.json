@@ -1,0 +1,71 @@
+{
+    "ansible.ansible.path": ".venv/bin/ansible",
+    "ansible.python.activationScript": ".venv/bin/activate",
+    "ansible.python.interpreterPath": ".venv/bin/python3",
+    "ansible.validation.enabled": true,
+    "ansible.validation.lint.arguments": "-c ./ansible/.ansible-lint",
+    "ansible.validation.lint.enabled": true,
+    "ansible.validation.lint.path": ".venv/bin/ansible-lint",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.guides.highlightActiveBracketPair": true,
+    "editor.hover.delay": 1500,
+    "editor.rulers": [100],
+    "editor.stickyScroll.enabled": false,
+    "explorer.autoReveal": false,
+    "files.associations": {
+      "*.json5": "jsonc",
+      "./ansible/**/*.yaml": "ansible",
+      "./ansible/**/inventory/**/*.yaml": "yaml"
+    },
+    "files.trimTrailingWhitespace": true,
+    "sops.defaults.ageKeyFile": "age.key",
+    "vs-kubernetes": {
+      "vs-kubernetes.kubeconfig": "./kubeconfig",
+      "vs-kubernetes.knownKubeconfigs": ["./kubeconfig"]
+    },
+    "yaml.schemaStore.enable": true,
+    "yaml.schemas": {
+      "ansible": "./ansible/**/*.yaml",
+      "kubernetes": "./cluster/**/*.yaml"
+    },
+    "git.enableCommitSigning": true,
+    "material-icon-theme.files.associations": {
+      "*.secret.sops.env": "lock",
+      "*.secret.sops.yaml": "lock"
+    },
+    "material-icon-theme.folders.associations": {
+        // top level
+        ".archive": "archive",
+        // .github
+        ".github/workflows": "robot",
+        // namespaces
+        "actions-runner": "github",
+        "cert-manager": "guard",
+        "default": "home",
+        "external-secrets": "secure",
+        "flux-system": "pipe",
+        "kube-system": "kubernetes",
+        "monitoring": "event",
+        "networking": "connection",
+        "rook-ceph": "base",
+        "system-upgrade": "update",
+        "volsync": "aws"
+    },
+    "catppuccin-icons.associations.folders": {
+      "cluster": "folder_kubernetes",
+      "actions-runner": "folder_github",
+      "kube-system": "folder_kubernetes",
+      "networking": "folder_connection",
+      "tigera-operator": "folder_connection",
+      "calico-system": "folder_connection",
+      "volsync": "folder_cloud"
+    },
+    "catppuccin-icons.associations.files": {
+      ".sops.yaml": "key"
+    },
+    "catppuccin-icons.associations.extensions": {
+      "sops.yaml": "key"
+    }
+  }
