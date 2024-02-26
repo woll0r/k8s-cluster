@@ -5,3 +5,9 @@ kind: Kustomization
 resources:
   - externalsecret.yaml
   - helm-release.yaml
+configMapGenerator:
+  - name: cloudflared-configmap
+    files:
+      - ./configs/config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
