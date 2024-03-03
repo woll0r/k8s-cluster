@@ -1,0 +1,6 @@
+{
+  "name": "Flux K8S Cluster (Tools)",
+  "id": "k8s-cluster",
+  "version": "1.0.0",
+  "description": "Install Tools"
+}
