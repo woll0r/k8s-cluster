@@ -76,7 +76,7 @@ prefix = [ "/workspaces" ]
 EOF
 
 # Add Starship config (I just like mine better)
-cp -f "${FEATURE_DIR}/starship.toml" "/home/vscode/.config/starship.toml"
+cp -f "$(dirname $0)/starship.toml" "/home/vscode/.config/starship.toml"
 
 # Set ownership vscode .config directory to the vscode user
 chown -R vscode:vscode /home/vscode/.config
