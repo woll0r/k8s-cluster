@@ -6,10 +6,10 @@
     workflow_dispatch:
     push:
       branches: ["main"]
-      paths: [".devcontainer/ci/**"]
+      paths: [".devcontainer/ci/**", ".github/workflows/publish-kubernetes-schemas.yaml"]
     pull_request:
       branches: ["main"]
-      paths: [".devcontainer/ci/**"]
+      paths: [".devcontainer/ci/**", ".github/workflows/publish-kubernetes-schemas.yaml"]
     schedule:
       - cron: "0 0 * * 1"
 
@@ -41,6 +41,7 @@
           uses: docker/setup-buildx-action@v3
           with:
             platforms: linux/amd64,linux/arm64
+            endpoint: builders
 
         - if: ${{ github.event_name != 'pull_request' }}
           name: Login to GitHub Container Registry
