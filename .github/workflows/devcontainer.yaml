@@ -6,10 +6,14 @@
     workflow_dispatch:
     push:
       branches: ["main"]
-      paths: [".devcontainer/ci/**", ".github/workflows/publish-kubernetes-schemas.yaml"]
+      paths:
+        - ".devcontainer/ci/**"
+        - ".github/workflows/devcontainer.yaml"
     pull_request:
       branches: ["main"]
-      paths: [".devcontainer/ci/**", ".github/workflows/publish-kubernetes-schemas.yaml"]
+      paths:
+        - ".devcontainer/ci/**"
+        - ".github/workflows/devcontainer.yaml"
     schedule:
       - cron: "0 0 * * 1"
 
