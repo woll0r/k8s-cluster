@@ -2,10 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
   "name": "Kubernetes cluster",
   "image": "ghcr.io/woll0r/k8s-cluster/devcontainer:base",
-  "postCreateCommand": {
-    "setup": "bash ${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh"
-  },
-  "postStartCommand": {
-    "git": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+  "containerEnv": {
+    "WORKSPACE": "${containerWorkspaceFolder}"
   }
 }
