@@ -31,8 +31,6 @@ spec:
             image:
               repository: ghcr.io/onedr0p/postgres-init
               tag: 16
-            env:
-              INIT_POSTGRES_HOST: ${POSTGRES_HOSTNAME}
             envFrom: &envFrom
               - secretRef:
                   name: vaultwarden-secrets
