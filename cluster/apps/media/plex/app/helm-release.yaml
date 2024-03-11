@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/onedr0p/plex
               tag: 1.40.0.7998-c29d4c0c8
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
             resources:
               requests:
                 gpu.intel.com/i915: 1
@@ -68,10 +68,11 @@ spec:
           - 100
     service:
       main:
+        controller: main
         primary: true
         type: LoadBalancer
         externalIPs:
-          - ${PLEX_LB}
+          - ${PLEX_LB:-1.2.3.4}
         ports:
           http:
             enabled: true
@@ -99,7 +100,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:
@@ -113,9 +114,9 @@ spec:
         type: nfs
         server: 172.16.1.6
         path: /volume1/Media
-        readOnly: true
         globalMounts:
           - path: /media
+            readOnly: true
       # Separate PVC for cache to avoid backing up cache files
       plex-cache:
         existingClaim: plex-cache

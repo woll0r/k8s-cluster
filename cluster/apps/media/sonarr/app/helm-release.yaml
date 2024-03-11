@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -44,7 +44,7 @@ spec:
               repository: ghcr.io/onedr0p/sonarr-develop
               tag: 4.0.2.1312@sha256:f98240a60350e381259f0021c4083053c80d42a72f4543fc61911f4084f55fb9
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
               SONARR__AUTHENTICATION_METHOD: External
             envFrom: *envFrom
             resources:
@@ -55,6 +55,7 @@ spec:
                 memory: 1500Mi
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8989
@@ -70,7 +71,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:

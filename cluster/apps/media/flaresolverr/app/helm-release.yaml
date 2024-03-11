@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/flaresolverr/flaresolverr
               tag: v3.3.16
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
             resources:
               requests:
                 memory: 250Mi
@@ -43,9 +43,7 @@ spec:
                 memory: 500Mi
     service:
       main:
+        controller: main
         ports:
           http:
             port: 8191
-    ingress:
-      main:
-        enabled: false

@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -84,15 +84,20 @@ spec:
             runAsNonRoot: true
     service:
       main:
+        controller: main
         ports:
           http:
             port: *port
     serviceMonitor:
       main:
+        serviceName: main
         enabled: true
-    ingress:
-      main:
-        enabled: false
+        endpoints:
+        - port: http
+          scheme: http
+          path: /metrics
+          interval: 1m
+          scrapeTimeout: 30s
     persistence:
       config:
         enabled: true

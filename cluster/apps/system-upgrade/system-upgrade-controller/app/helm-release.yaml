@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -53,11 +53,6 @@ spec:
             runAsNonRoot: true
             runAsUser: 65534
             runAsGroup: 65534
-            allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
-            capabilities:
-              drop: ["ALL"]
           affinity:
             nodeAffinity:
               requiredDuringSchedulingIgnoredDuringExecution:
@@ -66,16 +61,16 @@ spec:
                       - key: node-role.kubernetes.io/control-plane
                         operator: Exists
           tolerations:
-            - {key: CriticalAddonsOnly, operator: Exists}
-            - {key: node-role.kubernetes.io/master, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/controlplane, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/control-plane, operator: Exists, effect: NoSchedule}
-            - {key: node-role.kubernetes.io/etcd, operator: Exists, effect: NoExecute}
+            - key: CriticalAddonsOnly
+              operator: Exists
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+            - key: node-role.kubernetes.io/master
+              operator: Exists
+              effect: NoSchedule
     serviceAccount:
       name: system-upgrade
-    service:
-      main:
-        enabled: false
     persistence:
       tmp:
         type: emptyDir
