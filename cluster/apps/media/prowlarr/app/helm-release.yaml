@@ -44,7 +44,7 @@ spec:
               repository: ghcr.io/onedr0p/prowlarr-nightly
               tag: 1.14.3.4322@sha256:be0ae781b64a1452a5f09f4f951e3a8593932c968d82c53bba6d7c612283e079
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
               PROWLARR__AUTHENTICATION_METHOD: External
             envFrom: *envFrom
             resources:
@@ -71,7 +71,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:

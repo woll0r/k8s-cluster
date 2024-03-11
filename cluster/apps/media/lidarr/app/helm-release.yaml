@@ -44,7 +44,7 @@ spec:
               repository: ghcr.io/onedr0p/lidarr-develop
               tag: 2.2.1.4073@sha256:25018afceb9103b6d1ef4e687b87974716a4d23db8660843d071461d3f9dd402
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
               LIDARR__AUTHENTICATION_METHOD: External
             envFrom: *envFrom
             resources:
@@ -71,7 +71,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:

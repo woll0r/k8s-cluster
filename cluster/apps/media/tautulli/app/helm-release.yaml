@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/onedr0p/tautulli
               tag: 2.13.4@sha256:d925cbb3ff9d8da8e926953d320137a5b3819f31d0ab3e06350ae995b442594f
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
             resources:
               requests:
                 memory: 250Mi
@@ -57,7 +57,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:

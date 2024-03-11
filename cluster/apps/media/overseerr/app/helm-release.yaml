@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/sct/overseerr
               tag: 1.33.2
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
               LOG_LEVEL: info
             resources:
               requests:
@@ -60,7 +60,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:
