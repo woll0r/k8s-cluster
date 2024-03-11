@@ -41,8 +41,8 @@ spec:
             env:
               TZ: ${TIMEZONE}
             envFrom:
-              secretRef:
-                name: recyclarr-secrets
+              - secretRef:
+                  name: recyclarr-secrets
             args: ["sync"]
     defaultPodOptions:
       securityContext:
