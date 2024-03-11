@@ -43,6 +43,7 @@ spec:
                 memory: 6000Mi
     service:
       main:
+        controller: main
         enabled: true
         type: LoadBalancer
         externalIPs:

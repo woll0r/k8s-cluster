@@ -44,9 +44,6 @@ spec:
               secretRef:
                 name: recyclarr-secrets
             args: ["sync"]
-    service:
-      main:
-        enabled: false
     defaultPodOptions:
       securityContext:
         runAsUser: 568

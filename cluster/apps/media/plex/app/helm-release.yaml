@@ -68,6 +68,7 @@ spec:
           - 100
     service:
       main:
+        controller: main
         primary: true
         type: LoadBalancer
         externalIPs:

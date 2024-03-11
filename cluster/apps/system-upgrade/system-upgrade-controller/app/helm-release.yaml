@@ -73,9 +73,6 @@ spec:
             - {key: node-role.kubernetes.io/etcd, operator: Exists, effect: NoExecute}
     serviceAccount:
       name: system-upgrade
-    service:
-      main:
-        enabled: false
     persistence:
       tmp:
         type: emptyDir

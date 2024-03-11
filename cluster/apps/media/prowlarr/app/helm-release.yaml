@@ -55,6 +55,7 @@ spec:
                 memory: 750Mi
     service:
       main:
+        controller: main
         ports:
           http:
             port: 9696

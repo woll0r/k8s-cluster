@@ -43,6 +43,7 @@ spec:
                 memory: 1024Mi
     service:
       main:
+        controller: main
         ports:
           http:
             port: 5000

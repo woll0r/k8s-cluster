@@ -84,15 +84,14 @@ spec:
             runAsNonRoot: true
     service:
       main:
+        controller: main
         ports:
           http:
             port: *port
     serviceMonitor:
       main:
+        serviceName: main
         enabled: true
-    ingress:
-      main:
-        enabled: false
     persistence:
       config:
         enabled: true
