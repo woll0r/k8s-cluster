@@ -72,7 +72,7 @@ spec:
         primary: true
         type: LoadBalancer
         externalIPs:
-          - ${PLEX_LB}
+          - ${PLEX_LB:-1.2.3.4}
         ports:
           http:
             enabled: true
@@ -114,9 +114,9 @@ spec:
         type: nfs
         server: 172.16.1.6
         path: /volume1/Media
-        readOnly: true
         globalMounts:
           - path: /media
+            readOnly: true
       # Separate PVC for cache to avoid backing up cache files
       plex-cache:
         existingClaim: plex-cache
