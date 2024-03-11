@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/flaresolverr/flaresolverr
               tag: v3.3.16
             env:
-              TZ: ${TIMEZONE}
+              TZ: ${TIMEZONE:-UTC}
             resources:
               requests:
                 memory: 250Mi
