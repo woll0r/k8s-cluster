@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: ghcr.io/woll0r/kubernetes-schemas-web
-              tag: latest@sha256:e64d804aaf7cefabcca4d9183d384a4c836ea34e13c69470c8994f4b1a4adf0b
+              tag: latest@sha256:5c2c510cdc7f6feb5f2b0526e1b75e396e0bf19e17c331ba9beb6b1ebdc65995
             resources:
               requests:
                 memory: 50Mi
