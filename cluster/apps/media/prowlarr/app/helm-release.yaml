@@ -42,7 +42,7 @@ spec:
           main:
             image:
               repository: ghcr.io/onedr0p/prowlarr-nightly
-              tag: 1.15.0.4343@sha256:8160b488f850dc286da4f29b1f0d7376bfaacf6fc6c90e071ce53970018d6382
+              tag: 1.15.0.4347@sha256:878a0fa82e465fd61d305270699c152b42c43fc3972561c75ab7fe68b0020103
             env:
               TZ: ${TIMEZONE:-UTC}
               PROWLARR__AUTHENTICATION_METHOD: External
