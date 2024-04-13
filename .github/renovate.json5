@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     "docker:enableMajor",
     ":disableRateLimiting",
     ":dependencyDashboard",
@@ -9,13 +9,14 @@
     ":enablePreCommit",
     ":automergeDigest",
     ":automergeBranchPush",
-    "github>woll0r/k8s-cluster//.github/renovate/allowedversions.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/automerge.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/disabledsources.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/looseversioning.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/packagegroups.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/packagelabels.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/semanticcommits.json5"
+    ":timezone(Europe/Brussels)",
+    "github>woll0r/k8s-cluster//.github/renovate/allowedVersions1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/autoMerge1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/disabledSources1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/looseVersioning1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/packageGroups1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/packageLabels1.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/semanticCommits1.json5"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard",
   "suppressNotifications": ["prIgnoreNotification"],
