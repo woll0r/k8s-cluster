@@ -17,9 +17,6 @@ jobs:
         path: ["cluster"]
         resource: ["helmrelease", "kustomization"]
     steps:
-      - name: setup arkade
-        uses: alexellis/setup-arkade@b1816384b2260cfd2c023c6798d26075786cfc7f
-
       - name: setup CLI tools
         uses: alexellis/arkade-get@master
         with:
