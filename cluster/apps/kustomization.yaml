@@ -13,6 +13,7 @@ resources:
   - media
   - monitoring
   - networking
+  - openebs-system
   - rook-ceph
   - system-upgrade
   - tigera-operator
