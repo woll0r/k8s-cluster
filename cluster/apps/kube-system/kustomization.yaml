@@ -13,7 +13,6 @@ resources:
   - kube-cleanup-operator/ks.yaml
   - kube-vip/ks.yaml
   - kured/ks.yaml
-  - local-path-provisioner/ks.yaml
   - metrics-server/ks.yaml
   - node-feature-discovery/ks.yaml
   - node-problem-detector/ks.yaml
