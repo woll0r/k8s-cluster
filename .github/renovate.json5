@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabled": false, // Disable Renovate while the cluster is asleep
   "extends": [
     "config:recommended",
     "docker:enableMajor",

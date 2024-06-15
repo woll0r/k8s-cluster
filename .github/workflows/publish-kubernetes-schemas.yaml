@@ -6,14 +6,16 @@
   on: # yamllint disable-line rule:truthy
     # Allows manually triggering the workflow from the Github Actions UI
     workflow_dispatch: {}
-    # Runs the workflow weekly at midnight (UTC)
-    schedule:
-      - cron: "0 0 * * 0"
-    push:
-      branches:
-        - "main"
-      paths:
-        - ".github/workflows/publish-kubernetes-schemas.yaml"
+
+    # Cluster is asleep, don't run!
+    # # Runs the workflow weekly at midnight (UTC)
+    # schedule:
+    #   - cron: "0 0 * * 0"
+    # push:
+    #   branches:
+    #     - "main"
+    #   paths:
+    #     - ".github/workflows/publish-kubernetes-schemas.yaml"
 
   env:
     OCI_REPO: "oci://ghcr.io/woll0r/kubernetes-schemas/${{ github.event.repository.name }}"
