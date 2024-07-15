@@ -4,7 +4,7 @@ name: HelmRelease Diff
 on:
   pull_request:
     branches: ["main"]
-    paths: ["cluster/**.yaml"]
+    paths: ["kubernetes/**.yaml"]
 
 jobs:
   flux-diff:
@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        path: ["cluster"]
+        path: ["kubernetes"]
         resource: ["helmrelease", "kustomization"]
     steps:
       - name: setup CLI tools

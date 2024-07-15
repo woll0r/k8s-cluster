@@ -1,12 +1,6 @@
 <img src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg" alt="Kubernetes logo" width="200px" />
 
 # My home Kubernetes cluster
-
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/woll0r/k8s-cluster/mega-linter.yml?branch=main&label=Megalinter&logo=githubactions&logoColor=white&style=for-the-badge)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/woll0r/k8s-cluster/main?logo=github&style=for-the-badge)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
-[![k3s](https://img.shields.io/badge/v1.26-brightgreen?logo=kubernetes&logoColor=white&style=for-the-badge)](https://k3s.io)
-
 ---
 
 ## Overview
@@ -22,14 +16,14 @@ The cluster is stood up using an Ansible runbook that runs against the manually 
 
 ## Hardware
 
-| Device            | Count | OS disk     | Data disk   | RAM   | OS               | Purpose     |
-| ----------------- | ----- | ----------- | ----------- | ----- | ---------------- | ----------- |
-| Whitebox N100     | 1     | 250 GB NVMe | 250 GB SATA | 32 GB | Ubuntu 23.10     | K8s master  |
-| Intel NUC5i3BEH   | 2     | 120 GB NVMe | 250 GB SATA | 16 GB | Ubuntu 23.10     | K8s nodes   |
-| Intel NUC6CAYH    | 2     | 120 GB SATA | 250 GB SATA | 8 GB  | Ubuntu 23.10     | K8s nodes   |
-| Synology DS1518+  | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM 7.2 | NAS storage |
+| Device                  | Count | OS disk     | Data disk   | RAM   | OS               | Purpose     |
+|-------------------------|-------|-------------|-------------|-------|------------------|-------------|
+| Whitebox N100           | 1     | 1TB NVMe    | 1TB SATA    | 32 GB | Talos            | K8s master  |
+| Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s master  |
+| Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s nodes   |
+| Synology DS1518+        | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM 7.2 | NAS storage |
 
 ## Acknowledgements
 
-Loosely based on the amazing work in [onedr0p/flux-cluster-template](https://github.com/onedr0p/flux-cluster-template) and grabbing bits and pieces found with
+Loosely based on the amazing work in [onedr0p/cluster-template](https://github.com/onedr0p/cluster-template) and grabbing bits and pieces found with
 [k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
