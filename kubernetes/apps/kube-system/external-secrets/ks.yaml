@@ -6,7 +6,7 @@ metadata:
   name: &app external-secrets
   namespace: flux-system
 spec:
-  path: ./cluster/apps/kube-system/external-secrets/app
+  path: ./kubernetes/apps/kube-system/external-secrets/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
@@ -27,7 +27,7 @@ metadata:
   name: &app external-secrets-stores
   namespace: flux-system
 spec:
-  path: ./cluster/apps/kube-system/external-secrets/app
+  path: ./kubernetes/apps/kube-system/external-secrets/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
