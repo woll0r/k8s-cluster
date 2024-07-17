@@ -27,3 +27,4 @@ resources:
   - ./node-feature-discovery.yaml
   - ./piraeus.yaml
   - ./rook-ceph.yaml
+  - ./intel.yaml
