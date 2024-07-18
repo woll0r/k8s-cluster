@@ -6,4 +6,5 @@ resources:
 # Namespace
   - ./namespace.yaml
 # Flux kustomization
-  - ./actions-runner-controller/ks.yaml
+  - ./gha-runner-scale-set-controller/ks.yaml
+  - ./gha-runner-scale-set/ks.yaml
