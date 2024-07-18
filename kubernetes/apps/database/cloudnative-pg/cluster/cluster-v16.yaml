@@ -1,0 +1,82 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres16
+  namespace: database
+  annotations:
+    kyverno.io/ignore: 'true'
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.3-7
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 10Gi
+    storageClass: openebs-hostpath
+  superuserSecret:
+    name: cloudnative-pg
+  enableSuperuserAccess: true
+  monitoring:
+    enablePodMonitor: true
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+      serverName: postgres16
+      s3Credentials:
+        accessKeyId:
+          name: cloudnative-pg
+          key: MINIO_ACCESS_KEY
+        secretAccessKey:
+          name: cloudnative-pg
+          key: MINIO_SECRET_KEY
+
+  bootstrap:
+    # For major version upgrades
+    # initdb:
+    #   import:
+    #     type: monolith
+    #     databases:
+    #       - "*"
+    #     roles:
+    #       - "*"
+    #     source:
+    #       externalCluster: cluster-pg15
+    # For recovering same major version clusters
+    recovery:
+      source: &previous-cluster postgres-v16
+
+  # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  externalClusters:
+    # Use this section for major version upgrades
+    # - name: cluster-pg15
+    #   connectionParameters:
+    #     host: postgres-v15-ro.default.svc
+    #     user: postgres
+    #     dbname: postgres
+    #     sslmode: require
+    #   password:
+    #     name: cloudnative-pg
+    #     key: password
+
+    # Use this section for restoring into a new, same version cluster
+    - name: *previous-cluster
+      barmanObjectStore:
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cloudnative-pg/
+        endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+        serverName: postgres-v16
+        s3Credentials:
+          accessKeyId:
+            name: cloudnative-pg
+            key: MINIO_ACCESS_KEY
+          secretAccessKey:
+            name: cloudnative-pg
+            key: MINIO_SECRET_KEY
