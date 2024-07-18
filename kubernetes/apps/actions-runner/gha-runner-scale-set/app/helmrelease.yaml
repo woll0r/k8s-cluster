@@ -44,7 +44,7 @@ spec:
             command: ["/home/runner/run.sh"]
     controllerServiceAccount:
       name: gha-runner-scale-set-controller
-      namespace: actions-runner-system
+      namespace: actions-runner
   valuesFrom:
     - kind: Secret
       name: actions-runner-controller-auth
