@@ -3,8 +3,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  # Namespace
-  - ./namespace.yaml
-  # Flux kustomizations
-  - ./kubernetes-schemas/ks.yaml
-  - ./vaultwarden/ks.yaml
+  - ./externalsecret.yaml
+  - ./helmrelease.yaml
+  - ../../../../templates/volsync
