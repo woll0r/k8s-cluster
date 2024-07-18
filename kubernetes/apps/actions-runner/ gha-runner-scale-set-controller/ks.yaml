@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app gha-runner-scale-set-controller
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: external-secrets-stores
+  path: ./kubernetes/apps/actions-runner/gha-runner-scale-set-controller/app
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  targetNamespace: actions-runner
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m

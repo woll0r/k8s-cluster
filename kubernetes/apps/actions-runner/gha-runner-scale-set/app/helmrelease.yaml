@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: gha-runner-scale-set
+  namespace: actions-runner
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: gha-runner-scale-set
+      version: 0.9.2
+      sourceRef:
+        kind: HelmRepository
+        name: actions-runner-controller
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: gha-runner-scale-set-controller
+      namespace: actions-runner
+  values:
+    nameOverride: gha-runner-scale-set
+    runnerScaleSetName: arc-runner-set-home-ops
+    githubConfigUrl: https://github.com/woll0r/k8s-cluster
+    minRunners: 1
+    maxRunners: 6
+    containerMode:
+      type: dind
+    template:
+      spec:
+        containers:
+          - name: runner
+            image: ghcr.io/onedr0p/actions-runner:2.317.0@sha256:3d4da03fe81a05940d70b953cd289703a6f499d72dc78a4c506667ce17350049
+            command: ["/home/runner/run.sh"]
+    controllerServiceAccount:
+      name: gha-runner-scale-set-controller
+      namespace: actions-runner-system
+  valuesFrom:
+    - kind: Secret
+      name: actions-runner-controller-auth
+      valuesKey: github_app_id
+      targetPath: githubConfigSecret.github_app_id
+    - kind: Secret
+      name: actions-runner-controller-auth
+      valuesKey: github_app_installation_id
+      targetPath: githubConfigSecret.github_app_installation_id
+    - kind: Secret
+      name: actions-runner-controller-auth
+      valuesKey: github_app_private_key
+      targetPath: githubConfigSecret.github_app_private_key
