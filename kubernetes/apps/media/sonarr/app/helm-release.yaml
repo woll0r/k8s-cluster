@@ -1,0 +1,97 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app sonarr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  values:
+    controllers:
+      main:
+        annotations:
+          secret.reloader.stakater.com/reload: sonarr-secrets
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: sonarr-secrets
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/sonarr-develop
+              tag: 4.0.5.1740@sha256:3890ecfb9628a528b2e8c511addc08ed5b875868d8e72bcbc9a1828af477444d
+            env:
+              TZ: ${TIMEZONE:-UTC}
+              SONARR__AUTHENTICATION_METHOD: External
+            envFrom: *envFrom
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 10m
+              limits:
+                memory: 1500Mi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8989
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        annotations:
+          auth.home.arpa/enabled: 'true'
+        hosts:
+          - host: &host sonarr.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 100
+    persistence:
+      config:
+        enabled: true
+        existingClaim: *app
+      media:
+        enabled: true
+        type: nfs
+        server: 172.16.1.6
+        path: /volume1/Media
+        globalMounts:
+          - path: /media

@@ -1,0 +1,27 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app kavita
+  namespace: flux-system
+spec:
+  path: ./kubernetes/apps/media/kavita/app
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  targetNamespace: media
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  dependsOn:
+    - name: volsync
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+  postBuild:
+    substitute:
+      APP: kavita
+      VOLSYNC_CAPACITY: 2Gi

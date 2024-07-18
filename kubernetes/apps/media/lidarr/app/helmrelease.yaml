@@ -1,0 +1,92 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app lidarr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  values:
+    controllers:
+      main:
+        annotations:
+          secret.reloader.stakater.com/reload: lidarr-secrets
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: lidarr-secrets
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/lidarr-develop
+              tag: 2.3.3.4204@sha256:8061ccda9651601d112dfb1476cc32aa23826e4685c202da56ecb81b218ef491
+            env:
+              TZ: ${TIMEZONE:-UTC}
+              LIDARR__AUTHENTICATION_METHOD: External
+            envFrom: *envFrom
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 10m
+              limits:
+                memory: 1500Mi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8686
+    ingress:
+      main:
+        enabled: true
+        className: internal
+        hosts:
+          - host: lidarr.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 100
+    persistence:
+      config:
+        enabled: true
+        existingClaim: *app
+      media:
+        enabled: true
+        type: nfs
+        server: 172.16.1.6
+        path: /volume1/Media
+        globalMounts:
+          - path: /media
