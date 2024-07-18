@@ -1,0 +1,42 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rook-ceph-operator
+  namespace: rook-ceph
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: rook-ceph
+      version: v1.14.8
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  dependsOn:
+    - name: snapshot-controller
+      namespace: volsync
+  values:
+    crds:
+      enabled: true
+    monitoring:
+      enabled: true
+    csi:
+      cephFSKernelMountOptions: ms_mode=prefer-crc
+      enableLiveness: true
+      serviceMonitor:
+        enabled: true
+    resources:
+      requests:
+        cpu: 500m
+        memory: 128Mi
+      limits: {}
