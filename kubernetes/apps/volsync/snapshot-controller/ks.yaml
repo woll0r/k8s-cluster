@@ -6,7 +6,7 @@ metadata:
   name: &app snapshot-controller
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/kube-system/snapshot-controller/app
+  path: ./kubernetes/apps/volsync/snapshot-controller/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
