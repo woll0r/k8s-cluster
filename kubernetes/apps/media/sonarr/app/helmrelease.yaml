@@ -68,9 +68,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
-        annotations:
-          auth.home.arpa/enabled: 'true'
+        className: internal
         hosts:
           - host: &host sonarr.${SECRET_DOMAIN}
             paths:
