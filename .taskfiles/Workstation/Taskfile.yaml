@@ -49,6 +49,7 @@ tasks:
           - siderolabs/talos?as=talosctl&type=script
           - yannh/kubeconform?as=kubeconform&type=script
           - mikefarah/yq?as=yq&type=script
+          - dopplerhq/cli?as=doppler&type=script
         cmd: curl -fsSL "https://i.jpillora.com/{{.ITEM}}" | bash
       - cmd: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         platforms: ["linux/amd64"]
