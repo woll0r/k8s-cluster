@@ -12,7 +12,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: prune
-          image: docker.io/restic/restic:0.16.4
+          image: docker.io/restic/restic:0.16.5
           args: ['forget', '--keep-daily', '10', '--keep-hourly', '24', '--prune']
           envFrom:
             - secretRef:
