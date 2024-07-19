@@ -34,8 +34,6 @@ includes:
     aliases:
       - vs
 
-  cluster: .taskfiles/Cluster
-
 tasks:
 
   default: task --list
