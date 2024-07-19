@@ -3,15 +3,19 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "labels": ["dep/major"]
+      "labels": ["type/major"]
     },
     {
       "matchUpdateTypes": ["minor"],
-      "labels": ["dep/minor"]
+      "labels": ["type/minor"]
     },
     {
       "matchUpdateTypes": ["patch"],
-      "labels": ["dep/patch"]
+      "labels": ["type/patch"]
+    },
+    {
+      "matchUpdateTypes": ["digest"],
+      "labels": ["type/digest"]
     },
     {
       "matchDatasources": ["docker"],

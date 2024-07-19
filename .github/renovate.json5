@@ -4,6 +4,7 @@
   "extends": [
     "config:recommended",
     "docker:enableMajor",
+    "replacements:k8s-registry-move",
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
@@ -14,7 +15,7 @@
     "github>woll0r/k8s-cluster//.github/renovate/allowedVersions.json5",
     "github>woll0r/k8s-cluster//.github/renovate/autoMerge.json5",
     "github>woll0r/k8s-cluster//.github/renovate/commitMessage.json5",
-    "github>woll0r/k8s-cluster//.github/renovate/disabledSources.json5",
+    "github>woll0r/k8s-cluster//.github/renovate/customManagers.json5",
     "github>woll0r/k8s-cluster//.github/renovate/grafanaDashboards.json5",
     "github>woll0r/k8s-cluster//.github/renovate/looseVersioning.json5",
     "github>woll0r/k8s-cluster//.github/renovate/packageGroups.json5",
@@ -26,65 +27,19 @@
   "rebaseWhen": "conflicted",
   "commitBodyTable": true,
   "flux": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"]
+    "fileMatch": [
+      "(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"]
-  },
-  "helmfile": {
-    "fileMatch": ["(^|/)helmfile\\.ya?ml(?:\\.j2)?$"]
+    "fileMatch": [
+      "(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"]
-  },
-  "kustomize": {
-    "fileMatch": ["(^|/)kustomization\\.ya?ml(?:\\.j2)?$"]
-  },
-  "pip_requirements": {
-    "fileMatch": ["(^|/)[\\w-]*requirements(-\\w+)?\\.(txt|pip)(?:\\.j2)?$"]
-  },
-  "regexManagers": [
-    {
-      "description": "CRDs",
-      "fileMatch": ["kubernetes/.+\\.ya?ml$"],
-      "matchStrings": [
-        // GitRepository where 'Git release/tag' matches 'Helm' version
-        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
-        // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
-        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
-    },
-    {
-      "description": "Process various dependencies",
-      "fileMatch": [
-        "kubernetes/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    },
-    {
-      "description": "Process raw GitHub URLs",
-      "fileMatch": ["kubernetes/.+\\.ya?ml$"],
-      "matchStrings": [
-        "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
-      ],
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "semver"
-    },
-    {
-      "description": "Process imageName values",
-      "fileMatch": [
-        "kubernetes/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "imageName: (?<depName>\\S+):(?<currentValue>.*\\-.*)"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "redhat"
-    }
-  ]
+    "fileMatch": [
+      "(^|/)\\.taskfiles/.+\\.ya?ml(?:\\.j2)?$",
+      "(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"
+    ]
+  }
 }
