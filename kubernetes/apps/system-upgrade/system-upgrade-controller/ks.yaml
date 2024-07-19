@@ -33,7 +33,7 @@ spec:
   path: "./kubernetes/apps/system-upgrade/system-upgrade-controller/plans"
   sourceRef:
     kind: GitRepository
-    name: homelab-kubernetes
+    name: home-kubernetes
   prune: true
   wait: false
   interval: 30m
