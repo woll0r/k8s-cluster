@@ -45,7 +45,13 @@ spec:
               tag: 1.21.1.4622@sha256:e5efe7f89e8294da5725c399e77dab0e206a6b0f58eca78cdde8fb903593ab23
             env:
               TZ: ${TIMEZONE:-UTC}
-              PROWLARR__AUTHENTICATION_METHOD: External
+              PROWLARR__APP__INSTANCENAME: Prowlarr
+              PROWLARR__APP__THEME: dark
+              PROWLARR__AUTH__METHOD: External
+              PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              PROWLARR__LOG__DBENABLED: "False"
+              PROWLARR__LOG__LEVEL: info
+              PROWLARR__UPDATE__BRANCH: develop
             envFrom: *envFrom
             resources:
               requests:
