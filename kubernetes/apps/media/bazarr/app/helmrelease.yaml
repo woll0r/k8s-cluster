@@ -63,16 +63,13 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: &host bazarr.${SECRET_DOMAIN}
+          - host: bazarr.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   identifier: main
                   port: http
-        tls:
-          - hosts:
-              - *host
     defaultPodOptions:
       securityContext:
         runAsUser: 568
