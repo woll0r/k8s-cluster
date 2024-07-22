@@ -28,7 +28,7 @@
     "yaml.schemaStore.enable": true,
     "yaml.schemas": {
       "ansible": "./ansible/**/*.yaml",
-      "kubernetes": "./cluster/**/*.yaml"
+      "kubernetes": "./kubernetes/**/*.yaml"
     },
     "git.enableCommitSigning": true,
     "material-icon-theme.files.associations": {
@@ -47,8 +47,10 @@
         "external-secrets": "secure",
         "flux-system": "pipe",
         "kube-system": "kubernetes",
-        "monitoring": "event",
-        "networking": "connection",
+        "observability": "event",
+        "network": "connection",
+        "media": "video",
+        "openebs-system": "base",
         "rook-ceph": "base",
         "system-upgrade": "update",
         "volsync": "aws"
