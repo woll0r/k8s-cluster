@@ -1,0 +1,72 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app joplin
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 5
+      remediateLastFailure: true
+  values:
+    controllers:
+      main:
+        annotations:
+          secret.reloader.stakater.com/reload: joplin-secrets
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: joplin-secrets
+        containers:
+          app:
+            image:
+              repository: joplin/server
+              tag: 2.14.2-beta@sha256:b87564ef34e9ed0513e9b925b617cb8a1371eddfc8476f1fbd3fa85341d51508
+            env:
+              APP_BASE_URL: https://joplin.${SECRET_DOMAIN}
+              APP_PORT: &port 8080
+              DB_CLIENT: pg
+            envFrom: *envFrom
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        className: external
+        hosts:
+          - host: joplin.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
