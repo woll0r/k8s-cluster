@@ -48,6 +48,19 @@ spec:
               APP_PORT: &port 8080
               DB_CLIENT: pg
             envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 50m
@@ -62,6 +75,8 @@ spec:
       main:
         enabled: true
         className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: joplin.${SECRET_DOMAIN}
             paths:
