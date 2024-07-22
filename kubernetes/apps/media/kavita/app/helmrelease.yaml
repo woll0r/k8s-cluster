@@ -35,6 +35,19 @@ spec:
               tag: 0.8.2@sha256:3fbd326ca5bde61318200751289a289ef0040b4c842874814ffaf05107d91fe8
             env:
               TZ: ${TIMEZONE:-UTC}
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/health
+                    port: 5000
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 memory: 512Mi

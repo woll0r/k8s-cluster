@@ -46,6 +46,10 @@ spec:
             env:
               TZ: ${TIMEZONE:-UTC}
             envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
             resources:
               requests:
                 memory: 512Mi

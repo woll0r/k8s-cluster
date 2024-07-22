@@ -35,6 +35,10 @@ spec:
               tag: 1.40.4.8679-424562606
             env:
               TZ: ${TIMEZONE:-UTC}
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
             resources:
               requests:
                 gpu.intel.com/i915: 1

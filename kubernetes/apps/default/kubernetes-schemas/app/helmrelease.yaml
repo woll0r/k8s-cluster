@@ -31,6 +31,19 @@ spec:
             image:
               repository: ghcr.io/woll0r/kubernetes-schemas-web
               tag: latest@sha256:0faed76852cee971cd7fd9f88f7bed1849913795ad7330e6d72546d9f9ba20e4
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 8080
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 memory: 50Mi

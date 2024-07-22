@@ -53,6 +53,19 @@ spec:
               LIDARR__LOG__LEVEL: info
               LIDARR__UPDATE__BRANCH: develop
             envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: 8686
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 memory: 250Mi

@@ -45,6 +45,19 @@ spec:
               SIGNUPS_ALLOWED: 'false'
               DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
             envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /alive
+                    port: 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 memory: 512Mi
