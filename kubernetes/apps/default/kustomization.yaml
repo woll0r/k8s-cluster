@@ -9,3 +9,4 @@ resources:
   - ./joplin/ks.yaml
   - ./kubernetes-schemas/ks.yaml
   - ./vaultwarden/ks.yaml
+  - ./vikunja/ks.yaml
