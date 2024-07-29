@@ -59,7 +59,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: capacitor.${SECRET_EXTERNAL_DOMAIN}
+          - host: capacitor.${SECRET_DOMAIN}
             paths:
               - path: /
                 service:
