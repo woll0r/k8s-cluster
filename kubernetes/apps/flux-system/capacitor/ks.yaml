@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  targetNamespace: default
+  targetNamespace: flux-system
   prune: true
   sourceRef:
     kind: GitRepository
