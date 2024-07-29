@@ -29,6 +29,8 @@ rules:
     - gitrepositories
     - ocirepositories
     - buckets
+    - helmrepositories
+    - helmcharts
     - kustomizations
     - helmreleases
   verbs:
