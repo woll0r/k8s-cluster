@@ -1,45 +1,62 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/recyclarr/recyclarr/master/schemas/config-schema.json
 sonarr:
-  sonarr:
-    base_url: http://sonarr.media.svc:8989
-    api_key: !env_var SONARR_API_KEY
+  animesonarr:
+    base_url: http://animesonarr.media.svc:8989
+    api_key: !env_var ANIMESONARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
 
     include:
-      - template: sonarr-quality-definition-series
-      - template: sonarr-v4-quality-profile-web-1080p
-      - template: sonarr-v4-custom-formats-web-1080p
+      # Comment out any of the following includes to disable them
       - template: sonarr-quality-definition-anime
       - template: sonarr-v4-quality-profile-anime
       - template: sonarr-v4-custom-formats-anime
 
+# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
     custom_formats:
       - trash_ids:
-          - 026d5aadd1a6b4e550b134cb6c72b3ca  # Uncensored
+          - 026d5aadd1a6b4e550b134cb6c72b3ca # Uncensored
         quality_profiles:
           - name: Remux-1080p - Anime
-            score: 0  # Adjust scoring as desired
+            score: 0 # Adjust scoring as desired
 
       - trash_ids:
-          - b2550eb333d27b75833e25b8c2557b38  # 10bit
+          - b2550eb333d27b75833e25b8c2557b38 # 10bit
         quality_profiles:
           - name: Remux-1080p - Anime
-            score: 0  # Adjust scoring as desired
+            score: 0 # Adjust scoring as desired
 
       - trash_ids:
-          - 418f50b10f1907201b6cfdf881f467b7  # Anime Dual Audio
+          - 418f50b10f1907201b6cfdf881f467b7 # Anime Dual Audio
         quality_profiles:
           - name: Remux-1080p - Anime
-            score: 0  # Adjust scoring as desired
+            score: 0 # Adjust scoring as desired
 
-radarr:
-  radarr:
-    base_url: http://radarr.media.svc:7878
-    api_key: !env_var RADARR_API_KEY
+  sonarr:
+    base_url: http://sonarr.media.svc:8989
+    api_key: !env_var SONARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
 
     include:
+      # Comment out any of the following includes to disable them
+      - template: sonarr-quality-definition-series
+      - template: sonarr-v4-quality-profile-web-1080p
+      - template: sonarr-v4-custom-formats-web-1080p
+
+radarr:
+  animeradarr:
+    base_url: http://animeradarr.media.svc:7878
+    api_key: !env_var ANIMERADARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
+      # Comment out any of the following includes to disable them
       - template: radarr-quality-definition-movie
-      - template: radarr-quality-profile-hd-bluray-web
-      - template: radarr-custom-formats-hd-bluray-web
       - template: radarr-quality-profile-anime
       - template: radarr-custom-formats-anime
 
@@ -63,8 +80,23 @@ radarr:
           - name: Remux-1080p - Anime
             score: 0 # Adjust scoring as desired
 
+  radarr:
+    base_url: http://radarr.media.svc:7878
+    api_key: !env_var RADARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: radarr-quality-definition-movie
+      - template: radarr-quality-profile-hd-bluray-web
+      - template: radarr-custom-formats-hd-bluray-web
+
+    custom_formats:
       # Movie Versions
       - trash_ids:
           - 9f6cbff8cfe4ebbc1bde14c7b7bec0de # IMAX Enhanced
         quality_profiles:
           - name: HD Bluray + WEB
+            # score: 0 # Uncomment this line to disable prioritised IMAX Enhanced releases

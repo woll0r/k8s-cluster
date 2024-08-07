@@ -27,9 +27,12 @@
     },
     "yaml.schemaStore.enable": true,
     "yaml.schemas": {
-      "ansible": "./ansible/**/*.yaml",
       "kubernetes": "./kubernetes/**/*.yaml"
     },
+    "yaml.customTags": [
+      "!secret scalar",
+      "!env_var scalar"
+    ],
     "git.enableCommitSigning": true,
     "material-icon-theme.files.associations": {
       "*.secret.sops.env": "lock",

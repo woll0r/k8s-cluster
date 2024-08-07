@@ -6,6 +6,8 @@ resources:
   # Namespace
   - ./namespace.yaml
   # Flux kustomizations
+  - ./animeradarr/ks.yaml
+  - ./animesonarr/ks.yaml
   - ./bazarr/ks.yaml
   - ./flaresolverr/ks.yaml
   - ./kavita/ks.yaml
