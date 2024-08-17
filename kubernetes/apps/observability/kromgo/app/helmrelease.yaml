@@ -45,7 +45,7 @@ spec:
                 spec:
                   httpGet:
                     path: /-/health
-                    port: 8888
+                    port: *healthport 8888
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -55,6 +55,7 @@ spec:
                 spec:
                   httpGet:
                     path: /-/ready
+                    port: &healthport
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
