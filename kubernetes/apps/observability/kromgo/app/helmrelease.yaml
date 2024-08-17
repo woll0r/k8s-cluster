@@ -37,6 +37,7 @@ spec:
             env:
               PROMETHEUS_URL: http://prometheus-operated.observability.svc.cluster.local:9090
               SERVER_PORT: &port 80
+              SERVER_HOST: 0.0.0.0
               HEALTH_HOST: 0.0.0.0
             probes:
               liveness: &probes
