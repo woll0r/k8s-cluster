@@ -37,19 +37,24 @@ spec:
             env:
               PROMETHEUS_URL: http://prometheus-operated.observability.svc.cluster.local:9090
               SERVER_PORT: &port 80
+              HEALTH_HOST: 0.0.0.0
             probes:
               liveness: &probes
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
-                    path: /-/ready
-                    port: *port
+                    path: /-/health
+                    port: 8888
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              readiness: *probes
+              readiness:
+                <<: *probes
+                spec:
+                  httpGet:
+                    path: /-/ready
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
