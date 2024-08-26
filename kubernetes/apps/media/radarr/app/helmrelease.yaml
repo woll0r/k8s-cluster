@@ -62,9 +62,9 @@ spec:
                     path: /ping
                     port: 7878
                   initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
+                  periodSeconds: 30
+                  timeoutSeconds: 3
+                  failureThreshold: 5
               readiness: *probes
             resources:
               requests:
