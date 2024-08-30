@@ -26,6 +26,16 @@ spec:
       namespace: network
   values:
     fullnameOverride: ingress-nginx-external
+    defaultBackend:
+      enabled: true
+      image:
+        repository: ghcr.io/tarampampam/error-pages
+        tag: 3.3.0
+      extraEnvs:
+      - name: TEMPLATE_NAME
+        value: lost-in-space
+      - name: SHOW_DETAILS
+        value: 'false'
     controller:
       service:
         annotations:
@@ -63,16 +73,6 @@ spec:
         ssl-protocols: TLSv1.3 TLSv1.2
         custom-http-errors: >-
           401,403,404,500,501,502,503
-      defaultBackend:
-        enabled: true
-        image:
-          repository: ghcr.io/tarampampam/error-pages
-          tag: 3.3.0
-        extraEnvs:
-        - name: TEMPLATE_NAME
-          value: lost-in-space
-        - name: SHOW_DETAILS
-          value: 'false'
       metrics:
         enabled: true
         serviceMonitor:
