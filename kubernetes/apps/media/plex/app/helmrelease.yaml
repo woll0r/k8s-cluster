@@ -73,32 +73,15 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups:
           - 44
-          - 109
-          - 100
     service:
       main:
         controller: main
         annotations:
           io.cilium/lb-ipam-ips: 172.16.5.104
-        primary: true
         type: LoadBalancer
         ports:
           http:
-            enabled: true
             port: 32400
-            protocol: TCP
-            targetPort: 32400
-          dnla-tcp:
-            enabled: true
-            port: 32469
-            protocol: TCP
-            targetPort: 32469
-          dnla-udp:
-            enabled: true
-            port: 1900
-            protocol: TCP
-            targetPort: 1900
-        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
