@@ -68,10 +68,10 @@ spec:
               readiness: *probes
             resources:
               requests:
-                memory: 250Mi
+                memory: 512Mi
                 cpu: 10m
               limits:
-                memory: 1500Mi
+                memory: 3Gi
     service:
       main:
         controller: main
