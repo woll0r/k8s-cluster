@@ -23,5 +23,5 @@ spec:
   timeout: 5m
   postBuild:
     substitute:
-      APP: kavita
+      APP: *app
       VOLSYNC_CAPACITY: 2Gi
