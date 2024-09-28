@@ -13,7 +13,7 @@ ui:
   header: Status
 alerting:
   discord:
-    webhook-url: ${DISCORD_WEBHOOK_URL}
+    webhook-url: $${DISCORD_WEBHOOK_URL}
     default-alert:
       description: health-check failed
       send-on-resolved: true
