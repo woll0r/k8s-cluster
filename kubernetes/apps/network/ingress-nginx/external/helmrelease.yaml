@@ -36,6 +36,8 @@ spec:
         value: lost-in-space
       - name: SHOW_DETAILS
         value: 'false'
+      - name: SEND_SAME_HTTP_CODE
+        value: 'true'
     controller:
       service:
         annotations:
