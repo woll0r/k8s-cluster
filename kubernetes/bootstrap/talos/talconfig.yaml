@@ -103,6 +103,7 @@ patches:
   - "@./patches/global/openebs-local.yaml"
   - "@./patches/global/sysctl.yaml"
   - "@./patches/global/nfsmount.yaml"
+  - "@./patches/global/timeserver.yaml"
 
 # Controller patches
 controlPlane:
