@@ -90,7 +90,7 @@ spec:
           gethomepage.dev/group: Media
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/widget.url: http://animesonarr.media.svc:8989
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_ANIMERADARR_APIKEY}}` }}"
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_ANIMESONARR_APIKEY}}` }}"
         hosts:
           - host: animesonarr.${SECRET_DOMAIN}
             paths:
