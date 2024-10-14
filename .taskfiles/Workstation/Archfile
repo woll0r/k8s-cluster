@@ -1,7 +1,7 @@
 age
 cloudflared-bin
 direnv
-flux-bin
+fluxcd
 go-task
 go-yq
 helm
