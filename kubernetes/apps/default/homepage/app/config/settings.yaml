@@ -9,15 +9,13 @@ background:
   blur: md
 headerStyle: clean
 layout:
-  Calendar:
-    style: column
-    icon: mdi-calendar
   Media:
-    style: column
+    style: row
+    columns: 3
     icon: mdi-play-circle
   Infrastructure:
     style: row
-    columns: 3
+    columns: 4
     icon: mdi-server
   Storage:
     style: row
