@@ -1,0 +1,22 @@
+---
+- Infrastructure:
+  - OPNSense Firewall:
+      icon: opnsense
+      href: https://opnsense.${SECRET_ROOT_DOMAIN}
+      description: OPNSense Firewall Management
+      siteMonitor: https://opnsense.${SECRET_ROOT_DOMAIN}
+  - Cloudflared:
+      href: https://dash.cloudflare.com/
+      icon: cloudflare.png
+      description: Cloudflared Tunnel
+      widget:
+        type: cloudflared
+        accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
+        tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
+        key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
+- Storage:
+  - Synology NAS:
+      icon: synology-dsm
+      href: https://nas-syno-01.${SECRET_ROOT_DOMAIN}
+      description: Synology Disk Station Manager
+      siteMonitor: https://nas-syno-01.${SECRET_ROOT_DOMAIN}

@@ -12,6 +12,7 @@ kubeconfig
 .venv*
 # Taskfile
 .tasks
+.task
 
 # VS Code stuff
 .vscode/*

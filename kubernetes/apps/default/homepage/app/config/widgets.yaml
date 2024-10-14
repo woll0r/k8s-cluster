@@ -1,0 +1,25 @@
+---
+# - logo:
+#     icon: https://raw.githubusercontent.com/joryirving/home-ops/main/.docs/icons/lds-transparent.png
+- search:
+    provider: [duckduckgo]
+    focus: false
+    target: _blank
+- kubernetes:
+    cluster:
+      cpu: true
+      memory: true
+      show: true
+      showLabel: true
+    nodes:
+      cpu: true
+      memory: true
+      show: false
+      showLabel: true
+- datetime:
+    locale: nl
+    text_size: xl
+    format:
+      timeStyle: short
+      dateStyle: short
+      hourCycle: h23
