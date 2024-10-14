@@ -78,6 +78,12 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: vikunja.png
+          gethomepage.dev/name: Vikunja
+          gethomepage.dev/description: Vikunja task management
+          gethomepage.dev/group: Home
         hosts:
           - host: vikunja.${SECRET_DOMAIN}
             paths:

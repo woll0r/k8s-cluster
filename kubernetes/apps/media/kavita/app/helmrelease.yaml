@@ -66,6 +66,11 @@ spec:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: kavita.png
+          gethomepage.dev/name: Kavita
+          gethomepage.dev/description: Kavita ebook/comic manager
+          gethomepage.dev/group: Media
         hosts:
           - host: kavita.${SECRET_DOMAIN}
             paths:

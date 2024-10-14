@@ -74,6 +74,14 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: qbittorrent.png
+          gethomepage.dev/name: QBittorrent
+          gethomepage.dev/description: QBittorrent download client
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/widget.type: qbittorrent
+          gethomepage.dev/widget.url: http://qbittorrent.media.svc:8080
         hosts:
           - host: qb.${SECRET_DOMAIN}
             paths:

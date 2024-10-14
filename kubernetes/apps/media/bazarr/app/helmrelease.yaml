@@ -66,6 +66,12 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: bazarr.png
+          gethomepage.dev/name: Bazarr
+          gethomepage.dev/description: Bazarr subtitle manager
+          gethomepage.dev/group: Media
         hosts:
           - host: bazarr.${SECRET_DOMAIN}
             paths:

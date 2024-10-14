@@ -6,6 +6,7 @@ resources:
   # Namespace
   - ./namespace.yaml
   # Flux kustomizations
+  - ./homepage/ks.yaml
   - ./joplin/ks.yaml
   - ./kubernetes-schemas/ks.yaml
   - ./vaultwarden/ks.yaml

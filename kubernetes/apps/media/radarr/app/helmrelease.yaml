@@ -82,6 +82,15 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: radarr.png
+          gethomepage.dev/name: Radarr
+          gethomepage.dev/description: Radarr movie manager
+          gethomepage.dev/group: Media
+          gethomepage.dev/widget.type: radarr
+          gethomepage.dev/widget.url: http://radarr.media.svc:7878
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_RADARR_APIKEY}}` }}"
         hosts:
           - host: radarr.${SECRET_DOMAIN}
             paths:

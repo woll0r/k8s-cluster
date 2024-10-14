@@ -82,6 +82,15 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: lidarr.png
+          gethomepage.dev/name: Lidarr
+          gethomepage.dev/description: Lidarr music manager
+          gethomepage.dev/group: Media
+          gethomepage.dev/widget.type: lidarr
+          gethomepage.dev/widget.url: http://lidarr.media.svc:8686
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_LIDARR_APIKEY}}` }}"
         hosts:
           - host: lidarr.${SECRET_DOMAIN}
             paths:

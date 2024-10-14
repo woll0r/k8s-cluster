@@ -3,6 +3,7 @@ title: Dashboard
 favicon: https://github.com/walkxcode/dashboard-icons/blob/main/png/homepage.png
 theme: dark
 color: sky
+useEqualHeights: true
 background:
   image: https://images.unsplash.com/photo-1503642551022-c011aafb3c88?q=80&w=5340&auto=format&fit=crop
   blur: md

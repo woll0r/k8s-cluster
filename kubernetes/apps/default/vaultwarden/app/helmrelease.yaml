@@ -82,6 +82,11 @@ spec:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: vaultwarden.png
+          gethomepage.dev/name: Vaultwarden
+          gethomepage.dev/description: Vaultwarden password manager
+          gethomepage.dev/group: Home
         hosts:
           - host: &host vaultwarden.${SECRET_DOMAIN}
             paths:
