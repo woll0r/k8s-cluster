@@ -5,7 +5,7 @@ theme: dark
 color: sky
 useEqualHeights: true
 background:
-  image: https://images.unsplash.com/photo-1503642551022-c011aafb3c88?q=80&w=5340&auto=format&fit=crop
+  image: https://images.unsplash.com/photo-1700936655615-65a2aef3b4e7?q=80&w=2670&auto=format&fit=crop
   blur: md
 headerStyle: clean
 iconStyle: theme
