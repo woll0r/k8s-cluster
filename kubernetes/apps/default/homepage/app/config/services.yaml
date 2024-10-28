@@ -16,7 +16,7 @@
         key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
   - Hubble:
       icon: cilium
-      href: https://cilium.${SECRET_DOMAIN}
+      href: https://hubble.${SECRET_DOMAIN}
       description: Cilium CNI dashboard
 - Storage:
   - Synology NAS:
