@@ -22,4 +22,4 @@
       href: 'https://kubesearch.dev/'
   - k8s-gitops:
     - icon: github.png
-      href: 'https://github.com/woll0r/k8s-gitops'
+      href: 'https://github.com/woll0r/k8s-cluster'
