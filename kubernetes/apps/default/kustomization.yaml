@@ -12,3 +12,4 @@ resources:
   - ./kubernetes-schemas/ks.yaml
   - ./vaultwarden/ks.yaml
   - ./vikunja/ks.yaml
+  - ./wiki/ks.yaml
