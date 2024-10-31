@@ -93,6 +93,3 @@ spec:
                 service:
                   identifier: app
                   port: http
-    persistence:
-      data:
-        existingClaim: *app
