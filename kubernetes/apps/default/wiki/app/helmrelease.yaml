@@ -47,7 +47,7 @@ spec:
               TZ: ${TIMEZONE}
               APP_URL: "https://wiki.${SECRET_DOMAIN_NAME}"
               DB_TYPE: postgres
-            envFrom: *envfrom
+            envFrom: *envFrom
             probes:
               liveness: &probes
                 enabled: true
