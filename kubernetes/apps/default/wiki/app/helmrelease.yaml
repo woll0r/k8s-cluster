@@ -45,7 +45,7 @@ spec:
               tag: 2.5.305
             env:
               TZ: ${TIMEZONE}
-              APP_URL: "https://wiki.${SECRET_DOMAIN_NAME}"
+              APP_URL: "https://wiki.${SECRET_DOMAIN}"
               DB_TYPE: postgres
             envFrom: *envFrom
             probes:
