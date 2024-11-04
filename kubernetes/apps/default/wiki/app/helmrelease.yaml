@@ -79,6 +79,7 @@ spec:
           gethomepage.dev/name: Wiki
           gethomepage.dev/icon: wikijs.png
           gethomepage.dev/description: Personal wiki for all sorts of notes
+          nginx.ingress.kubernetes.io/custom-http-errors: "500,501,502,503"
         hosts:
           - host: "wiki.${SECRET_DOMAIN}"
             paths:
