@@ -24,6 +24,11 @@
       href: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
       description: Synology Disk Station Manager
       siteMonitor: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
+  - Minio:
+      icon: minio
+      href: https://minio.home.${SECRET_ROOT_DOMAIN}
+      description: S3-compatible object storage
+      siteMonitor: https://minio.home.${SECRET_ROOT_DOMAIN}
   - Rook:
       icon: rook
       href: https://rook.${SECRET_DOMAIN}
