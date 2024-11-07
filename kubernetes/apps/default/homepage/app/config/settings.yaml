@@ -15,18 +15,18 @@ layout:
     style: row
     columns: 5
     icon: mdi-play-circle
+  Home:
+    style: column
+    icon: mdi-home-analytics
+  Downloads:
+    style: column
+    icon: mdi-download-circle
   Infrastructure:
     style: column
     icon: mdi-server
   Storage:
     style: column
     icon: mdi-desktop-tower
-  Home:
-    style: column
-    icon: mdi-home-analytics
   Observability:
     style: column
     icon: mdi-chart-line
-  Downloads:
-    style: column
-    icon: mdi-download-circle

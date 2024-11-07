@@ -39,12 +39,6 @@ spec:
       ingress:
         enabled: true
         ingressClassName: internal
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: alertmanager.png
-          gethomepage.dev/name: AlertManager
-          gethomepage.dev/description: Prometheus Alert Manager
-          gethomepage.dev/group: Observability
         hosts:
           - alert-manager.${SECRET_DOMAIN}
         pathType: Prefix
@@ -99,12 +93,6 @@ spec:
       ingress:
         enabled: true
         ingressClassName: internal
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: prometheus.png
-          gethomepage.dev/name: Prometheus
-          gethomepage.dev/description: Prometheus metrics server
-          gethomepage.dev/group: Observability
         hosts:
           - prometheus.${SECRET_DOMAIN}
         pathType: Prefix

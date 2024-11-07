@@ -9,6 +9,8 @@
       href: https://dash.cloudflare.com/
       icon: cloudflare.png
       description: Cloudflared Tunnel
+      app: cloudflared
+      namespace: network
       widget:
         type: cloudflared
         accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
@@ -18,6 +20,8 @@
       icon: cilium
       href: https://hubble.${SECRET_DOMAIN}
       description: Cilium CNI dashboard
+      app: hubble-ui
+      namespace: kube-system
 - Storage:
   - Synology NAS:
       icon: synology-dsm
@@ -33,3 +37,18 @@
       icon: rook
       href: https://rook.${SECRET_DOMAIN}
       description: Rook dashboard
+      app: ceph-mgr
+      namespace: rook-ceph
+- Observability:
+  - Prometheus:
+      icon: prometheus
+      href: https://prometheus.${SECRET_DOMAIN}
+      description: Prometheus metrics server
+      app: prometheus
+      namespace: observability
+  - AlertManager:
+      icon: alertmanager
+      href: https://alert-anager.${SECRET_DOMAIN}
+      description: Prometheus alert manager
+      app: alertmanager
+      namespace: observability
