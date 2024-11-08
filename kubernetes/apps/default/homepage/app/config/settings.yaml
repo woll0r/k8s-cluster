@@ -9,14 +9,15 @@ background:
 cardBlur: md
 headerStyle: boxed
 iconStyle: theme
-fiveColumns: true
+#fiveColumns: true
 layout:
   Media:
     style: row
     columns: 5
     icon: mdi-play-circle
   Home:
-    style: column
+    style: row
+    columns: 5
     icon: mdi-home-analytics
   Downloads:
     style: column

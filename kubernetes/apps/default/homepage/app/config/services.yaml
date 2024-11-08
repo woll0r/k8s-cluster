@@ -48,7 +48,7 @@
       namespace: observability
   - AlertManager:
       icon: alertmanager
-      href: https://alert-anager.${SECRET_DOMAIN}
+      href: https://alert-manager.${SECRET_DOMAIN}
       description: Prometheus alert manager
       app: alertmanager
       namespace: observability
