@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: ghcr.io/woll0r/kubernetes-schemas-web
-              tag: latest@sha256:dcbb87724baa74b4636bf3c62ea1dad0ab0c45499a7014d7ed97cf0b040c2da3
+              tag: latest@sha256:b6f0c237843ac6e21a3974319fb4e677c95bc21b21a075ced1ac4d0e0d00777b
             probes:
               liveness: &probes
                 enabled: true
