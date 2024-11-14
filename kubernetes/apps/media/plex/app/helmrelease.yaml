@@ -92,6 +92,7 @@ spec:
           gethomepage.dev/name: Plex
           gethomepage.dev/description: Plex Media Server
           gethomepage.dev/group: Media
+          gethomepage.dev/href: https://plex.${SECRET_DOMAIN}/web/
         hosts:
           - host: plex.${SECRET_DOMAIN}
             paths:
