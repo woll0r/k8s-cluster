@@ -101,7 +101,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Storage
           gethomepage.dev/name: Syncthing
-          gethomepage.dev/icon: synchthing.png
+          gethomepage.dev/icon: syncthing.png
           gethomepage.dev/description: Sync files between computers
         hosts:
           - host: "sync.${SECRET_DOMAIN}"
