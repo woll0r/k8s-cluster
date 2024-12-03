@@ -27,7 +27,7 @@ spec:
       remediateLastFailure: true
   values:
     controllers:
-      actual:
+      syncthing:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
