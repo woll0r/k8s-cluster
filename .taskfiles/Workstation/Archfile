@@ -8,7 +8,7 @@ helm
 helmfile
 jq
 kubeconform
-kubectl-bin
+kubectl
 kustomize
 moreutils
 sops
