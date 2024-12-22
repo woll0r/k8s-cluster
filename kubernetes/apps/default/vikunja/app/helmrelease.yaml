@@ -42,7 +42,7 @@ spec:
           app:
             image:
               repository: vikunja/vikunja
-              tag: 0.24.5@sha256:1fb8454c9c04f3a86d16f9c8b9fa6cdbf685b6e6e3ff1da1d7ff3374bdbe46ad
+              tag: 0.24.6@sha256:7aafefefc3d65ef77532d5a1daed2b54034226ae5d3d43b1d590acf78adae427
             env:
               VIKUNJA_SERVICE_ALLOWICONCHANGES: false
               VIKUNJA_SERVICE_PUBLICURL: "https://vikunja.${SECRET_DOMAIN}"
