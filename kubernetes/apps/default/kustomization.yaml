@@ -7,7 +7,9 @@ resources:
   - ./namespace.yaml
   # Flux kustomizations
   - ./actual/ks.yaml
+  - ./cyberchef/ks.yaml
   - ./homepage/ks.yaml
+  - ./it-tools/ks.yaml
   - ./joplin/ks.yaml
   - ./kubernetes-schemas/ks.yaml
   - ./stirling-pdf/ks.yaml
