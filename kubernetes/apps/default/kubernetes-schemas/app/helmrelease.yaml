@@ -34,16 +34,14 @@ spec:
             probes:
               liveness: &probes
                 enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /
-                    port: 8080
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
+                type: HTTP
+                path: /
               readiness: *probes
+              startup:
+                <<: *probes
+                spec:
+                  failureThreshold: 5
+                  periodSeconds: 5
             resources:
               requests:
                 memory: 50Mi
