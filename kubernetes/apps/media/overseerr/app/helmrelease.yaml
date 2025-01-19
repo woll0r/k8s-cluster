@@ -72,7 +72,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: overseerr.png
+          gethomepage.dev/icon: overseerr
           gethomepage.dev/name: Overseerr
           gethomepage.dev/description: Overseerr media requests manager
           gethomepage.dev/group: Media

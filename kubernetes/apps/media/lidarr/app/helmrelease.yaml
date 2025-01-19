@@ -84,7 +84,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: lidarr.png
+          gethomepage.dev/icon: lidarr
           gethomepage.dev/name: Lidarr
           gethomepage.dev/description: Lidarr music manager
           gethomepage.dev/group: Media

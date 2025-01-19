@@ -76,7 +76,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: qbittorrent.png
+          gethomepage.dev/icon: qbittorrent
           gethomepage.dev/name: QBittorrent
           gethomepage.dev/description: QBittorrent download client
           gethomepage.dev/group: Downloads

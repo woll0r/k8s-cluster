@@ -69,7 +69,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: tautulli.png
+          gethomepage.dev/icon: tautulli
           gethomepage.dev/name: Tautulli
           gethomepage.dev/description: Tautulli Plex analytics
           gethomepage.dev/group: Media

@@ -84,7 +84,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: sonarr.png
+          gethomepage.dev/icon: sonarr
           gethomepage.dev/name: Sonarr
           gethomepage.dev/description: Sonarr series manager
           gethomepage.dev/group: Media

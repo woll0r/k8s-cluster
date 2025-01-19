@@ -88,7 +88,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: plex.png
+          gethomepage.dev/icon: plex
           gethomepage.dev/name: Plex
           gethomepage.dev/description: Plex Media Server
           gethomepage.dev/group: Media

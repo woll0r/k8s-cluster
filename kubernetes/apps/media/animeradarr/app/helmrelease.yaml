@@ -84,7 +84,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: radarr.png
+          gethomepage.dev/icon: radarr
           gethomepage.dev/name: AnimeRadarr
           gethomepage.dev/description: Radarr movie manager (Anime instance)
           gethomepage.dev/group: Media

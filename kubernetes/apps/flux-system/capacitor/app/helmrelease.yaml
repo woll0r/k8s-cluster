@@ -60,7 +60,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: flux-cd.png
+          gethomepage.dev/icon: flux-cd
           gethomepage.dev/name: Capacitor
           gethomepage.dev/description: Flux CD dashboard
           gethomepage.dev/group: Infrastructure

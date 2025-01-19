@@ -66,7 +66,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: kavita.png
+          gethomepage.dev/icon: kavita
           gethomepage.dev/name: Kavita
           gethomepage.dev/description: Kavita ebook/comic manager
           gethomepage.dev/group: Media

@@ -80,7 +80,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: joplin.png
+          gethomepage.dev/icon: joplin
           gethomepage.dev/name: Joplin
           gethomepage.dev/description: Joplin Sync server
           gethomepage.dev/group: Home

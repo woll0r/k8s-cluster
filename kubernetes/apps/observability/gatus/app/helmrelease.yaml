@@ -113,7 +113,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: gatus.png
+          gethomepage.dev/icon: gatus
           gethomepage.dev/name: Gatus
           gethomepage.dev/description: Gatus status page
           gethomepage.dev/group: Observability

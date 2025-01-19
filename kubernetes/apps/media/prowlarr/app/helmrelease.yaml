@@ -84,7 +84,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: prowlarr.png
+          gethomepage.dev/icon: prowlarr
           gethomepage.dev/name: Prowlarr
           gethomepage.dev/description: Prowlarr indexer manager
           gethomepage.dev/group: Downloads
