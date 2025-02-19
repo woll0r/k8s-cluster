@@ -1,5 +1,5 @@
 age
-cloudflared-bin
+cloudflared
 direnv
 fluxcd
 go-task
@@ -13,6 +13,6 @@ kustomize
 moreutils
 sops
 stern-bin
-talhelper-bin
+talhelper
 talosctl
-doppler-cli-bin
+doppler-cli
