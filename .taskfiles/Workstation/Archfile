@@ -12,7 +12,7 @@ kubectl
 kustomize
 moreutils
 sops
-stern-bin
+stern
 talhelper
 talosctl
 doppler-cli
