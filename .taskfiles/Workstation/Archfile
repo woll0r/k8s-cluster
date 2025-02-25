@@ -15,4 +15,4 @@ sops
 stern
 talhelper
 talosctl
-doppler-cli
+doppler-cli-bin

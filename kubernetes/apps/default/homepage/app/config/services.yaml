@@ -7,7 +7,7 @@
       siteMonitor: https://opnsense.home.${SECRET_ROOT_DOMAIN}
   - Cloudflared:
       href: https://dash.cloudflare.com/
-      icon: cloudflare.png
+      icon: cloudflare
       description: Cloudflared Tunnel
       app: cloudflared
       namespace: network
