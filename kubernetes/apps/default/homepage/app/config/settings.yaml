@@ -9,23 +9,35 @@ iconStyle: theme
 statusStyle: dot
 #fiveColumns: true
 layout:
+  Home:
+    style: row
+    columns: 4
+    icon: mdi-home-analytics
+  Tools:
+    style: row
+    columns: 4
+    icon: mdi-tools
   Media:
     style: row
     columns: 5
     icon: mdi-play-circle
-  Home:
+  Downloads:
+    style: row
+    columns: 4
+    icon: mdi-download-circle
+    initiallyCollapsed: true
+  Infrastructure:
+    style: row
+    columns: 4
+    icon: mdi-server
+    initiallyCollapsed: true
+  Storage:
     style: row
     columns: 5
-    icon: mdi-home-analytics
-  Downloads:
-    style: column
-    icon: mdi-download-circle
-  Infrastructure:
-    style: column
-    icon: mdi-server
-  Storage:
-    style: column
     icon: mdi-desktop-tower
+    initiallyCollapsed: true
   Observability:
-    style: column
+    style: row
+    columns: 4
     icon: mdi-chart-line
+    initiallyCollapsed: true
