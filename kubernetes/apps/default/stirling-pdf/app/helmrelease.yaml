@@ -68,7 +68,7 @@ spec:
           gethomepage.dev/icon: stirling-pdf
           gethomepage.dev/name: Stirling PDF
           gethomepage.dev/description: PDF viewer and editor
-          gethomepage.dev/group: Home
+          gethomepage.dev/group: Tools
         hosts:
           - host: spdf.${SECRET_DOMAIN}
             paths:

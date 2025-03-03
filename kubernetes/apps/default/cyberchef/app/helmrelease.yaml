@@ -54,7 +54,7 @@ spec:
           gethomepage.dev/icon: cyberchef
           gethomepage.dev/name: CyberChef
           gethomepage.dev/description: Cyber Swiss Army Knife
-          gethomepage.dev/group: Home
+          gethomepage.dev/group: Tools
         hosts:
           - host: cyberchef.${SECRET_DOMAIN}
             paths:

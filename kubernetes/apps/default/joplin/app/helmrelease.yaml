@@ -83,7 +83,7 @@ spec:
           gethomepage.dev/icon: joplin
           gethomepage.dev/name: Joplin
           gethomepage.dev/description: Joplin Sync server
-          gethomepage.dev/group: Home
+          gethomepage.dev/group: Storage
         hosts:
           - host: joplin.${SECRET_DOMAIN}
             paths:

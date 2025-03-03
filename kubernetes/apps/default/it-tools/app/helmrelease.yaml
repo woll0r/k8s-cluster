@@ -50,7 +50,7 @@ spec:
           gethomepage.dev/icon: it-tools
           gethomepage.dev/name: IT Tools
           gethomepage.dev/description: Collection of tools for IT
-          gethomepage.dev/group: Home
+          gethomepage.dev/group: Tools
         hosts:
           - host: it-tools.${SECRET_DOMAIN}
             paths:
