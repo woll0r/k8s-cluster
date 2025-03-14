@@ -37,6 +37,7 @@ spec:
               tag: v1.0.0@sha256:c33ccb1f850c178bf424cd19dca87f0dc796be3e40927ea1c7416809cd6c71c6
             env:
               TZ: ${TIMEZONE}
+              HOMEPAGE_ALLOWED_HOSTS: &host "homepage.${SECRET_DOMAIN}"
             envFrom:
               - secretRef:
                   name: homepage-secret
@@ -57,7 +58,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: "homepage.${SECRET_DOMAIN}"
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
