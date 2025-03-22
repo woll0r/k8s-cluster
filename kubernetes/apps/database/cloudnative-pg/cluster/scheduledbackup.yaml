@@ -10,4 +10,4 @@ spec:
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: postgres-v16
+    name: postgres16-2

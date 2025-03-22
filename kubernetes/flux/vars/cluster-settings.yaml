@@ -7,4 +7,4 @@ metadata:
 data:
   SETTING_EXAMPLE: Global settings for your cluster go in this file, this file is NOT encrypted
   TIMEZONE: "Europe/Brussels"
-  POSTGRES_HOSTNAME: postgres16-rw.database.svc
+  POSTGRES_HOSTNAME: postgres16-2-rw.database.svc
