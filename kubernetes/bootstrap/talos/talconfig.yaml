@@ -24,7 +24,7 @@ nodes:
   - hostname: "kube-01"
     ipAddress: "172.16.5.1"
     installDiskSelector:
-      serial: "24144865538F"
+      model: "CT1000BX500SSD1"
     machineSpec:
       secureboot: true
     talosImageURL: factory.talos.dev/installer-secureboot/f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2
