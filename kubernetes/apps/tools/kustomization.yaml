@@ -6,3 +6,7 @@ resources:
   # Namespace
   - ./namespace.yaml
   # Flux kustomizations
+  - ./cyberchef/ks.yaml
+  - ./it-tools/ks.yaml
+  - ./kubernetes-schemas/ks.yaml
+  - ./stirling-pdf/ks.yaml
