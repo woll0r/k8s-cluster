@@ -6,7 +6,7 @@ metadata:
   name: &app stirling-pdf
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/stirling-pdf/app
+  path: ./kubernetes/apps/tools/stirling-pdf/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

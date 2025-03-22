@@ -16,6 +16,7 @@ tasks:
       - cat {{.AGE_FILE}} | kubectl --kubeconfig {{.KUBECONFIG_FILE}} -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
       - doppler secrets -p kube-gitops-cluster -c main get DOPPLER_PAT --plain | kubectl  --kubeconfig {{.KUBECONFIG_FILE}} -n flux-system create secret generic doppler-token-auth-api --from-file=dopplerToken=/dev/stdin
       - kubectl --kubeconfig {{.KUBECONFIG_FILE}} -n flux-system create secret generic cluster-secrets --from-env-file <(doppler secrets download -p kube-gitops-cluster -c flux-cs --no-file --format docker)
+      - doppler secrets -p kube-gitops-cluster -c main get GITHUB_DEPLOY_KEY --plain | kubectl apply -f -
       - kubectl apply --kubeconfig {{.KUBECONFIG_FILE}} --server-side --filename {{.CLUSTER_SETTINGS_FILE}}
       - kubectl apply --kubeconfig {{.KUBECONFIG_FILE}} --server-side --kustomize {{.KUBERNETES_DIR}}/flux/config
     preconditions:

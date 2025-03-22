@@ -6,7 +6,7 @@ metadata:
   name: &app wiki
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/wiki/app
+  path: ./kubernetes/apps/home/wiki/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

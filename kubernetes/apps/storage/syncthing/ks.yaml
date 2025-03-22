@@ -6,7 +6,7 @@ metadata:
   name: &app syncthing
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/syncthing/app
+  path: ./kubernetes/apps/storage/syncthing/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

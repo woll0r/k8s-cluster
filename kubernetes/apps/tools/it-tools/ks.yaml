@@ -6,7 +6,7 @@ metadata:
   name: &app it-tools
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/it-tools/app
+  path: ./kubernetes/apps/tools/it-tools/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

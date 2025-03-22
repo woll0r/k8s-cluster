@@ -6,7 +6,7 @@ metadata:
   name: &app cyberchef
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/cyberchef/app
+  path: ./kubernetes/apps/tools/cyberchef/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

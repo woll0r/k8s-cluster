@@ -6,7 +6,7 @@ metadata:
   name: &app vikunja
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/vikunja/app
+  path: ./kubernetes/apps/home/vikunja/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

@@ -6,7 +6,7 @@ metadata:
   name: &app joplin
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/default/joplin/app
+  path: ./kubernetes/apps/storage/joplin/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
