@@ -27,7 +27,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
-      serverName: postgres16
+      serverName: postgres16-2
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg
@@ -72,7 +72,7 @@ spec:
           maxParallel: 8
         destinationPath: s3://cloudnative-pg/
         endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
-        serverName: postgres-v16
+        serverName: postgres16
         s3Credentials:
           accessKeyId:
             name: cloudnative-pg
