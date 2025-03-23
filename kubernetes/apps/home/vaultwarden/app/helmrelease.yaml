@@ -86,7 +86,7 @@ spec:
           gethomepage.dev/icon: vaultwarden
           gethomepage.dev/name: Vaultwarden
           gethomepage.dev/description: Vaultwarden password manager
-          gethomepage.dev/group: Tools
+          gethomepage.dev/group: Home
         hosts:
           - host: &host vaultwarden.${SECRET_DOMAIN}
             paths:

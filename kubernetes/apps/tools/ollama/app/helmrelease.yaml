@@ -88,12 +88,6 @@ spec:
       main:
         enabled: true
         className: internal
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: ollama
-          gethomepage.dev/name: Ollama
-          gethomepage.dev/description: Self-hosted AI backend
-          gethomepage.dev/group: Tools
         hosts:
           - host: ollama.${SECRET_DOMAIN}
             paths:

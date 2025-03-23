@@ -11,7 +11,7 @@ statusStyle: dot
 layout:
   Home:
     style: row
-    columns: 4
+    columns: 5
     icon: mdi-home-analytics
   Tools:
     style: row
