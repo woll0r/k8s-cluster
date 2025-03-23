@@ -27,7 +27,6 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -62,6 +61,10 @@ spec:
                         operator: In
                         values:
                           - "true"
+                      - key: gpu.intel.com/device-id.0300-4680.present
+                        operator: In
+                        values:
+                          - "true"
             podAntiAffinity:
               requiredDuringSchedulingIgnoredDuringExecution:
                 - labelSelector:
@@ -72,6 +75,7 @@ spec:
                   topologyKey: kubernetes.io/hostname
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
+            gpu.intel.com/device-id.0300-4680.present: "true"
 
     service:
       main:
