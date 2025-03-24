@@ -36,7 +36,7 @@ spec:
           name: cloudnative-pg
           key: MINIO_SECRET_KEY
 
-  bootstrap:
+  bootstrap: {}
     # For major version upgrades
     # initdb:
     #   import:
@@ -48,11 +48,11 @@ spec:
     #     source:
     #       externalCluster: cluster-pg15
     # For recovering same major version clusters
-    recovery:
-      source: &previous-cluster postgres16
+    # recovery:
+    #   source: &previous-cluster postgres16
 
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  externalClusters:
+  externalClusters: []
     # Use this section for major version upgrades
     # - name: cluster-pg15
     #   connectionParameters:
@@ -65,18 +65,18 @@ spec:
     #     key: password
 
     # Use this section for restoring into a new, same version cluster
-    - name: *previous-cluster
-      barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cloudnative-pg/
-        endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
-        serverName: postgres16
-        s3Credentials:
-          accessKeyId:
-            name: cloudnative-pg
-            key: MINIO_ACCESS_KEY
-          secretAccessKey:
-            name: cloudnative-pg
-            key: MINIO_SECRET_KEY
+    # - name: *previous-cluster
+    #   barmanObjectStore:
+    #     wal:
+    #       compression: bzip2
+    #       maxParallel: 8
+    #     destinationPath: s3://cloudnative-pg/
+    #     endpointURL: http://minio.home.${SECRET_ROOT_DOMAIN}:9000
+    #     serverName: postgres16
+    #     s3Credentials:
+    #       accessKeyId:
+    #         name: cloudnative-pg
+    #         key: MINIO_ACCESS_KEY
+    #       secretAccessKey:
+    #         name: cloudnative-pg
+    #         key: MINIO_SECRET_KEY
