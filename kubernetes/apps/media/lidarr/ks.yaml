@@ -17,7 +17,9 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: volsync
+    - name: cloudnative-pg-cluster
     - name: external-secrets-stores
+    - name: rook-ceph-cluster
   wait: true
   interval: 30m
   retryInterval: 1m

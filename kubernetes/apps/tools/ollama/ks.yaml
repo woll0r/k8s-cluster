@@ -17,6 +17,8 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: volsync
+    - name: external-secrets-stores
+    - name: rook-ceph-cluster
   wait: true
   interval: 30m
   retryInterval: 1m
@@ -44,6 +46,9 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: volsync
+    - name: external-secrets-stores
+    - name: rook-ceph-cluster
+    - name: ollama
   wait: true
   interval: 30m
   retryInterval: 1m

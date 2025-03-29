@@ -12,7 +12,11 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  targetNamespace: actions-runner
+  targetNamespace: &namespace actions-runner
+  healthChecks:
+  - kind: HelmRelease
+    name: gha-runner-scale-set-controller
+    namespace: *namespace
   prune: true
   sourceRef:
     kind: GitRepository

@@ -40,6 +40,7 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: cloudnative-pg
+    - name: openebs
   wait: true
   interval: 30m
   retryInterval: 1m
