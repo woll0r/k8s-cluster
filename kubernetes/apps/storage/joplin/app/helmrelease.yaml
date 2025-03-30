@@ -42,7 +42,7 @@ spec:
           app:
             image:
               repository: joplin/server
-              tag: 3.3.4-beta@sha256:2eee59e3e08dfd72f755109165b7c094d4e9811411665f8668fbe5de03899b1d
+              tag: 3.3.5-beta@sha256:fea51b2d72044c212a5e210e983ce485d8f4ca6fc32b3f573c479fa04aae9826
             env:
               APP_BASE_URL: https://joplin.${SECRET_DOMAIN}
               APP_PORT: &port 8080
