@@ -14,8 +14,8 @@
       paths:
         - ".devcontainer/ci/**"
         - ".github/workflows/devcontainer.yaml"
-    schedule:
-      - cron: "0 0 * * 1"
+    # schedule:
+    #   - cron: "0 0 * * 1"
 
   concurrency:
     group: ${{ github.workflow }}-${{ github.event.number || github.ref }}

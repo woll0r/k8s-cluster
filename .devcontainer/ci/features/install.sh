@@ -11,10 +11,6 @@ apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
         age helm kubectl sops
 
-sudo apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-        lsd
-
 for app in \
     "budimanjojo/talhelper!" \
     "cilium/cilium-cli!!?as=cilium&type=script" \
@@ -58,7 +54,6 @@ EOF
 
 # Add aliases into fish
 tee /home/vscode/.config/fish/conf.d/aliases.fish > /dev/null <<EOF
-alias ls lsd
 alias kubectl kubecolor
 alias k kubectl
 EOF
