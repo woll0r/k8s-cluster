@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: ghcr.io/open-webui/open-webui
-              tag: "main"
+              tag: v0.6.0@sha256:5155540b162294147c57c92be8bc1353836d6168e392966b72a5f4de3e9d314b
               pullPolicy: Always
             env:
               TZ: ${TIMEZONE}
