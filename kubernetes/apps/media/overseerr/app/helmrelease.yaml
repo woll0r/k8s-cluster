@@ -96,3 +96,11 @@ spec:
         existingClaim: *app
         globalMounts:
           - path: /app/config
+      config-logs:
+        type: emptyDir
+        globalMounts:
+          - path: /app/config/logs
+      config-cache:
+        existingClaim: overseerr-cache
+        globalMounts:
+          - path: /app/config/cache
