@@ -30,3 +30,16 @@ tasks:
     preconditions:
       - msg: Missing kubeconform script
         sh: test -f {{.KUBECONFORM_SCRIPT}}
+
+  mount-volume:
+    desc: Mount a PVC to a temporary container
+    interactive: true
+    cmd: kubectl browse-pvc --namespace {{.NS}} --image docker.io/library/alpine:latest {{.CLAIM}}
+    vars:
+      NS: '{{.NS | default "default"}}'
+    requires:
+      vars: [CLAIM]
+    preconditions:
+      - kubectl --namespace {{.NS}} get persistentvolumeclaims {{.CLAIM}}
+      - kubectl browse-pvc --version
+      - which kubectl
