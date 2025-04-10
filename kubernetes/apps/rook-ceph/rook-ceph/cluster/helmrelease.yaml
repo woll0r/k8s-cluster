@@ -48,7 +48,7 @@ spec:
           bdev_async_discard_threads: "1"
           osd_class_update_on_start: "false"
       cephVersion:
-        image: quay.io/ceph/ceph:v19.2.1
+        image: quay.io/ceph/ceph:v19.2.2
       crashCollector:
         disable: false
       dashboard:
