@@ -22,6 +22,10 @@ spec:
     remediation:
       retries: 3
   values:
+    loki:
+      enabled: false
+    alloy:
+      enabled: false
     engines:
       local:
         lvm:
