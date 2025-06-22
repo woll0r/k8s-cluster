@@ -29,7 +29,7 @@
           with:
             token: ${{ secrets.GITHUB_TOKEN }}
 
-        - uses: azure/setup-kubectl@3e0aec4d80787158d308d7b364cb1b702e7feb7f # v4
+        - uses: azure/setup-kubectl@776406bce94f63e41d621b960d78ee25c8b76ede # v4
           with:
             version: 'latest'
 
