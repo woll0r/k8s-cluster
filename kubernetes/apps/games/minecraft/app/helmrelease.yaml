@@ -73,7 +73,7 @@ spec:
       woldSaveName: atm10
       autoCurseForge:
         apiKey:
-          existingSecret: atm10-secret
+          existingSecret: minecraft-secret
           secretKey: CF_API_KEY
         slug: all-the-mods-10
         fileId: "6696915"
