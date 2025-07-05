@@ -82,10 +82,12 @@ spec:
         #pageUrl: https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6313628
       serviceType: LoadBalancer
       servicePort: 25595
-      loadBalancerIP: 172.16.5.109
+      loadBalancerIP: &lb 172.16.5.109
       extraPorts:
       rcon:
         enabled: true
+    serviceAnnotations:
+      io.cilium/lb-ipam-ips: *lb
     extraEnv:
       ALLOW_FLIGHT: true
       GUI: false
