@@ -81,7 +81,7 @@ spec:
         #forceSynchronize: true
         #pageUrl: https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6313628
       serviceType: LoadBalancer
-      servicePort: 25595
+      servicePort: 25565
       loadBalancerIP: &lb 172.16.5.109
       extraPorts:
       rcon:
