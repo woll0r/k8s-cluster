@@ -28,3 +28,4 @@ resources:
   - ./piraeus.yaml
   - ./rook-ceph.yaml
   - ./intel.yaml
+  - ./itzg.yaml
