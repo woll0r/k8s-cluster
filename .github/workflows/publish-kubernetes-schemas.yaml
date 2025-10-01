@@ -25,7 +25,7 @@
       runs-on: ["arc-runner-set-home-ops"]
       steps:
         - name: Setup Flux CLI
-          uses: fluxcd/flux2/action@6bf37f6a560fd84982d67f853162e4b3c2235edb # v2.6.4
+          uses: fluxcd/flux2/action@f251e8e8a9b289283be055d65ae4a4ee595f7a14 # v2.7.0
           with:
             token: ${{ secrets.GITHUB_TOKEN }}
 
