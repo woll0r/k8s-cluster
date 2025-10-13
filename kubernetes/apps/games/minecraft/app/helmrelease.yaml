@@ -26,7 +26,8 @@ spec:
     keepHistory: false
   values:
     image:
-      repository: itzg/minecraft-server:java21
+      repository: itzg/minecraft-server
+      tag: java21
       pullPolicy: IfNotPresent
     resources:
       requests:
