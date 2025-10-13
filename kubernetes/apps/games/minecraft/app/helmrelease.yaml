@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     image:
-      repository: itzg/minecraft-server
+      repository: itzg/minecraft-server:java21
       pullPolicy: IfNotPresent
     resources:
       requests:
@@ -60,26 +60,19 @@ spec:
 
     minecraftServer:
       eula: true
+      overrideServerProperties: true
       ops: Minoot
-      version: 1.20.1
-      type: AUTO_CURSEFORGE
+      version: 1.7.10
+      type: CUSTOM
       spawnProtection: 0
       memory: 10G
       gameMode: survival
       maxTickTime: -1
-      difficulty: normal
+      difficulty: hard
       pvp: true
-      motd: Welcome to All the Mods 10!
-      woldSaveName: atm10
-      autoCurseForge:
-        apiKey:
-          existingSecret: minecraft-secrets
-          secretKey: CF_API_KEY
-        slug: all-the-mods-10
-        fileId: "6696915"
-        #excludeMods: simple-backups # https://github.com/ChaoticTrials/SimpleBackups/issues/45
-        #forceSynchronize: true
-        #pageUrl: https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6313628
+      motd: Gregging some techs
+      woldSaveName: gtnh
+      jvmOpts: "-Dfml.readTimeout=180 -Dfml.queryResult=confirm @java9args.txt"
       serviceType: LoadBalancer
       servicePort: 25565
       loadBalancerIP: &lb 172.16.5.109
@@ -92,7 +85,12 @@ spec:
       ALLOW_FLIGHT: true
       GUI: false
       STOP_SERVER_ANNOUNCE_DELAY: 60
-      CF_EXCLUDE_MODS: simple-backups
+      CUSTOM_JAR_EXEC: -jar lwjgl3ify-forgePatches.jar nogui
+      GENERIC_PACKS: GT_New_Horizons_2.8.0_Server_Java_17-21
+      GENERIC_PACKS_SUFFIX: .zip
+      GENERIC_PACKS_PREFIX: https://downloads.gtnewhorizons.com/ServerPacks/
+      # if this isn't true, then the container tries to download the modpack every run
+      SKIP_GENERIC_PACK_UPDATE_CHECK: "true"
 
     mcbackup:
       enabled: false
