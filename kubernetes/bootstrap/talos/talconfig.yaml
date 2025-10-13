@@ -36,7 +36,7 @@ nodes:
         mtu: 1500
         vip:
           ip: "172.16.5.0"
-    extraManifests:
+    patches:
       - "@./hostmanifests/kube-01-ethernetconfig.yaml"
   - hostname: "kube-02"
     ipAddress: "172.16.5.2"
@@ -53,8 +53,8 @@ nodes:
         mtu: 1500
         vip:
           ip: "172.16.5.0"
-    extraManifests:
-      - "@./hostmanifests/kube-01-ethernetconfig.yaml"
+    patches:
+      - "@./hostmanifests/kube-02-ethernetconfig.yaml"
   - hostname: "kube-03"
     ipAddress: "172.16.5.3"
     installDiskSelector:
@@ -70,8 +70,8 @@ nodes:
         mtu: 1500
         vip:
           ip: "172.16.5.0"
-    extraManifests:
-      - "@./hostmanifests/kube-01-ethernetconfig.yaml"
+    patches:
+      - "@./hostmanifests/kube-03-ethernetconfig.yaml"
   - hostname: "kube-04"
     ipAddress: "172.16.5.4"
     installDiskSelector:
@@ -85,8 +85,8 @@ nodes:
           hardwareAddr: "20:88:10:94:91:20"
         dhcp: true
         mtu: 1500
-    extraManifests:
-      - "@./hostmanifests/kube-01-ethernetconfig.yaml"
+    patches:
+      - "@./hostmanifests/kube-04-ethernetconfig.yaml"
   - hostname: "kube-05"
     ipAddress: "172.16.5.5"
     installDiskSelector:
@@ -100,8 +100,8 @@ nodes:
           hardwareAddr: "20:88:10:8d:b9:07"
         dhcp: true
         mtu: 1500
-    extraManifests:
-      - "@./hostmanifests/kube-01-ethernetconfig.yaml"
+    patches:
+      - "@./hostmanifests/kube-05-ethernetconfig.yaml"
 
 # Global patches
 patches:
