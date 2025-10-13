@@ -26,7 +26,8 @@ spec:
     keepHistory: false
   values:
     image:
-      repository: itzg/minecraft-server:java21
+      repository: itzg/minecraft-server
+      tag: java21
       pullPolicy: IfNotPresent
     resources:
       requests:
@@ -86,7 +87,7 @@ spec:
       GUI: false
       STOP_SERVER_ANNOUNCE_DELAY: 60
       CUSTOM_JAR_EXEC: -jar lwjgl3ify-forgePatches.jar nogui
-      GENERIC_PACKS: GT_New_Horizons_2.8.0_Server_Java_17-21
+      GENERIC_PACKS: GT_New_Horizons_2.8.0_Server_Java_17-25
       GENERIC_PACKS_SUFFIX: .zip
       GENERIC_PACKS_PREFIX: https://downloads.gtnewhorizons.com/ServerPacks/
       # if this isn't true, then the container tries to download the modpack every run
