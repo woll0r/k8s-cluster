@@ -92,7 +92,7 @@ spec:
       GENERIC_PACKS_PREFIX: https://downloads.gtnewhorizons.com/ServerPacks/
       # if this isn't true, then the container tries to download the modpack every run
       SKIP_GENERIC_PACK_UPDATE_CHECK: "true"
-
+      LEVEL_TYPE: rwg
     mcbackup:
       enabled: false
 
