@@ -6,4 +6,3 @@ resources:
   # Namespace
   - ./namespace.yaml
   # Flux kustomizations
-  - ./minecraft/ks.yaml
