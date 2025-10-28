@@ -8,6 +8,4 @@ resources:
   # Flux kustomizations
   - ./cyberchef/ks.yaml
   - ./it-tools/ks.yaml
-  - ./ollama/ks.yaml
-  - ./kubernetes-schemas/ks.yaml
   - ./stirling-pdf/ks.yaml

@@ -6,5 +6,4 @@ resources:
   # Namespace
   - ./namespace.yaml
   # Flux kustomizations
-  - ./joplin/ks.yaml
   - ./syncthing/ks.yaml

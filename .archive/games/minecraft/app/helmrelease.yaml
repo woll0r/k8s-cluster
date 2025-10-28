@@ -65,6 +65,12 @@ spec:
       ops: Minoot
       version: 1.7.10
       type: CUSTOM
+      #autoCurseForge:
+      #  apiKey:
+      #    existingSecret: minecraft-secrets
+      #    secretKey: CF_API_KEY
+      #  slug: all-the-mods-10
+      #  fileId: "6420479"
       spawnProtection: 0
       memory: 10G
       gameMode: survival
@@ -72,7 +78,7 @@ spec:
       difficulty: hard
       pvp: true
       motd: Gregging some techs
-      woldSaveName: gtnh
+      worldSaveName: gtnh
       jvmOpts: "-Dfml.readTimeout=180 -Dfml.queryResult=confirm @java9args.txt"
       serviceType: LoadBalancer
       servicePort: 25565
