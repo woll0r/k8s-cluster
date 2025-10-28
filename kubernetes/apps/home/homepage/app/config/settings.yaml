@@ -15,7 +15,7 @@ layout:
     icon: mdi-home-analytics
   Tools:
     style: row
-    columns: 4
+    columns: 3
     icon: mdi-tools
   Media:
     style: row
@@ -33,7 +33,7 @@ layout:
     initiallyCollapsed: true
   Storage:
     style: row
-    columns: 5
+    columns: 4
     icon: mdi-desktop-tower
     initiallyCollapsed: true
   Observability:
