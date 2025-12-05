@@ -1,5 +1,8 @@
 machine:
   kubelet:
+    extraConfig:
+      imageGCHighThresholdPercent: 70
+      imageGCLowThresholdPercent: 50
     extraArgs:
       rotate-server-certificates: true
     nodeIP:
