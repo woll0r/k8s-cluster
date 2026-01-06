@@ -42,7 +42,7 @@ spec:
           app:
             image:
               repository: ghcr.io/requarks/wiki
-              tag: 2.5.309
+              tag: 2.5.310
             env:
               TZ: ${TIMEZONE}
               APP_URL: "https://wiki.${SECRET_DOMAIN}"
