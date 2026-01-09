@@ -20,7 +20,6 @@ includes:
   flux: .taskfiles/Flux
   talos: .taskfiles/Talos
   sops: .taskfiles/Sops
-  workstation: .taskfiles/Workstation
   user:
     taskfile: .taskfiles/User
     optional: true
