@@ -41,14 +41,15 @@ spec:
           path: /
     toolbox:
       enabled: true
+    cephImage:
+      repository: quay.io/ceph/ceph
+      tag: v19.2.3
     cephClusterSpec:
       cephConfig:
         global:
           bdev_enable_discard: "true"
           bdev_async_discard_threads: "1"
           osd_class_update_on_start: "false"
-      cephVersion:
-        image: quay.io/ceph/ceph:v19.2.3
       crashCollector:
         disable: false
       dashboard:
