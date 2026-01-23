@@ -6,7 +6,6 @@
       "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
-      "requiredStatusChecks": null,
       "matchUpdateTypes": ["digest"],
       "matchPackagePattern": ["ghcr.io/home-operations"]
     },
@@ -15,7 +14,6 @@
       "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
-      "requiredStatusChecks": null,
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": ["ghcr.io/home-operations/prowlarr", "ghcr.io/home-operations/sonarr", "ghcr.io/home-operations/radarr", "ghcr.io/home-operations/lidarr"]
     },
@@ -25,8 +23,14 @@
       "matchDatasources": ["github-tags"],
       "automerge": true,
       "automergeType": "branch",
-      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch", "digest"]
+    },
+    {
+      "description": "Auto-merge Mise Tools",
+      "matchManagers": ["mise"],
+      "automerge": true,
+      "automergeType": "branch",
       "matchUpdateTypes": ["minor", "patch"]
-    }
+    },
   ]
 }
