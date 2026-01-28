@@ -92,3 +92,9 @@ spec:
                 service:
                   identifier: main
                   port: http
+    persistence:
+      files:
+        enabled: true
+        existingClaim: *app
+        globalMounts:
+          - path: /app/vikunja/files
