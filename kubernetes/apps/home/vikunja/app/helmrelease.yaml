@@ -68,6 +68,12 @@ spec:
               requests:
                 cpu: 50m
                 memory: 256Mi
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         controller: main
