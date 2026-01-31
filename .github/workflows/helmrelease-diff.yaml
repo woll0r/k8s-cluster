@@ -2,6 +2,8 @@
 name: HelmRelease Diff
 
 on:
+  push:
+    branches: ["renovate/**"]
   pull_request:
     branches: ["main"]
 
