@@ -5,46 +5,53 @@ sonarr:
     api_key: !env_var ANIMESONARR_API_KEY
 
     delete_old_custom_formats: true
-    replace_existing_custom_formats: true
 
-    include:
-      # Comment out any of the following includes to disable them
-      - template: sonarr-quality-definition-anime
-      - template: sonarr-v4-quality-profile-anime
-      - template: sonarr-v4-custom-formats-anime
+    media_management:
+      propers_and_repacks: do_not_prefer
 
-# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
-    custom_formats:
-      - trash_ids:
-          - 026d5aadd1a6b4e550b134cb6c72b3ca # Uncensored
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    quality_definition:
+      type: anime
 
-      - trash_ids:
-          - b2550eb333d27b75833e25b8c2557b38 # 10bit
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    quality_profiles:
+      - trash_id: 20e0fc959f1f1704bed501f23bdae76f  # [Anime] Remux-1080p
+        reset_unmatched_scores:
+          enabled: true
 
-      - trash_ids:
-          - 418f50b10f1907201b6cfdf881f467b7 # Anime Dual Audio
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    custom_format_groups:
+      add:
+        - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+        # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
+        # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
+        # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
+        # - trash_id: 7832db22b71ab669458c17a2850d6913  # [Streaming Services] Miscellaneous
+        # - trash_id: ddab3095a5d2f436f369263840af34f9  # [Streaming Services] UK
 
   sonarr:
     base_url: http://sonarr.media.svc:8989
     api_key: !env_var SONARR_API_KEY
 
     delete_old_custom_formats: true
-    replace_existing_custom_formats: true
 
-    include:
-      # Comment out any of the following includes to disable them
-      - template: sonarr-quality-definition-series
-      - template: sonarr-v4-quality-profile-web-1080p
-      - template: sonarr-v4-custom-formats-web-1080p
+    media_management:
+      propers_and_repacks: do_not_prefer
+
+    quality_definition:
+      type: series
+
+    quality_profiles:
+      - trash_id: 72dae194fc92bf828f32cde7744e51a1  # WEB-1080p
+        reset_unmatched_scores:
+          enabled: true
+
+    custom_format_groups:
+      add:
+        - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+        - trash_id: d920fd959d220306888f40b6f38e1578  # [Optional] Season Packs
+        # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
+        # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
+        # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
+        # - trash_id: 7832db22b71ab669458c17a2850d6913  # [Streaming Services] Miscellaneous
+        # - trash_id: ddab3095a5d2f436f369263840af34f9  # [Streaming Services] UK
 
 radarr:
   animeradarr:
@@ -52,51 +59,49 @@ radarr:
     api_key: !env_var ANIMERADARR_API_KEY
 
     delete_old_custom_formats: true
-    replace_existing_custom_formats: true
 
-    include:
-      # Comment out any of the following includes to disable them
-      - template: radarr-quality-definition-movie
-      - template: radarr-quality-profile-anime
-      - template: radarr-custom-formats-anime
+    media_management:
+      propers_and_repacks: do_not_prefer
 
-# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
-    custom_formats:
-      - trash_ids:
-          - 064af5f084a0a24458cc8ecd3220f93f # Uncensored
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    quality_definition:
+      type: anime
 
-      - trash_ids:
-          - a5d148168c4506b55cf53984107c396e # 10bit
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    quality_profiles:
+      - trash_id: 722b624f9af1e492284c4bc842153a38  # [Anime] Remux-1080p
+        reset_unmatched_scores:
+          enabled: true
 
-      - trash_ids:
-          - 4a3b087eea2ce012fcc1ce319259a3be # Anime Dual Audio
-        assign_scores_to:
-          - name: Remux-1080p - Anime
-            score: 0 # Adjust scoring as desired
+    custom_format_groups:
+      add:
+        - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+        # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
+        # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
+        # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
+        # - trash_id: f737e18b5824d6ebb2d57b957ae2fd6c  # [Streaming Services] UK
 
   radarr:
     base_url: http://radarr.media.svc:7878
     api_key: !env_var RADARR_API_KEY
 
     delete_old_custom_formats: true
-    replace_existing_custom_formats: true
 
-    include:
-      # Comment out any of the following includes to disable them
-      - template: radarr-quality-definition-movie
-      - template: radarr-quality-profile-hd-bluray-web
-      - template: radarr-custom-formats-hd-bluray-web
+    media_management:
+      propers_and_repacks: do_not_prefer
 
-    custom_formats:
-      # Movie Versions
-      - trash_ids:
-          - 9f6cbff8cfe4ebbc1bde14c7b7bec0de # IMAX Enhanced
-        assign_scores_to:
-          - name: HD Bluray + WEB
-            # score: 0 # Uncomment this line to disable prioritised IMAX Enhanced releases
+    quality_definition:
+      type: movie
+
+    quality_profiles:
+      - trash_id: d1d67249d3890e49bc12e275d989a7e9  # HD Bluray + WEB
+        reset_unmatched_scores:
+          enabled: true
+
+    custom_format_groups:
+      add:
+        - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+        - trash_id: f4f1474b963b24cf983455743aa9906c  # [Optional] Movie Versions
+        # - trash_id: 60f6d50cbd3cfc3e9a8c00e3a30c3114  # [Streaming Services] Anime
+        # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
+        # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
+        # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
+        # - trash_id: f737e18b5824d6ebb2d57b957ae2fd6c  # [Streaming Services] UK
