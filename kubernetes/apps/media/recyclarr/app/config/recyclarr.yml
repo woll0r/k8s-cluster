@@ -20,6 +20,10 @@ sonarr:
     custom_format_groups:
       add:
         - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+          select:
+            - 32b367365729d530ca1c124a0b180c64
+            - 82d40da2bc6923f41e14394075dd4b03
+            - e1a997ddb54e3ecbfe06341ad323c458
         # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
         # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
         # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
@@ -46,6 +50,10 @@ sonarr:
     custom_format_groups:
       add:
         - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+          select:
+            - 32b367365729d530ca1c124a0b180c64
+            - 82d40da2bc6923f41e14394075dd4b03
+            - e1a997ddb54e3ecbfe06341ad323c458
         - trash_id: d920fd959d220306888f40b6f38e1578  # [Optional] Season Packs
         # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
         # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
@@ -74,6 +82,11 @@ radarr:
     custom_format_groups:
       add:
         - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+          select:
+            - b6832f586342ef70d9c128d40c07b872
+            - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5
+            - 7357cf5161efbf8c4d5d0c30b4815ee2
+            - 5c44f52a8714fdd79bb4d98e2673be1f
         # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
         # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
         # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
@@ -99,7 +112,15 @@ radarr:
     custom_format_groups:
       add:
         - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+          select:
+            - b6832f586342ef70d9c128d40c07b872
+            - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5
+            - 7357cf5161efbf8c4d5d0c30b4815ee2
+            - 5c44f52a8714fdd79bb4d98e2673be1f
         - trash_id: f4f1474b963b24cf983455743aa9906c  # [Optional] Movie Versions
+          select:
+            - 957d0f44b592285f26449575e8b1167e
+            - eecf3a857724171f968a66cb5719e152
         # - trash_id: 60f6d50cbd3cfc3e9a8c00e3a30c3114  # [Streaming Services] Anime
         # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
         # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
