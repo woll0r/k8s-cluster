@@ -2,8 +2,7 @@
 name: HelmRelease Diff
 
 on:
-  push:
-    branches: ["renovate/**"]
+  pull-request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
