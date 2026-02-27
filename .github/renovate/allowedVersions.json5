@@ -4,12 +4,12 @@
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": ["postgresql"],
-      "allowedVersions": "<=16"
+      "allowedVersions": "< 17"
     },
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": ["ceph"],
-      "allowedVersions": "<=19"
+      "allowedVersions": "< 20"
     }
   ]
 }
