@@ -45,7 +45,7 @@ jobs:
             --verbose
 
   diff:
-    if: ${{ needs.filter.outputs.changed-files != '[]' && github.event.type == "PullRequest" }}
+    if: ${{ needs.filter.outputs.changed-files != '[]' && github.event.type == 'PullRequest' }}
     needs: filter
     name: Flux Local - Diff
     runs-on: ubuntu-latest
