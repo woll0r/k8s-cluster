@@ -1,8 +1,7 @@
 ---
 name: HelmRelease Diff
 
-on:
-  pull_request
+on: [pull_request, push]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
@@ -46,7 +45,7 @@ jobs:
             --verbose
 
   diff:
-    if: ${{ needs.filter.outputs.changed-files != '[]' }}
+    if: ${{ needs.filter.outputs.changed-files != '[]' && github.event.type == "PullRequest" }}
     needs: filter
     name: Flux Local - Diff
     runs-on: ubuntu-latest
