@@ -13,22 +13,9 @@ sonarr:
       type: anime
 
     quality_profiles:
-      - trash_id: 20e0fc959f1f1704bed501f23bdae76f  # [Anime] Remux-1080p
+      - trash_id: 20e0fc959f1f1704bed501f23bdae76f
         reset_unmatched_scores:
           enabled: true
-
-    custom_format_groups:
-      add:
-        - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
-          select:
-            - 32b367365729d530ca1c124a0b180c64
-            - 82d40da2bc6923f41e14394075dd4b03
-            - e1a997ddb54e3ecbfe06341ad323c458
-        # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
-        # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
-        # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
-        # - trash_id: 7832db22b71ab669458c17a2850d6913  # [Streaming Services] Miscellaneous
-        # - trash_id: ddab3095a5d2f436f369263840af34f9  # [Streaming Services] UK
 
   sonarr:
     base_url: http://sonarr.media.svc:8989
@@ -43,23 +30,34 @@ sonarr:
       type: series
 
     quality_profiles:
-      - trash_id: 72dae194fc92bf828f32cde7744e51a1  # WEB-1080p
+      - trash_id: 72dae194fc92bf828f32cde7744e51a1
         reset_unmatched_scores:
           enabled: true
 
     custom_format_groups:
       add:
-        - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+        - trash_id: 158188097a58d7687dee647e04af0da3
           select:
+            - 47435ece6b99a0b477caf360e79ba0bb
+            - 9b64dff695c2115facf1b6ea59c9bd07
+        - trash_id: 85fae4a2294965b75710ef2989c850eb
+          select:
+            - 218e93e5702f44a68ad9e3c6ba87d2f0
+            - 43b3cf48cb385cd3eac608ee6bca7f09
+        - trash_id: 59c3af66780d08332fdc64e68297098f
+          select:
+            - 15a05bc7c1a36e2b57fd628f8977e2fc
             - 32b367365729d530ca1c124a0b180c64
+            - 85c61753df5da1fb2aab6f2a47426b09
+            - 6f808933a71bd9666531610cb8c059cc
+            - fbcb31d8dabd2a319072b84fc0b7249c
+            - 9c11cd3f07101cdba90a2d81cf0e56b4
+            - e2315f990da2e2cbfc9fa5b7a6fcfe48
             - 82d40da2bc6923f41e14394075dd4b03
             - e1a997ddb54e3ecbfe06341ad323c458
-        - trash_id: d920fd959d220306888f40b6f38e1578  # [Optional] Season Packs
-        # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
-        # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
-        # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
-        # - trash_id: 7832db22b71ab669458c17a2850d6913  # [Streaming Services] Miscellaneous
-        # - trash_id: ddab3095a5d2f436f369263840af34f9  # [Streaming Services] UK
+            - 06d66ab109d4d2eddb2794d21526d140
+            - 1b3994c551cbb92a2c781af061f4ab44
+            - 23297a736ca77c0fc8e70f8edd7ee56c
 
 radarr:
   animeradarr:
@@ -75,22 +73,9 @@ radarr:
       type: anime
 
     quality_profiles:
-      - trash_id: 722b624f9af1e492284c4bc842153a38  # [Anime] Remux-1080p
+      - trash_id: 722b624f9af1e492284c4bc842153a38
         reset_unmatched_scores:
           enabled: true
-
-    custom_format_groups:
-      add:
-        - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
-          select:
-            - b6832f586342ef70d9c128d40c07b872
-            - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5
-            - 7357cf5161efbf8c4d5d0c30b4815ee2
-            - 5c44f52a8714fdd79bb4d98e2673be1f
-        # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
-        # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
-        # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
-        # - trash_id: f737e18b5824d6ebb2d57b957ae2fd6c  # [Streaming Services] UK
 
   radarr:
     base_url: http://radarr.media.svc:7878
@@ -105,24 +90,30 @@ radarr:
       type: movie
 
     quality_profiles:
-      - trash_id: d1d67249d3890e49bc12e275d989a7e9  # HD Bluray + WEB
+      - trash_id: d1d67249d3890e49bc12e275d989a7e9
         reset_unmatched_scores:
           enabled: true
 
     custom_format_groups:
       add:
-        - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+      - trash_id: f8bf8eab4617f12dfdbd16303d8da245
           select:
+            - dc98083864ea246d05a42df0d05f81cc
+            - 839bea857ed2c0a8e084f3cbdbd65ecb
+        - trash_id: a3ac6af01d78e4f21fcb75f601ac96df
+          select:
+            - b8cd450cbfa689c0259a01d9e29ba3d6
+            - cae4ca30163749b891686f95532519bd
             - b6832f586342ef70d9c128d40c07b872
+            - cc444569854e9de0b084ab2b8b1532b2
+            - ed38b889b31be83fda192888e2286d83
+            - 0a3f082873eb454bde444150b70253cc
+            - e6886871085226c3da1830830146846c
+            - 90a6f9a284dff5103f6346090e6280c8
+            - e204b80c87be9497a8a6eaff48f72905
             - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5
             - 7357cf5161efbf8c4d5d0c30b4815ee2
             - 5c44f52a8714fdd79bb4d98e2673be1f
-        - trash_id: f4f1474b963b24cf983455743aa9906c  # [Optional] Movie Versions
-          select:
-            - 957d0f44b592285f26449575e8b1167e
-            - eecf3a857724171f968a66cb5719e152
-        # - trash_id: 60f6d50cbd3cfc3e9a8c00e3a30c3114  # [Streaming Services] Anime
-        # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
-        # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
-        # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
-        # - trash_id: f737e18b5824d6ebb2d57b957ae2fd6c  # [Streaming Services] UK
+            - f537cf427b64c38c8e36298f657e4828
+            - 712d74cd88bceb883ee32f773656b1f5
+            - bfd8eb01832d646a0a89c4deb46f8564
