@@ -1,0 +1,35 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ceph-csi-drivers
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: ceph-csi-drivers
+  values:
+    operatorConfig:
+      namespace: rook-ceph # namespace:operator
+      driverSpecDefaults:
+        imageSet:
+          name: rook-csi-operator-image-set-configmap
+        nodePlugin:
+          priorityClassName: system-node-critical
+        controllerPlugin:
+          priorityClassName: system-cluster-critical
+
+    drivers:
+      rbd:
+        enabled: true
+        name: rook-ceph.rbd.csi.ceph.com # csi-provisioner-name
+        snapshotPolicy: volumeSnapshot
+      cephfs:
+        enabled: true
+        name: rook-ceph.cephfs.csi.ceph.com # csi-provisioner-name
+      nfs:
+        enabled: false
+        name: rook-ceph.nfs.csi.ceph.com # csi-provisioner-name
+      nvmeof:
+        enabled: false
+        name: rook-ceph.nvmeof.csi.ceph.com # csi-provisioner-name
