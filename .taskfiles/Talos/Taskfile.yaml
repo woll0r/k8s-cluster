@@ -84,14 +84,15 @@ tasks:
 
   upgrade:
     desc: Upgrade Talos on a node
-    dir: "{{.KUBERNETES_DIR}}/bootstrap/talos"
     cmds:
       - talosctl --nodes {{.node}} upgrade --image {{.image}} --wait=true --timeout=10m --preserve=true --reboot-mode={{.mode}}
       - talosctl --nodes {{.node}} health --wait-timeout=10m --server=false
     vars:
       mode: '{{.mode | default "default"}}'
+      image:
+        sh: talhelper genurl installer --config-file {{.TALHELPER_CONFIG_FILE}} --secure-boot --node {{.node}}
     requires:
-      vars: ["node", "image"]
+      vars: ["node"]
     preconditions:
       - msg: Missing talosconfig
         sh: test -f {{.TALOSCONFIG_FILE}}
