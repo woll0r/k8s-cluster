@@ -7,7 +7,7 @@ TALOSCONFIG = "{{config_root}}/kubernetes/bootstrap/talos/clusterconfig/taloscon
 [tools]
 "python" = "3.14.6"
 "pipx" = "1.16.1"
-"doppler" = "3.76.0"
+"doppler" = "3.76.1"
 "pipx:makejinja" = "2.8.2"
 "aqua:budimanjojo/talhelper" = "3.1.13"
 "aqua:cilium/cilium-cli" = "0.19.6"
