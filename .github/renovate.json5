@@ -1,49 +1,160 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   enabled: true,
-  extends: [
-    'config:recommended',
-    'docker:enableMajor',
-    'replacements:k8s-registry-move',
-    ':disableRateLimiting',
-    ':dependencyDashboard',
-    ':semanticCommits',
-    ':enablePreCommit',
-    ':automergeDigest',
-    ':automergeBranch',
-    ':timezone(Europe/Brussels)',
-    'github>woll0r/k8s-cluster//.github/renovate/allowedVersions.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/autoMerge.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/commitMessage.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/customManagers.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/grafanaDashboards.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/looseVersioning.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/packageGroups.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/packageLabels.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/packageRules.json5',
-    'github>woll0r/k8s-cluster//.github/renovate/semanticCommits.json5',
-  ],
-  dependencyDashboardTitle: 'Renovate Dashboard',
-  suppressNotifications: [
-    'prIgnoreNotification',
-    'prEditedNotification',
-  ],
-  rebaseWhen: 'conflicted',
+  extends: ["github>home-operations/renovate-presets#3.0.0", ":timezone(Europe/Brussels)"],
+  dependencyDashboardTitle: "Renovate Dashboard",
+  suppressNotifications: ["prIgnoreNotification", "prEditedNotification"],
+  rebaseWhen: "conflicted",
   commitBodyTable: true,
-  flux: {
-    managerFilePatterns: [
-      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
-    ],
-  },
-  'helm-values': {
-    managerFilePatterns: [
-      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
-    ],
-  },
-  kubernetes: {
-    managerFilePatterns: [
-      '/(^|/)\\.taskfiles/.+\\.ya?ml(?:\\.j2)?$/',
-      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
-    ],
-  },
+  packageRules: [
+    // Allowed versions
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["postgresql"],
+      allowedVersions: "< 17",
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["ceph"],
+      allowedVersions: "< 20",
+    },
+    // Automerge certain things
+    {
+      description: "Auto merge container digests",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "pr",
+      matchUpdateTypes: ["digest"],
+      matchPackagePattern: ["/home-operations/"],
+    },
+    {
+      description: "Auto merge containers",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "branch",
+      matchUpdateTypes: ["minor", "patch"],
+      matchPackageNames: [
+        "ghcr.io/home-operations/prowlarr",
+        "ghcr.io/home-operations/sonarr",
+        "ghcr.io/home-operations/radarr",
+        "ghcr.io/home-operations/lidarr",
+      ],
+    },
+    {
+      description: "Auto merge GitHub Actions",
+      matchManagers: ["github-actions"],
+      matchDatasources: ["github-tags"],
+      automerge: true,
+      automergeType: "branch",
+      matchUpdateTypes: ["minor", "patch", "digest"],
+    },
+    {
+      description: "Auto-merge Mise Tools",
+      matchManagers: ["mise"],
+      automerge: true,
+      automergeType: "branch",
+      matchUpdateTypes: ["minor", "patch"],
+    },
+    {
+      description: "Auto-merge Grafana dashboards",
+      matchDatasources: ["custom.grafana-dashboards"],
+      matchUpdateTypes: ["major"],
+      automerge: true,
+      automergeType: "branch",
+      ignoreTests: true,
+    },
+    {
+      description: "Auto-merge Renovate Presents",
+      matchManagers: ["renovate-config"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+      automergeType: "branch",
+      ignoreTests: true,
+    },
+    // Package groups
+    {
+      description: ["Actions Runner Controller Group"],
+      groupName: "Actions Runner Controller",
+      matchPackagePatterns: ["gha-runner-scale-set"],
+      matchDatasources: ["docker", "helm"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+    {
+      description: ["Flux Group"],
+      groupName: "Flux",
+      matchPackagePatterns: ["fluxcd"],
+      matchDatasources: ["docker", "github-tags"],
+      versioning: "semver",
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+    {
+      description: ["Intel Device Plugins Group"],
+      groupName: "Intel-Device-Plugins",
+      matchPackagePatterns: ["intel-device-plugins"],
+      matchDatasources: ["helm"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+    {
+      description: ["Rook-Ceph Group"],
+      groupName: "Rook-Ceph",
+      matchPackagePatterns: ["rook.ceph"],
+      matchDatasources: ["helm"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+    {
+      description: ["Talos Group"],
+      groupName: "Talos",
+      matchPackagePatterns: ["siderolabs/talosctl", "siderolabs/installer"],
+      matchDatasources: ["docker"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+    // Labels
+    {
+      matchUpdateTypes: ["major"],
+      labels: ["type/major"],
+    },
+    {
+      matchUpdateTypes: ["minor"],
+      labels: ["type/minor"],
+    },
+    {
+      matchUpdateTypes: ["patch"],
+      labels: ["type/patch"],
+    },
+    {
+      matchUpdateTypes: ["digest"],
+      labels: ["type/digest"],
+    },
+    {
+      matchDatasources: ["docker"],
+      addLabels: ["renovate/container"],
+    },
+    {
+      matchDatasources: ["helm"],
+      addLabels: ["renovate/helm"],
+    },
+    {
+      matchDatasources: ["github-releases", "github-tags"],
+      addLabels: ["renovate/github-release"],
+    },
+    {
+      matchManagers: ["github-actions"],
+      addLabels: ["renovate/github-action"],
+    },
+  ],
 }
