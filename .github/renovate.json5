@@ -25,7 +25,7 @@
       automerge: true,
       automergeType: "pr",
       matchUpdateTypes: ["digest"],
-      matchPackagePattern: ["/home-operations/"],
+      matchPackagePatterns: ["/home-operations/"],
     },
     {
       description: "Auto merge containers",
