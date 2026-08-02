@@ -33,7 +33,7 @@ And finally, [Rook](https://rook.io/) gets used to provide storage to the cluste
 ## Hardware
 
 | Device                  | Count | OS disk     | Data disk   | RAM   | OS               | Purpose     |
-|-------------------------|-------|-------------|-------------|-------|------------------|-------------|
+| ----------------------- | ----- | ----------- | ----------- | ----- | ---------------- | ----------- |
 | Whitebox N100           | 1     | 1TB NVMe    | 1TB SATA    | 32 GB | Talos            | K8s master  |
 | Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s master  |
 | Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s nodes   |

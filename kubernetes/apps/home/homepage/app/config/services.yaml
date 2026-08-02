@@ -1,54 +1,54 @@
 ---
 - Infrastructure:
-  - OPNSense Firewall:
-      icon: opnsense
-      href: https://opnsense.home.${SECRET_ROOT_DOMAIN}
-      description: OPNSense Firewall Management
-      siteMonitor: https://opnsense.home.${SECRET_ROOT_DOMAIN}
-  - Cloudflared:
-      href: https://dash.cloudflare.com/
-      icon: cloudflare
-      description: Cloudflared Tunnel
-      app: cloudflared
-      namespace: network
-      widget:
-        type: cloudflared
-        accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
-        tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
-        key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
-  - Hubble:
-      icon: cilium
-      href: https://hubble.${SECRET_DOMAIN}
-      description: Cilium CNI dashboard
-      app: hubble-ui
-      namespace: kube-system
+    - OPNSense Firewall:
+        icon: opnsense
+        href: https://opnsense.home.${SECRET_ROOT_DOMAIN}
+        description: OPNSense Firewall Management
+        siteMonitor: https://opnsense.home.${SECRET_ROOT_DOMAIN}
+    - Cloudflared:
+        href: https://dash.cloudflare.com/
+        icon: cloudflare
+        description: Cloudflared Tunnel
+        app: cloudflared
+        namespace: network
+        widget:
+          type: cloudflared
+          accountid: { { HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID } }
+          tunnelid: { { HOMEPAGE_VAR_CLOUDFLARED_TUNNELID } }
+          key: { { HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN } }
+    - Hubble:
+        icon: cilium
+        href: https://hubble.${SECRET_DOMAIN}
+        description: Cilium CNI dashboard
+        app: hubble-ui
+        namespace: kube-system
 - Storage:
-  - Synology NAS:
-      icon: synology-dsm
-      href: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
-      description: Synology Disk Station Manager
-      siteMonitor: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
-  - Minio:
-      icon: minio
-      href: https://minio.home.${SECRET_ROOT_DOMAIN}
-      description: S3-compatible object storage
-      siteMonitor: https://minio.home.${SECRET_ROOT_DOMAIN}
-  - Rook:
-      icon: rook
-      href: https://rook.${SECRET_DOMAIN}
-      description: Rook dashboard
-      app: ceph-mgr
-      namespace: rook-ceph
+    - Synology NAS:
+        icon: synology-dsm
+        href: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
+        description: Synology Disk Station Manager
+        siteMonitor: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
+    - Minio:
+        icon: minio
+        href: https://minio.home.${SECRET_ROOT_DOMAIN}
+        description: S3-compatible object storage
+        siteMonitor: https://minio.home.${SECRET_ROOT_DOMAIN}
+    - Rook:
+        icon: rook
+        href: https://rook.${SECRET_DOMAIN}
+        description: Rook dashboard
+        app: ceph-mgr
+        namespace: rook-ceph
 - Observability:
-  - Prometheus:
-      icon: prometheus
-      href: https://prometheus.${SECRET_DOMAIN}
-      description: Prometheus metrics server
-      app: prometheus
-      namespace: observability
-  - AlertManager:
-      icon: alertmanager
-      href: https://alert-manager.${SECRET_DOMAIN}
-      description: Prometheus alert manager
-      app: alertmanager
-      namespace: observability
+    - Prometheus:
+        icon: prometheus
+        href: https://prometheus.${SECRET_DOMAIN}
+        description: Prometheus metrics server
+        app: prometheus
+        namespace: observability
+    - AlertManager:
+        icon: alertmanager
+        href: https://alert-manager.${SECRET_DOMAIN}
+        description: Prometheus alert manager
+        app: alertmanager
+        namespace: observability

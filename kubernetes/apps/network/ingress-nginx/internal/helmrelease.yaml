@@ -30,12 +30,12 @@ spec:
         repository: ghcr.io/tarampampam/error-pages
         tag: 4.2.4
       extraEnvs:
-      - name: TEMPLATE_NAME
-        value: lost-in-space
-      - name: SHOW_DETAILS
-        value: 'true'
-      - name: SEND_SAME_HTTP_CODE
-        value: 'true'
+        - name: TEMPLATE_NAME
+          value: lost-in-space
+        - name: SHOW_DETAILS
+          value: "true"
+        - name: SEND_SAME_HTTP_CODE
+          value: "true"
     controller:
       service:
         annotations:

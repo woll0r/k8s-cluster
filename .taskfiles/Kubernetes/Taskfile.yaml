@@ -6,7 +6,6 @@ vars:
   KUBECONFORM_SCRIPT: "{{.SCRIPTS_DIR}}/kubeconform.sh"
 
 tasks:
-
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:

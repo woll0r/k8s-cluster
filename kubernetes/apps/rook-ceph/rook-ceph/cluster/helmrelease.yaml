@@ -62,7 +62,7 @@ spec:
         useAllNodes: false
         useAllDevices: false
         config:
-          osdsPerDevice: '1'
+          osdsPerDevice: "1"
         nodes:
           - name: kube-01
             devices:

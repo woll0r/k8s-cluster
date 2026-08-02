@@ -11,9 +11,9 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: GitRepository
-      name: '*'
+      name: "*"
     - kind: HelmRelease
-      name: '*'
+      name: "*"
   suspend: false
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.minuette.horse/notification.toolkit.fluxcd.io/alert_v1beta3.json
@@ -28,9 +28,9 @@ spec:
   eventSeverity: error
   eventSources:
     - kind: GitRepository
-      name: '*'
+      name: "*"
     - kind: Kustomization
-      name: '*'
+      name: "*"
     - kind: HelmRelease
-      name: '*'
+      name: "*"
   suspend: false

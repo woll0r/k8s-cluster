@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: *app
   targetNamespace: volsync
   dependsOn:
-  - name: snapshot-controller
+    - name: snapshot-controller
   prune: true
   sourceRef:
     kind: GitRepository

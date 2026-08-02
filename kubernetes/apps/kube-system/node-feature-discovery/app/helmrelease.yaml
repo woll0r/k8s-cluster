@@ -33,7 +33,7 @@ spec:
       tolerations:
         - key: node-role.kubernetes.io/master
           operator: Equal
-          value: ''
+          value: ""
           effect: NoSchedule
       affinity:
         nodeAffinity:
@@ -43,7 +43,7 @@ spec:
                 matchExpressions:
                   - key: node-role.kubernetes.io/master
                     operator: In
-                    values: ['']
+                    values: [""]
     worker:
       tolerations:
         - effect: NoExecute

@@ -34,7 +34,6 @@ includes:
       - vs
 
 tasks:
-
   default: task --list
 
   # No other tasks are needed here

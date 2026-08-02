@@ -3,7 +3,6 @@
 version: "3"
 
 tasks:
-
   age-keygen:
     desc: Initialize Age Key for Sops
     cmd: age-keygen --output {{.AGE_FILE}}

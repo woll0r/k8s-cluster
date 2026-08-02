@@ -121,4 +121,3 @@ controlPlane:
     - "@./patches/controller/api-access.yaml"
     - "@./patches/controller/cluster.yaml"
     - "@./patches/controller/etcd.yaml"
-

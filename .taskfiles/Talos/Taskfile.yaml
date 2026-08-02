@@ -15,7 +15,6 @@ env:
   ROOK_DISK: "CT1000P3PSSD8"
 
 tasks:
-
   bootstrap:
     desc: Bootstrap the Talos cluster
     dir: "{{.KUBERNETES_DIR}}/bootstrap/talos"

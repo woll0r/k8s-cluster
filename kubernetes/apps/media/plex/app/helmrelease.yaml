@@ -65,7 +65,7 @@ spec:
                   - key: intel.feature.node.kubernetes.io/gpu
                     operator: In
                     values:
-                      - 'true'
+                      - "true"
       securityContext:
         runAsUser: 568
         runAsGroup: 568

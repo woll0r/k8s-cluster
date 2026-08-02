@@ -1,28 +1,28 @@
 ---
 - Communicate:
-  - Discord:
-    - icon: discord
-      href: 'https://discord.com/app'
-  - Gmail:
-    - icon: gmail
-      href: 'http://gmail.com'
-  - Google Calendar:
-    - icon: google-calendar
-      href: 'https://calendar.google.com'
-  - Reddit:
-    - icon: reddit
-      href: 'https://old.reddit.com'
+    - Discord:
+        - icon: discord
+          href: "https://discord.com/app"
+    - Gmail:
+        - icon: gmail
+          href: "http://gmail.com"
+    - Google Calendar:
+        - icon: google-calendar
+          href: "https://calendar.google.com"
+    - Reddit:
+        - icon: reddit
+          href: "https://old.reddit.com"
 - Media Links:
-  - YouTube:
-    - icon: youtube
-      href: 'https://youtube.com/'
-  - Spotify:
-    - icon: spotify
-      href: 'http://open.spotify.com'
+    - YouTube:
+        - icon: youtube
+          href: "https://youtube.com/"
+    - Spotify:
+        - icon: spotify
+          href: "http://open.spotify.com"
 - Git:
-  - kubesearch:
-    - icon: kubernetes-dashboard
-      href: 'https://kubesearch.dev/'
-  - k8s-cluster:
-    - icon: github
-      href: 'https://github.com/woll0r/k8s-cluster'
+    - kubesearch:
+        - icon: kubernetes-dashboard
+          href: "https://kubesearch.dev/"
+    - k8s-cluster:
+        - icon: github
+          href: "https://github.com/woll0r/k8s-cluster"
