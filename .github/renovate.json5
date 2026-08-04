@@ -10,13 +10,13 @@
     // Allowed versions
     {
       matchDatasources: ["docker"],
-      matchPackagePatterns: ["postgresql"],
       allowedVersions: "< 17",
+      matchPackageNames: ["/postgresql/"],
     },
     {
       matchDatasources: ["docker"],
-      matchPackagePatterns: ["ceph"],
       allowedVersions: "< 20",
+      matchPackageNames: ["/ceph/"],
     },
     // Automerge certain things
     {
@@ -25,7 +25,7 @@
       automerge: true,
       automergeType: "pr",
       matchUpdateTypes: ["digest"],
-      matchPackagePatterns: ["/home-operations/"],
+      matchPackageNames: ["/home-operations/"],
     },
     {
       description: "Auto merge containers",
@@ -73,55 +73,61 @@
     },
     // Package groups
     {
+      description: "Mise Tools Group",
+      matchManagers: ["mise"],
+      groupName: "mise tools",
+      groupSlug: "mise-tools",
+    },
+    {
       description: ["Actions Runner Controller Group"],
       groupName: "Actions Runner Controller",
-      matchPackagePatterns: ["gha-runner-scale-set"],
       matchDatasources: ["docker", "helm"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
+      matchPackageNames: ["/gha-runner-scale-set/"],
     },
     {
       description: ["Flux Group"],
       groupName: "Flux",
-      matchPackagePatterns: ["fluxcd"],
       matchDatasources: ["docker", "github-tags"],
       versioning: "semver",
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
+      matchPackageNames: ["/fluxcd/"],
     },
     {
       description: ["Intel Device Plugins Group"],
       groupName: "Intel-Device-Plugins",
-      matchPackagePatterns: ["intel-device-plugins"],
       matchDatasources: ["helm"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
+      matchPackageNames: ["/intel-device-plugins/"],
     },
     {
       description: ["Rook-Ceph Group"],
       groupName: "Rook-Ceph",
-      matchPackagePatterns: ["rook.ceph"],
       matchDatasources: ["helm"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
+      matchPackageNames: ["/rook.ceph/"],
     },
     {
       description: ["Talos Group"],
       groupName: "Talos",
-      matchPackagePatterns: ["siderolabs/talosctl", "siderolabs/installer"],
       matchDatasources: ["docker"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
+      matchPackageNames: ["/siderolabs/talosctl/", "/siderolabs/installer/", "/siderolabs/talos"],
     },
     // Labels
     {
