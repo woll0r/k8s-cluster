@@ -44,7 +44,7 @@ spec:
       enabled: true
     cephImage:
       repository: quay.io/ceph/ceph
-      tag: v19.2.5
+      tag: v19.2.6
     cephClusterSpec:
       cephConfig:
         global:
