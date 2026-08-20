@@ -79,6 +79,18 @@ spec:
           - name: kube-05
             devices:
               - name: /dev/disk/by-id/nvme-CT1000P3PSSD8_2414486566F0
+      healthCheck:
+        # TODO: set policy to `unmute` once Talos goes to kernel 7.0+
+        # Mute is permanent until explicitly unmuted!
+        muteHealthWarning:
+          AUTH_INSECURE_ROTATING_SERVICE_KEY_TYPE:
+            policy: mute
+          AUTH_INSECURE_CLIENT_KEY_TYPE:
+            policy: mute
+          AUTH_INSECURE_KEYS_ALLOWED:
+            policy: mute
+          AUTH_INSECURE_KEYS_CREATABLE:
+            policy: mute
       security:
         cephx:
           daemon:
