@@ -79,6 +79,11 @@ spec:
           - name: kube-05
             devices:
               - name: /dev/disk/by-id/nvme-CT1000P3PSSD8_2414486566F0
+      security:
+        cephx:
+          daemon:
+            keyRotationPolicy: KeyGeneration
+            keyGeneration: 2
       resources:
         mgr:
           requests:
