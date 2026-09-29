@@ -22,6 +22,7 @@ spec:
       isWALArchiver: true
       parameters:
         barmanObjectName: cloudnative-pg
+        serverName: &clustername
 
   bootstrap: {}
     # For major version upgrades
