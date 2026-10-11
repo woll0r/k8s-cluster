@@ -7,19 +7,19 @@
 
 <div align="center">
 
-[![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dtalos_version&style=for-the-badge&logo=talos&logoColor=white&label=%20&color=blue)](https://talos.dev)
-[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&label=%20&color=blue)](https://talos.dev)
+[![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Ftalos_version&style=for-the-badge&logo=talos&logoColor=white&label=%20&color=blue)](https://talos.dev)
+[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&label=%20&color=blue)](https://talos.dev)
 
 </div>
 
 <div align="center">
 
-[![Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=flat-square&logoColor=white&label=Age)](https://github.com/kashalls/kromgo/)
-[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=flat-square&logoColor=white&label=Uptime)](https://github.com/kashalls/kromgo/)
-[![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_node_count&style=flat-square&logoColor=white&label=Nodes)](https://github.com/kashalls/kromgo/)
-[![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_pod_count&style=flat-square&logoColor=white&label=Pods)](https://github.com/kashalls/kromgo/)
-[![CPU](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_cpu_usage&style=flat-square&logoColor=white&label=CPU)](https://github.com/kashalls/kromgo/)
-[![Memory](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_memory_usage&style=flat-square&logoColor=white&label=Memory)](https://github.com/kashalls/kromgo/)
+[![Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_age_days&style=flat-square&logoColor=white&label=Age)](https://github.com/home-operations/kromgo)
+[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_uptime_days&style=flat-square&logoColor=white&label=Uptime)](https://github.com/home-operations/kromgo)
+[![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_node_count&style=flat-square&logoColor=white&label=Nodes)](https://github.com/home-operations/kromgo)
+[![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_pod_count&style=flat-square&logoColor=white&label=Pods)](https://github.com/home-operations/kromgo)
+[![CPU](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_cpu_usage&style=flat-square&logoColor=white&label=CPU)](https://github.com/home-operations/kromgo)
+[![Memory](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_memory_usage&style=flat-square&logoColor=white&label=Memory)](https://github.com/home-operations/kromgo)
 
 </div>
 
@@ -29,6 +29,8 @@ My home Kubernetes cluster running on [talos](https://talos.dev/), powered by [F
 [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) is used to encrypt secrets.
 [Cloudflare tunnels](https://www.cloudflare.com/products/tunnel/) are used to make it all available over the internet.
 And finally, [Rook](https://rook.io/) gets used to provide storage to the cluster.
+
+TODO: properly update all of this (once I get around to the network upgrades, redeploying, refactoring to use OCI repos, and other stuff I've been putting off)
 
 ## Hardware
 
@@ -41,5 +43,5 @@ And finally, [Rook](https://rook.io/) gets used to provide storage to the cluste
 
 ## Acknowledgements
 
-Loosely based on the amazing work in [onedr0p/cluster-template](https://github.com/onedr0p/cluster-template) and grabbing bits and pieces found with
-[k8s-at-home-search](https://nanne.dev/k8s-at-home-search/)
+Loosely based on the amazing work in [home-operations/cluster-template](https://github.com/home-operations/cluster-template) and grabbing bits and pieces found with
+[kubesearch](https://kubesearch.dev/)
