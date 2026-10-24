@@ -9,5 +9,3 @@ resources:
   - ./actual/ks.yaml
   - ./homepage/ks.yaml
   - ./vaultwarden/ks.yaml
-  - ./vikunja/ks.yaml
-  - ./wiki/ks.yaml
