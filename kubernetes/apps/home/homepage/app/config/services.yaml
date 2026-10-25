@@ -1,10 +1,14 @@
 ---
 - Infrastructure:
-    - OPNSense Firewall:
-        icon: opnsense
-        href: https://opnsense.home.${SECRET_ROOT_DOMAIN}
-        description: OPNSense Firewall Management
-        siteMonitor: https://opnsense.home.${SECRET_ROOT_DOMAIN}
+    - Unifi:
+        icon: unifi
+        href: https://unifi.ui.com
+        description: Unifi Controller
+        widget:
+          type: unifi
+          url: https://unifi.home.${SECRET_ROOT_DOMAIN}
+          fields: ["wan", "lan", "wlan", "uptime"]
+          key: "{{HOMEPAGE_VAR_UNIFI_APIKEY}}"
     - Cloudflared:
         href: https://dash.cloudflare.com/
         icon: cloudflare
@@ -28,11 +32,6 @@
         href: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
         description: Synology Disk Station Manager
         siteMonitor: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
-    - Minio:
-        icon: minio
-        href: https://minio.home.${SECRET_ROOT_DOMAIN}
-        description: S3-compatible object storage
-        siteMonitor: https://minio.home.${SECRET_ROOT_DOMAIN}
     - Rook:
         icon: rook
         href: https://rook.${SECRET_DOMAIN}
