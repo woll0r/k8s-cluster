@@ -8,4 +8,4 @@ components:
 
 resources:
   - ./namespace.yaml
-  - ./syncthing/ks.yaml
+  # - ./syncthing/ks.yaml

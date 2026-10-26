@@ -8,6 +8,6 @@ components:
 
 resources:
   - ./namespace.yaml
-  - ./cyberchef/ks.yaml
-  - ./it-tools/ks.yaml
-  - ./stirling-pdf/ks.yaml
+  # - ./cyberchef/ks.yaml
+  # - ./it-tools/ks.yaml
+  # - ./stirling-pdf/ks.yaml
