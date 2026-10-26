@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./rbac.yaml
-  - ../../../../templates/gatus/internal
+  - ./ocirepository.yaml
 configMapGenerator:
   - name: homepage-config
     namespace: default

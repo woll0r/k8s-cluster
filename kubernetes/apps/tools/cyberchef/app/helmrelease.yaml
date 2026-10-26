@@ -7,15 +7,9 @@ metadata:
   namespace: tools
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.7.3
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: cyberchef
   install:
     createNamespace: true
     remediation:
@@ -34,7 +28,7 @@ spec:
               repository: ghcr.io/gchq/cyberchef
               tag: 11.5.0@sha256:fa74354a9c5dd014c8dacee843eb9218fb13465d678d8b049e97bc26a69a1640
             env:
-              TZ: ${TIMEZONE}
+              TZ: Europe/Brussels
             resources:
               requests:
                 cpu: 50m
@@ -44,22 +38,22 @@ spec:
         controller: *app
         ports:
           http:
-            port: 8080
-    ingress:
-      main:
-        enabled: true
-        className: internal
+            port: &port 8080
+    route:
+      app:
+        hostnames:
+          - cyberchef.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: cyberchef
           gethomepage.dev/name: CyberChef
           gethomepage.dev/description: Cyber Swiss Army Knife
           gethomepage.dev/group: Tools
-        hosts:
-          - host: cyberchef.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port

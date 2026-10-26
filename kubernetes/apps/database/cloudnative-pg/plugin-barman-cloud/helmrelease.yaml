@@ -7,14 +7,9 @@ metadata:
   namespace: database
 spec:
   interval: 15m
-  chart:
-    spec:
-      chart: plugin-barman-cloud
-      version: 0.8.1
-      sourceRef:
-        kind: HelmRepository
-        name: cloudnative-pg
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: plugin-barman-cloud
   install:
     createNamespace: true
     remediation:
@@ -22,9 +17,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: openebs
-      namespace: openebs-system
   values:
     crds:
       create: true

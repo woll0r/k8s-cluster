@@ -3,7 +3,6 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app rook-ceph
-  namespace: flux-system
 spec:
   path: ./kubernetes/apps/rook-ceph/rook-ceph/app
   commonMetadata:
@@ -13,9 +12,11 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   dependsOn:
-    - name: external-secrets
+    - name: external-secrets-stores
+      namespace: kube-system
   wait: true
   interval: 30m
   retryInterval: 1m
@@ -25,7 +26,6 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app ceph-csi-drivers
-  namespace: flux-system
 spec:
   path: ./kubernetes/apps/rook-ceph/rook-ceph/ceph-csi
   commonMetadata:
@@ -37,7 +37,8 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m
@@ -47,7 +48,6 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app rook-ceph-cluster
-  namespace: flux-system
 spec:
   path: ./kubernetes/apps/rook-ceph/rook-ceph/cluster
   commonMetadata:
@@ -57,7 +57,8 @@ spec:
   dependsOn:
     - name: rook-ceph
     - name: ceph-csi-drivers
-    - name: volsync
+    - name: snapshot-controller
+      namespace: volsync
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
@@ -75,7 +76,8 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m

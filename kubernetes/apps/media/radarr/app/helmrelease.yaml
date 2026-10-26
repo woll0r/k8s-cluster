@@ -7,15 +7,9 @@ metadata:
   namespace: media
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.7.3
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: radarr
   install:
     createNamespace: true
     remediation:
@@ -44,7 +38,7 @@ spec:
               repository: ghcr.io/home-operations/radarr
               tag: 6.4.4.10685@sha256:1902ad2c08e9bac276ff9a1429af2eaa2f3c635a51f138f1b3eb734995171537
             env:
-              TZ: ${TIMEZONE:-UTC}
+              TZ: Europe/Brussels
               RADARR__APP__INSTANCENAME: Radarr
               RADARR__APP__THEME: dark
               RADARR__AUTH__METHOD: External
@@ -60,7 +54,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ping
-                    port: 7878
+                    port: &port 7878
                   initialDelaySeconds: 0
                   periodSeconds: 30
                   timeoutSeconds: 3
@@ -77,11 +71,11 @@ spec:
         controller: main
         ports:
           http:
-            port: 7878
-    ingress:
-      main:
-        enabled: true
-        className: internal
+            port: *port
+    route:
+      app:
+        hostnames:
+          - radarr.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: radarr
@@ -91,14 +85,14 @@ spec:
           gethomepage.dev/widget.type: radarr
           gethomepage.dev/widget.url: http://radarr.media.svc:7878
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_RADARR_APIKEY}}` }}"
-        hosts:
-          - host: radarr.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
     defaultPodOptions:
       securityContext:
         runAsUser: 568

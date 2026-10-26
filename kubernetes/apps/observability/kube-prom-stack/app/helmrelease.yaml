@@ -7,16 +7,9 @@ metadata:
   namespace: observability
 spec:
   interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://prometheus-community.github.io/helm
-      chart: kube-prometheus-stack
-      version: 92.13.1
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
   install:
     createNamespace: true
     remediation:

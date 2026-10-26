@@ -1,0 +1,17 @@
+---
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: flux-css
+  namespace: flux-system
+spec:
+  provider:
+    doppler:
+      auth:
+        secretRef:
+          dopplerToken:
+            key: dopplerToken
+            name: doppler-token-auth-api
+            namespace: flux-system
+      project: kube-gitops-cluster
+      config: flux-cs

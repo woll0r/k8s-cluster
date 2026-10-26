@@ -7,16 +7,9 @@ metadata:
   namespace: observability
 spec:
   interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://prometheus-community.github.io/helm
-      chart: prometheus-blackbox-exporter
-      version: 11.20.2
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    - kind: OCIRepository
+      name: blackbox-exporter
   install:
     createNamespace: true
     remediation:
@@ -24,9 +17,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: prometheus-operator-crds
-      namespace: observability
   values:
     fullnameOverride: blackbox-exporter
     podSecurityContext:

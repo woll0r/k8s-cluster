@@ -13,4 +13,4 @@ spec:
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io
   cluster:
-    name: postgres16-2
+    name: postgres18

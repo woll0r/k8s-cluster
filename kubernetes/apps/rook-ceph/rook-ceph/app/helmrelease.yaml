@@ -7,14 +7,9 @@ metadata:
   namespace: rook-ceph
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: rook-ceph
-      version: v1.21.0
-      sourceRef:
-        kind: HelmRepository
-        name: rook-ceph
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: rook-ceph
   install:
     createNamespace: true
     remediation:
@@ -22,9 +17,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: snapshot-controller
-      namespace: volsync
   values:
     crds:
       enabled: true

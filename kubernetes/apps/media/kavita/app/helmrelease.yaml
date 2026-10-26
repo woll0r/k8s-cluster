@@ -7,15 +7,9 @@ metadata:
   namespace: media
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.7.3
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: kavita
   install:
     createNamespace: true
     remediation:
@@ -34,7 +28,7 @@ spec:
               repository: ghcr.io/kareadita/kavita
               tag: 0.9.1@sha256:31181a32f0dda73cae68721867028a7253d57881b58bea5754cd9e578e75421a
             env:
-              TZ: ${TIMEZONE:-UTC}
+              TZ: Europe/Brussels
             probes:
               liveness: &probes
                 enabled: true
@@ -42,7 +36,7 @@ spec:
                 spec:
                   httpGet:
                     path: /api/health
-                    port: 5000
+                    port: &port 5000
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -59,25 +53,25 @@ spec:
         controller: main
         ports:
           http:
-            port: 5000
-    ingress:
-      main:
-        enabled: true
-        className: internal
+            port: *port
+    route:
+      app:
+        hostnames:
+          - kavita.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: kavita
           gethomepage.dev/name: Kavita
           gethomepage.dev/description: Kavita ebook/comic manager
           gethomepage.dev/group: Media
-        hosts:
-          - host: kavita.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
     defaultPodOptions:
       securityContext:
         runAsUser: 568
