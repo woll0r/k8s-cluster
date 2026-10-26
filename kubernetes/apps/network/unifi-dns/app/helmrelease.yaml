@@ -1,0 +1,40 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app unifi-dns
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: unifi-dns
+  interval: 1h
+  values:
+    fullnameOverride: *app
+    provider:
+      name: webhook
+      webhook:
+        image:
+          repository: ghcr.io/home-operations/external-dns-unifi-webhook
+          tag: 0.10.14@sha256:2d56637e230de7eaeda83388a79ec633c94910e77503141bc6a1a5492eecdd7e
+        env:
+          - name: UNIFI_HOST
+            value: https://unifi.home.${SECRET_ROOT_DOMAIN}
+          - name: UNIFI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: &secret unifi-dns-secret
+                key: UNIFI_API_KEY
+        readinessProbe:
+          httpGet:
+            path: /readyz
+          initialDelaySeconds: 10
+    triggerLoopOnEvent: true
+    policy: sync
+    sources: ["crd", "gateway-httproute"]
+    txtPrefix: k8s.
+    txtOwnerId: default
+    domainFilters: ["${SECRET_DOMAIN}"]
+    serviceMonitor:
+      enabled: true
+    podAnnotations:
+      secret.reloader.stakater.com/reload: *secret
