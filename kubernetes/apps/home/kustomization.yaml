@@ -10,5 +10,5 @@ components:
 resources:
   - ./namespace.yaml
   # - ./actual/ks.yaml
-  # - ./homepage/ks.yaml
+  - ./homepage/ks.yaml
   # - ./vaultwarden/ks.yaml
