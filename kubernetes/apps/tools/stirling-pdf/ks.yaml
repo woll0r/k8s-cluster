@@ -6,6 +6,9 @@ metadata:
   name: &app stirling-pdf
   namespace: flux-system
 spec:
+  components:
+    - ../../../components/volsync
+    - ../../../components/gatus/internal
   path: ./kubernetes/apps/tools/stirling-pdf/app
   commonMetadata:
     labels:
@@ -17,8 +20,11 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: volsync
+      namespace: volsync
     - name: external-secrets-stores
+      namespace: kube-system
     - name: rook-ceph-cluster
+      namespace: rook-ceph
   wait: true
   interval: 30m
   retryInterval: 1m

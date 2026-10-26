@@ -1,0 +1,72 @@
+---
+clusterName: kubernetes
+clusterEndpoint: https://172.16.5.0:6443
+
+# renovate: datasource=github-releases depName=siderolabs/talos
+talosVersion: v1.14.4
+# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
+kubernetesVersion: v1.37.1
+
+secretsPath: secrets.sops.yaml
+
+nodes:
+  - host: "kube-01"
+    ip: "172.16.5.1"
+    role: control-plane
+    schematicId: "f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/ata-Samsung_SSD_850_EVO_500GB_S21JNXAG922042K"
+      installDiskSerial: ""
+      macAddr: "e8:9c:25:77:16:d4"
+      mtu: 1500
+      encryptDisk: true
+      kernelModules: []
+  - host: "kube-02"
+    ip: "172.16.5.2"
+    role: control-plane
+    schematicId: "f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-BC901_NVMe_SK_hynix_512GB__5YD1T002012901I61"
+      installDiskSerial: ""
+      macAddr: "20:88:10:94:92:75"
+      mtu: 1500
+      encryptDisk: true
+      kernelModules: []
+  - host: "kube-03"
+    ip: "172.16.5.3"
+    role: control-plane
+    schematicId: "f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-KBG50ZNS512G_NVMe_KIOXIA_512GB_82NPGMQOQEMK"
+      installDiskSerial: ""
+      macAddr: "6c:3c:8c:2c:f2:b8"
+      mtu: 1500
+      encryptDisk: true
+      kernelModules: []
+  - host: "kube-04"
+    ip: "172.16.5.4"
+    role: worker
+    schematicId: "f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-BC901_NVMe_SK_hynix_512GB__5YD1T002210301I45"
+      installDiskSerial: ""
+      macAddr: "20:88:10:94:91:20"
+      mtu: 1500
+      encryptDisk: true
+      kernelModules: []
+  - host: "kube-05"
+    ip: "172.16.5.5"
+    role: worker
+    schematicId: "f92cecb9f6acede2470b58eda86b66f51277ebf7aea88db6bd5a8b996e9ae9e2"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-KBG50ZNS512G_NVMe_KIOXIA_512GB_X3VPH8X6QY6U"
+      installDiskSerial: ""
+      macAddr: "20:88:10:8d:b9:07"
+      mtu: 1500
+      encryptDisk: true
+      kernelModules: []

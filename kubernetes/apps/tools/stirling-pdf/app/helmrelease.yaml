@@ -34,7 +34,7 @@ spec:
               repository: ghcr.io/stirling-tools/s-pdf
               tag: 3.2.2@sha256:c6872dd056b0046a14c5de1e9970283e7f1e1ff685bb08090c6b37a231127d31
             env:
-              TZ: ${TIMEZONE}
+              TZ: Europe/Brussels
               DOCKER_ENABLE_SECURITY: "false"
               SECURITY_ENABLE_LOGIN: "false"
               INSTALL_BOOK_AND_ADVANCED_HTML_OPS: "true"
@@ -59,24 +59,24 @@ spec:
         ports:
           http:
             port: 8080
-    ingress:
-      main:
-        enabled: true
-        className: internal
+    route:
+      app:
+        hostnames:
+          - spdf.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: stirling-pdf
           gethomepage.dev/name: Stirling PDF
           gethomepage.dev/description: PDF viewer and editor
           gethomepage.dev/group: Tools
-        hosts:
-          - host: spdf.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
     persistence:
       config:
         enabled: true

@@ -4,8 +4,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app cyberchef
-  namespace: flux-system
 spec:
+  components:
+    - ../../../components/gatus/internal
   path: ./kubernetes/apps/tools/cyberchef/app
   commonMetadata:
     labels:
@@ -14,7 +15,8 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m

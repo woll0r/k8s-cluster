@@ -4,8 +4,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app recyclarr
-  namespace: flux-system
 spec:
+  components:
+    - ../../../components/volsync
   path: ./kubernetes/apps/media/recyclarr/app
   commonMetadata:
     labels:
@@ -14,11 +15,15 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   dependsOn:
     - name: volsync
+      namespace: volsync
     - name: external-secrets-stores
+      namespace: kube-system
     - name: rook-ceph-cluster
+      namespace: rook-ceph
   wait: true
   interval: 30m
   retryInterval: 1m

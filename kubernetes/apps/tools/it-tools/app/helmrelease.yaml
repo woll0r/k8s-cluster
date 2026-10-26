@@ -34,28 +34,28 @@ spec:
               repository: ghcr.io/corentinth/it-tools
               tag: 2024.10.22-7ca5933@sha256:8b8128748339583ca951af03dfe02a9a4d7363f61a216226fc28030731a5a61f
             env:
-              TZ: ${TIMEZONE}
+              TZ: Europe/Brussels
     service:
       main:
         controller: *app
         ports:
           http:
-            port: 80
-    ingress:
-      main:
-        enabled: true
-        className: internal
+            port: &port 80
+    route:
+      app:
+        hostnames:
+          - it-tools.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: it-tools
           gethomepage.dev/name: IT Tools
           gethomepage.dev/description: Collection of tools for IT
           gethomepage.dev/group: Tools
-        hosts:
-          - host: it-tools.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port

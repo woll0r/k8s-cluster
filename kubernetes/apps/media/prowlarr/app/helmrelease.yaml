@@ -7,15 +7,9 @@ metadata:
   namespace: media
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.7.3
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: prowlarr
   install:
     createNamespace: true
     remediation:
@@ -44,7 +38,7 @@ spec:
               repository: ghcr.io/home-operations/prowlarr
               tag: 2.6.5.5623@sha256:0e2e6e9a2a16683a160ff1c6830d8192231a0502ab0d605b416023b2ca225ff9
             env:
-              TZ: ${TIMEZONE:-UTC}
+              TZ: Europe/Brussels
               PROWLARR__APP__INSTANCENAME: Prowlarr
               PROWLARR__APP__THEME: dark
               PROWLARR__AUTH__METHOD: External
@@ -60,7 +54,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ping
-                    port: 9696
+                    port: &port 9696
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -77,11 +71,11 @@ spec:
         controller: main
         ports:
           http:
-            port: 9696
-    ingress:
-      main:
-        enabled: true
-        className: internal
+            port: *port
+    route:
+      app:
+        hostnames:
+          - prowlarr.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: prowlarr
@@ -91,14 +85,14 @@ spec:
           gethomepage.dev/widget.type: prowlarr
           gethomepage.dev/widget.url: http://prowlarr.media.svc:9696
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_APIKEY}}` }}"
-        hosts:
-          - host: prowlarr.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
     defaultPodOptions:
       securityContext:
         runAsUser: 568

@@ -6,6 +6,9 @@ metadata:
   name: &app vaultwarden
   namespace: flux-system
 spec:
+  components:
+    - ../../../components/gatus/external
+    - ../../../components/volsync
   path: ./kubernetes/apps/home/vaultwarden/app
   commonMetadata:
     labels:
@@ -14,12 +17,17 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
+    namespace: flux-system
   dependsOn:
     - name: volsync
+      namespace: volsync
     - name: cloudnative-pg-cluster
+      namespace: databases
     - name: external-secrets-stores
+      namespace: kube-system
     - name: rook-ceph-cluster
+      namespace: rook-ceph
   wait: true
   interval: 30m
   retryInterval: 1m

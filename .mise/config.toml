@@ -1,0 +1,46 @@
+monorepo_root = true
+
+[env]
+_.python.venv = { path = "{{config_root}}/.venv", create = true }
+KUBECONFIG = "{{config_root}}/kubeconfig"
+SOPS_AGE_KEY_FILE = "{{config_root}}/age.key"
+TALOSCONFIG = "{{config_root}}/talos/talosconfig"
+
+[tools]
+"doppler" = "3.77.1"
+"oxfmt" = "0.74.0"
+"cilium-cli" = "0.20.1"
+"gh" = "2.103.2"
+"cloudflared" = "2026.10.3"
+"cue" = "0.17.1"
+"age" = "1.3.2"
+"flux2" = "2.9.6"
+"sops" = "3.13.3"
+"task" = "3.54.0"
+"helm" = "4.3.1"
+"helmfile" = "1.8.2"
+"jq" = "1.8.1"
+"kustomize" = "5.7.1"
+"kubectl" = "1.37.1"
+"yq" = "4.54.1"
+"talosctl" = "1.14.4"
+"kubeconform" = "0.8.0"
+"k9s" = "0.51.0"
+"github:postfinance/topf" = "0.6.2"
+"gum" = "2.0.2"
+
+[tasks.log]
+hide = true
+run = "gum log -t rfc3339 -s -l"
+
+[task_config]
+cascade = true
+shell = "bash -euo pipefail -c"
+
+[monorepo]
+# Make sure Mise.toml in subdirectories doesn't get ignored
+config_roots = ["*"]
+
+[settings]
+lockfile_platforms = ["linux-x64", "linux-arm64"]
+task.quiet = true

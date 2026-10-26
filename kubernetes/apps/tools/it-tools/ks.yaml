@@ -6,6 +6,8 @@ metadata:
   name: &app it-tools
   namespace: flux-system
 spec:
+  components:
+    - ../../../components/gatus/internal
   path: ./kubernetes/apps/tools/it-tools/app
   commonMetadata:
     labels:

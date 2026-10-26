@@ -7,16 +7,9 @@ metadata:
   namespace: observability
 spec:
   interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://grafana.github.io/helm
-      chart: grafana
-      version: 10.5.15
-      sourceRef:
-        kind: HelmRepository
-        name: grafana
-        namespace: flux-system
-      interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: grafana
   install:
     createNamespace: true
     remediation:
@@ -206,17 +199,22 @@ spec:
       - vonage-status-panel
     serviceMonitor:
       enabled: true
-    ingress:
-      enabled: true
-      ingressClassName: internal
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/icon: grafana
-        gethomepage.dev/name: Grafana
-        gethomepage.dev/description: Grafana dashboards
-        gethomepage.dev/group: Observability
-      hosts:
-        - grafana.${SECRET_DOMAIN}
+    route:
+      main:
+        enabled: true
+        kind: HTTPRoute
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: grafana
+          gethomepage.dev/name: Grafana
+          gethomepage.dev/description: Grafana dashboards
+          gethomepage.dev/group: Observability
+        hostnames:
+          - grafana.${SECRET_DOMAIN}
+        parentRefs:
+          - name: envoy-internal
+            namespace: networking
+            sectionName: https
     persistence:
       enabled: false
     testFramework:
