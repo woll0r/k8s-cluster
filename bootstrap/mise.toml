@@ -102,6 +102,11 @@ if doppler secrets -p kube-gitops-cluster -c main get DOPPLER_PAT --plain | kube
 else
     mise run //:log fatal "Failed to apply secret" resource "doppler-pat"
 fi
+if doppler secrets -p kube-gitops-cluster -c main get DOPPLER_PAT_CLUSTERSECRETS --plain | kubectl -n kube-system create secret generic doppler-token-clustersecrets-auth-api --from-file=dopplerToken=/dev/stdin --dry-run=client -o yaml | kubectl apply -f - &>/dev/null; then
+    mise run //:log info "Secret applied" resource "doppler-pat-clustersecrets"
+else
+    mise run //:log fatal "Failed to apply secret" resource "doppler-pat-clustersecrets"
+fi
 for app in ../kubernetes/apps/*/; do
     ns="$(basename "$app")"
     if kubectl -n $ns create secret generic cluster-secrets --from-env-file <(doppler secrets download -p kube-gitops-cluster -c flux-cs --no-file --format docker) --dry-run=client -o yaml | kubectl apply -f - &>/dev/null; then
