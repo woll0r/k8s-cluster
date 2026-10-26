@@ -49,7 +49,6 @@ url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/6
 
 [tools.cloudflared."platforms.linux-x64"]
 checksum = "sha256:ae5e8add7884b0531d66bbca4570d1de491ff6da51e4ebe7eb160cdf241d9e42"
-checksum_source = "mise-versions"
 url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.4/cloudflared-linux-amd64"
 url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/677936595"
 
@@ -100,7 +99,6 @@ url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/678609576"
 
 [tools.flux2."platforms.linux-x64"]
 checksum = "sha256:208dd7012c04fedeed5b2d0b6e63df3b15b1c34a381527811685c098bc9f8659"
-checksum_source = "mise-versions"
 url = "https://github.com/fluxcd/flux2/releases/download/v2.10.0/flux_2.10.0_linux_amd64.tar.gz"
 url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/678609567"
 
@@ -268,47 +266,9 @@ url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/asset
 
 [[tools.oxfmt]]
 version = "0.74.0"
-aube = { path = "locks/oxfmt/0.74.0", digest = "sha256:b7977a181c0e11736ab44f83b24a4b862754204c253477e29d1758b0f898aad7" }
+aube = { path = "locks/oxfmt/0.74.0", digest = "sha256:22c61e76b72fefd8c243b8c3ee4aae52fae7f3f85195904f80be5506dd7f0962" }
 backend = "npm:oxfmt"
 specifiers = ["0.74.0"]
-
-[[tools.pipx]]
-version = "1.18.4"
-backend = "aqua:pypa/pipx"
-specifiers = ["1.18.4"]
-
-[tools.pipx."platforms.linux-arm64"]
-checksum = "sha256:9273476832b2672f0799a84f69c72fcd5008e7a4dab3723a48fd0e25c3ddd19f"
-checksum_source = "mise-versions"
-url = "https://github.com/pypa/pipx/releases/download/1.18.4/pipx.pyz"
-url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/652706332"
-
-[tools.pipx."platforms.linux-x64"]
-checksum = "sha256:9273476832b2672f0799a84f69c72fcd5008e7a4dab3723a48fd0e25c3ddd19f"
-checksum_source = "mise-versions"
-url = "https://github.com/pypa/pipx/releases/download/1.18.4/pipx.pyz"
-url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/652706332"
-
-[[tools."pipx:makejinja"]]
-version = "2.9.1"
-backend = "pipx:makejinja"
-specifiers = ["2.9.1"]
-uv = { path = "locks/pipx-makejinja/2.9.1", digest = "sha256:43a211bcd1c0b62711b07afe638a560ab90c9ad749c0b2994f89e2c64e513d13" }
-
-[[tools.python]]
-version = "3.15.1"
-backend = "core:python"
-specifiers = ["3.15.1"]
-
-[tools.python."platforms.linux-arm64"]
-checksum = "sha256:6efe65c43ae0bdebebeab4607f91a0053dd36d5e51cfd69a791d544e9b122be7"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261021/cpython-3.15.1+20261021-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
-provenance = "github-attestations"
-
-[tools.python."platforms.linux-x64"]
-checksum = "sha256:e4f3cc95488c06ed2d81cbee60786916b7f3b4837c23cdc5a26cb5682b24319b"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261021/cpython-3.15.1+20261021-x86_64_v4-unknown-linux-gnu-install_only_stripped.tar.gz"
-provenance = "github-attestations"
 
 [[tools.sops]]
 version = "3.13.3"
