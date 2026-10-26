@@ -35,20 +35,20 @@ releases:
       - template: default
     needs: ["kube-system/coredns"]
 
- - name: cert-manager
-   namespace: cert-manager
-   inherit:
-     - template: default
-   needs: ["kube-system/spegel"]
+  - name: cert-manager
+    namespace: cert-manager
+    inherit:
+      - template: default
+    needs: ["kube-system/spegel"]
 
- - name: flux-operator
-   namespace: flux-system
-   inherit:
-     - template: default
-   needs: ["cert-manager/cert-manager"]
+  - name: flux-operator
+    namespace: flux-system
+    inherit:
+      - template: default
+    needs: ["cert-manager/cert-manager"]
 
- - name: flux-instance
-   namespace: flux-system
-   inherit:
-     - template: default
-   needs: ["flux-system/flux-operator"]
+  - name: flux-instance
+    namespace: flux-system
+    inherit:
+      - template: default
+    needs: ["flux-system/flux-operator"]

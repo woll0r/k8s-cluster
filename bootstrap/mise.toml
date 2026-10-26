@@ -1,11 +1,6 @@
 [tasks.talos]
 description = "Bootstrap the Talos cluster"
-run = [
-  { task = ":talos-secret" },
-  { task = ":talos-apply" },
-  { task = ":talos-talosconfig" },
-  { task = ":talos-kubeconfig" },
-]
+run = [{ task = ":talos-secret" }, { task = ":talos-apply" }, { task = ":talos-talosconfig" }, { task = ":talos-kubeconfig" }]
 
 [tasks.apps]
 description = "Bootstrap apps into the Talos cluster"
