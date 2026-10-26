@@ -1,0 +1,23 @@
+---
+apiVersion: v1alpha1
+kind: EtcFileConfig
+name: nfs.conf
+mode: 0o644
+contents: |
+  [nfsrahead]
+  nfs4=16384
+  default=128
+---
+apiVersion: v1alpha1
+kind: EtcFileConfig
+name: nfsmount.conf
+mode: 0o644
+contents: |
+  [ NFSMount_Global_Options ]
+  nfsvers=4
+  hard=True
+  noatime=True
+  nodiratime=True
+  rsize=131072
+  wsize=131072
+  nconnect=8
