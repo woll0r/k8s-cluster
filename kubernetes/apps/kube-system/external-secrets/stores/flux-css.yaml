@@ -12,6 +12,6 @@ spec:
           dopplerToken:
             key: dopplerToken
             name: doppler-token-clustersecrets-auth-api
-            namespace: flux-system
+            namespace: kube-system
       project: kube-gitops-cluster
       config: flux-cs
