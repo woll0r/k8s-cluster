@@ -9,7 +9,7 @@ spec:
   interval: 15m
   chartRef:
     kind: OCIRepository
-    name: intel-device-plugins-gpu
+    name: intel-device-plugin-gpu
   maxHistory: 3
   install:
     remediation:
