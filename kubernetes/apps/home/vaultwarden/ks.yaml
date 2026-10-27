@@ -7,8 +7,8 @@ metadata:
   namespace: flux-system
 spec:
   components:
-    - ../../../components/gatus/external
-    - ../../../components/volsync
+    - ../../../../components/gatus/external
+    - ../../../../components/volsync
   path: ./kubernetes/apps/home/vaultwarden/app
   commonMetadata:
     labels:

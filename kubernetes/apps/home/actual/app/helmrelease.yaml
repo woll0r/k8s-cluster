@@ -30,7 +30,7 @@ spec:
               repository: ghcr.io/actualbudget/actual-server
               tag: 26.10.0
             env:
-              GENERIC_TIMEZONE: ${TIMEZONE}
+              GENERIC_TIMEZONE: Europe/Brussels
             resources:
               requests:
                 cpu: 15m
