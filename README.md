@@ -7,19 +7,20 @@
 
 <div align="center">
 
-[![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Ftalos_version&style=for-the-badge&logo=talos&logoColor=white&label=%20&color=blue)](https://talos.dev)
-[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&label=%20&color=blue)](https://talos.dev)
+[![Talos](https://kromgo.minuette.horse/badges/talos_version)](https://talos.dev)
+[![Kubernetes](https://kromgo.minuette.horse/badges/kubernetes_version)](https://talos.dev)
+[![Flux](https://kromgo.minuette.horse/badges/flux_version)](https://fluxcd.io/)
 
 </div>
 
 <div align="center">
 
-[![Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_age_days&style=flat-square&logoColor=white&label=Age)](https://github.com/home-operations/kromgo)
-[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_uptime_days&style=flat-square&logoColor=white&label=Uptime)](https://github.com/home-operations/kromgo)
-[![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_node_count&style=flat-square&logoColor=white&label=Nodes)](https://github.com/home-operations/kromgo)
-[![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_pod_count&style=flat-square&logoColor=white&label=Pods)](https://github.com/home-operations/kromgo)
-[![CPU](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_cpu_usage&style=flat-square&logoColor=white&label=CPU)](https://github.com/home-operations/kromgo)
-[![Memory](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.minuette.horse%2Fcluster_memory_usage&style=flat-square&logoColor=white&label=Memory)](https://github.com/home-operations/kromgo)
+[![Age](https://kromgo.minuette.horse/badges/cluster_birth_age)](https://github.com/home-operations/kromgo)
+[![Uptime](https://kromgo.minuette.horse/badges/cluster_uptime_age)](https://github.com/home-operations/kromgo)
+[![Nodes](https://kromgo.minuette.horse/badges/cluster_node_count)](https://github.com/home-operations/kromgo)
+[![Pods](https://kromgo.minuette.horse/badges/cluster_pod_count)](https://github.com/home-operations/kromgo)
+[![CPU](https://kromgo.minuette.horse/badges/cluster_cpu_usage)](https://github.com/home-operations/kromgo)
+[![Memory](https://kromgo.minuette.horse/badges/cluster_memory_usage)](https://github.com/home-operations/kromgo)
 
 </div>
 
