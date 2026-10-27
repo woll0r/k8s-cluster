@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ../../../../templates/volsync
+  - ./ocirepository.yaml
 configMapGenerator:
   - name: recyclarr-config
     namespace: media

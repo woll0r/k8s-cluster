@@ -6,8 +6,8 @@ metadata:
   name: &app actual
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/home/actual/app
   commonMetadata:
     labels:

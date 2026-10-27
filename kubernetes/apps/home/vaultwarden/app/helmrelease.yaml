@@ -35,7 +35,7 @@ spec:
               tag: 1.37.4
             env:
               DATA_FOLDER: config
-              TZ: ${TIMEZONE:-UTC}
+              TZ: Europe/Brussels
               SIGNUPS_ALLOWED: "false"
               DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
             envFrom: *envFrom
@@ -73,7 +73,7 @@ spec:
     route:
       app:
         hostnames:
-          - sync.${SECRET_DOMAIN}
+          - vaultwarden.${SECRET_DOMAIN}
         annotations:
           external-dns.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           gethomepage.dev/enabled: "true"
