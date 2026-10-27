@@ -1,0 +1,8 @@
+---
+apiVersion: v1alpha1
+kind: KubeTalosAPIAccessConfig
+allowedRoles:
+  - os:admin
+allowedKubernetesNamespaces:
+  # Required for Tuppr
+  - system-upgrade
