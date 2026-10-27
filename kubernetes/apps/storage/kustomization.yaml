@@ -9,4 +9,5 @@ components:
 
 resources:
   - ./namespace.yaml
+  - ./garage/ks.yaml
   # - ./syncthing/ks.yaml
