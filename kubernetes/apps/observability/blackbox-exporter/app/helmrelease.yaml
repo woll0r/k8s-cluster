@@ -8,8 +8,8 @@ metadata:
 spec:
   interval: 5m
   chartRef:
-    - kind: OCIRepository
-      name: blackbox-exporter
+    kind: OCIRepository
+    name: blackbox-exporter
   install:
     createNamespace: true
     remediation:
