@@ -6,8 +6,8 @@ metadata:
   name: &app plex
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/plex/app
   commonMetadata:
     labels:

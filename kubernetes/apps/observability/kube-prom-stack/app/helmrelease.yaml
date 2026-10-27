@@ -29,12 +29,14 @@ spec:
       enabled: false
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - alert-manager.${SECRET_DOMAIN}
-        pathType: Prefix
+      route:
+        main:
+          enabled: true
+          hostnames:
+            - alertmanager.${SECRET_DOMAIN}
+          parentRefs:
+            - name: envoy-internal
+              namespace: network
       alertmanagerSpec:
         useExistingSecret: true
         configSecret: alertmanager-secret
@@ -83,12 +85,14 @@ spec:
     kubeProxy:
       enabled: false
     prometheus:
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - prometheus.${SECRET_DOMAIN}
-        pathType: Prefix
+      route:
+        main:
+          enabled: true
+          hostnames:
+            - prometheus.${SECRET_DOMAIN}
+          parentRefs:
+            - name: envoy-internal
+              namespace: network
       prometheusSpec:
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
         ruleSelectorNilUsesHelmValues: false

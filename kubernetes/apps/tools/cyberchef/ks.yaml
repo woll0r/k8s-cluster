@@ -6,7 +6,7 @@ metadata:
   name: &app cyberchef
 spec:
   components:
-    - ../../../components/gatus/internal
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/tools/cyberchef/app
   commonMetadata:
     labels:

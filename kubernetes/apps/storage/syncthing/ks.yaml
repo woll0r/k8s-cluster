@@ -6,8 +6,8 @@ metadata:
   name: &app syncthing
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/storage/syncthing/app
   commonMetadata:
     labels:

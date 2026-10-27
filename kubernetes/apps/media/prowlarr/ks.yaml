@@ -6,8 +6,8 @@ metadata:
   name: &app prowlarr
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/prowlarr/app
   commonMetadata:
     labels:

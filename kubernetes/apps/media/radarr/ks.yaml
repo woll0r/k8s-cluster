@@ -6,8 +6,8 @@ metadata:
   name: &app radarr
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/radarr/app
   commonMetadata:
     labels:

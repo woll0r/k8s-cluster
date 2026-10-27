@@ -6,8 +6,8 @@ metadata:
   name: &app animesonarr
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/animesonarr/app
   commonMetadata:
     labels:

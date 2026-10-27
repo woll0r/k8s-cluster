@@ -6,7 +6,7 @@ metadata:
   name: &app recyclarr
 spec:
   components:
-    - ../../../components/volsync
+    - ../../../../components/volsync
   path: ./kubernetes/apps/media/recyclarr/app
   commonMetadata:
     labels:

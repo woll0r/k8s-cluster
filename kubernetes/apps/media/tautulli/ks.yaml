@@ -6,8 +6,8 @@ metadata:
   name: &app tautulli
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/tautulli/app
   commonMetadata:
     labels:

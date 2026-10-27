@@ -6,8 +6,8 @@ metadata:
   name: &app kavita
 spec:
   components:
-    - ../../../components/volsync
-    - ../../../components/gatus/internal
+    - ../../../../components/volsync
+    - ../../../../components/gatus/internal
   path: ./kubernetes/apps/media/kavita/app
   commonMetadata:
     labels:
