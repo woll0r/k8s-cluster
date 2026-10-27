@@ -9,8 +9,8 @@ spec:
     # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
     version: v1.37.1
 
-    # Make sure everything is healthy before we start
-    healthChecks:
+  # Make sure everything is healthy before we start
+  healthChecks:
     - apiVersion: volsync.backube/v1alpha1
       kind: ReplicationSource
       expr: |-
