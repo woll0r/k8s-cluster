@@ -38,6 +38,7 @@ spec:
       localpv:
         image:
           registry: quay.io/
+        basePath: &basepath /var/mnt/openebs/local
       helperPod:
         image:
           registry: quay.io/
@@ -45,4 +46,4 @@ spec:
         enabled: true
         name: openebs-hostpath
         isDefaultClass: false
-        basePath: /var/openebs/local
+        basePath: *basepath

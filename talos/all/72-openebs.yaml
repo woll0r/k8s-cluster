@@ -1,0 +1,7 @@
+---
+# OpenEBS requires a storage location
+# Available at /var/mnt/openebs
+apiVersion: v1alpha1
+kind: UserVolumeConfig
+name: openebs
+volumeType: directory
