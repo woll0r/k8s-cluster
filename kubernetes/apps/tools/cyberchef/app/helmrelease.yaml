@@ -51,7 +51,7 @@ spec:
           gethomepage.dev/group: Tools
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

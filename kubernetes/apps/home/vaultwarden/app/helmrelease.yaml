@@ -83,7 +83,7 @@ spec:
           gethomepage.dev/group: Home
         parentRefs:
           - name: envoy-external
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

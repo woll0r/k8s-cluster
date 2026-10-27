@@ -68,7 +68,7 @@ spec:
           gethomepage.dev/group: Media
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

@@ -89,7 +89,7 @@ spec:
           gethomepage.dev/href: https://plex.${SECRET_DOMAIN}/web/
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

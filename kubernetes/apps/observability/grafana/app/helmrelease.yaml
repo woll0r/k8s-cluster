@@ -213,7 +213,7 @@ spec:
           - grafana.${SECRET_DOMAIN}
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
     persistence:
       enabled: false

@@ -78,7 +78,7 @@ spec:
           gethomepage.dev/widget.url: http://qbittorrent.media.svc:8080
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

@@ -87,7 +87,7 @@ spec:
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_APIKEY}}` }}"
         parentRefs:
           - name: envoy-internal
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:

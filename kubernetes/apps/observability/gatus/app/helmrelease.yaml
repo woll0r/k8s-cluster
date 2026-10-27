@@ -118,7 +118,7 @@ spec:
           gethomepage.dev/widget.url: http://gatus.observability.svc
         parentRefs:
           - name: envoy-external
-            namespace: networking
+            namespace: network
             sectionName: https
         rules:
           - backendRefs:
