@@ -41,6 +41,9 @@ spec:
                 memory: 200Mi
               limits:
                 memory: 2Gi
+    defaultPodOptions:
+      # app-template v5 defaults automountServiceAccountToken to false; homepage needs API access for its kubernetes widgets
+      automountServiceAccountToken: true
     service:
       main:
         controller: main
