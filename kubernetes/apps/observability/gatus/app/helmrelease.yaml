@@ -78,6 +78,7 @@ spec:
               capabilities: { drop: ["ALL"] }
             resources: *resources
     defaultPodOptions:
+      automountServiceAccountToken: true
       dnsConfig:
         options:
           - { name: ndots, value: "1" }
@@ -125,8 +126,7 @@ spec:
               - name: *app
                 port: *port
     serviceAccount:
-      create: true
-      name: gatus
+      gatus: {}
     persistence:
       config:
         type: emptyDir
