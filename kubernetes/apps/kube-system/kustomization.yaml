@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: kube-system
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:

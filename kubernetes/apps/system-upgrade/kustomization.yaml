@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: system-upgrade
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:

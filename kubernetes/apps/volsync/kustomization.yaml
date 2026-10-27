@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: volsync
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:

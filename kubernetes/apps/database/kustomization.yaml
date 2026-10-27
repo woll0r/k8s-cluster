@@ -4,8 +4,9 @@ kind: Kustomization
 namespace: database
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:
   - ./namespace.yaml
-  # - ./cloudnative-pg/ks.yaml
+  - ./cloudnative-pg/ks.yaml

@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: cert-manager
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:

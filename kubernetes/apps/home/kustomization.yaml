@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: home
 
 components:
+  - ../../components/alerts
   - ../../components/common
 
 resources:
