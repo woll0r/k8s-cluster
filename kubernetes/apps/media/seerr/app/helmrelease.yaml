@@ -66,9 +66,9 @@ spec:
           - seerr.${SECRET_DOMAIN}
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: overseerr
-          gethomepage.dev/name: Overseerr
-          gethomepage.dev/description: Overseerr media requests manager
+          gethomepage.dev/icon: seerr
+          gethomepage.dev/name: Seerr
+          gethomepage.dev/description: Seerr media requests manager
           gethomepage.dev/group: Media
         parentRefs:
           - name: envoy-internal
