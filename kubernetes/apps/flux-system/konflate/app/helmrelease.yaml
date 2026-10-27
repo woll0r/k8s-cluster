@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: konflate
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: konflate
+  interval: 1h
+  values:
+    config:
+      statusChecks: true
+      prComments: true
+      publicUrl: "https://konflate.${SECRET_DOMAIN}"
+      repo: github://woll0r/k8s-cluster
+      mcp: false
+    secret:
+      existingSecret: konflate
+    persistence:
+      enabled: false
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+    httpRoute:
+      enabled: true
+      hostnames:
+        - konflate.${SECRET_DOMAIN}
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/icon: konflate
+        gethomepage.dev/name: Konflate
+        gethomepage.dev/description: Konflate PR diff displays
+        gethomepage.dev/group: Tools
+      parentRefs:
+        - name: envoy-external
+          namespace: network
+          sectionName: https
+    monitoring:
+      serviceMonitor:
+        enabled: true
+    resources:
+      requests:
+        cpu: 50m
+      limits:
+        cpu: 4000m
+        memory: 4Gi
