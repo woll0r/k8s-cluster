@@ -13,19 +13,13 @@
         href: https://dash.cloudflare.com/
         icon: cloudflare
         description: Cloudflared Tunnel
-        app: cloudflared
+        app: cloudflare-tunnel
         namespace: network
         widget:
           type: cloudflared
           accountid: "{{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}"
           tunnelid: "{{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}"
           key: "{{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}"
-    - Hubble:
-        icon: cilium
-        href: https://hubble.${SECRET_DOMAIN}
-        description: Cilium CNI dashboard
-        app: hubble-ui
-        namespace: kube-system
 - Storage:
     - Synology NAS:
         icon: synology-dsm
