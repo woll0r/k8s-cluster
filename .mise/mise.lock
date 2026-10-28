@@ -49,7 +49,6 @@ url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/6
 
 [tools.cloudflared."platforms.linux-x64"]
 checksum = "sha256:e1bc0cf084fd9e590554fe769a86b1db46701c3f847a43d902f7b974a4e16298"
-checksum_source = "mise-versions"
 url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.5/cloudflared-linux-amd64"
 url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/681690401"
 
