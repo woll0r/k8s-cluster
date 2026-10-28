@@ -265,10 +265,10 @@ url = "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/
 url_api = "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/assets/621661332"
 
 [[tools.oxfmt]]
-version = "0.74.0"
-aube = { path = "locks/oxfmt/0.74.0", digest = "sha256:22c61e76b72fefd8c243b8c3ee4aae52fae7f3f85195904f80be5506dd7f0962" }
+version = "0.75.0"
+aube = { path = "locks/oxfmt/0.75.0", digest = "sha256:1d4f470a5dbba272218132db6ff9ba1911075d29dcd3253a0e02b4a5037a8a23" }
 backend = "npm:oxfmt"
-specifiers = ["0.74.0"]
+specifiers = ["0.75.0"]
 
 [[tools.sops]]
 version = "3.13.3"
