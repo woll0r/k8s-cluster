@@ -4,7 +4,7 @@ run = "flux --namespace flux-system reconcile kustomization flux-system --with-s
 
 [tasks.secrets-reconcile]
 description = "Force External-Secrets to pull in changes from upstream"
-run =  '''
+run = '''
 kubectl get externalsecret.external-secrets.io --all-namespaces --no-headers -A | \
 awk '{print $1, $2}' | \
 xargs --max-procs=4 -l bash -c 'kubectl -n $0 annotate externalsecret.external-secrets.io $1 force-sync=$(date +%s) --overwrite'

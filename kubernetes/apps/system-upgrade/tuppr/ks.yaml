@@ -5,7 +5,6 @@ kind: Kustomization
 metadata:
   name: &app tuppr
 spec:
-  components:
   path: ./kubernetes/apps/system-upgrade/tuppr/app
   commonMetadata:
     labels:
@@ -27,7 +26,6 @@ kind: Kustomization
 metadata:
   name: &app tuppr-upgrades
 spec:
-  components:
   path: ./kubernetes/apps/system-upgrade/tuppr/upgrades
   commonMetadata:
     labels:
