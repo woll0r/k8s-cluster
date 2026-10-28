@@ -7,6 +7,8 @@
     "github>home-operations/renovate-presets//apps/grafanaDashboards.json5#10.0.1",
     "github>home-operations/renovate-presets//apps/talosFactory.json5#10.0.1",
     ":timezone(Europe/Brussels)",
+    // There are no status checks... But Renovate expects them anyway
+    ":skipStatusChecks",
   ],
   dependencyDashboardTitle: "Renovate Dashboard",
   suppressNotifications: ["prIgnoreNotification", "prEditedNotification"],
@@ -16,7 +18,7 @@
     // Allowed versions
     {
       matchDatasources: ["docker"],
-      allowedVersions: "< 17",
+      allowedVersions: "< 19",
       matchPackageNames: ["/postgresql/"],
     },
     {
