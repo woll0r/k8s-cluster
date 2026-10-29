@@ -38,6 +38,7 @@ spec:
           gethomepage.dev/group: Storage
           gethomepage.dev/name: Rook
           gethomepage.dev/icon: rook
+          gethomepage.dev/app: ceph-mgr # required so Homepage detects the pod
           gethomepage.dev/description: Rook dashboard
     toolbox:
       enabled: true

@@ -37,6 +37,7 @@ spec:
             gethomepage.dev/group: Observability
             gethomepage.dev/name: Alertmanager
             gethomepage.dev/icon: alertmanager
+            gethomepage.dev/app: alertmanager # required so Homepage detects the pod
             gethomepage.dev/description: Prometheus alert manager
       alertmanagerSpec:
         useExistingSecret: true
@@ -99,6 +100,7 @@ spec:
             gethomepage.dev/group: Observability
             gethomepage.dev/name: Prometheus
             gethomepage.dev/icon: prometheus
+            gethomepage.dev/app: prometheus # required so Homepage detects the pod
             gethomepage.dev/description: Prometheus metrics server
       prometheusSpec:
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
