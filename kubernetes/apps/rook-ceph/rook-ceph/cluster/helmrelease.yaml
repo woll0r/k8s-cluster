@@ -33,6 +33,12 @@ spec:
         parentRefs:
           - name: envoy-internal
             namespace: network
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Storage
+          gethomepage.dev/name: Rook
+          gethomepage.dev/icon: rook
+          gethomepage.dev/description: Rook dashboard
     toolbox:
       enabled: true
     cephImage:
@@ -225,12 +231,3 @@ spec:
           volumeBindingMode: Immediate
           parameters:
             region: us-east-1
-        ingress:
-          enabled: true
-          annotations:
-            nginx.ingress.kubernetes.io/proxy-body-size: "0"
-            nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-          ingressClassName: internal
-          host:
-            name: rgw.${SECRET_DOMAIN}
-            path: /

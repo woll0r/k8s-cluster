@@ -26,22 +26,3 @@
         href: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
         description: Synology Disk Station Manager
         siteMonitor: https://nas-syno-01.home.${SECRET_ROOT_DOMAIN}
-    - Rook:
-        icon: rook
-        href: https://rook.${SECRET_DOMAIN}
-        description: Rook dashboard
-        app: ceph-mgr
-        namespace: rook-ceph
-- Observability:
-    - Prometheus:
-        icon: prometheus
-        href: https://prometheus.${SECRET_DOMAIN}
-        description: Prometheus metrics server
-        app: prometheus
-        namespace: observability
-    - AlertManager:
-        icon: alertmanager
-        href: https://alert-manager.${SECRET_DOMAIN}
-        description: Prometheus alert manager
-        app: alertmanager
-        namespace: observability

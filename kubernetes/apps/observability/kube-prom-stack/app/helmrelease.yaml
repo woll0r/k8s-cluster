@@ -32,6 +32,12 @@ spec:
           parentRefs:
             - name: envoy-internal
               namespace: network
+          annotations:
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: Observability
+            gethomepage.dev/name: Alertmanager
+            gethomepage.dev/icon: alertmanager
+            gethomepage.dev/description: Prometheus alert manager
       alertmanagerSpec:
         useExistingSecret: true
         configSecret: alertmanager-secret
@@ -88,6 +94,12 @@ spec:
           parentRefs:
             - name: envoy-internal
               namespace: network
+          annotations:
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: Observability
+            gethomepage.dev/name: Prometheus
+            gethomepage.dev/icon: prometheus
+            gethomepage.dev/description: Prometheus metrics server
       prometheusSpec:
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
         ruleSelectorNilUsesHelmValues: false

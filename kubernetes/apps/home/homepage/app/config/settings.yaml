@@ -11,11 +11,11 @@ statusStyle: dot
 layout:
   Home:
     style: row
-    columns: 5
+    columns: 3
     icon: mdi-home-analytics
   Tools:
     style: row
-    columns: 3
+    columns: 4
     icon: mdi-tools
   Media:
     style: row
