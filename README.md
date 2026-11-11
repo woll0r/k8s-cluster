@@ -27,20 +27,18 @@
 ## Overview
 
 My home Kubernetes cluster running on [talos](https://talos.dev/), powered by [Flux](https://toolkit.fluxcd.io/).
-[SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) is used to encrypt secrets.
+[SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) is used to encrypt some secrets, most come in through external secrets.
 [Cloudflare tunnels](https://www.cloudflare.com/products/tunnel/) are used to make it all available over the internet.
-And finally, [Rook](https://rook.io/) gets used to provide storage to the cluster.
-
-TODO: properly update all of this (once I get around to the network upgrades, redeploying, refactoring to use OCI repos, and other stuff I've been putting off)
+And finally, [Rook](https://rook.io/) (for shared storage) and [OpenEBS](https://openebs.io/) (for local path provisioning) gets used to provide storage to the cluster.
 
 ## Hardware
 
 | Device                  | Count | OS disk     | Data disk   | RAM   | OS               | Purpose     |
 | ----------------------- | ----- | ----------- | ----------- | ----- | ---------------- | ----------- |
-| Whitebox N100           | 1     | 1TB NVMe    | 1TB SATA    | 32 GB | Talos            | K8s master  |
+| Whitebox N100           | 1     | 1TB SATA    | 1TB NVMe    | 32 GB | Talos            | K8s master  |
 | Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s master  |
 | Dell Optiplex 7010 Plus | 2     | 500 GB NVMe | 1TB NVMe    | 32 GB | Talos            | K8s nodes   |
-| Synology DS1518+        | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM 7.2 | NAS storage |
+| Synology DS1518+        | 1     | N/A         | 5x6 TB SATA | 4 GB  | Synology DSM     | NAS storage |
 
 ## Acknowledgements
 
