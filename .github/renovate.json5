@@ -130,7 +130,7 @@
     {
       description: ["Talos Group"],
       groupName: "Talos",
-      matchDatasources: ["docker"],
+      matchDatasources: ["custom.talos-factory"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
