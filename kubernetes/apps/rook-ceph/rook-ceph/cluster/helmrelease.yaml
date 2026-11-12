@@ -53,6 +53,16 @@ spec:
           osd_class_update_on_start: "false"
       crashCollector:
         disable: false
+      mgr:
+        modules:
+        # Recommended to be disabled for Ceph v20
+        - name: rook
+          enabled: false
+      csi:
+        readAffinity:
+          # Set this explicitly disabled.
+          # https://github.com/rook/rook/issues/16839
+          enabled: false
       dashboard:
         enabled: true
         urlPrefix: /
