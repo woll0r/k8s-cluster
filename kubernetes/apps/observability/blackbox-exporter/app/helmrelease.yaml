@@ -30,25 +30,26 @@ spec:
         add: [NET_RAW]
     config:
       modules:
+        http_2xx:
+          http:
+            preferred_ip_protocol: ipv4
         icmp:
           prober: icmp
-          timeout: 30s
+          timeout: 5s
           icmp:
-            preferred_ip_protocol: ip4
+            preferred_ip_protocol: ipv4
+        tcp_connect:
+          prober: tcp
+          timeout: 5s
+          tcp:
+            preferred_ip_protocol: ipv4
     serviceMonitor:
       enabled: true
       defaults:
         labels:
           release: prometheus
-        interval: 30s
+        interval: 1m
         scrapeTimeout: 30s
-      targets:
-        - name: router
-          url: 172.16.1.1
-          module: icmp
-        - name: nas
-          url: 172.16.1.6
-          module: icmp
     prometheusRule:
       enabled: true
       additionalLabels:
