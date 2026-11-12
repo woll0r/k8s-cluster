@@ -23,7 +23,7 @@
     },
     {
       matchDatasources: ["docker"],
-      allowedVersions: "< 20",
+      allowedVersions: "< 21",
       matchPackageNames: ["/ceph/"],
     },
     // Automerge certain things
