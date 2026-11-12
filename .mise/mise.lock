@@ -20,26 +20,38 @@ url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/53554190
 provenance = "github-attestations"
 
 [[tools.cilium-cli]]
-version = "0.20.2"
+version = "0.20.3"
 backend = "aqua:cilium/cilium-cli"
-specifiers = ["0.20.2"]
+specifiers = ["0.20.3"]
+
+[tools.cilium-cli."platforms.linux-arm64"]
+checksum = "sha256:fa1bd66b407ec205e88746fc0b17590a247f255bf71bb9dfb0008b14d158f68d"
+checksum_source = "mise-versions"
+url = "https://github.com/cilium/cilium-cli/releases/download/v0.20.3/cilium-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/cilium-cli/releases/assets/739456165"
+
+[tools.cilium-cli."platforms.linux-x64"]
+checksum = "sha256:b987ad0d195310d3fc96553aa7bcd41d1e97b64713ecdfee3eb48dd27e1ec7d7"
+checksum_source = "mise-versions"
+url = "https://github.com/cilium/cilium-cli/releases/download/v0.20.3/cilium-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/cilium-cli/releases/assets/739456158"
 
 [[tools.cloudflared]]
-version = "2026.10.7"
+version = "2026.11.0"
 backend = "aqua:cloudflare/cloudflared"
-specifiers = ["2026.10.7"]
+specifiers = ["2026.11.0"]
 
 [tools.cloudflared."platforms.linux-arm64"]
-checksum = "sha256:3df43aedc9ff291d1735b5cb576cb97e0b157488796db2e32b28aecabb445775"
+checksum = "sha256:abe54a006acf9faf2d19ee9d953cb0d0804e92f59c5382a162e57b84d086f56f"
 checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-arm64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692818763"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.11.0/cloudflared-linux-arm64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/739395569"
 
 [tools.cloudflared."platforms.linux-x64"]
-checksum = "sha256:1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872"
+checksum = "sha256:51f7c68b57ed7269164075d7e789efce5b59355982f06392deeb037d982a51fd"
 checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-amd64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692817008"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.11.0/cloudflared-linux-amd64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/739395030"
 
 [[tools.cue]]
 version = "0.17.1"
@@ -92,20 +104,20 @@ url = "https://github.com/fluxcd/flux2/releases/download/v2.10.0/flux_2.10.0_lin
 url_api = "https://api.github.com/repos/fluxcd/flux2/releases/assets/678609567"
 
 [[tools.gh]]
-version = "2.103.3"
+version = "2.104.0"
 backend = "aqua:cli/cli"
-specifiers = ["2.103.3"]
+specifiers = ["2.104.0"]
 
 [tools.gh."platforms.linux-arm64"]
-checksum = "sha256:ee32df2323c8847f5fac6cb6b4b69ca75828e9329a8f22f677021f7b3306ce63"
-url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195636"
+checksum = "sha256:cb34cefc6f4e77b90731374a2b737516bb8f3033c6ca46aa949e5344f68069e3"
+url = "https://github.com/cli/cli/releases/download/v2.104.0/gh_2.104.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/740718938"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d"
-url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195621"
+checksum = "sha256:98cb101ad87dbbd3f6b2f2bfcbd43197ccd07643140121d8a9cfaa91eadbc24e"
+url = "https://github.com/cli/cli/releases/download/v2.104.0/gh_2.104.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/740718892"
 provenance = "github-attestations"
 
 [[tools."github:postfinance/topf"]]
