@@ -7,6 +7,7 @@
     'github>home-operations/renovate-presets//apps/grafanaDashboards.json5#12.0.0',
     'github>home-operations/renovate-presets//apps/talosFactory.json5#12.0.0',
     ':timezone(Europe/Brussels)',
+    // There are no status checks... But Renovate expects them anyway
     ':skipStatusChecks',
   ],
   dependencyDashboard: {
@@ -19,6 +20,7 @@
   rebaseWhen: 'conflicted',
   commitBodyTable: true,
   packageRules: [
+    // Allowed versions
     {
       matchDatasources: [
         'docker',
@@ -37,6 +39,7 @@
         '/ceph/',
       ],
     },
+    // Automerge certain things
     {
       description: 'Auto merge container digests',
       matchDatasources: [
@@ -122,6 +125,7 @@
       automergeType: 'branch',
       ignoreTests: true,
     },
+    // Package groups
     {
       description: 'Mise Tools Group',
       matchManagers: [
@@ -215,6 +219,7 @@
         '/siderolabs/talos',
       ],
     },
+    // Labels
     {
       matchUpdateTypes: [
         'major',
