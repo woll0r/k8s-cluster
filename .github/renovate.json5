@@ -1,174 +1,284 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   enabled: true,
   extends: [
-    "github>home-operations/renovate-presets#12.0.0",
-    "github>home-operations/renovate-presets//apps/cnpg.json5#12.0.0",
-    "github>home-operations/renovate-presets//apps/grafanaDashboards.json5#12.0.0",
-    "github>home-operations/renovate-presets//apps/talosFactory.json5#12.0.0",
-    ":timezone(Europe/Brussels)",
-    // There are no status checks... But Renovate expects them anyway
-    ":skipStatusChecks",
+    'github>home-operations/renovate-presets#12.0.0',
+    'github>home-operations/renovate-presets//apps/cnpg.json5#12.0.0',
+    'github>home-operations/renovate-presets//apps/grafanaDashboards.json5#12.0.0',
+    'github>home-operations/renovate-presets//apps/talosFactory.json5#12.0.0',
+    ':timezone(Europe/Brussels)',
+    ':skipStatusChecks',
   ],
-  dependencyDashboardTitle: "Renovate Dashboard",
-  suppressNotifications: ["prIgnoreNotification", "prEditedNotification"],
-  rebaseWhen: "conflicted",
+  dependencyDashboard: {
+    title: 'Renovate Dashboard',
+  },
+  suppressNotifications: [
+    'prIgnoreNotification',
+    'prEditedNotification',
+  ],
+  rebaseWhen: 'conflicted',
   commitBodyTable: true,
   packageRules: [
-    // Allowed versions
     {
-      matchDatasources: ["docker"],
-      allowedVersions: "< 19",
-      matchPackageNames: ["/postgresql/"],
-    },
-    {
-      matchDatasources: ["docker"],
-      allowedVersions: "< 21",
-      matchPackageNames: ["/ceph/"],
-    },
-    // Automerge certain things
-    {
-      description: "Auto merge container digests",
-      matchDatasources: ["docker"],
-      automerge: true,
-      automergeType: "pr",
-      matchUpdateTypes: ["digest"],
-      matchPackageNames: ["/home-operations/"],
-    },
-    {
-      description: "Auto merge containers",
-      matchDatasources: ["docker"],
-      automerge: true,
-      automergeType: "branch",
-      matchUpdateTypes: ["minor", "patch"],
+      matchDatasources: [
+        'docker',
+      ],
+      allowedVersions: '< 19',
       matchPackageNames: [
-        "ghcr.io/home-operations/prowlarr",
-        "ghcr.io/home-operations/sonarr",
-        "ghcr.io/home-operations/radarr",
-        "ghcr.io/home-operations/lidarr",
+        '/postgresql/',
       ],
     },
     {
-      description: "Auto merge GitHub Actions",
-      matchManagers: ["github-actions"],
-      matchDatasources: ["github-tags"],
-      automerge: true,
-      automergeType: "branch",
-      matchUpdateTypes: ["minor", "patch", "digest"],
+      matchDatasources: [
+        'docker',
+      ],
+      allowedVersions: '< 21',
+      matchPackageNames: [
+        '/ceph/',
+      ],
     },
     {
-      description: "Auto-merge Mise Tools",
-      matchManagers: ["mise"],
+      description: 'Auto merge container digests',
+      matchDatasources: [
+        'docker',
+      ],
       automerge: true,
-      automergeType: "branch",
-      matchUpdateTypes: ["minor", "patch"],
+      automergeType: 'pr',
+      matchUpdateTypes: [
+        'digest',
+      ],
+      matchPackageNames: [
+        '/home-operations/',
+      ],
     },
     {
-      description: "Auto-merge Grafana dashboards",
-      matchDatasources: ["custom.grafana-dashboards"],
-      matchUpdateTypes: ["major"],
+      description: 'Auto merge containers',
+      matchDatasources: [
+        'docker',
+      ],
       automerge: true,
-      automergeType: "branch",
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      matchPackageNames: [
+        'ghcr.io/home-operations/prowlarr',
+        'ghcr.io/home-operations/sonarr',
+        'ghcr.io/home-operations/radarr',
+        'ghcr.io/home-operations/lidarr',
+      ],
+    },
+    {
+      description: 'Auto merge GitHub Actions',
+      matchManagers: [
+        'github-actions',
+      ],
+      matchDatasources: [
+        'github-tags',
+      ],
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ],
+    },
+    {
+      description: 'Auto-merge Mise Tools',
+      matchManagers: [
+        'mise',
+      ],
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+    },
+    {
+      description: 'Auto-merge Grafana dashboards',
+      matchDatasources: [
+        'custom.grafana-dashboards',
+      ],
+      matchUpdateTypes: [
+        'major',
+      ],
+      automerge: true,
+      automergeType: 'branch',
       ignoreTests: true,
     },
     {
-      description: "Auto-merge Renovate Presents",
-      matchManagers: ["renovate-config"],
-      matchUpdateTypes: ["minor", "patch"],
+      description: 'Auto-merge Renovate Presents',
+      matchManagers: [
+        'renovate-config',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
       automerge: true,
-      automergeType: "branch",
+      automergeType: 'branch',
       ignoreTests: true,
     },
-    // Package groups
     {
-      description: "Mise Tools Group",
-      matchManagers: ["mise"],
-      groupName: "mise tools",
-      groupSlug: "mise-tools",
+      description: 'Mise Tools Group',
+      matchManagers: [
+        'mise',
+      ],
+      groupName: 'mise tools',
+      groupSlug: 'mise-tools',
     },
     {
-      description: ["Actions Runner Controller Group"],
-      groupName: "Actions Runner Controller",
-      matchDatasources: ["docker", "helm"],
+      description: [
+        'Actions Runner Controller Group',
+      ],
+      groupName: 'Actions Runner Controller',
+      matchDatasources: [
+        'docker',
+        'helm',
+      ],
       group: {
-        commitMessageTopic: "{{{groupName}}} group",
+        commitMessageTopic: '{{{groupName}}} group',
       },
       separateMinorPatch: true,
-      matchPackageNames: ["/gha-runner-scale-set/"],
+      matchPackageNames: [
+        '/gha-runner-scale-set/',
+      ],
     },
     {
-      description: ["Flux Group"],
-      groupName: "Flux",
-      matchDatasources: ["docker", "github-tags"],
-      versioning: "semver",
+      description: [
+        'Flux Group',
+      ],
+      groupName: 'Flux',
+      matchDatasources: [
+        'docker',
+        'github-tags',
+      ],
+      versioning: 'semver',
       group: {
-        commitMessageTopic: "{{{groupName}}} group",
+        commitMessageTopic: '{{{groupName}}} group',
       },
       separateMinorPatch: true,
-      matchPackageNames: ["/fluxcd/"],
+      matchPackageNames: [
+        '/fluxcd/',
+      ],
     },
     {
-      description: ["Intel Device Plugins Group"],
-      groupName: "Intel-Device-Plugins",
-      matchDatasources: ["helm"],
+      description: [
+        'Intel Device Plugins Group',
+      ],
+      groupName: 'Intel-Device-Plugins',
+      matchDatasources: [
+        'helm',
+      ],
       group: {
-        commitMessageTopic: "{{{groupName}}} group",
+        commitMessageTopic: '{{{groupName}}} group',
       },
       separateMinorPatch: true,
-      matchPackageNames: ["/intel-device-plugins/"],
+      matchPackageNames: [
+        '/intel-device-plugins/',
+      ],
     },
     {
-      description: ["Rook-Ceph Group"],
-      groupName: "Rook-Ceph",
-      matchDatasources: ["helm"],
+      description: [
+        'Rook-Ceph Group',
+      ],
+      groupName: 'Rook-Ceph',
+      matchDatasources: [
+        'helm',
+      ],
       group: {
-        commitMessageTopic: "{{{groupName}}} group",
+        commitMessageTopic: '{{{groupName}}} group',
       },
       separateMinorPatch: true,
-      matchPackageNames: ["/rook.ceph/"],
+      matchPackageNames: [
+        '/rook.ceph/',
+      ],
     },
     {
-      description: ["Talos Group"],
-      groupName: "Talos",
-      matchDatasources: ["custom.talos-factory"],
+      description: [
+        'Talos Group',
+      ],
+      groupName: 'Talos',
+      matchDatasources: [
+        'custom.talos-factory',
+      ],
       group: {
-        commitMessageTopic: "{{{groupName}}} group",
+        commitMessageTopic: '{{{groupName}}} group',
       },
       separateMinorPatch: true,
-      matchPackageNames: ["/siderolabs/talosctl/", "/siderolabs/installer/", "/siderolabs/talos"],
-    },
-    // Labels
-    {
-      matchUpdateTypes: ["major"],
-      labels: ["type/major"],
-    },
-    {
-      matchUpdateTypes: ["minor"],
-      labels: ["type/minor"],
+      matchPackageNames: [
+        '/siderolabs/talosctl/',
+        '/siderolabs/installer/',
+        '/siderolabs/talos',
+      ],
     },
     {
-      matchUpdateTypes: ["patch"],
-      labels: ["type/patch"],
+      matchUpdateTypes: [
+        'major',
+      ],
+      labels: [
+        'type/major',
+      ],
     },
     {
-      matchUpdateTypes: ["digest"],
-      labels: ["type/digest"],
+      matchUpdateTypes: [
+        'minor',
+      ],
+      labels: [
+        'type/minor',
+      ],
     },
     {
-      matchDatasources: ["docker"],
-      addLabels: ["renovate/container"],
+      matchUpdateTypes: [
+        'patch',
+      ],
+      labels: [
+        'type/patch',
+      ],
     },
     {
-      matchDatasources: ["helm"],
-      addLabels: ["renovate/helm"],
+      matchUpdateTypes: [
+        'digest',
+      ],
+      labels: [
+        'type/digest',
+      ],
     },
     {
-      matchDatasources: ["github-releases", "github-tags"],
-      addLabels: ["renovate/github-release"],
+      matchDatasources: [
+        'docker',
+      ],
+      addLabels: [
+        'renovate/container',
+      ],
     },
     {
-      matchManagers: ["github-actions"],
-      addLabels: ["renovate/github-action"],
+      matchDatasources: [
+        'helm',
+      ],
+      addLabels: [
+        'renovate/helm',
+      ],
+    },
+    {
+      matchDatasources: [
+        'github-releases',
+        'github-tags',
+      ],
+      addLabels: [
+        'renovate/github-release',
+      ],
+    },
+    {
+      matchManagers: [
+        'github-actions',
+      ],
+      addLabels: [
+        'renovate/github-action',
+      ],
     },
   ],
 }
