@@ -54,21 +54,21 @@ url = "https://github.com/cloudflare/cloudflared/releases/download/2026.11.2/clo
 url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/782999727"
 
 [[tools.cue]]
-version = "0.17.1"
+version = "0.18.0"
 backend = "aqua:cue-lang/cue"
-specifiers = ["0.17.1"]
+specifiers = ["0.18.0"]
 
 [tools.cue."platforms.linux-arm64"]
-checksum = "sha256:0d729be30d52c952ca38fc9dcb692caa09d8463fa0b64df5781312779183fbcd"
+checksum = "sha256:20b99a70821f358413318d80c956d36214aa98f61307af19130d31c3490b8451"
 checksum_source = "mise-versions"
-url = "https://github.com/cue-lang/cue/releases/download/v0.17.1/cue_v0.17.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cue-lang/cue/releases/assets/479014345"
+url = "https://github.com/cue-lang/cue/releases/download/v0.18.0/cue_v0.18.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cue-lang/cue/releases/assets/786930834"
 
 [tools.cue."platforms.linux-x64"]
-checksum = "sha256:a39b0c97695069d95d276d99be0f5dbabb081d801bfdc9ba49b76efaf94e2369"
+checksum = "sha256:6f763cc20c42174344fbead70737714d63a50c3fa7ec71179e67974c4f9c5f81"
 checksum_source = "mise-versions"
-url = "https://github.com/cue-lang/cue/releases/download/v0.17.1/cue_v0.17.1_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cue-lang/cue/releases/assets/479014346"
+url = "https://github.com/cue-lang/cue/releases/download/v0.18.0/cue_v0.18.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cue-lang/cue/releases/assets/786930835"
 
 [[tools.doppler]]
 version = "3.77.1"
